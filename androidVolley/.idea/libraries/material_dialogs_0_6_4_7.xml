@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="material-dialogs-0.6.4.7">
+    <ANNOTATIONS>
+      <root url="jar://$PROJECT_DIR$/../app/build/intermediates/exploded-aar/com.afollestad/material-dialogs/0.6.4.7/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../app/build/intermediates/exploded-aar/com.afollestad/material-dialogs/0.6.4.7/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../app/build/intermediates/exploded-aar/com.afollestad/material-dialogs/0.6.4.7/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

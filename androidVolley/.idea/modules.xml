@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../JobGod.iml" filepath="$PROJECT_DIR$/../JobGod.iml" />
+      <module fileurl="file://$PROJECT_DIR$/androidVolley.iml" filepath="$PROJECT_DIR$/androidVolley.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../app/app.iml" filepath="$PROJECT_DIR$/../app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../imagetool/imagetool.iml" filepath="$PROJECT_DIR$/../imagetool/imagetool.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../jpagerView/jpagerView.iml" filepath="$PROJECT_DIR$/../jpagerView/jpagerView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../jprogressdialog/jprogressdialog.iml" filepath="$PROJECT_DIR$/../jprogressdialog/jprogressdialog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../pulltorefresh/pulltorefresh.iml" filepath="$PROJECT_DIR$/../pulltorefresh/pulltorefresh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../sqllitetool/sqllitetool.iml" filepath="$PROJECT_DIR$/../sqllitetool/sqllitetool.iml" />
+    </modules>
+  </component>
+</project>
+
