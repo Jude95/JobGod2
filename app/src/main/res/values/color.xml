@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/DeepOrange</color>
+    <color name="colorPrimaryDark">@color/DeepOrange900</color>
+    <color name="colorAccent">@color/Cyan</color>
+
+    <color name="DeepOrange">#FF5722</color>
+    <color name="DeepOrange900">#BF360C</color>
+    <color name="Grange">#4CAF50</color>
+    <color name="White">#ffffff</color>
+    <color name="Cyan">#00BCD4</color>
+    
+    <color name="PrimaryText">#dd000000</color>
+    <color name="SecondaryText">#89000000</color>
+    <color name="HintText">#42000000</color>
+    <color name="Dividers">#1E000000</color>
+    <color name="Background">#FAFAFA</color>
+</resources>
