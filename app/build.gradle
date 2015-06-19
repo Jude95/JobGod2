@@ -40,4 +40,6 @@ dependencies {
     compile project(':sqllitetool')
     compile files('libs/MobTools.jar')
     compile files('libs/SMSSDK-1.2.2.jar')
+    compile project(':oneKeyShare')
+    compile project(':shareSDK')
 }

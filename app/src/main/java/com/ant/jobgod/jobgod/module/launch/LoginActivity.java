@@ -8,9 +8,11 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
 import com.ant.jobgod.jobgod.util.Utils;
@@ -28,10 +30,12 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
     private android.widget.ImageView imgShow;
     private ValueAnimator mAnimator;
     private LinearLayout viewBackground;
+    private android.widget.Button btnLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.launch_activity_login);
+        this.btnLogin = (Button) findViewById(R.id.btnLogin);
         this.viewBackground = (LinearLayout) findViewById(R.id.viewBackground);
         this.imgShow = (ImageView) findViewById(R.id.imgShow);
         this.etPassword = (EditText) findViewById(R.id.etPassword);
@@ -53,7 +57,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
             public void afterTextChanged(Editable s) {
             }
         });
-
+        btnLogin.setOnClickListener((View v)->getPresenter().login(etNumber.getText().toString(),etPassword.getText().toString()));
         etNumber.setOnFocusChangeListener(this);
         etPassword.setOnFocusChangeListener(this);
         imgShow.post(() -> initAnimator());
