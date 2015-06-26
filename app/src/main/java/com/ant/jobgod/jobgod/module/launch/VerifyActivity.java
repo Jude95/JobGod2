@@ -26,7 +26,7 @@ public class VerifyActivity extends BaseActivity<VerifyPresenter> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_verify);
+        setContentView(R.layout.launch_activity_verify);
         mTv_number = $(R.id.number);
         mEt_key = $(R.id.key);
         mBtn_retry = $(R.id.retry);

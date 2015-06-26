@@ -10,8 +10,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/oneKeyShare" />
-            <option value="$PROJECT_DIR$/shareSDK" />
             <option value="$PROJECT_DIR$/sqllitetool" />
           </set>
         </option>

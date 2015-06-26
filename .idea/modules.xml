@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/JobGod2.iml" filepath="$PROJECT_DIR$/JobGod2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JobGod.iml" filepath="$PROJECT_DIR$/JobGod.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/oneKeyShare/oneKeyShare.iml" filepath="$PROJECT_DIR$/oneKeyShare/oneKeyShare.iml" />
-      <module fileurl="file://$PROJECT_DIR$/shareSDK/shareSDK.iml" filepath="$PROJECT_DIR$/shareSDK/shareSDK.iml" />
       <module fileurl="file://$PROJECT_DIR$/sqllitetool/sqllitetool.iml" filepath="$PROJECT_DIR$/sqllitetool/sqllitetool.iml" />
     </modules>
   </component>

@@ -17,16 +17,19 @@ class LinkCallback implements RequestManager.RequestListener {
 
     @Override
     public void onRequest() {
+        if (link != null)
         link.onRequest();
     }
 
     @Override
     public void onSuccess(String s) {
+        if (link != null)
         link.onSuccess(s);
     }
 
     @Override
     public void onError(String s) {
+        if (link != null)
         link.onError(s);
     }
 }

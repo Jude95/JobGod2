@@ -4,11 +4,11 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <!--主色-->
-        <item name="colorPrimary">@color/DeepOrange</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
         <!--深色主色-->
-        <item name="colorPrimaryDark">@color/DeepOrange</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <!--醒目主色-->
-        <item name="colorAccent">@color/Grange</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
 

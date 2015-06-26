@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/include_toolbar"></include>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="@color/White"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:layout_margin="16dp"
+                android:text="已发送短信至"
+                android:textSize="18sp"
+                android:textColor="@android:color/tertiary_text_light"
+                android:gravity="center_vertical"/>
+            <TextView
+                android:id="@+id/number"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:text="15683384295"
+                android:textSize="18sp"
+                android:textColor="@android:color/tertiary_text_light"
+                android:gravity="center"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="16dp">
+
+                <EditText
+                    android:id="@+id/key"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:hint="输入验证码"
+                    android:gravity="center"/>
+                <Button
+                    android:id="@+id/retry"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="16dp"
+                    android:text="重新获取"
+                    android:padding="8dp"
+                    android:onClick="retry"
+                    android:textSize="14sp"
+                    android:enabled="false"
+                    android:textColor="@color/colorAccent"
+                    android:background="@color/transparent"/>
+            </LinearLayout>
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_margin="16dp"
+                android:text="提交"
+                android:textColor="@color/colorAccent"
+                android:background="@color/transparent"
+                />
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>

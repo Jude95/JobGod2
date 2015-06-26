@@ -87,7 +87,7 @@ public class VerifyPresenter extends BasePresenter<VerifyActivity> {
     public void register(String tel,String pass,String code){
         UserModel.getInstance().register(tel, pass, code, new StatusCallback() {
             @Override
-            public void success(int status, String info) {
+            public void success(String info) {
                 getView().dismissProgress();
                 Utils.Toast("注册成功，诚客兼职欢迎您");
                 getView().setResult(Activity.RESULT_OK);
@@ -104,7 +104,7 @@ public class VerifyPresenter extends BasePresenter<VerifyActivity> {
     public void modifyPass(String tel,String pass,String code){
         UserModel.getInstance().register(tel, pass, code, new StatusCallback() {
             @Override
-            public void success(int status, String info) {
+            public void success(String info) {
                 getView().dismissProgress();
                 Utils.Toast("密码修改成功");
                 getView().setResult(Activity.RESULT_OK);

@@ -78,14 +78,14 @@ public class BasePresenter<V extends NucleusAppCompatActivity> extends Presenter
 
     @Override
     protected void onSave(Bundle state) {
-        this.state = state.getBundle("Activity");
-        if (this.state == null){this.state = new Bundle();}
+        state.putBundle("Activity",this.state);
         super.onSave(state);
     }
 
     @Override
     protected void onCreate(Bundle savedState) {
-        savedState.putBundle("Activity",state);
         super.onCreate(savedState);
+        this.state = state.getBundle("Activity");
+        if (this.state == null){this.state = new Bundle();}
     }
 }

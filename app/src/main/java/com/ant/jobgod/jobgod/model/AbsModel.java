@@ -2,6 +2,8 @@ package com.ant.jobgod.jobgod.model;
 
 import android.content.Context;
 
+import com.ant.jobgod.jobgod.util.Utils;
+
 import java.util.HashMap;
 
 /**
@@ -21,7 +23,8 @@ public abstract class AbsModel {
 
     public final static void init(Context ctx){
         for (Class m:MODELS) {
-            if (m.isAssignableFrom(AbsModel.class)){
+            if (AbsModel.class.isAssignableFrom(m)){
+                Utils.Log(m.getName());
                 try {
                     AbsModel instance = (AbsModel) (m.newInstance());
                     mModelMap.put(m, instance);
@@ -36,7 +39,11 @@ public abstract class AbsModel {
     }
 
     public static <T extends AbsModel> T getInstance(Class<T> clazz){
-        return (T)mModelMap.get(clazz);
+        if (mModelMap.containsKey(clazz)) {
+            Utils.Log("not Null");
+            return (T) mModelMap.get(clazz);
+        }else
+            return null;
     }
 
 

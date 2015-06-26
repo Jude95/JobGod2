@@ -5,11 +5,11 @@ package com.ant.jobgod.jobgod.config;
  */
 public class API {
     public static class URL{
-        private static final String BaseUrl = "";
+        private static final String BaseUrl = "http://103.238.226.48:81/index.php/";
 
         //Account
-        public static final String IsRegistered = "";
-        public static final String Register = "";
+        public static final String IsRegistered = BaseUrl + "home/index/checkTel";
+        public static final String Register = BaseUrl + "home/user/register";
         public static final String Login = "";
         public static final String ModifyPassword = "";
 

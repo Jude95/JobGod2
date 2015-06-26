@@ -15,6 +15,6 @@ public class AgreementActivity extends BaseActivity<AgreementPresenter> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agrement);
+        setContentView(R.layout.launch_activity_agrement);
     }
 }

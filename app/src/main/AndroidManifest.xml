@@ -47,35 +47,19 @@
             android:name="RONG_CLOUD_APP_KEY"
             android:value="cpj2xarljqa5n" />
 
-        <activity android:name=".module.launch.LoginActivity">
+        <activity android:name=".module.launch.LoginActivity"
+            android:label="登陆">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"></action>
                 <category android:name="android.intent.category.LAUNCHER"></category>
             </intent-filter>
         </activity>
-
-
-        <!--shareSDK-->
-        <activity
-            android:name="com.mob.tools.MobUIShell"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize" >
-            <intent-filter>
-                <data android:scheme="tencent100371282" />
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <!--微信分享回调 -->
-        <activity
-            android:name="wxapi.WXEntryActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="true"
-            android:screenOrientation="portrait" />
+        <activity android:name=".module.launch.AgreementActivity"
+            android:label="使用条款"/>
+        <activity android:name=".module.launch.RegisterActivity"
+            android:label="注册"/>
+        <activity android:name=".module.launch.VerifyActivity"
+            android:label="验证"/>
 
     </application>
 

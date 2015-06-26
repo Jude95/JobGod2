@@ -11,21 +11,23 @@ import com.ant.jobgod.jobgod.util.Utils;
 public class RegisterPresenter extends BasePresenter<RegisterActivity> {
 
     public void checkIsRegister(String tel){
+        getView().showProgress("提交中");
+        Utils.Log("checkIsRegister");
         UserModel.getInstance().isRegister(tel, new StatusCallback() {
-
-
             @Override
-            public void success(int status, String info) {
-                if (status == 200){
-                    getView().continueRegister();
-                }else{
-                    Utils.Toast(info);
-                }
+            public void result(int status, String info) {
+                Utils.Log("end");
+                getView().dismissProgress();
             }
 
             @Override
-            public void error(String errorInfo) {
-                Utils.Toast(errorInfo);
+            public void success(String info) {
+                getView().continueRegister();
+            }
+
+            @Override
+            public void failure(String info) {
+                getView().setNumberDuplicate();
             }
         });
     }

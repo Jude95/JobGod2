@@ -1,6 +1,7 @@
 package com.ant.jobgod.jobgod.model.callback;
 
 import com.ant.jobgod.jobgod.config.API;
+import com.ant.jobgod.jobgod.util.Utils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,12 +22,13 @@ public abstract class StatusCallback extends LinkCallback {
             jsonObject = new JSONObject(s);
             int status = jsonObject.getInt(API.KEY.STATUS);
             String info = jsonObject.getString(API.KEY.INFO);
-            if (status == API.CODE.Failure){
-                error(info);
+            result(status, info);
+            if(status == API.CODE.SUCCEED){
+                success(info);
+            }else if (status == API.CODE.Failure){
+                failure(info);
             }else if (status == API.CODE.PERMISSION_DENIED){
                 authorizationFailure();
-            }else{
-                success(status,info);
             }
         } catch (JSONException e) {
             error("数据解析错误");
@@ -36,10 +38,18 @@ public abstract class StatusCallback extends LinkCallback {
 
     @Override
     public void onError(String s) {
+        result(-1,"网络错误");
+        error("网络错误");
         super.onError(s);
     }
 
-    public abstract void success(int status,String info);
+    public void result(int status, String info){}
+    public abstract void success(String info);
+    public void failure(String info){
+        Utils.Toast(info);
+    }
     public void authorizationFailure(){}
-    public abstract void error(String errorInfo);
+    public void error(String errorInfo){
+        Utils.Toast(errorInfo);
+    }
 }

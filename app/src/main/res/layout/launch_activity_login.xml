@@ -90,12 +90,14 @@
             android:paddingRight="16dp"
             android:paddingBottom="16dp">
             <TextView
+                android:id="@+id/tvRegister"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:textColor="?attr/colorPrimary"
                 android:text="新用户注册"/>
             <TextView
+                android:id="@+id/tvModifyPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|right"

@@ -7,9 +7,11 @@ import android.content.Intent;
 
 import com.activeandroid.ActiveAndroid;
 import com.android.http.RequestManager;
+import com.ant.jobgod.jobgod.config.SP;
 import com.ant.jobgod.jobgod.model.AbsModel;
 import com.ant.jobgod.jobgod.module.launch.LoginActivity;
 import com.ant.jobgod.jobgod.util.ActivityManager;
+import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.facebook.drawee.backends.pipeline.Fresco;
 
@@ -35,10 +37,11 @@ public class APP extends Application {
         RequestManager.getInstance().setDebugMode(true, "GodNet");
         RequestManager.getInstance().setCacheEnable(true);
         Utils.initialize(this, "GodLog", "5,28,0");
-        AbsModel.init(this);
         //RongIM.init(this);
         ActiveAndroid.initialize(this);
-        applyToken(Utils.getPreference().getString("token", ""));
+        FileManager.getInstance().init(this);
+        applyToken(Utils.getPreference().getString(SP.Token, ""));
+        AbsModel.init(this);
     }
 
     @Override

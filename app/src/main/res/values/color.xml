@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">@color/DeepOrange</color>
     <color name="colorPrimaryDark">@color/DeepOrange900</color>
-    <color name="colorAccent">@color/Cyan</color>
+    <color name="colorAccent">@color/Grange</color>
 
     <color name="DeepOrange">#FF5722</color>
     <color name="DeepOrange900">#BF360C</color>
