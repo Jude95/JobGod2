@@ -87,7 +87,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:text="《神兼职个人用户服务协议》"
+                    android:text="《诚客兼职个人用户服务协议》"
                     android:textColor="@color/secondary_text_default_material_light"
                     android:onClick="agreement"
                     android:clickable="true"
@@ -102,8 +102,7 @@
                 android:layout_gravity="right"
                 android:layout_margin="16dp"
                 android:text="短信验证"
-                android:textColor="@color/colorAccent"
-                android:background="@color/transparent"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 />
         </LinearLayout>
 

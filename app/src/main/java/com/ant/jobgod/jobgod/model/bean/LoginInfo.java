@@ -14,6 +14,15 @@ public class LoginInfo implements Serializable{
     private String password;
     private String rongToken;
     private String blogImage;
+    private int type;
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 
     public String getId() {
         return id;

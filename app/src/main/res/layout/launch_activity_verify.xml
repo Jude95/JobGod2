@@ -56,8 +56,7 @@
                     android:onClick="retry"
                     android:textSize="14sp"
                     android:enabled="false"
-                    android:textColor="@color/colorAccent"
-                    android:background="@color/transparent"/>
+                    style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
             </LinearLayout>
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/button"
@@ -66,8 +65,7 @@
                 android:layout_gravity="right"
                 android:layout_margin="16dp"
                 android:text="提交"
-                android:textColor="@color/colorAccent"
-                android:background="@color/transparent"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 />
 
         </LinearLayout>

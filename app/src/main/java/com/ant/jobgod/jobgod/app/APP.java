@@ -40,14 +40,12 @@ public class APP extends Application {
         //RongIM.init(this);
         ActiveAndroid.initialize(this);
         FileManager.getInstance().init(this);
-        applyToken(Utils.getPreference().getString(SP.Token, ""));
         AbsModel.init(this);
     }
 
     @Override
     public void onLowMemory() {
         super.onLowMemory();
-        //ActivityManager.getInstance().popAllActivity();
     }
 
 
@@ -69,11 +67,4 @@ public class APP extends Application {
         //new NotifyLoginDialogFragment().show(ctx.getFragmentManager(),"notifyLogin");
     }
 
-
-
-    public void applyToken(String token){
-        HashMap<String, String> map = new HashMap();
-        map.put("token", token);
-        RequestManager.getInstance().setHeader(map);
-    }
 }

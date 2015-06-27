@@ -24,11 +24,9 @@ public abstract class AbsModel {
     public final static void init(Context ctx){
         for (Class m:MODELS) {
             if (AbsModel.class.isAssignableFrom(m)){
-                Utils.Log(m.getName());
                 try {
                     AbsModel instance = (AbsModel) (m.newInstance());
                     mModelMap.put(m, instance);
-                    instance.onAppCreate(ctx);
                 } catch (InstantiationException e) {
                     e.printStackTrace();
                 } catch (IllegalAccessException e) {
@@ -36,11 +34,13 @@ public abstract class AbsModel {
                 }
             }
         }
+        for (Class m:MODELS) {
+            getInstance(m).onAppCreate(ctx);
+        }
     }
 
     public static <T extends AbsModel> T getInstance(Class<T> clazz){
         if (mModelMap.containsKey(clazz)) {
-            Utils.Log("not Null");
             return (T) mModelMap.get(clazz);
         }else
             return null;

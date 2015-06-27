@@ -13,6 +13,7 @@ import com.ant.jobgod.jobgod.util.Utils;
 
 /**
  * Created by Mr.Jude on 2015/6/6.
+ * 关于用户数据的处理。
  */
 public class UserModel  extends AbsModel{
     public static UserModel getInstance() {
@@ -22,7 +23,6 @@ public class UserModel  extends AbsModel{
     @Override
     protected void onAppCreate(Context ctx) {
         super.onAppCreate(ctx);
-        Utils.Log("UserModel onAppCreate");
     }
 
     public void register(String tel,String password,String verify,StatusCallback callback){
@@ -48,7 +48,6 @@ public class UserModel  extends AbsModel{
             @Override
             public void success(String info, LoginInfo data) {
                 AccountModel.getInstance().setAccount(data);
-                APP.getInstance().applyToken(data.getTokenApp());
             }
 
             @Override

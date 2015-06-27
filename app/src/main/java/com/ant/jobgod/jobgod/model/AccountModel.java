@@ -1,11 +1,17 @@
 package com.ant.jobgod.jobgod.model;
 
+import android.content.Context;
+
+import com.android.http.RequestManager;
 import com.ant.jobgod.jobgod.model.bean.LoginInfo;
 import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
 
+import java.util.HashMap;
+
 /**
  * Created by Mr.Jude on 2015/6/12.
+ * 关于账户的信息。主要用于账户类型：商家／用户，和权限管理。
  */
 public class AccountModel extends AbsModel{
     public static final String ACCOUNTFILE = "account";
@@ -14,14 +20,30 @@ public class AccountModel extends AbsModel{
     }
     public LoginInfo account;
 
+    @Override
+    protected void onAppCreate(Context ctx) {
+        super.onAppCreate(ctx);
+        account = (LoginInfo) Utils.readObjectFromFile(FileManager.getInstance().getChild(FileManager.Dir.Object,ACCOUNTFILE));
+        if (account!=null)
+            applyToken(account.getTokenApp());
+    }
+
+    public boolean isUser(){
+        return account.getType()==0;
+    }
+
     public LoginInfo getAccount() {
-        if (account == null)
-            account = (LoginInfo) Utils.readObjectFromFile(FileManager.getInstance().getChild(FileManager.Dir.Object,ACCOUNTFILE));
         return account;
     }
     public void setAccount(LoginInfo account){
         this.account = account;
         Utils.writeObjectToFile(account,FileManager.getInstance().getChild(FileManager.Dir.Object,ACCOUNTFILE));
+        applyToken(account.getTokenApp());
     }
 
+    public void applyToken(String token){
+        HashMap<String, String> map = new HashMap();
+        map.put("token", token);
+        RequestManager.getInstance().setHeader(map);
+    }
 }

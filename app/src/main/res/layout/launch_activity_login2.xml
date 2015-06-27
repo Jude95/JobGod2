@@ -62,8 +62,7 @@
                     android:layout_height="match_parent"
                     android:padding="16dp"
                     android:text="忘记密码"
-                    android:textColor="@color/colorAccent"
-                    android:background="@color/transparent"
+                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
                     />
                 <android.support.v7.widget.AppCompatButton
                     android:id="@+id/btnModifyPassword"
@@ -71,8 +70,7 @@
                     android:layout_height="match_parent"
                     android:padding="16dp"
                     android:text="登陆"
-                    android:textColor="@color/colorAccent"
-                    android:background="@color/transparent"
+                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
                     />
             </LinearLayout>
         </LinearLayout>
@@ -82,7 +80,9 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
         app:cardBackgroundColor="@color/White"
         >
         <TextView
@@ -90,6 +90,7 @@
             android:layout_height="48dp"
             android:paddingLeft="16dp"
             android:gravity="center_vertical"
+            android:textColor="@color/secondary_text_default_material_light"
             android:text="第三方登陆"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -115,22 +116,36 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="0.3dp"
+            android:layout_height="@dimen/md_divider_height"
             android:layout_marginTop="136dp"
             android:background="@color/md_divider_black"/>
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btnRegister"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="136dp"
-            android:padding="16dp"
+            android:layout_marginTop="137dp"
             android:text="立即用手机号注册账号"
-            android:textColor="@color/colorAccent"
-            android:background="@color/transparent"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
             />
     </android.support.v7.widget.CardView>
 
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="@color/White"
+        >
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btnBiz"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="商家入口"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            />
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>

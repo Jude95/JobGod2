@@ -26,8 +26,6 @@ import nucleus.factory.RequiresPresenter;
 @RequiresPresenter(LoginPresenter.class)
 public class LoginActivity extends BaseActivity<LoginPresenter> {
 
-    private ValueAnimator mAnimator;
-    private LinearLayout viewBackground;
     private android.widget.Button btnLogin;
     private android.support.design.widget.TextInputLayout tilNumber;
     private android.support.design.widget.TextInputLayout tilPassword;
@@ -42,7 +40,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> {
         this.btnModifyPassword = (AppCompatButton) findViewById(R.id.btnModifyPassword);
         this.tilPassword = (TextInputLayout) findViewById(R.id.tilPassword);
         this.tilNumber = (TextInputLayout) findViewById(R.id.tilNumber);
-        this.viewBackground = (LinearLayout) findViewById(R.id.viewBackground);
         btnRegister.setOnClickListener((View v) -> getPresenter().register());
         btnModifyPassword.setOnClickListener((View v) -> getPresenter().modifyPassword());
         btnLogin.setOnClickListener((View v)->getPresenter().login(tilNumber.getEditText().getText().toString(),tilPassword.getEditText().getText().toString()));

@@ -19,6 +19,7 @@ import java.io.Serializable;
 
 /**
  * Created by Mr.Jude on 2015/1/28.
+ * 地理位置的管理
  */
 public class LocationModel extends AbsModel implements Serializable{
 
@@ -40,7 +41,6 @@ public class LocationModel extends AbsModel implements Serializable{
             location = (Location) Utils.readObjectFromFile(file);
         }
         startLocation(ctx);
-        uploadAddress();
     }
 
     public void startLocation(final Context ctx){

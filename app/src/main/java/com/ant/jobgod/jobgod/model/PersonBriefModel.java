@@ -1,5 +1,7 @@
 package com.ant.jobgod.jobgod.model;
 
+import android.content.Context;
+
 import com.activeandroid.Model;
 import com.activeandroid.query.Select;
 import com.android.http.RequestManager;
@@ -20,12 +22,17 @@ import java.util.List;
 
 /**
  * Created by Mr.Jude on 2015/6/12.
+ * 用户简讯的管理。主要用于融云。基本不会有其他用途。
  */
 public class PersonBriefModel extends AbsModel {
     public static PersonBriefModel getInstance() {
         return getInstance(PersonBriefModel.class);
     }
 
+    @Override
+    protected void onAppCreate(Context ctx) {
+        sysnPersonBriefs();
+    }
 
     public PersonBrief getPersonBriefOnBlock(String id){
         if (id == null) return null;
@@ -39,7 +46,7 @@ public class PersonBriefModel extends AbsModel {
         return person;
     }
 
-    public PersonBrief getPersonFromServerDirect(final String id){
+    private PersonBrief getPersonFromServerDirect(final String id){
         PersonBrief person = null;
         String response = Utils.sendPost(API.URL.GetPersonBrief,"userId="+id);
 
@@ -62,17 +69,17 @@ public class PersonBriefModel extends AbsModel {
         return person;
     }
 
-    public void sysnData(){
+    public void sysnPersonBriefs(){
         List<PersonBrief> list = new Select().from(PersonBrief.class).execute();
         RequestMap params = new RequestMap();
         for (PersonBrief p:list) {
             params.put("userId[]",p.getUID());
         }
-        params.put("time", Utils.getPreference().getString(SP.PersonSync,"0"));
+        params.put("time", Utils.getPreference().getString(SP.PersonSyncTime,"0"));
         RequestManager.getInstance().post(API.URL.UpdateGetPersonBrief, params, new DataCallback<PersonBrief[]>() {
             @Override
             public void success(String info, PersonBrief[] data) {
-                Utils.getPreference().edit().putString(SP.PersonSync,System.currentTimeMillis()/1000+"").commit();
+                Utils.getPreference().edit().putString(SP.PersonSyncTime,System.currentTimeMillis()/1000+"").commit();
                 for (PersonBrief p : data) {
                     p.saveById();
                 }

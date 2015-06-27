@@ -39,6 +39,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> {
         this.tilNumber = (TextInputLayout) findViewById(R.id.tilNumber);
         this.tilName = (TextInputLayout) findViewById(R.id.tilName);
         launchMode(getIntent());
+        button.setOnClickListener((View v)->check());
     }
 
     private void launchMode(Intent intent){
@@ -55,7 +56,8 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> {
         }
     }
 
-    public void check(View view){
+
+    public void check(){
         mName = tilName.getEditText().getText().toString();
         mNumber = tilNumber.getEditText().getText().toString();
         mPassword = tilPassword.getEditText().getText().toString();
@@ -105,4 +107,6 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> {
                 finish();
             }
     }
+
+
 }

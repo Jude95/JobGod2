@@ -9,6 +9,6 @@
         android:layout_height="80dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        wheel:matProg_barColor="@color/colorPrimary"
+        wheel:matProg_barColor="?attr/colorPrimary"
         wheel:matProg_progressIndeterminate="true" />
 </RelativeLayout>
