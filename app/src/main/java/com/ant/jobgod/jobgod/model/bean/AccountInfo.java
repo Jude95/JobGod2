@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by Mr.Jude on 2015/6/13.
  */
-public class LoginInfo implements Serializable{
+public class AccountInfo implements Serializable{
     private String id;
     private String tokenApp;
     private String name;

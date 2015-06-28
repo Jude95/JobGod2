@@ -27,7 +27,7 @@ public class VerifyPresenter extends BasePresenter<VerifyActivity> {
     private static final String APPSECRET = "f8652efb1c8a638223bb22d5b02a4279";
 
     public static final int Type_Register = 1;
-    public static final int Type_FindPassword= 2;
+    public static final int Type_ModifyPassword = 2;
 
 
     private static long beginTime = 0;
@@ -78,7 +78,7 @@ public class VerifyPresenter extends BasePresenter<VerifyActivity> {
             case Type_Register:
                 register(number,password,code);
                 break;
-            case Type_FindPassword:
+            case Type_ModifyPassword:
                 modifyPass(number,password, code);
                 break;
         }

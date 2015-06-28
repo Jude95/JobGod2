@@ -7,15 +7,14 @@ import android.content.Intent;
 
 import com.activeandroid.ActiveAndroid;
 import com.android.http.RequestManager;
-import com.ant.jobgod.jobgod.config.SP;
+import com.ant.jobgod.jobgod.BuildConfig;
 import com.ant.jobgod.jobgod.model.AbsModel;
-import com.ant.jobgod.jobgod.module.launch.LoginActivity;
+import com.ant.jobgod.jobgod.module.launch.UserLoginActivity;
 import com.ant.jobgod.jobgod.util.ActivityManager;
 import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.facebook.drawee.backends.pipeline.Fresco;
-
-import java.util.HashMap;
+import com.umeng.analytics.MobclickAgent;
 
 
 /**
@@ -41,6 +40,8 @@ public class APP extends Application {
         ActiveAndroid.initialize(this);
         FileManager.getInstance().init(this);
         AbsModel.init(this);
+        com.umeng.socialize.utils.Log.LOG = BuildConfig.DEBUG;
+        MobclickAgent.updateOnlineConfig(this);
     }
 
     @Override
@@ -58,7 +59,7 @@ public class APP extends Application {
 
     public void closeToLogin(){
         Context ctx = ActivityManager.getInstance().currentActivity();
-        ctx.startActivity(new Intent(ctx, LoginActivity.class));
+        ctx.startActivity(new Intent(ctx, UserLoginActivity.class));
         ActivityManager.getInstance().popAllActivity();
     }
 

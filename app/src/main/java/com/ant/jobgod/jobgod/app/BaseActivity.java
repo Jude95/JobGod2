@@ -1,6 +1,7 @@
 package com.ant.jobgod.jobgod.app;
 
 
+import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -9,6 +10,8 @@ import android.view.ViewGroup;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.ant.jobgod.jobgod.R;
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.message.PushAgent;
 
 import nucleus.manager.Presenter;
 import nucleus.view.NucleusAppCompatActivity;
@@ -19,6 +22,13 @@ import nucleus.view.NucleusAppCompatActivity;
 public class BaseActivity<T extends Presenter> extends NucleusAppCompatActivity<T> {
     private Toolbar toolbar;
     private MaterialDialog dialog;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        PushAgent.getInstance(this).onAppStart();
+    }
+
     protected void setToolBar(boolean returnAble){
         toolbar = $(R.id.toolbar);
         if (toolbar!=null){
@@ -75,6 +85,15 @@ public class BaseActivity<T extends Presenter> extends NucleusAppCompatActivity<
     }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
 
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
+    }
 }

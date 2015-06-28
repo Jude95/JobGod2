@@ -3,12 +3,9 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/androidVolley" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/ant/jobgod/jobgod/module/launch/AgreementActivity.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/ant/jobgod/jobgod/module/launch/RegisterActivity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/ant/jobgod/jobgod/module/launch/UserRegisterActivity.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/ant/jobgod/jobgod/module/launch/VerifyActivity.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/ant/jobgod/jobgod/module/launch/VerifyPresenter.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/launch_btn.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/launch_btn_press.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/launch_btn_selector.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/launch_activity_agrement.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/launch_activity_register.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/launch_activity_verify.xml" charset="UTF-8" />

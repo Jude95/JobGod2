@@ -10,19 +10,18 @@ import android.widget.CheckBox;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
+import com.ant.jobgod.jobgod.model.AccountModel;
 
 import nucleus.factory.RequiresPresenter;
 
 /**
  * Created by Mr.Jude on 2015/1/27.
  */
-@RequiresPresenter(RegisterPresenter.class)
-public class RegisterActivity extends BaseActivity<RegisterPresenter> {
+@RequiresPresenter(UserRegisterPresenter.class)
+public class UserRegisterActivity extends BaseActivity<UserRegisterPresenter> {
 
 
-    private String mNumber;
-    private String mPassword;
-    private String mName;
+
     private android.support.design.widget.TextInputLayout tilName;
     private android.support.design.widget.TextInputLayout tilNumber;
     private android.support.design.widget.TextInputLayout tilPassword;
@@ -40,6 +39,8 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> {
         this.tilName = (TextInputLayout) findViewById(R.id.tilName);
         launchMode(getIntent());
         button.setOnClickListener((View v)->check());
+        AccountModel.getInstance().test();
+        AccountModel.getInstance().test2();
     }
 
     private void launchMode(Intent intent){
@@ -58,9 +59,9 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> {
 
 
     public void check(){
-        mName = tilName.getEditText().getText().toString();
-        mNumber = tilNumber.getEditText().getText().toString();
-        mPassword = tilPassword.getEditText().getText().toString();
+        String mName = tilName.getEditText().getText().toString();
+        String mNumber = tilNumber.getEditText().getText().toString();
+        String mPassword = tilPassword.getEditText().getText().toString();
         if (mName.trim().isEmpty()) {
             //Utils.Toast("请输入昵称");
             tilName.setError("昵称不能为空");
@@ -76,20 +77,11 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> {
             tilPassword.setError("密码应为6-12位");
             return;
         }
-        getPresenter().checkIsRegister(mNumber);
+        getPresenter().checkIsRegister(mName,mNumber,mPassword);
     }
 
     public void setNumberDuplicate() {
         tilNumber.setError("手机号已注册");
-    }
-
-    public void continueRegister() {
-        Intent intent = new Intent(this, VerifyActivity.class);
-        intent.putExtra("name", mName);
-        intent.putExtra("number", mNumber);
-        intent.putExtra("password", mPassword);
-        intent.putExtra("type", VerifyPresenter.Type_Register);
-        startActivityForResult(intent, 1);
     }
 
 
@@ -97,16 +89,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> {
         startActivity(new Intent(this,AgreementActivity.class));
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-            if (resultCode == RESULT_OK){
-                Intent intent = new Intent();
-                intent.putExtra("number",mNumber);
-                intent.putExtra("password",mPassword);
-                setResult(RESULT_OK,intent);
-                finish();
-            }
-    }
+
 
 
 }

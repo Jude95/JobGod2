@@ -6,6 +6,8 @@ import com.ant.jobgod.jobgod.util.Utils;
 
 import java.util.HashMap;
 
+import de.greenrobot.event.EventBus;
+
 /**
  * Created by zhuchenxi on 15/6/7.
  */
@@ -20,6 +22,13 @@ public abstract class AbsModel {
 
 
     private final static HashMap<Class<?>,AbsModel> mModelMap = new HashMap<>();
+    private EventBus eventBus = new EventBus();
+    public void registerEvent(Object object){
+        eventBus.register(object);
+    }
+    protected void publicEvent(Object object){
+        eventBus.post(object);
+    }
 
     public final static void init(Context ctx){
         for (Class m:MODELS) {

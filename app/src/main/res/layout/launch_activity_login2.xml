@@ -57,7 +57,7 @@
                 android:orientation="horizontal"
                 android:gravity="right">
                 <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/btnLogin"
+                    android:id="@+id/btnModifyPassword"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:padding="16dp"
@@ -65,7 +65,7 @@
                     style="@style/Widget.AppCompat.Button.Borderless.Colored"
                     />
                 <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/btnModifyPassword"
+                    android:id="@+id/btnLogin"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:padding="16dp"
@@ -98,16 +98,19 @@
             android:layout_marginTop="48dp"
             android:orientation="horizontal">
             <ImageView
+                android:id="@+id/btnQQ"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/launch_login_qq"/>
             <ImageView
+                android:id="@+id/btnWeiChat"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/launch_login_wechat"/>
             <ImageView
+                android:id="@+id/btnSina"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

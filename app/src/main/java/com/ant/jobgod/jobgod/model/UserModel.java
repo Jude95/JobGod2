@@ -4,12 +4,10 @@ import android.content.Context;
 
 import com.android.http.RequestManager;
 import com.android.http.RequestMap;
-import com.ant.jobgod.jobgod.app.APP;
 import com.ant.jobgod.jobgod.config.API;
-import com.ant.jobgod.jobgod.model.bean.LoginInfo;
+import com.ant.jobgod.jobgod.model.bean.AccountInfo;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
-import com.ant.jobgod.jobgod.util.Utils;
 
 /**
  * Created by Mr.Jude on 2015/6/6.
@@ -44,9 +42,9 @@ public class UserModel  extends AbsModel{
         RequestMap params = new RequestMap();
         params.put("tel",tel);
         params.put("pass",password);
-        RequestManager.getInstance().post(API.URL.Login,params,callback.add(new DataCallback<LoginInfo>() {
+        RequestManager.getInstance().post(API.URL.Login,params,callback.add(new DataCallback<AccountInfo>() {
             @Override
-            public void success(String info, LoginInfo data) {
+            public void success(String info, AccountInfo data) {
                 AccountModel.getInstance().setAccount(data);
             }
 
