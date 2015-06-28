@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <stroke
+        android:width="10dp"
+        android:color="#2A5295" />
+
+</shape><!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/drawable/shake_umeng_socialize_imgview_border.xml -->

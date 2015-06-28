@@ -19,9 +19,6 @@ import nucleus.factory.RequiresPresenter;
  */
 @RequiresPresenter(UserRegisterPresenter.class)
 public class UserRegisterActivity extends BaseActivity<UserRegisterPresenter> {
-
-
-
     private android.support.design.widget.TextInputLayout tilName;
     private android.support.design.widget.TextInputLayout tilNumber;
     private android.support.design.widget.TextInputLayout tilPassword;

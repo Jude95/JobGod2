@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/umeng_socialize_oauth_check_off" android:state_checked="false"/>
+    <item android:drawable="@drawable/umeng_socialize_oauth_check_on" android:state_checked="true"/>
+
+</selector><!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/drawable/umeng_socialize_oauth_check.xml -->

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:textColor="@color/umeng_socialize_text_friends_list"
+    android:background="#eeeeee"
+    android:paddingLeft="8dp"
+    android:text="header"
+    android:id="@+id/header" />
+<!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/layout/umeng_socialize_composer_header.xml --><!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/build/intermediates/bundles/debug/res/layout/umeng_socialize_composer_header.xml -->

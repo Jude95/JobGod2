@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"> 
+    <solid android:color="#ffffff" /> 
+    <corners android:radius="1dp"/> 
+    <padding android:left="0dp" android:top="0dp" android:right="0dp" 
+        android:bottom="0dp" /> 
+</shape><!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/drawable/shake_umeng_socialize_preview_edit_corners_style.xml -->
