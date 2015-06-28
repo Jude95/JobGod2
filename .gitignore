@@ -1,7 +1,5 @@
 
 .gradle
-/local.properties
-/.idea/workspace.xml
 /.idea/libraries
 .DS_Store
 /build
@@ -32,7 +30,7 @@ local.properties
 proguard/
 
 # Intellij project files
-*.iml
+#*.iml
 *.ipr
 *.iws
 .idea
