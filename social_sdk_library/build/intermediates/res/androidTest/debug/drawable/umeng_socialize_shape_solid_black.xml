@@ -2,4 +2,4 @@
 	<solid android:color="#000000"/>
 	<corners android:radius="15dp"/>
 	<padding android:bottom="5dp"  android:top="5dp"/>
-</shape><!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/drawable/umeng_socialize_shape_solid_black.xml --><!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/build/intermediates/bundles/debug/res/drawable/umeng_socialize_shape_solid_black.xml -->
+</shape><!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/drawable/umeng_socialize_shape_solid_black.xml --><!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/build/intermediates/bundles/debug/res/drawable/umeng_socialize_shape_solid_black.xml -->

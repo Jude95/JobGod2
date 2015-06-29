@@ -5,4 +5,4 @@
     <item android:drawable="@drawable/umeng_socialize_action_back_selected" android:state_pressed="true" android:state_window_focused="true"/>
     <item android:drawable="@drawable/umeng_socialize_action_back_selected" android:state_focused="true"/>
 
-</selector><!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/drawable/umeng_socialize_action_back.xml --><!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/build/intermediates/bundles/debug/res/drawable/umeng_socialize_action_back.xml -->
+</selector><!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/drawable/umeng_socialize_action_back.xml --><!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/build/intermediates/bundles/debug/res/drawable/umeng_socialize_action_back.xml -->

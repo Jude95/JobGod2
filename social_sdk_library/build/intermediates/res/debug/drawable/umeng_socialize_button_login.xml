@@ -5,4 +5,4 @@
     <item android:drawable="@drawable/umeng_socialize_button_login_pressed" android:state_pressed="true" android:state_window_focused="true"/>
     <item android:drawable="@drawable/umeng_socialize_button_login_pressed" android:state_focused="true"/>
 	
-</selector>	<!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/drawable/umeng_socialize_button_login.xml -->
+</selector>	<!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/drawable/umeng_socialize_button_login.xml -->

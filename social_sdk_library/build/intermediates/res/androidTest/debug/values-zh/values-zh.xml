@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/build/intermediates/bundles/debug/res/values-zh/values-zh.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/build/intermediates/bundles/debug/res/values-zh/values-zh.xml -->
     <eat-comment/>
     <string name="UMAppUpdate">应用更新</string>
     <string name="UMBreak_Network">未联网</string>

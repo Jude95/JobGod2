@@ -4,4 +4,4 @@
     android:fromXDelta="0.0%"
     android:fromYDelta="0.0%"
     android:toXDelta="0.0%"
-    android:toYDelta="100.0%" /><!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/anim/umeng_socialize_slide_out_from_bottom.xml --><!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/build/intermediates/bundles/debug/res/anim/umeng_socialize_slide_out_from_bottom.xml -->
+    android:toYDelta="100.0%" /><!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/anim/umeng_socialize_slide_out_from_bottom.xml --><!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/build/intermediates/bundles/debug/res/anim/umeng_socialize_slide_out_from_bottom.xml -->

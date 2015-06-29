@@ -10,12 +10,21 @@ android {
         minSdkVersion 15
         targetSdkVersion 21
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
     }
+
+    signingConfigs {
+        release
+    }
+
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
@@ -47,3 +56,90 @@ dependencies {
     compile 'com.umeng.analytics:analytics:latest.integration'
     compile files('libs/com.umeng.message.lib_v2.3.0.jar')
 }
+//load the key
+def Properties props = new Properties()
+def propFile = new File("signing.properties")
+if (propFile.canRead()) {
+    props.load(new FileInputStream(propFile))
+
+    if (props!= null
+            && props.containsKey("KEYSTORE_FILE")
+            && props.containsKey("KEYSTORE_PASSWORD")
+            && props.containsKey("KEY_ALIAS")
+            && props.containsKey("KEY_PASSWORD")) {
+
+        def keystoreFile = new File(props["KEYSTORE_FILE"])
+        if (keystoreFile.canRead()) {
+            android.signingConfigs.release.storeFile = keystoreFile
+            android.signingConfigs.release.storePassword = props["KEYSTORE_PASSWORD"]
+            android.signingConfigs.release.keyAlias = props["KEY_ALIAS"]
+            android.signingConfigs.release.keyPassword = props["KEY_PASSWORD"]
+            println("signed"+props["KEYSTORE_FILE"])
+        }
+        else {
+            println("keystore file not found: " + props["KEYSTORE_FILE"])
+            android.buildTypes.release.signingConfig = null
+        }
+    }
+    else {
+        println("signing.properties found but some entries missing")
+        android.buildTypes.release.signingConfig = null
+    }
+} else {
+    println("signing.properties not found")
+    android.buildTypes.release.signingConfig = null
+}
+
+//increase the version
+task incrementVersionCode << {
+    println(":incrementVersionCode - Incrementing Version Code...")
+    def manifestFile = file("src/main/AndroidManifest.xml")
+    def patternVersionCode = Pattern.compile("versionCode=\"(\\d+)\"")
+    def manifestText = manifestFile.getText()
+    def matcherVersionCode = patternVersionCode.matcher(manifestText)
+    matcherVersionCode.find()
+    def mVersionCode = Integer.parseInt(matcherVersionCode.group(1))
+    def mNextVersionCode = mVersionCode + 1
+    def manifestContent = matcherVersionCode.replaceAll("versionCode=\"" + mNextVersionCode + "\"")
+    println(":incrementVersionCode - current versionCode=" + mVersionCode);
+    println(":incrementVersionCode - next versionCode=" + mNextVersionCode);
+    manifestFile.write(manifestContent)
+}
+
+task incrementVersionName << {
+    println(":incrementVersionName - Incrementing Version Name...")
+    def manifestFile = file("src/main/AndroidManifest.xml")
+    def patternVersionNumber = Pattern.compile("versionName=\"(\\d+)\\.(\\d+)\\.(\\d+)\"")
+    def manifestText = manifestFile.getText()
+    def matcherVersionNumber = patternVersionNumber.matcher(manifestText)
+    matcherVersionNumber.find()
+    def majorVersion = Integer.parseInt(matcherVersionNumber.group(1))
+    def minorVersion = Integer.parseInt(matcherVersionNumber.group(2))
+    def pointVersion = Integer.parseInt(matcherVersionNumber.group(3))
+    def mVersionName = majorVersion + "." + minorVersion + "." + pointVersion
+    def mNextVersionName = majorVersion + "." + minorVersion + "." + (pointVersion + 1)
+    def manifestContent = matcherVersionNumber.replaceAll("versionName=\"" + mNextVersionName + "\"")
+    println(":incrementVersionName - current versionName=" + mVersionName);
+    println(":incrementVersionName - new versionName=" + mNextVersionName);
+    manifestFile.write(manifestContent)
+}
+task release << {
+    println(":release - Build and Version Increment")
+}
+
+task debug << {
+    println(":debug - Build")
+}
+
+incrementVersionName.mustRunAfter build
+incrementVersionCode.mustRunAfter build
+
+debug.dependsOn assembleDebug
+// Uncomment if you want to increment the versionCode and/or versionName when using the debug build
+debug.dependsOn incrementVersionCode
+debug.dependsOn incrementVersionName
+
+release.dependsOn assembleRelease
+release.dependsOn incrementVersionCode
+release.dependsOn incrementVersionName
+

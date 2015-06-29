@@ -81,4 +81,4 @@
 	<TextView 
 	    style="@style/umeng_socialize_divider"
 	    android:layout_alignParentBottom="true"/>
-</RelativeLayout><!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/layout/umeng_socialize_titile_bar.xml -->
+</RelativeLayout><!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/layout/umeng_socialize_titile_bar.xml -->

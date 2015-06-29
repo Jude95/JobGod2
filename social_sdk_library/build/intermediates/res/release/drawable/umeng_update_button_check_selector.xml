@@ -28,4 +28,4 @@
           android:state_enabled="true"
           android:drawable="@drawable/umeng_update_btn_check_on_holo_light" />
 </selector>
-<!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/drawable/umeng_update_button_check_selector.xml -->
+<!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/drawable/umeng_update_button_check_selector.xml -->

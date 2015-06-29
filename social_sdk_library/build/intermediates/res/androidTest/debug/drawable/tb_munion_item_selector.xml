@@ -3,4 +3,4 @@
     <item android:drawable="@color/tb_munion_item_force" android:state_pressed="true" />
     <item android:drawable="@color/tb_munion_item_force" android:state_focused="true" />
 </selector>
-<!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/drawable/tb_munion_item_selector.xml --><!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/build/intermediates/bundles/debug/res/drawable/tb_munion_item_selector.xml -->
+<!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/drawable/tb_munion_item_selector.xml --><!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/build/intermediates/bundles/debug/res/drawable/tb_munion_item_selector.xml -->

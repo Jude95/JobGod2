@@ -4,4 +4,4 @@
     <item android:drawable="@drawable/umeng_socialize_sidebar_normal" android:state_pressed="false" android:state_window_focused="false"/>
     <item android:drawable="@drawable/umeng_socialize_sidebar_selected" android:state_pressed="true"/>
 
-</selector><!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/drawable/umeng_socialize_sidebar_selector.xml -->
+</selector><!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/drawable/umeng_socialize_sidebar_selector.xml -->

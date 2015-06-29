@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/facebook_styles.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/facebook_styles.xml -->
     <eat-comment/>
     <color name="com_facebook_blue">#3B5998</color>
     <color name="com_facebook_button_background_color">#415dae</color>
@@ -15,10 +15,10 @@
     <color name="com_facebook_likeboxcountview_text_color">#6a7180</color>
     <color name="com_facebook_likeview_text_color">#6a7180</color>
     <color name="com_facebook_share_button_text_color">#FFFFFF</color>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/tb_munion_strings.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/tb_munion_strings.xml -->
     <eat-comment/>
     <color name="tb_munion_item_force">#e3e3e3</color>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/umeng_socialize_colors.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/umeng_socialize_colors.xml -->
     <eat-comment/>
     <color name="umeng_socialize_color_group">#2c3035</color>
     <color name="umeng_socialize_comments_bg">#F4F4F4</color>
@@ -36,10 +36,10 @@
     <declare-styleable name="com_facebook_like_view"><attr format="color" name="com_facebook_foreground_color"/><attr format="string" name="com_facebook_object_id"/><attr name="com_facebook_object_type"><enum name="unknown" value="0"/><enum name="open_graph" value="1"/><enum name="page" value="2"/></attr><attr name="com_facebook_style"><enum name="standard" value="0"/><enum name="button" value="1"/><enum name="box_count" value="2"/></attr><attr name="com_facebook_auxiliary_view_position"><enum name="bottom" value="0"/><enum name="inline" value="1"/><enum name="top" value="2"/></attr><attr name="com_facebook_horizontal_alignment"><enum name="center" value="0"/><enum name="left" value="1"/><enum name="right" value="2"/></attr></declare-styleable>
     <declare-styleable name="com_facebook_login_view"><attr format="boolean" name="com_facebook_confirm_logout"/><attr format="string" name="com_facebook_login_text"/><attr format="string" name="com_facebook_logout_text"/><attr name="com_facebook_tooltip_mode"><enum name="automatic" value="0"/><enum name="display_always" value="1"/><enum name="never_display" value="2"/></attr></declare-styleable>
     <declare-styleable name="com_facebook_profile_picture_view"><attr name="com_facebook_preset_size"><enum name="small" value="-2"/><enum name="normal" value="-3"/><enum name="large" value="-4"/></attr><attr format="boolean" name="com_facebook_is_cropped"/></declare-styleable>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/umeng_socialize_strings.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/umeng_socialize_strings.xml -->
     <eat-comment/>
     <dimen name="alphabet_size">12dip</dimen>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/facebook_styles.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/facebook_styles.xml -->
     <eat-comment/>
     <dimen name="com_facebook_likeboxcountview_border_radius">3dp</dimen>
     <dimen name="com_facebook_likeboxcountview_border_width">1dp</dimen>
@@ -60,11 +60,11 @@
     <dimen name="com_facebook_share_button_padding_top">12dp</dimen>
     <dimen name="com_facebook_share_button_text_size">16.0sp</dimen>
     <dimen name="com_facebook_tooltip_horizontal_padding">10dp</dimen>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/umeng_socialize_strings.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/umeng_socialize_strings.xml -->
     <eat-comment/>
     <dimen name="umeng_socialize_pad_window_height">350dip</dimen>
     <dimen name="umeng_socialize_pad_window_width">580dip</dimen>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/umeng_update_string.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/umeng_update_string.xml -->
     <eat-comment/>
     <string name="UMAppUpdate">App updating</string>
     <string name="UMBreak_Network">Please make sure you are connected to internet,update failed</string>
@@ -80,10 +80,10 @@
     <string name="UMUpdateNow">Update now</string>
     <string name="UMUpdateSize">Update size: </string>
     <string name="UMUpdateTitle">New version found</string>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/umeng_socialize_facebook_strings.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/umeng_socialize_facebook_strings.xml -->
     <eat-comment/>
     <string name="com_facebook_dialogloginactivity_ok_button">OK</string>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/facebook_strings.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/facebook_strings.xml -->
     <eat-comment/>
     <string name="com_facebook_image_download_unknown_error">Unexpected error while downloading an image.</string>
     <string name="com_facebook_internet_permission_error_message">WebView login requires INTERNET permission</string>
@@ -98,63 +98,63 @@
     <string name="com_facebook_loginview_log_out_button">Log out</string>
     <string name="com_facebook_loginview_logged_in_as">Logged in as: %1$s</string>
     <string name="com_facebook_loginview_logged_in_using_facebook">Logged in using Facebook</string>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/umeng_socialize_facebook_strings.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/umeng_socialize_facebook_strings.xml -->
     <eat-comment/>
     <string name="com_facebook_requesterror_password_changed">Your Facebook password has changed. Please log into this app again to reconnect your Facebook account.</string>
     <string name="com_facebook_requesterror_permissions">This app doesn’t have permission to do this. To change permissions, try logging into the app again.</string>
     <string name="com_facebook_requesterror_reconnect">Please log into this app again to reconnect your Facebook account.</string>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/facebook_strings.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/facebook_strings.xml -->
     <eat-comment/>
     <string name="com_facebook_send_button_text">Send</string>
     <string name="com_facebook_share_button_text">Share</string>
     <string name="com_facebook_tooltip_default">New! You\'re in control - choose what info you want to share with apps.</string>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/umeng_socialize_flickr_strings.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/umeng_socialize_flickr_strings.xml -->
     <eat-comment/>
     <string name="flickr_content">Flickr只支持图片分享</string>
     <string name="flickr_no_client">未安装Flickr客户端</string>
     <string name="flickr_no_content">请设置分享内容</string>
     <string name="flickr_showword">Flickr</string>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/umeng_socialize_kakao_strings.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/umeng_socialize_kakao_strings.xml -->
     <eat-comment/>
     <string name="kakao_content">Kakao Talk只支持图片、文本分享</string>
     <string name="kakao_no_client">未安装Kakao Talk客户端</string>
     <string name="kakao_no_content">请设置分享内容</string>
     <string name="kakao_showword">Kakao Talk</string>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/umeng_socialize_line_strings.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/umeng_socialize_line_strings.xml -->
     <eat-comment/>
     <string name="line_content">Line只支持文本，图片</string>
     <string name="line_no_client">未安装Line客户端</string>
     <string name="line_no_content">请设置分享内容</string>
     <string name="line_showword">LINE</string>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/umeng_socialize_linkedin_strings.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/umeng_socialize_linkedin_strings.xml -->
     <eat-comment/>
     <string name="linkedin_content">linked只支持纯文本分享</string>
     <string name="linkedin_no_client">未安装LinkedIn客户端</string>
     <string name="linkedin_showword">LinkedIn</string>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/messenger_button_strings.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/messenger_button_strings.xml -->
     <eat-comment/>
     <string name="messenger_send_button_text">Send</string>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/umeng_socialize_pocket_strings.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/umeng_socialize_pocket_strings.xml -->
     <eat-comment/>
     <string name="pocket_content">pocket只支持网页链接分享</string>
     <string name="pocket_no_client">未安装pocket客户端</string>
     <string name="pocket_showword">Pocket</string>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/umeng_socialize_strings.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/umeng_socialize_strings.xml -->
     <eat-comment/>
     <string name="pull_to_refresh_pull_label" translatable="false">向下拉动可以刷新</string>
     <string name="pull_to_refresh_refreshing_label" translatable="false">加载中…</string>
     <string name="pull_to_refresh_release_label" translatable="false">松开可以刷新</string>
     <string name="pull_to_refresh_tap_label" translatable="false">点击刷新</string>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/tb_munion_strings.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/tb_munion_strings.xml -->
     <eat-comment/>
     <string name="tb_munion_tip_download_prefix">正在下载:</string>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/umeng_socialize_tumblr_strings.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/umeng_socialize_tumblr_strings.xml -->
     <eat-comment/>
     <string name="tumblr_content">Tumblr只支持文本，图片，图文分享</string>
     <string name="tumblr_no_client">未安装Tumblr客户端</string>
     <string name="tumblr_no_content">请设置分享内容</string>
     <string name="tumblr_showword">Tumblr</string>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/umeng_common_strings.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/umeng_common_strings.xml -->
     <eat-comment/>
     <string name="umeng_common_action_cancel">Cancel</string>
     <string name="umeng_common_action_continue">Continue</string>
@@ -171,7 +171,7 @@
     <string name="umeng_common_silent_download_finish">New version is ready,click to install it.</string>
     <string name="umeng_common_start_download_notification">Download start.</string>
     <string name="umeng_common_start_patch_notification">Patch start.</string>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/umeng_socialize_strings.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/umeng_socialize_strings.xml -->
     <eat-comment/>
     <string name="umeng_example_home_btn_plus">社交分享</string>
     <string name="umeng_socialize_back" translatable="false">返回</string>
@@ -181,10 +181,10 @@
     <string name="umeng_socialize_content_hint">说点啥…</string>
     <string name="umeng_socialize_friends" translatable="false">关注的好友</string>
     <string name="umeng_socialize_img_des"/>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/umeng_socialize_laiwang_strings.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/umeng_socialize_laiwang_strings.xml -->
     <eat-comment/>
     <string name="umeng_socialize_laiwang_default_content">友盟社会化组件（SDK）让移动应用快速整合社交分享功能</string>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/umeng_socialize_strings.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/umeng_socialize_strings.xml -->
     <eat-comment/>
     <string name="umeng_socialize_login">登录</string>
     <string name="umeng_socialize_login_qq">QQ空间</string>
@@ -205,11 +205,11 @@
     <string name="umeng_socialize_text_comment_hint">说点什么吧…</string>
     <string name="umeng_socialize_text_douban_key">豆瓣网</string>
     <string name="umeng_socialize_text_friend_list">好友列表</string>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/umeng_socialize_laiwang_strings.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/umeng_socialize_laiwang_strings.xml -->
     <eat-comment/>
     <string name="umeng_socialize_text_laiwang_dynamic_key">来往动态</string>
     <string name="umeng_socialize_text_laiwang_key">来往</string>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/umeng_socialize_strings.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/umeng_socialize_strings.xml -->
     <eat-comment/>
     <string name="umeng_socialize_text_loading_message">载入中,请稍候...</string>
     <string name="umeng_socialize_text_login_fail">登录失败了，请重试</string>
@@ -241,19 +241,19 @@
     <string name="umeng_socialize_tip_loginfailed" translatable="false">登录失败…</string>
     <string name="umeng_socialize_ucenter_login_title_guide" translatable="false">游客登录</string>
     <string name="umeng_socialize_ucenter_login_title_platform" translatable="false">登录帐号</string>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/umeng_socialize_whatsapp_strings.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/umeng_socialize_whatsapp_strings.xml -->
     <eat-comment/>
     <string name="whatsapp_content">有道云笔记只支持文本，图片</string>
     <string name="whatsapp_no_client">未安装有WhatsApp客户端</string>
     <string name="whatsapp_no_content">请设置分享内容</string>
     <string name="whatsapp_showword">WhatsApp</string>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/umeng_socialize_ynote_strings.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/umeng_socialize_ynote_strings.xml -->
     <eat-comment/>
     <string name="ynote_content">有道云笔记只支持文本，图片，图文分享</string>
     <string name="ynote_no_client">未安装有道云笔记客户端</string>
     <string name="ynote_no_content">请设置分享内容</string>
     <string name="ynote_showword">有道云笔记</string>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/shake_umeng_socialize_style.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/shake_umeng_socialize_style.xml -->
     <eat-comment/>
     <style name="Dialog_Fullscreen">
 
@@ -268,7 +268,7 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:backgroundDimAmount">0.6</item>
     </style>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/messenger_button_styles.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/messenger_button_styles.xml -->
     <eat-comment/>
     <style name="MessengerButton">
     <item name="android:clickable">true</item>
@@ -328,20 +328,20 @@
     <style name="MessengerButtonText.White.Small">
     <item name="android:drawableLeft">@drawable/messenger_bubble_small_blue</item>
   </style>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/shake_umeng_socialize_style.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/shake_umeng_socialize_style.xml -->
     <eat-comment/>
     <style name="Notitle_Fullscreen">
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowNoTitle">true</item>
     </style>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/umeng_socialize_style.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/umeng_socialize_style.xml -->
     <eat-comment/>
     <style name="Theme.UMDefault" parent="android:style/Theme.NoTitleBar"/>
     <style name="Theme.UMDialog" parent="android:style/Theme.Dialog">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/facebook_styles.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/facebook_styles.xml -->
     <eat-comment/>
     <style name="com_facebook_button" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/com_facebook_button_background</item>
@@ -374,7 +374,7 @@
         <item name="android:drawableLeft">@null</item>
         <item name="android:textColor">#4b5164</item>
     </style>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/shake_umeng_socialize_style.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/shake_umeng_socialize_style.xml -->
     <eat-comment/>
     <style mce_bogus="1" name="lan_DialogWindowAnim" parent="android:Animation">
         <item name="android:windowExitAnimation">@anim/shake_umeng_socialize_dlg_alpha</item>
@@ -406,7 +406,7 @@
         <item name="android:windowEnterAnimation">@anim/shake_umeng_socialize_scrshot_dlg</item>
         <item name="android:windowExitAnimation">@anim/shake_umeng_socialize_dlg_alpha</item>
     </style>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/facebook_styles.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/facebook_styles.xml -->
     <eat-comment/>
     <style name="tooltip_bubble_text">
 	    <item name="android:textColor">@android:color/white</item>
@@ -416,7 +416,7 @@
 	    <item name="android:shadowRadius">0.25</item>
 	    <item name="android:shadowColor">#40000000</item>
     </style>
-    <!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/values/umeng_socialize_style.xml -->
+    <!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/values/umeng_socialize_style.xml -->
     <eat-comment/>
     <style name="umeng_socialize_action_bar_item_im">
         <item name="android:layout_width">25dp</item>

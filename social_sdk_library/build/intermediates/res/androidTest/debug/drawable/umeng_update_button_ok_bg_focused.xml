@@ -2,4 +2,4 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android" >
     <gradient android:startColor="#2700EB" android:endColor="#2700EB" android:angle="90"/>
 </shape>
-<!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/drawable/umeng_update_button_ok_bg_focused.xml --><!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/build/intermediates/bundles/debug/res/drawable/umeng_update_button_ok_bg_focused.xml -->
+<!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/drawable/umeng_update_button_ok_bg_focused.xml --><!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/build/intermediates/bundles/debug/res/drawable/umeng_update_button_ok_bg_focused.xml -->

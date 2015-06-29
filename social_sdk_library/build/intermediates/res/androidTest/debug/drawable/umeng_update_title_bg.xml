@@ -4,4 +4,4 @@
         	 android:bottomLeftRadius="0dp" android:bottomRightRadius="0dp"/>
     <solid  android:color="#FCFCFC"/>
     <stroke android:color="#333333" android:width=".5dp"/>
-</shape><!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/src/main/res/drawable/umeng_update_title_bg.xml --><!-- From: file:/Users/zhuchenxi/Work/android/workplace/JobGod/social_sdk_library/build/intermediates/bundles/debug/res/drawable/umeng_update_title_bg.xml -->
+</shape><!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/drawable/umeng_update_title_bg.xml --><!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/build/intermediates/bundles/debug/res/drawable/umeng_update_title_bg.xml -->
