@@ -6,7 +6,7 @@ props.load(new FileInputStream(file("signing.properties")))
 
 android {
     compileSdkVersion 22
-    buildToolsVersion "22"
+    buildToolsVersion "22.0.1"
 
     def versionPropsFile = file('version.properties')
     def code = 1;
