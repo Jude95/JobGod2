@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<set xmlns:android="http://schemas.android.com/apk/res/android">
-    <alpha
-        android:duration="400"
-        android:fromAlpha="1.0"
-        android:toAlpha="0.0" />
-        
-</set>
-<!-- From: file:/F:/workplace/Github/JobGod2/social_sdk_library/src/main/res/anim/umeng_socialize_shareboard_animation_out.xml -->
