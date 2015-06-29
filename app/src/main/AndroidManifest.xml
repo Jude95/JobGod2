@@ -18,6 +18,9 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-feature android:name="android.hardware.camera" />
 
     <application
@@ -58,11 +61,8 @@
             android:label="使用条款"/>
         <activity android:name=".module.launch.UserRegisterActivity"
             android:label="注册"/>
-        <activity android:name=".module.launch.VerifyActivity"
-            android:label="验证"/>
         <activity android:name=".module.launch.ModifyPasswordActivity"
             android:label="修改密码"/>
-
 
 
 

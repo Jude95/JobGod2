@@ -78,11 +78,10 @@ dependencies {
     compile files('libs/Android_Location_V1.3.2.jar')
     compile files('libs/JVolly.jar')
     compile project(':sqllitetool')
-    compile files('libs/MobTools.jar')
-    compile files('libs/SMSSDK-1.2.2.jar')
     compile 'com.android.support:cardview-v7:22.2.0'
     compile 'de.greenrobot:eventbus:2.4.0'
     compile project(':social_sdk_library')
     compile 'com.umeng.analytics:analytics:latest.integration'
     compile files('libs/com.umeng.message.lib_v2.3.0.jar')
+    compile project(':SMSSDK')
 }

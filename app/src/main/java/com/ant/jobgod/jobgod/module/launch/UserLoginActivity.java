@@ -55,10 +55,14 @@ public class UserLoginActivity extends BaseActivity<UserLoginPresenter> {
         if(mNumber.length()!=11){
             tilNumber.setError("手机号格式错误");
             return;
+        }else{
+            tilNumber.setError("");
         }
         if(mPassword.length()<6||mPassword.length()>12){
             tilPassword.setError("密码应为6-12位");
             return;
+        }else{
+            tilPassword.setError("");
         }
         getPresenter().login(mNumber,mPassword);
     }

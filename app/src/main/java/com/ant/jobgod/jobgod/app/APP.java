@@ -8,6 +8,7 @@ import android.content.Intent;
 import com.activeandroid.ActiveAndroid;
 import com.android.http.RequestManager;
 import com.ant.jobgod.jobgod.BuildConfig;
+import com.ant.jobgod.jobgod.config.Config;
 import com.ant.jobgod.jobgod.model.AbsModel;
 import com.ant.jobgod.jobgod.module.launch.UserLoginActivity;
 import com.ant.jobgod.jobgod.util.ActivityManager;
@@ -15,6 +16,8 @@ import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.umeng.analytics.MobclickAgent;
+
+import cn.smssdk.SMSSDK;
 
 
 /**
@@ -42,6 +45,7 @@ public class APP extends Application {
         AbsModel.init(this);
         com.umeng.socialize.utils.Log.LOG = BuildConfig.DEBUG;
         MobclickAgent.updateOnlineConfig(this);
+        SMSSDK.initSDK(this, Config.MESSAGE_APPKEY, Config.MESSAGE_APPSECRET);
     }
 
     @Override

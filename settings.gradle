@@ -1,2 +1,3 @@
 include ':app', ':sqllitetool'
 include ':social_sdk_library'
+include ':SMSSDK'

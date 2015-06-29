@@ -23,8 +23,9 @@ public class UserModel  extends AbsModel{
         super.onAppCreate(ctx);
     }
 
-    public void register(String tel,String password,String verify,StatusCallback callback){
+    public void register(String name,String tel,String password,String verify,StatusCallback callback){
         RequestMap params = new RequestMap();
+        params.put("name",name);
         params.put("tel",tel);
         params.put("pass",password);
         params.put("code",verify);
@@ -36,7 +37,6 @@ public class UserModel  extends AbsModel{
         params.put("tel",tel);
         RequestManager.getInstance().post(API.URL.IsRegistered,params,callback);
     }
-
 
     public void login(String tel,String password,StatusCallback callback){
         RequestMap params = new RequestMap();
