@@ -47,7 +47,7 @@
                 <android.support.v7.widget.AppCompatEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:hint="输入手机号"/>
 
             </android.support.design.widget.TextInputLayout>
@@ -80,10 +80,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"/>
-                <TextView
+                ·<TextView
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:text="我已阅读且同意"
+                    android:text="我同意"
 
                     android:gravity="center"/>
                 <TextView
@@ -123,55 +123,45 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
+            android:orientation="vertical"
+            android:layout_margin="16dp">
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/tilCode"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:text="已发送短信"
-                android:gravity="center_vertical"
-                android:paddingLeft="16dp"/>
+                android:layout_height="wrap_content"
+                >
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:hint="验证码"/>
+
+            </android.support.design.widget.TextInputLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_margin="16dp"
+                android:layout_height="wrap_content"
+                android:gravity="right"
                 android:orientation="horizontal">
 
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/tilCode"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    >
-
-                    <android.support.v7.widget.AppCompatEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPassword"
-                        android:hint="验证码"/>
-
-                </android.support.design.widget.TextInputLayout>
                 <android.support.v7.widget.AppCompatButton
                     android:id="@+id/btnRetry"
-                    android:layout_width="120dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="重新获取"
                     android:enabled="false"
                     style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/btnSend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="提交"
+                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                    />
             </LinearLayout>
-            <android.support.v7.widget.AppCompatButton
-                android:id="@+id/btnSend"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="16dp"
-                android:text="提交"
-                style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                />
+
 
         </LinearLayout>
 

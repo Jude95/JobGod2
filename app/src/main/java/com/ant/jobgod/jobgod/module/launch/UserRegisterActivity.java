@@ -49,7 +49,6 @@ public class UserRegisterActivity extends BaseActivity<UserRegisterPresenter> {
         tvAgreement.setOnClickListener((View v) -> showAgreement());
         btnSend.setOnClickListener((View v) -> sendRegister());
         btnRetry.setOnClickListener((View v) -> getPresenter().retry());
-        btnRetry.setText("重新FUCK");
     }
 
     public void checkbox() {

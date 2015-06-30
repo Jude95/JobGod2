@@ -4,6 +4,7 @@ import android.os.Handler;
 
 import com.ant.jobgod.jobgod.model.UserModel;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
+import com.ant.jobgod.jobgod.util.Utils;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -26,6 +27,7 @@ public class ModifyPasswordPresenter extends Presenter<ModifyPasswordActivity> {
                 getView().dismissProgress();
                 if (status == 201) {
                     getView().showCodeCard();
+                    Utils.Toast("已发送短信，请查收");
                     SMSSDK.getVerificationCode("86", number);
                     startTimer();
                 } else if (status == 200)getView().setNumberNoExist();
@@ -57,6 +59,7 @@ public class ModifyPasswordPresenter extends Presenter<ModifyPasswordActivity> {
         }, 0, 1000);
     }
     public void retry(){
+        Utils.Toast("已发送短信，请查收");
         SMSSDK.getVerificationCode("86", mNumber);
         startTimer();
     }

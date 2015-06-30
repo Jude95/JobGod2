@@ -28,6 +28,7 @@ public class UserRegisterPresenter extends BasePresenter<UserRegisterActivity> {
                 getView().dismissProgress();
                 if (status == 200) {
                     getView().showCodeCard();
+                    Utils.Toast("已发送短信，请查收");
                     SMSSDK.getVerificationCode("86", number);
                     startTimer();
                 } else if (status == 201) getView().setNumberDuplicate();
@@ -37,6 +38,8 @@ public class UserRegisterPresenter extends BasePresenter<UserRegisterActivity> {
             public void success(String info) {
 
             }
+
+
 
         });
     }
@@ -59,11 +62,13 @@ public class UserRegisterPresenter extends BasePresenter<UserRegisterActivity> {
         }, 0, 1000);
     }
     public void retry(){
+        Utils.Toast("已发送短信，请查收");
         SMSSDK.getVerificationCode("86", number);
         startTimer();
     }
 
     public void register(String name,String tel,String pass,String code){
+        getView().showProgress("提交中");
         UserModel.getInstance().register(name,tel, pass, code, new StatusCallback() {
             @Override
             public void success(String info) {
@@ -74,9 +79,8 @@ public class UserRegisterPresenter extends BasePresenter<UserRegisterActivity> {
             }
 
             @Override
-            public void error(String errorInfo) {
+            public void result(int status, String info) {
                 getView().dismissProgress();
-                Utils.Toast(errorInfo);
             }
         });
     }
