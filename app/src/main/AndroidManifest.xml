@@ -45,10 +45,6 @@
         <meta-data android:value="54cb25c5fd98c5b244000026" android:name="UMENG_APPKEY"/>
         <meta-data android:value="Channel ID" android:name="UMENG_CHANNEL"/>
         <meta-data android:value="ae762f0449f100e542ba611f1e318a77" android:name="UMENG_MESSAGE_SECRET"/>
-        <!-- 融云 -->
-        <meta-data
-            android:name="RONG_CLOUD_APP_KEY"
-            android:value="cpj2xarljqa5n" />
 
         <activity android:name=".module.launch.UserLoginActivity"
             android:label="登陆">

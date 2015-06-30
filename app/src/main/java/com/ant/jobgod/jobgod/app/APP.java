@@ -18,6 +18,7 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.umeng.analytics.MobclickAgent;
 
 import cn.smssdk.SMSSDK;
+import io.rong.imkit.RongIM;
 
 
 /**
@@ -39,7 +40,7 @@ public class APP extends Application {
         RequestManager.getInstance().setDebugMode(true, "GodNet");
         RequestManager.getInstance().setCacheEnable(true);
         Utils.initialize(this, "GodLog", "5,28,0");
-        //RongIM.init(this);
+        RongIM.init(this);
         ActiveAndroid.initialize(this);
         FileManager.getInstance().init(this);
         AbsModel.init(this);

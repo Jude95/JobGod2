@@ -14,12 +14,12 @@ import com.umeng.analytics.MobclickAgent;
 import com.umeng.message.PushAgent;
 
 import nucleus.manager.Presenter;
-import nucleus.view.NucleusAppCompatActivity;
+import swipebacklayout.app.SwipeBackActivity;
 
 /**
  * Created by zhuchenxi on 15/6/7.
  */
-public class BaseActivity<T extends Presenter> extends NucleusAppCompatActivity<T> {
+public class BaseActivity<T extends Presenter> extends SwipeBackActivity<T> {
     private Toolbar toolbar;
     private MaterialDialog dialog;
 

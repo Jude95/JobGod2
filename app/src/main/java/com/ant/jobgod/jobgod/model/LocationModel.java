@@ -26,19 +26,17 @@ public class LocationModel extends AbsModel implements Serializable{
     private static final String FILENAME = "location";
     private Location location;
 
-
-
     public static LocationModel getInstance(){
         return getInstance(LocationModel.class);
     }
-
-
 
     @Override
     protected void onAppCreate(Context ctx) {
         File file = FileManager.getInstance().getChild(FileManager.Dir.Object,FILENAME);
         if(file!=null&&file.exists()){
             location = (Location) Utils.readObjectFromFile(file);
+        }else{
+            location = new Location();
         }
         startLocation(ctx);
     }
@@ -47,16 +45,16 @@ public class LocationModel extends AbsModel implements Serializable{
         final LocationManagerProxy mLocationManagerProxy;
         mLocationManagerProxy = LocationManagerProxy.getInstance(ctx);
         mLocationManagerProxy.setGpsEnable(false);
+        Utils.Log("start location");
         mLocationManagerProxy.requestLocationData(
                 LocationProviderProxy.AMapNetwork, 500*1000, 15, new AMapLocationListener() {
                     @Override
                     public void onLocationChanged(AMapLocation aMapLocation) {
-                        if(!aMapLocation.getDistrict().isEmpty()){
-                            location.setLocation(aMapLocation);
-                            Utils.Log("Save location.AdCode is " + aMapLocation.getAdCode());
-                            Utils.writeObjectToFile(location,FileManager.getInstance().getChild(FileManager.Dir.Object,FILENAME));
-                            uploadAddress();
-                        }
+                        location.setLocation(aMapLocation);
+                        Utils.Log("Save location.AdCode is " + aMapLocation.getAdCode());
+                        Utils.writeObjectToFile(location,FileManager.getInstance().getChild(FileManager.Dir.Object,FILENAME));
+                        uploadAddress();
+
                     }
 
 
