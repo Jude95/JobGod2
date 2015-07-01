@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
     <include layout="@layout/include_toolbar"/>
     <android.support.v4.widget.DrawerLayout
-        android:id="@+id/drawerlayout"
+        android:id="@+id/mDrawerLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout

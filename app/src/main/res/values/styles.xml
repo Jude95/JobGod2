@@ -1,5 +1,4 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
@@ -9,6 +8,15 @@
         <item name="colorPrimaryDark">@color/DeepOrange900</item>
         <!--醒目主色-->
         <item name="colorAccent">@color/Grange</item>
+    </style>
+
+    <style name="TransTheme" parent="AppTheme">
+        <!--窗体透明-->
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="LaunchTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:background">@drawable/launch_bg</item>
     </style>
 
     <!-- Base application theme. -->
@@ -22,8 +30,20 @@
         <item name="colorAccent">@color/Grange</item>
     </style>
 
+    <style name="Title" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@color/White</item>
+    </style>
+    <style name="Title.Expanded" parent="Title">
+        <item name="android:textSize">32sp</item>
+    </style>
+    <style name="Title.collapsed" parent="Title">
+        <item name="android:textSize">@dimen/abc_text_size_title_material_toolbar</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
     <style name="SwipeBackLayout">
-        <item name="edge_size">50dip</item>
+        <item name="edge_size">150dp</item>
         <item name="shadow_left">@drawable/shadow_left</item>
         <item name="shadow_right">@drawable/shadow_right</item>
         <item name="shadow_bottom">@drawable/shadow_bottom</item>

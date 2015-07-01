@@ -53,7 +53,8 @@ public abstract class BaseRecyclerActivity<T extends Presenter,E> extends BaseAc
 
     protected void onRefresh(){}
     protected void onLoadMore(){}
-    protected abstract BaseViewHolder getViewHolder(ViewGroup parent);
+    protected abstract BaseViewHolder getViewHolder(ViewGroup parent,int viewType);
+    protected int getViewType(int position){return 0;}
 
     public void addData(E[] data){
         adapter.addAll(data);
@@ -72,8 +73,13 @@ public abstract class BaseRecyclerActivity<T extends Presenter,E> extends BaseAc
         }
 
         @Override
+        public int getViewType(int position) {
+            return getViewType(position);
+        }
+
+        @Override
         public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
-            return getViewHolder(parent);
+            return getViewHolder(parent,viewType);
         }
     }
 }

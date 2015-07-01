@@ -28,7 +28,7 @@
         android:allowBackup="true"
         android:label="@string/app_name"
         android:icon="@mipmap/ic_launcher"
-        android:theme="@style/AppTheme">
+        android:theme="@style/TransTheme">
 
         <!-- 数据库 -->
         <meta-data android:name="AA_DB_NAME" android:value="God.db" />
@@ -46,6 +46,13 @@
         <meta-data android:value="Channel ID" android:name="UMENG_CHANNEL"/>
         <meta-data android:value="ae762f0449f100e542ba611f1e318a77" android:name="UMENG_MESSAGE_SECRET"/>
 
+        <activity android:name=".module.launch.LaunchActivity"
+            android:theme="@style/LaunchTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"></action>
+                <category android:name="android.intent.category.LAUNCHER"></category>
+            </intent-filter>
+        </activity>
         <activity android:name=".module.launch.UserLoginActivity"
             android:label="登陆">
         </activity>
@@ -56,11 +63,10 @@
         <activity android:name=".module.launch.ModifyPasswordActivity"
             android:label="修改密码"/>
         <activity android:name=".module.main.UserMainActivity"
-            android:label="诚客兼职">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"></action>
-                <category android:name="android.intent.category.LAUNCHER"></category>
-            </intent-filter>
+            android:label="诚客兼职"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity android:name=".module.job.JobDetailActivity">
         </activity>
 
 

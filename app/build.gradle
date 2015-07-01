@@ -68,18 +68,20 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:22.2.0'
     compile 'com.android.support:design:22.2.0'
+    compile 'com.android.support:recyclerview-v7:22.2.0'
+    compile 'com.android.support:cardview-v7:22.2.0'
+
     compile 'com.balysv:material-ripple:1.0.2'
     compile 'com.facebook.fresco:fresco:0.5.1'
     compile 'com.malinskiy:superrecyclerview:1.1.0'
     compile 'com.pnikosis:materialish-progress:1.5'
     compile 'com.google.code.gson:gson:2.3.1'
     retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:2.0.2'
-    compile 'com.android.support:cardview-v7:22.2.0'
+
     compile 'com.afollestad:material-dialogs:0.7.5.5'
     compile files('libs/Android_Location_V1.3.2.jar')
     compile files('libs/JVolly.jar')
     compile project(':sqllitetool')
-    compile 'com.android.support:cardview-v7:22.2.0'
     //compile 'de.greenrobot:eventbus:2.4.0'
     compile project(':social_sdk_library')
     compile 'com.umeng.analytics:analytics:latest.integration'

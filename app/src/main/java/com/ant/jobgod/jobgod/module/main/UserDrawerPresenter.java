@@ -30,6 +30,6 @@ public class UserDrawerPresenter extends Presenter<UserDrawerFragment> {
     }
 
     public void startActivity(Class<?> clazz){
-        getView().startActivity(new Intent(getView().getActivity(),clazz));
+        getView().startActivity(new Intent(getView().getActivity(), clazz));
     }
 }

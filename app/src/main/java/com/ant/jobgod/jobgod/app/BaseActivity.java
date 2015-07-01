@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.ant.jobgod.jobgod.R;
+import com.ant.jobgod.jobgod.util.Utils;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.message.PushAgent;
 
@@ -20,6 +21,8 @@ import swipebacklayout.app.SwipeBackActivity;
  * Created by zhuchenxi on 15/6/7.
  */
 public class BaseActivity<T extends Presenter> extends SwipeBackActivity<T> {
+
+
     private Toolbar toolbar;
     private MaterialDialog dialog;
 
@@ -27,6 +30,7 @@ public class BaseActivity<T extends Presenter> extends SwipeBackActivity<T> {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         PushAgent.getInstance(this).onAppStart();
+        getSwipeBackLayout().setEdgeSize(Utils.getScreenWidth()/2);
     }
 
     protected void setToolBar(boolean returnAble){
@@ -35,6 +39,10 @@ public class BaseActivity<T extends Presenter> extends SwipeBackActivity<T> {
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(returnAble);
         }
+    }
+
+    protected Toolbar getToolbar() {
+        return toolbar;
     }
 
     @Override

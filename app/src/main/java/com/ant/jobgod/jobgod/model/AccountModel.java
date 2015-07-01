@@ -30,7 +30,7 @@ public class AccountModel extends AbsModel{
     }
 
     public boolean isUser(){
-        return account.getType()==0;
+        return account == null?true:account.getType()==0;
     }
 
     public AccountInfo getAccount() {
