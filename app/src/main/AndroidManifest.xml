@@ -48,10 +48,6 @@
 
         <activity android:name=".module.launch.UserLoginActivity"
             android:label="登陆">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"></action>
-                <category android:name="android.intent.category.LAUNCHER"></category>
-            </intent-filter>
         </activity>
         <activity android:name=".module.launch.AgreementActivity"
             android:label="使用条款"/>
@@ -59,6 +55,13 @@
             android:label="注册"/>
         <activity android:name=".module.launch.ModifyPasswordActivity"
             android:label="修改密码"/>
+        <activity android:name=".module.main.UserMainActivity"
+            android:label="诚客兼职">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"></action>
+                <category android:name="android.intent.category.LAUNCHER"></category>
+            </intent-filter>
+        </activity>
 
 
 

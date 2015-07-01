@@ -86,4 +86,5 @@ dependencies {
     compile files('libs/com.umeng.message.lib_v2.3.0.jar')
     compile project(':SMSSDK')
     compile project(':IMKit')
+    compile 'com.jakewharton:butterknife:6.1.0'
 }
