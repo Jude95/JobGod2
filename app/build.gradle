@@ -8,32 +8,13 @@ android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
 
-    def versionPropsFile = file('version.properties')
-    def code = 1;
-    if (versionPropsFile.canRead()) {
-        def Properties versionProps = new Properties()
-        versionProps.load(new FileInputStream(versionPropsFile))
-        List<String> runTasks = gradle.startParameter.getTaskNames();
-        def value = 0
-        for (String item : runTasks)
-            if ( item.contains("assembleRelease")) {
-                value = 1;
-            }
-        code = Integer.parseInt(versionProps['VERSION_CODE']).intValue() + value
-        versionProps['VERSION_CODE']=code.toString()
-        versionProps.store(versionPropsFile.newWriter(), null)
-    }
-    else {
-        throw new GradleException("Could not read version.properties!")
-    }
-
     defaultConfig {
         //暂时改了包名
         applicationId "com.ant.jobgod.jobgod"
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode code
-        versionName "2.0." + code
+        versionCode 10
+        versionName "2.0.1"
     }
 
 
