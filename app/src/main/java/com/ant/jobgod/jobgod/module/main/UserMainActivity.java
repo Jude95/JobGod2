@@ -28,6 +28,7 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
         setContentView(R.layout.main_activity_usermain);
         ButterKnife.inject(this);
         setSwipeBackEnable(false);
+
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,getToolbar(),  R.string.drawer_open, R.string.drawer_close);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mDrawerLayout.post(() -> mDrawerToggle.syncState());

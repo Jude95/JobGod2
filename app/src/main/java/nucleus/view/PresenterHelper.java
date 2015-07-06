@@ -1,6 +1,8 @@
 package nucleus.view;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 
 import nucleus.factory.PresenterFactory;
 import nucleus.manager.Presenter;
@@ -50,6 +52,18 @@ public class PresenterHelper<PresenterType extends Presenter> {
         return presenter == null ? null : PresenterManager.getInstance().save(presenter);
     }
 
+    public void createView(Object view){
+        getPresenter(view);
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                if (presenter != null){
+                    presenter.createView(view);
+                }
+            }
+        });
+    }
+
     public void takeView(Object view) {
         getPresenter(view);
         if (presenter != null){
@@ -62,5 +76,9 @@ public class PresenterHelper<PresenterType extends Presenter> {
             presenter.dropView();
         if (destroy)
             destroyPresenter();
+    }
+
+    public void result(int requestCode, int resultCode, Intent data){
+        presenter.result(requestCode,resultCode,data);
     }
 }

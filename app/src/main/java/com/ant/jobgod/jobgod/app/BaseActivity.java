@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.ant.jobgod.jobgod.R;
+import com.ant.jobgod.jobgod.util.ActivityManager;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.message.PushAgent;
@@ -29,6 +30,7 @@ public class BaseActivity<T extends Presenter> extends SwipeBackActivity<T> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActivityManager.getInstance().pushActivity(this);
         PushAgent.getInstance(this).onAppStart();
         getSwipeBackLayout().setEdgeSize(Utils.getScreenWidth()/2);
     }
@@ -103,5 +105,11 @@ public class BaseActivity<T extends Presenter> extends SwipeBackActivity<T> {
     protected void onPause() {
         super.onPause();
         MobclickAgent.onPause(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ActivityManager.getInstance().destroyActivity(this);
     }
 }

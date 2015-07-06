@@ -108,14 +108,14 @@ public class UserRegisterActivity extends BaseActivity<UserRegisterPresenter> {
     }
 
     public void setRetryTime(int time) {
-        if (time > 0) {
-            btnRetry.setText(time + "秒后重新获取");
-            btnRetry.setEnabled(false);
-        } else {
-            btnRetry.setText("重新获取");
-            btnRetry.setEnabled(true);
-        }
+        btnRetry.setText(time + "秒后重新获取");
     }
+
+    public void setRetryEnable(boolean enable){
+        btnRetry.setEnabled(enable);
+        if (enable)btnRetry.setText("重新获取");
+    }
+
 
     public void sendRegister() {
         String mName = tilName.getEditText().getText().toString();

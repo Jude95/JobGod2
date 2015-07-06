@@ -24,7 +24,7 @@ public class ActivityManager {
     }
 
     /**
-     * 退出栈顶Activity
+     * 主动退出Activity
      *
      * @param activity
      */
@@ -32,6 +32,7 @@ public class ActivityManager {
         if (activity != null) {
             activityStack.remove(activity);
             activity.finish();
+            Utils.Log("ActivityLog: ",activity.getClass().getName()+" 退出栈");
             activity = null;
         }
     }
@@ -58,7 +59,20 @@ public class ActivityManager {
             activityStack = new LinkedList<Activity>();
         }
         activityStack.add(activity);
+        Utils.Log("ActivityLog: ",activity.getClass().getName()+" 压入栈");
     }
+
+    /**
+     * 当Activity退出
+     *
+     * @param activity
+     */
+    public void destroyActivity(Activity activity) {
+        activityStack.remove(activity);
+        Utils.Log("ActivityLog: ",activity.getClass().getName()+" 退出栈");
+    }
+
+
 
     /**
      * 退出栈中所有Activity

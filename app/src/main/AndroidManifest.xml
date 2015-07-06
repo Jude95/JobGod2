@@ -68,6 +68,8 @@
         </activity>
         <activity android:name=".module.job.JobDetailActivity">
         </activity>
+        <activity android:name=".module.setting.SettingActivity"
+            android:label="设置"/>
 
 
 

@@ -2,22 +2,16 @@ package com.ant.jobgod.jobgod.app;
 
 import android.app.Activity;
 import android.app.Application;
-import android.content.Context;
-import android.content.Intent;
 
 import com.activeandroid.ActiveAndroid;
 import com.android.http.RequestManager;
-import com.ant.jobgod.jobgod.BuildConfig;
-import com.ant.jobgod.jobgod.config.Config;
 import com.ant.jobgod.jobgod.model.AbsModel;
-import com.ant.jobgod.jobgod.module.launch.UserLoginActivity;
 import com.ant.jobgod.jobgod.util.ActivityManager;
 import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.umeng.analytics.MobclickAgent;
 
-import cn.smssdk.SMSSDK;
 import io.rong.imkit.RongIM;
 
 
@@ -26,7 +20,7 @@ import io.rong.imkit.RongIM;
  */
 public class APP extends Application {
     private static APP instance = null;
-
+    public static APP test;
     public static APP getInstance(){
         return instance;
     }
@@ -34,38 +28,27 @@ public class APP extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
         instance = this;
         Fresco.initialize(this);
         RequestManager.getInstance().init(this);
         RequestManager.getInstance().setDebugMode(true, "GodNet");
         RequestManager.getInstance().setCacheEnable(true);
         Utils.initialize(this, "GodLog", "5,28,0");
+
         RongIM.init(this);
+
         ActiveAndroid.initialize(this);
         FileManager.getInstance().init(this);
         AbsModel.init(this);
-        com.umeng.socialize.utils.Log.LOG = BuildConfig.DEBUG;
         MobclickAgent.updateOnlineConfig(this);
-        SMSSDK.initSDK(this, Config.MESSAGE_APPKEY, Config.MESSAGE_APPSECRET);
     }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-    }
-
 
 
     @Override
     public void onTerminate() {
         super.onTerminate();
-        //ActiveAndroid.dispose();
-    }
-
-    public void closeToLogin(){
-        Context ctx = ActivityManager.getInstance().currentActivity();
-        ctx.startActivity(new Intent(ctx, UserLoginActivity.class));
-        ActivityManager.getInstance().popAllActivity();
+        ActiveAndroid.dispose();
     }
 
     public void notifyLogin(){

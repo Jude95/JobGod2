@@ -1,5 +1,6 @@
 package nucleus.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,7 @@ public abstract class NucleusAppCompatActivity<PresenterType extends Presenter> 
         super.onCreate(savedInstanceState);
         if (savedInstanceState != null)
             helper.setPresenterState(savedInstanceState.getBundle(PRESENTER_STATE_KEY));
+        helper.createView(this);
     }
 
     @Override
@@ -47,6 +49,12 @@ public abstract class NucleusAppCompatActivity<PresenterType extends Presenter> 
     protected void onPause() {
         super.onPause();
         helper.dropView(isFinishing());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        helper.result(requestCode,resultCode,data);
     }
 
     // The following section can be copy & pasted into any View class, just update their description if needed.

@@ -84,14 +84,14 @@ public class ModifyPasswordActivity extends BaseActivity<ModifyPasswordPresenter
     }
 
     public void setRetryTime(int time) {
-        if (time > 0 && btnRetry != null) {
-            btnRetry.setText(time + "秒后重新获取");
-            btnRetry.setEnabled(false);
-        } else {
-            btnRetry.setText("重新获取");
-            btnRetry.setEnabled(true);
-        }
+        btnRetry.setText(time + "秒后重新获取");
     }
+
+    public void setRetryEnable(boolean enable){
+        btnRetry.setEnabled(enable);
+        if (enable)btnRetry.setText("重新获取");
+    }
+
     public void showCodeCard() {
         cardMessage.setVisibility(View.VISIBLE);
         enableInfoEdit(false);

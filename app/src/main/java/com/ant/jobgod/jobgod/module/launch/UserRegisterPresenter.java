@@ -1,23 +1,26 @@
 package com.ant.jobgod.jobgod.module.launch;
 
 import android.app.Activity;
-import android.os.Handler;
 
 import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.UserModel;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.Utils;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-import cn.smssdk.SMSSDK;
+import cn.smssdk.gui.SMSManager;
+import cn.smssdk.gui.TimeListener;
 
 /**
  * Created by Mr.Jude on 2015/6/13.
  */
-public class UserRegisterPresenter extends BasePresenter<UserRegisterActivity> {
+public class UserRegisterPresenter extends BasePresenter<UserRegisterActivity> implements TimeListener{
     private String number;
+
+    @Override
+    protected void onTakeView(UserRegisterActivity view) {
+        super.onTakeView(view);
+        SMSManager.getInstance().registerTimeListenre(this);
+    }
 
     public void checkIsRegister(String number){
         this.number = number;
@@ -29,8 +32,7 @@ public class UserRegisterPresenter extends BasePresenter<UserRegisterActivity> {
                 if (status == 200) {
                     getView().showCodeCard();
                     Utils.Toast("已发送短信，请查收");
-                    SMSSDK.getVerificationCode("86", number);
-                    startTimer();
+                    SMSManager.getInstance().sendMessage(getView(), number);
                 } else if (status == 201) getView().setNumberDuplicate();
             }
 
@@ -39,37 +41,18 @@ public class UserRegisterPresenter extends BasePresenter<UserRegisterActivity> {
 
             }
 
-
-
         });
     }
-    private Timer timer;
-    private long beginTime = 0;
-    private Handler handler = new Handler();
-    private void startTimer(){
-        timer = new Timer();
-        beginTime = System.currentTimeMillis();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                long curTime = System.currentTimeMillis();
-                int delta = (int) ((curTime - beginTime) / 1000);
-                handler.post(()->getView().setRetryTime(60 - delta));
-                if (60 - delta < 0) {
-                    timer.cancel();
-                }
-            }
-        }, 0, 1000);
-    }
+
+
     public void retry(){
         Utils.Toast("已发送短信，请查收");
-        SMSSDK.getVerificationCode("86", number);
-        startTimer();
+        SMSManager.getInstance().sendMessage(getView(), number);
     }
 
     public void register(String name,String tel,String pass,String code){
         getView().showProgress("提交中");
-        UserModel.getInstance().register(name,tel, pass, code, new StatusCallback() {
+        UserModel.getInstance().register(name, tel, pass, code, new StatusCallback() {
             @Override
             public void success(String info) {
                 getView().dismissProgress();
@@ -86,6 +69,19 @@ public class UserRegisterPresenter extends BasePresenter<UserRegisterActivity> {
     }
 
 
+    @Override
+    protected void onDropView() {
+        super.onDropView();
+        SMSManager.getInstance().unRegisterTimeListenre(this);
+    }
 
+    @Override
+    public void onLastTimeNotify(int lastSecond) {
+        getView().setRetryTime(lastSecond);
+    }
 
+    @Override
+    public void onAbleNotify(boolean valuable) {
+        getView().setRetryEnable(valuable);
+    }
 }

@@ -1,5 +1,6 @@
 package nucleus.manager;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -17,38 +18,34 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class Presenter<ViewType> {
 
     /**
-     * This method is intended for overriding.
-     * It is being called by {@link nucleus.manager.PresenterManager#provide}
-     * method after construction complete.
-     *
-     * @param savedState If the presenter is being re-instantiated after a process restart then this Bundle
-     *                   contains the data it supplied in {@link #onSave}.
+     * activity 第一次create到主动finish之前。只会调用一次。用于数据加载。避免横竖屏，内存回收导致重复加载
+     * @param savedState
      */
     protected void onCreate(Bundle savedState) {
     }
 
     /**
-     * This method is intended for overriding.
-     * It is being called by {@link #destroy}
-     * after {@link Presenter.OnDestroyListener} listeners are notified about presenter destruction.
+     * activity$OnCreate的回调,但执行延迟到OnCreate之后。
+     */
+    protected void onCreateView(ViewType view) {
+    }
+
+
+    /**
+     * Activity$OnDestroy的回调
      */
     protected void onDestroy() {
     }
 
     /**
-     * This method is intended for overriding.
-     * It is being called by {@link nucleus.manager.PresenterManager#save} to save presenter's instance state.
-     * Later the state can be passed to {@link #onCreate} for a new presenter instance after a process restart.
-     *
+     * = =,经常调用.用于保存状态
      * @param state a non-null bundle which should be used to put presenter's state info.
      */
     protected void onSave(Bundle state) {
     }
 
     /**
-     * This method is intended for overriding.
-     * It is being called by parent presenter class, when a view
-     * calls {@link Presenter#takeView}
+     * Activity$OnResume的回调
      *
      * @param view a view that should be taken
      */
@@ -56,10 +53,18 @@ public class Presenter<ViewType> {
     }
 
     /**
-     * This method is intended for overriding. Use it to be notified about a view is going to be destroyed.
+     * Activity$onPause的回调
      */
     protected void onDropView() {
     }
+
+    /**
+     * Activity$onActivityResult的回调
+     */
+    protected void onResult(int requestCode, int resultCode, Intent data) {
+    }
+
+
 
     /**
      * A callback to be invoked when a presenter is about to be destroyed.
@@ -147,6 +152,21 @@ public class Presenter<ViewType> {
     public void dropView() {
         onDropView();
         this.view = null;
+    }
+
+    public void createView(ViewType view) {
+        this.view = view;
+        onCreateView(view);
+    }
+
+    /**
+     *
+     * Detaches a presenter from a view. Call it for a view, at the beginning of the destruction phase.
+     * Good places for calling {@link #dropView} are:
+     * {@link android.app.Activity#onPause}, {@link android.view.View#onDetachedFromWindow}, {@link android.app.Fragment#onPause}
+     */
+    public void result(int requestCode, int resultCode, Intent data){
+        onResult(requestCode,resultCode,data);
     }
 
     /**

@@ -74,7 +74,7 @@ public abstract class BaseRecyclerActivity<T extends Presenter,E> extends BaseAc
 
         @Override
         public int getViewType(int position) {
-            return getViewType(position);
+            return BaseRecyclerActivity.this.getViewType(position);
         }
 
         @Override

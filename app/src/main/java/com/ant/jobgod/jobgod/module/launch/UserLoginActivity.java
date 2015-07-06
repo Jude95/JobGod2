@@ -4,12 +4,13 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import nucleus.factory.RequiresPresenter;
 
 /**
@@ -18,60 +19,64 @@ import nucleus.factory.RequiresPresenter;
 @RequiresPresenter(UserLoginPresenter.class)
 public class UserLoginActivity extends BaseActivity<UserLoginPresenter> {
 
-    private android.widget.Button btnLogin;
-    private android.support.design.widget.TextInputLayout tilNumber;
-    private android.support.design.widget.TextInputLayout tilPassword;
-    private android.support.v7.widget.AppCompatButton btnModifyPassword;
-    private android.support.v7.widget.AppCompatButton btnRegister;
-    private android.widget.ImageView btnQQ;
-    private android.widget.ImageView btnWeiChat;
-    private android.widget.ImageView btnSina;
-    private AppCompatButton btnBiz;
+    @InjectView(R.id.tilNumber)
+    TextInputLayout tilNumber;
+    @InjectView(R.id.tilPassword)
+    TextInputLayout tilPassword;
+    @InjectView(R.id.btnModifyPassword)
+    AppCompatButton btnModifyPassword;
+    @InjectView(R.id.btnLogin)
+    AppCompatButton btnLogin;
+    @InjectView(R.id.btnQQ)
+    ImageView btnQQ;
+    @InjectView(R.id.btnWeiChat)
+    ImageView btnWeiChat;
+    @InjectView(R.id.btnSina)
+    ImageView btnSina;
+    @InjectView(R.id.btnRegister)
+    AppCompatButton btnRegister;
+    @InjectView(R.id.btnBiz)
+    AppCompatButton btnBiz;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.launch_activity_login2);
-        this.btnBiz = (AppCompatButton) findViewById(R.id.btnBiz);
-        this.btnSina = (ImageView) findViewById(R.id.btnSina);
-        this.btnWeiChat = (ImageView) findViewById(R.id.btnWeiChat);
-        this.btnQQ = (ImageView) findViewById(R.id.btnQQ);
-        this.btnLogin = (Button) findViewById(R.id.btnLogin);
-        this.btnRegister = (AppCompatButton) findViewById(R.id.btnRegister);
-        this.btnModifyPassword = (AppCompatButton) findViewById(R.id.btnModifyPassword);
-        this.tilPassword = (TextInputLayout) findViewById(R.id.tilPassword);
-        this.tilNumber = (TextInputLayout) findViewById(R.id.tilNumber);
+        ButterKnife.inject(this);
         btnRegister.setOnClickListener((View v) -> getPresenter().register());
         btnModifyPassword.setOnClickListener((View v) -> getPresenter().modifyPassword());
-        btnLogin.setOnClickListener((View v)->checkLogin());
-        btnQQ.setOnClickListener((View v)->getPresenter().loginByQQ());
-        btnWeiChat.setOnClickListener((View v)->getPresenter().loginByWeiChat());
-        btnSina.setOnClickListener((View v)->getPresenter().loginBySina());
-        btnBiz.setOnClickListener((View v)->getPresenter().gotoBiz());
+        btnLogin.setOnClickListener((View v) -> checkLogin());
+        btnQQ.setOnClickListener((View v) -> getPresenter().loginByQQ());
+        btnWeiChat.setOnClickListener((View v) -> getPresenter().loginByWeiChat());
+        btnSina.setOnClickListener((View v) -> getPresenter().loginBySina());
+        btnBiz.setOnClickListener((View v) -> getPresenter().gotoBiz());
     }
 
-    private void checkLogin(){
+    private void checkLogin() {
         String mNumber = tilNumber.getEditText().getText().toString();
         String mPassword = tilPassword.getEditText().getText().toString();
-        if(mNumber.length()!=11){
+        if (mNumber.length() != 11) {
             tilNumber.setError("手机号格式错误");
             return;
-        }else{
+        } else {
             tilNumber.setError("");
         }
-        if(mPassword.length()<6||mPassword.length()>12){
+        if (mPassword.length() < 6 || mPassword.length() > 12) {
             tilPassword.setError("密码应为6-12位");
             return;
-        }else{
+        } else {
             tilPassword.setError("");
         }
-        getPresenter().login(mNumber,mPassword);
+        getPresenter().login(mNumber, mPassword);
     }
 
-    public void setPasswordError(){
+    public void setPasswordError() {
         btnModifyPassword.setError("密码错误");
     }
 
-    public void setNumberError(){
+    public void setNumberError() {
         btnModifyPassword.setError("手机号还没有注册");
     }
+
+
 }

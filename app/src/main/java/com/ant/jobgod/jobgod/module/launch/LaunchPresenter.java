@@ -14,7 +14,7 @@ public class LaunchPresenter extends BasePresenter<LaunchActivity> {
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
-        getView().startActivity(new Intent(getView(), AccountModel.getInstance().isUser()?UserMainActivity.class:UserMainActivity.class));
+        getView().startActivity(new Intent(getView(), AccountModel.getInstance().isUser() ? UserMainActivity.class : UserMainActivity.class));
         getView().finish();
     }
 }

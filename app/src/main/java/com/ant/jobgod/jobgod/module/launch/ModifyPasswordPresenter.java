@@ -1,25 +1,21 @@
 package com.ant.jobgod.jobgod.module.launch;
 
-import android.os.Handler;
-
 import com.ant.jobgod.jobgod.model.UserModel;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.Utils;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-import cn.smssdk.SMSSDK;
+import cn.smssdk.gui.SMSManager;
+import cn.smssdk.gui.TimeListener;
 import nucleus.manager.Presenter;
 
 /**
  * Created by zhuchenxi on 15/6/27.
  */
-public class ModifyPasswordPresenter extends Presenter<ModifyPasswordActivity> {
-    private String mNumber;
+public class ModifyPasswordPresenter extends Presenter<ModifyPasswordActivity> implements TimeListener{
+    private String number;
 
     public void checkIsRegister(String number){
-        this.mNumber = number;
+        this.number = number;
         getView().showProgress("提交中");
         UserModel.getInstance().isRegister(number, new StatusCallback() {
             @Override
@@ -28,9 +24,8 @@ public class ModifyPasswordPresenter extends Presenter<ModifyPasswordActivity> {
                 if (status == 201) {
                     getView().showCodeCard();
                     Utils.Toast("已发送短信，请查收");
-                    SMSSDK.getVerificationCode("86", number);
-                    startTimer();
-                } else if (status == 200)getView().setNumberNoExist();
+                    SMSManager.getInstance().sendMessage(getView(), number);
+                } else if (status == 200) getView().setNumberNoExist();
             }
 
             @Override
@@ -40,28 +35,10 @@ public class ModifyPasswordPresenter extends Presenter<ModifyPasswordActivity> {
         });
     }
 
-    private Timer timer;
-    private long beginTime = 0;
-    private Handler handler = new Handler();
-    private void startTimer(){
-        timer = new Timer();
-        beginTime = System.currentTimeMillis();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                long curTime = System.currentTimeMillis();
-                int delta = (int) ((curTime - beginTime) / 1000);
-                handler.post(() -> getView().setRetryTime(60 - delta));
-                if (60 - delta < 0) {
-                    timer.cancel();
-                }
-            }
-        }, 0, 1000);
-    }
+
     public void retry(){
         Utils.Toast("已发送短信，请查收");
-        SMSSDK.getVerificationCode("86", mNumber);
-        startTimer();
+        SMSManager.getInstance().sendMessage(getView(), number);
     }
 
     public void sendModify(String number,String password,String code) {
@@ -73,5 +50,19 @@ public class ModifyPasswordPresenter extends Presenter<ModifyPasswordActivity> {
         });
     }
 
+    @Override
+    protected void onDropView() {
+        super.onDropView();
+        SMSManager.getInstance().unRegisterTimeListenre(this);
+    }
 
+    @Override
+    public void onLastTimeNotify(int lastSecond) {
+        getView().setRetryTime(lastSecond);
+    }
+
+    @Override
+    public void onAbleNotify(boolean valuable) {
+        getView().setRetryEnable(valuable);
+    }
 }
