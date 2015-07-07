@@ -99,6 +99,7 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
     }
 
     public void update(){
+        jobBriefAdapter.clear();
         getPresenter().updateData();
         srlRefresh.setRefreshing(false);
     }
