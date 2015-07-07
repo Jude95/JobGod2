@@ -4,6 +4,9 @@ import android.os.Bundle;
 
 import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.JobModel;
+import com.ant.jobgod.jobgod.model.LocationModel;
+import com.ant.jobgod.jobgod.model.bean.JobBrief;
+import com.ant.jobgod.jobgod.model.bean.JobPage;
 import com.ant.jobgod.jobgod.model.bean.Topic;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.util.Utils;
@@ -26,14 +29,28 @@ public class UserMainPresenter extends BasePresenter<UserMainActivity>{
     protected void onCreateView(UserMainActivity view) {
         super.onCreateView(view);
         getView().setTradeData(JobModel.getInstance().getTrade());
-        Utils.Log("length:" + JobModel.getInstance().getTrade().length);
-        Utils.Log(JobModel.getInstance().getTrade()[0].getName());
+
         JobModel.getInstance().getTopicList(new DataCallback<Topic[]>() {
-           @Override
-           public void success(String info, Topic[] data) {
-               getView().setTopicData(data);
-           }
+            @Override
+            public void success(String info, Topic[] data) {
+                getView().setTopicData(data);
+            }
+        });
+        JobModel.getInstance().getHotJobList(new DataCallback<JobBrief[]>() {
+            @Override
+            public void success(String info, JobBrief[] data) {
+                getView().setHotJobData(data);
+                Utils.Log("data:" + data);
+            }
+        });
+
+        JobModel.getInstance().getJobList(0, 0, LocationModel.get, 0+"", 0, "", new DataCallback<JobPage[]>() {
+            @Override
+            public void success(String info, JobPage[] data) {
+                getView().setJobBriefData(data[0].getJobs());
+            }
         });
     }
+
 
 }
