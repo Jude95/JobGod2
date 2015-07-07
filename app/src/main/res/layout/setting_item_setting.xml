@@ -2,16 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:background="@drawable/tb_munion_item_selector">
     <TextView
         android:id="@+id/tvTitle"
+        android:text="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
         android:textSize="@dimen/abc_text_size_title_material"/>
     <TextView
         android:id="@+id/tvIntro"
+        android:text="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
@@ -22,6 +27,5 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/md_divider_height"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
         android:background="@color/md_divider_black"/>
 </LinearLayout>
