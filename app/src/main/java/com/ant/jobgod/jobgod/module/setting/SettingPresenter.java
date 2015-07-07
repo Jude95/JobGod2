@@ -82,12 +82,23 @@ public class SettingPresenter extends BasePresenter<SettingActivity> {
                     JobModel.getInstance().getTopicList(new DataCallback<Topic[]>() {
                         @Override
                         public void result(int status, String info) {
-                            Utils.Log(status+info);
+                            Utils.Log(status + info);
                         }
 
                         @Override
                         public void success(String info, Topic[] data) {
-                            Utils.Log("getTopicList:"+data.length);
+                            Utils.Log("getTopicList:" + data.length);
+                        }
+                    });
+                    JobModel.getInstance().getTopicJobList("1", new DataCallback<JobBrief[]>() {
+                        @Override
+                        public void result(int status, String info) {
+                            Utils.Log(status + info);
+                        }
+
+                        @Override
+                        public void success(String info, JobBrief[] data) {
+                            Utils.Log("getTopicJobList:" + data.length);
                         }
                     });
                 }),

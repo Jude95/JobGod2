@@ -31,7 +31,7 @@ public class JobModel extends AbsModel{
 
     public Trade[] getTrade(){
         Trade[] trades = (Trade[]) Utils.readObjectFromFile(FileManager.getInstance().getChild(FileManager.Dir.Object,TRADEFILE));
-        return trades;
+        return trades==null?new Trade[0]:trades;
     }
     private void updateTrades(){
         RequestManager.getInstance().post(API.URL.GetTrades, null, new DataCallback<Trade[]>() {
