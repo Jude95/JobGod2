@@ -6,6 +6,8 @@ package com.ant.jobgod.jobgod.model.bean;
 public class Job {
     private String id;
     private String bizId;
+    private String bizName;
+    private int bizAvgFeel;
     private int status;
     private int trade;
     private String title;
@@ -183,5 +185,23 @@ public class Job {
 
     public void setVisitCount(int visitCount) {
         this.visitCount = visitCount;
+    }
+
+
+    public int getBizAvgFeel() {
+        return bizAvgFeel;
+    }
+
+    public void setBizAvgFeel(int bizAvgFeel) {
+        this.bizAvgFeel = bizAvgFeel;
+    }
+
+    public String getBizName() {
+
+        return bizName;
+    }
+
+    public void setBizName(String bizName) {
+        this.bizName = bizName;
     }
 }

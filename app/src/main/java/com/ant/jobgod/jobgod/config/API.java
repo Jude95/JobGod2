@@ -19,6 +19,15 @@ public class API {
 
         //LBS
         public static final String UpdateLocation = "";
+
+        //public
+        public static final String GetBanner = "https://apiview.com/test/327/Public/getBanner";
+        public static final String GetTopicJobList = "https://apiview.com/test/327/Public/getTopicJobList";
+        public static final String GetTopicList =  "https://apiview.com/test/327/Public/getTopicList";
+        public static final String GetHotJobList = "https://apiview.com/test/327/Public/getHotJobList";
+        public static final String GetJobList = "https://apiview.com/test/327/Public/getJobList";
+        public static final String GetTrades = "https://apiview.com/test/327/Public/getTrades";
+
     }
 
     public static class KEY{
