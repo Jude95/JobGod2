@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/sdvHotJobImg"
+        android:layout_width="96dp"
+        android:layout_height="72dp"
+        android:layout_margin="16dp"
+        fresco:actualImageScaleType="focusCrop"
+        fresco:failureImage="@mipmap/error"
+        fresco:progressBarImage="@mipmap/progress_bar"/>
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/sdvHotJobImg"
+        android:layout_alignTop="@+id/sdvHotJobImg"
+        android:layout_alignBottom="@+id/sdvHotJobImg"
+        android:gravity="center">
+
+        <TextView android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Title"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"/>
+
+        <TextView android:id="@+id/tvMoneyIntro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"/>
+    </LinearLayout>
+
+</RelativeLayout>

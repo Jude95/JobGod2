@@ -54,7 +54,7 @@ public class JobModel extends AbsModel{
         RequestManager.getInstance().post(API.URL.GetTopicJobList, new RequestMap("topicId",topicId), callback);
     }
 
-    public void getJobList(int page,int count,String citycode,String type,int sort,String key,DataCallback<JobPage[]> callback){
+    public void getJobList(int page,int count,String citycode,String type,int sort,String key,DataCallback<JobPage> callback){
         RequestMap params = new RequestMap();
         params.put("page",page+"");
         params.put("count",count+"");
@@ -62,6 +62,6 @@ public class JobModel extends AbsModel{
         params.put("type",type+"");
         params.put("sort",sort+"");
         params.put("key",key);
-        RequestManager.getInstance().post(API.URL.GetTopicJobList, params, callback);
+        RequestManager.getInstance().post(API.URL.GetJobList, params, callback);
     }
 }

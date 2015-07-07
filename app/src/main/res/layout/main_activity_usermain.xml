@@ -1,15 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/White">
     <include layout="@layout/include_toolbar"/>
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/mDrawerLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.jude.view.jpagerview.JPagerView
+                    android:id="@+id/pvAd"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    app:hint_mode="point"
+                    app:hint_alpha="0"
+                    app:autoplay="3000"/>
+
+                <GridView android:id="@+id/gdTrade"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:numColumns="4"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:background="@drawable/bottom_shadow"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:background="@drawable/top_shadow"/>
+                <LinearLayout android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp">
+                    <View android:layout_width="4dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/DeepOrange"
+                        android:layout_marginLeft="8dp"/>
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="热门推荐"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_contrast"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="8dp"/>
+                    <TextView android:id="@+id/tvHotJobMore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="更多"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_selected"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:layout_gravity="end|bottom"
+                        android:padding="4dp"
+                        android:layout_marginRight="8dp"/>
+                </LinearLayout>
+
+
+
+                <com.jude.view.jpagerview.JPagerView
+                    android:id="@+id/pagerview_recommend"
+                    android:layout_width="match_parent"
+                    android:layout_height="132dp"
+                    android:layout_margin="16dp"
+                    app:hint_alpha="1"
+                    app:autoplay="10000"
+                    app:hint_gravity="center"/>
+
+                <!--name-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:background="@drawable/bottom_shadow"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:background="@drawable/top_shadow"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:padding="4dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:orientation="horizontal">
+                    <View
+                        android:layout_width="4dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="8dp"
+                        android:background="@color/DeepOrange"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:text="专题推荐"
+                        android:textStyle="bold"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/text_contrast"
+                        />
+                    <TextView
+                        android:id="@+id/tvTopicMore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/text_selected"
+                        android:gravity="center_vertical"
+                        android:text="更多"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.3dp"
+                    android:background="@color/bgDeep"/>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.3dp"
+                    android:background="@color/bgDeep"/>
+
+                <com.ant.jobgod.jobgod.module.main.TopicsView
+                    android:id="@+id/insetView"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:background="@drawable/bottom_shadow"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:background="@drawable/top_shadow"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:padding="4dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:orientation="horizontal">
+                    <View
+                        android:layout_width="4dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="8dp"
+                        android:background="@color/DeepOrange"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:text="猜你喜欢"
+                        android:textStyle="bold"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/text_contrast"
+                        />
+                    <TextView
+                        android:id="@+id/guess_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/DeepOrange"
+                        android:gravity="center_vertical"
+                        android:text="更多"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.3dp"
+                    android:background="@color/bgDeep"/>
+                <!--name-->
+                <com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView
+                    android:id="@+id/lwcrvGuessJob"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:background="@drawable/bottom_shadow"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:background="@drawable/top_shadow"/>
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:autoLink="web"
+                    android:text="想发布兼职？\n请登录 www.诚客兼职.com"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_contrast"
+                    />
+            </LinearLayout>
+
+        </ScrollView>
+
+
 
         <fragment
             android:name="com.ant.jobgod.jobgod.module.main.UserDrawerFragment"

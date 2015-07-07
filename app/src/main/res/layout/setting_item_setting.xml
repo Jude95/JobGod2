@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clickable="true"
-    android:background="@drawable/tb_munion_item_selector">
+    android:background="@drawable/main_drawer_selector">
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"

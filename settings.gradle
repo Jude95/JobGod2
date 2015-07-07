@@ -1,3 +1,3 @@
-include ':app', ':sqllitetool', ':IMKit'
+include ':app', ':sqllitetool', ':IMKit', ':jpagerView'
 include ':social_sdk_library'
 include ':SMSSDK'
