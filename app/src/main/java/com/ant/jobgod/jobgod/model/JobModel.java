@@ -34,7 +34,7 @@ public class JobModel extends AbsModel{
         return trades;
     }
     private void updateTrades(){
-        RequestManager.getInstance().post(API.URL.GetHotJobList, null, new DataCallback<Trade[]>() {
+        RequestManager.getInstance().post(API.URL.GetTrades, null, new DataCallback<Trade[]>() {
             @Override
             public void success(String info, Trade[] data) {
                 Utils.writeObjectToFile(data,FileManager.getInstance().getChild(FileManager.Dir.Object,TRADEFILE));
