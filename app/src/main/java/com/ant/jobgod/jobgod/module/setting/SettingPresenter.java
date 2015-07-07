@@ -38,7 +38,7 @@ public class SettingPresenter extends BasePresenter<SettingActivity> {
                                     Utils.Toast("没有更新");
                                     break;
                                 case UpdateStatus.NoneWifi: // none wifi
-                                    Utils.Toast("没有wifi连接， 只在wifi下更新");
+                                    Utils.Toast("没有wifi连接，只在wifi下更新");
                                     break;
                                 case UpdateStatus.Timeout: // time out
                                     Utils.Toast("超时");

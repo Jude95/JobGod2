@@ -69,5 +69,4 @@ dependencies {
     compile project(':IMKit')
     compile 'com.jakewharton:butterknife:6.1.0'
     compile 'com.android.support:support-v4:22.2.0'
-    compile files('libs/umeng-update-v2.6.0.1.jar')
 }
