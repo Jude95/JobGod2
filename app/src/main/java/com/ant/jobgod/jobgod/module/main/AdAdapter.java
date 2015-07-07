@@ -1,13 +1,15 @@
 package com.ant.jobgod.jobgod.module.main;
 
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.ant.jobgod.jobgod.R;
+import com.ant.jobgod.jobgod.model.bean.Banner;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.jude.view.jpagerview.JPagerAdapter;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -15,9 +17,11 @@ import butterknife.InjectView;
 /**
  * Created by alien on 2015/7/7.
  */
-public class AdAdapter<JobBrif> extends PagerAdapter {
+public class AdAdapter extends JPagerAdapter {
+
     @InjectView(R.id.sdvAdImg)
     SimpleDraweeView sdvAdImg;
+    private Banner[] banners;
     private Context context;
 
     public AdAdapter(Context context) {
@@ -25,20 +29,21 @@ public class AdAdapter<JobBrif> extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
+    public View getView(ViewGroup container, int position) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.main_item_ad, container, false);
-        ButterKnife.inject(context,view);
+        ButterKnife.inject(this, view);
+        sdvAdImg.setImageURI(Uri.parse(banners[position].getImg()));
         return view;
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return banners==null?0:banners.length;
     }
 
-    @Override
-    public boolean isViewFromObject(View view, Object object) {
-        return false;
+    public void setData(Banner[] banners) {
+        this.banners = banners;
+        notifyDataSetChanged();
     }
 }

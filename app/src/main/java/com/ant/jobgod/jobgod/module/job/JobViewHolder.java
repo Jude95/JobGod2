@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.util.BaseViewHolder;
+import com.ant.jobgod.jobgod.util.Utils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import butterknife.ButterKnife;
@@ -20,16 +21,15 @@ class JobViewHolder extends BaseViewHolder<JobBrief> {
     @InjectView(R.id.tvMoneyIntro)
     TextView tvMoneyIntro;
 
+    public JobViewHolder(ViewGroup parent) {
+        super(parent, R.layout.job_item_brief);
+        ButterKnife.inject(this, itemView);
+    }
+
     @Override
     public void setData(JobBrief data) {
-        super.setData(data);
         sdvHotJobImg.setImageURI(Uri.parse(data.getImg()));
         tvTitle.setText(data.getTitle());
         tvMoneyIntro.setText(data.getMoneyIntro());
-    }
-
-    public JobViewHolder(ViewGroup parent) {
-        super(parent, R.layout.job_item_brief);
-        ButterKnife.inject(this,itemView);
     }
 }

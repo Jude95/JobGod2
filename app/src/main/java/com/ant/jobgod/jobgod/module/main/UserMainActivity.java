@@ -9,11 +9,11 @@ import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
+import com.ant.jobgod.jobgod.model.bean.Banner;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.bean.Topic;
 import com.ant.jobgod.jobgod.model.bean.Trade;
 import com.ant.jobgod.jobgod.module.job.JobBriefAdapter;
-import com.ant.jobgod.jobgod.util.Utils;
 import com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView;
 import com.jude.view.jpagerview.JPagerView;
 
@@ -50,6 +50,7 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
     private ArrayAdapter<Trade> tradeArrayAdapter;
     private HotJobAdapter hotJobAdapter;
     private JobBriefAdapter jobBriefAdapter;
+    private AdAdapter adAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,7 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
         gdTrade.setAdapter(tradeArrayAdapter = new GridViewAdapter(this, R.layout.main_item_trade));
         pagerviewRecommend.setAdapter(hotJobAdapter = new HotJobAdapter(this));
         lwcrvGuessJob.setAdapter(jobBriefAdapter=new JobBriefAdapter(this));
+        pvAd.setAdapter(adAdapter=new AdAdapter(this));
     }
 
     public void setTradeData(Trade[] tradeData) {
@@ -82,6 +84,9 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
     public void setJobBriefData(JobBrief[] jobs) {
         jobBriefAdapter.addAll(jobs);
         jobBriefAdapter.notifyDataSetChanged();
-        Utils.Log("joslength:"+jobs);
+        lwcrvGuessJob.notifyDataSetChanged();
+    }
+    public void setAdData(Banner[] banners){
+        adAdapter.setData(banners);
     }
 }

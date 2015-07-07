@@ -191,7 +191,7 @@
                 <com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView
                     android:id="@+id/lwcrvGuessJob"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     />
                 <View
                     android:layout_width="match_parent"
