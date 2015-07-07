@@ -32,6 +32,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
+                    android:columnWidth="90dp"
                     android:numColumns="auto_fit"/>
                 <LinearLayout android:orientation="horizontal"
                     android:layout_width="match_parent"
@@ -121,6 +122,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0.3dp"
                     android:background="@color/bgDeep"/>
+
                 <!--name-->
                 <!--<com.ant.jobgod.jobgod.main.TopicsView-->
                     <!--android:id="@+id/insetView"-->
@@ -128,7 +130,6 @@
                     <!--android:layout_marginRight="16dp"-->
                     <!--android:layout_width="match_parent"-->
                     <!--android:layout_height="200dp"/>-->
-
 
                 <!--name-->
                 <View
@@ -177,10 +178,10 @@
                     android:layout_height="0.3dp"
                     android:background="@color/bgDeep"/>
                 <!--name-->
-                <android.support.v7.widget.RecyclerView
+                <com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView
                     android:id="@+id/guessjob"
                     android:layout_width="match_parent"
-                    android:layout_height="288dp"
+                    android:layout_height="wrap_content"
                     />
                 <View
                     android:layout_width="match_parent"
