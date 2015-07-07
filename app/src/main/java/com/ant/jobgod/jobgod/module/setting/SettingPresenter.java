@@ -10,7 +10,7 @@ import com.ant.jobgod.jobgod.model.bean.Banner;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.bean.Topic;
 import com.ant.jobgod.jobgod.model.bean.Trade;
-import com.ant.jobgod.jobgod.model.callback.CommonModel;
+import com.ant.jobgod.jobgod.model.CommonModel;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.module.launch.UserLoginActivity;
 import com.ant.jobgod.jobgod.util.Utils;

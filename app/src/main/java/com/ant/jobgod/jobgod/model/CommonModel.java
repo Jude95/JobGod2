@@ -1,9 +1,9 @@
-package com.ant.jobgod.jobgod.model.callback;
+package com.ant.jobgod.jobgod.model;
 
 import com.android.http.RequestManager;
 import com.ant.jobgod.jobgod.config.API;
-import com.ant.jobgod.jobgod.model.AbsModel;
 import com.ant.jobgod.jobgod.model.bean.Banner;
+import com.ant.jobgod.jobgod.model.callback.DataCallback;
 
 /**
  * Created by Mr.Jude on 2015/7/7.

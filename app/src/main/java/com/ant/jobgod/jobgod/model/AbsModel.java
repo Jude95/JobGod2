@@ -2,8 +2,6 @@ package com.ant.jobgod.jobgod.model;
 
 import android.content.Context;
 
-import com.ant.jobgod.jobgod.model.callback.CommonModel;
-
 import java.util.HashMap;
 
 import de.greenrobot.event.EventBus;
