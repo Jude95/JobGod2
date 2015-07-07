@@ -8,7 +8,6 @@ import com.ant.jobgod.jobgod.util.Utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.ParameterizedType;
@@ -42,7 +41,7 @@ public abstract class DataCallback<T> extends LinkCallback {
             }else{
                 error(info);
             }
-        } catch (JSONException e) {
+        } catch (Exception e) {
             error("数据解析错误");
         }
         super.onSuccess(s);
