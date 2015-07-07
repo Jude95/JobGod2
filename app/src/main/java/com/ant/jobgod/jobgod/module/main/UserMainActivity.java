@@ -12,6 +12,8 @@ import com.ant.jobgod.jobgod.app.BaseActivity;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.bean.Topic;
 import com.ant.jobgod.jobgod.model.bean.Trade;
+import com.ant.jobgod.jobgod.module.job.JobBriefAdapter;
+import com.ant.jobgod.jobgod.util.Utils;
 import com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView;
 import com.jude.view.jpagerview.JPagerView;
 
@@ -38,14 +40,16 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
     TextView tvTopicMore;
     @InjectView(R.id.guess_more)
     TextView guessMore;
-    @InjectView(R.id.guessjob)
-    LinearWrapContentRecyclerView guessjob;
     @InjectView(R.id.mDrawerLayout)
     DrawerLayout mDrawerLayout;
     @InjectView(R.id.insetView)
     TopicsView insetView;
+    @InjectView(R.id.lwcrvGuessJob)
+    LinearWrapContentRecyclerView lwcrvGuessJob;
     private ActionBarDrawerToggle mDrawerToggle;
     private ArrayAdapter<Trade> tradeArrayAdapter;
+    private HotJobAdapter hotJobAdapter;
+    private JobBriefAdapter jobBriefAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,14 +63,25 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
         mDrawerLayout.post(() -> mDrawerToggle.syncState());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         gdTrade.setAdapter(tradeArrayAdapter = new GridViewAdapter(this, R.layout.main_item_trade));
-        pagerviewRecommend.setAdapter(new HotJobAdapter(this));
+        pagerviewRecommend.setAdapter(hotJobAdapter = new HotJobAdapter(this));
+        lwcrvGuessJob.setAdapter(jobBriefAdapter=new JobBriefAdapter(this));
     }
 
-    public void setTradeData(Trade[] t) {
-        if(t!=null){
-            tradeArrayAdapter.addAll(t);
-        }
+    public void setTradeData(Trade[] tradeData) {
+        tradeArrayAdapter.addAll(tradeData);
     }
-    public void setTopicData(Topic[] topics){insetView.setTopic(topics);}
-    public void setHotJobData(JobBrief[] brief){}
+
+    public void setTopicData(Topic[] topics) {
+        insetView.setTopic(topics);
+    }
+
+    public void setHotJobData(JobBrief[] jobData) {
+        hotJobAdapter.setData(jobData);
+    }
+
+    public void setJobBriefData(JobBrief[] jobs) {
+        jobBriefAdapter.addAll(jobs);
+        jobBriefAdapter.notifyDataSetChanged();
+        Utils.Log("joslength:"+jobs);
+    }
 }

@@ -2,22 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:layout_width="match_parent"
+    android:layout_width="0dp"
+    android:layout_weight="1"
     android:layout_height="match_parent"
     android:layout_margin="8dp"
     android:gravity="center">
 
     <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/sdvTradeImg"
+        android:id="@+id/sdvHotJobImg"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="72dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         fresco:actualImageScaleType="focusCrop"
         fresco:failureImage="@mipmap/error"
         fresco:progressBarImage="@mipmap/progress_bar"/>
 
     <TextView android:id="@+id/tvTitle"
-        android:text="服务"
+        android:text=""
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"

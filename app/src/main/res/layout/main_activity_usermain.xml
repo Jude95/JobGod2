@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/White">
     <include layout="@layout/include_toolbar"/>
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/mDrawerLayout"
@@ -33,6 +34,15 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:numColumns="4"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:background="@drawable/bottom_shadow"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:background="@drawable/top_shadow"/>
                 <LinearLayout android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="32dp">
@@ -60,6 +70,9 @@
                         android:padding="4dp"
                         android:layout_marginRight="8dp"/>
                 </LinearLayout>
+
+
+
                 <com.jude.view.jpagerview.JPagerView
                     android:id="@+id/pagerview_recommend"
                     android:layout_width="match_parent"
@@ -176,7 +189,7 @@
                     android:background="@color/bgDeep"/>
                 <!--name-->
                 <com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView
-                    android:id="@+id/guessjob"
+                    android:id="@+id/lwcrvGuessJob"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     />

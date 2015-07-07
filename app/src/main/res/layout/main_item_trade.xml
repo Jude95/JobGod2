@@ -9,11 +9,12 @@
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/sdvTradeImg"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="72dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         fresco:actualImageScaleType="focusCrop"
-        fresco:failureImage="@drawable/error"
-        fresco:progressBarImage="@drawable/progress_bar"/>
+        fresco:failureImage="@mipmap/error"
+        fresco:progressBarImage="@mipmap/progress_bar"/>
 
     <TextView android:id="@+id/tvTitle"
         android:text="服务"

@@ -62,6 +62,6 @@ public class JobModel extends AbsModel{
         params.put("type",type+"");
         params.put("sort",sort+"");
         params.put("key",key);
-        RequestManager.getInstance().post(API.URL.GetTopicJobList, params, callback);
+        RequestManager.getInstance().post(API.URL.GetJobList, params, callback);
     }
 }
