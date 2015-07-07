@@ -9,6 +9,7 @@ import com.ant.jobgod.jobgod.model.JobModel;
 import com.ant.jobgod.jobgod.model.bean.Banner;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.bean.Topic;
+import com.ant.jobgod.jobgod.model.bean.Trade;
 import com.ant.jobgod.jobgod.model.callback.CommonModel;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.module.launch.UserLoginActivity;
@@ -57,7 +58,10 @@ public class SettingPresenter extends BasePresenter<SettingActivity> {
 
 
                 new SettingItem("调试按钮","",(View v)->{
-                    Utils.Log("Trade:"+JobModel.getInstance().getTrade().length);
+                    Utils.Log("Trades:" + JobModel.getInstance().getTrade().length);
+                    for (Trade t:JobModel.getInstance().getTrade()){
+                        Utils.Log("Trade"+t.getName());
+                    }
                     CommonModel.getInstance().getBanner(new DataCallback<Banner[]>() {
                         @Override
                         public void success(String info, Banner[] data) {

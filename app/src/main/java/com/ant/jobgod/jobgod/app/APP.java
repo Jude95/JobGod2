@@ -5,6 +5,7 @@ import android.app.Application;
 
 import com.activeandroid.ActiveAndroid;
 import com.android.http.RequestManager;
+import com.android.volley.VolleyLog;
 import com.ant.jobgod.jobgod.model.AbsModel;
 import com.ant.jobgod.jobgod.util.ActivityManager;
 import com.ant.jobgod.jobgod.util.FileManager;
@@ -33,6 +34,7 @@ public class APP extends Application {
         Fresco.initialize(this);
         RequestManager.getInstance().init(this);
         RequestManager.getInstance().setDebugMode(true, "GodNet");
+        VolleyLog.setTag("xxxxxx");
         RequestManager.getInstance().setCacheEnable(true);
         Utils.initialize(this, "GodLog", "5,28,0");
 
