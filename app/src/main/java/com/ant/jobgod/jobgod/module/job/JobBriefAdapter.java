@@ -20,7 +20,7 @@ public class JobBriefAdapter extends RecyclerArrayAdapter<JobBrief> {
     @Override
     public void OnBindViewHolder(BaseViewHolder holder, int position) {
         super.OnBindViewHolder(holder, position);
-        holder.setData(getItem(position));
+        Utils.Log("position:"+position);
     }
 
     @Override

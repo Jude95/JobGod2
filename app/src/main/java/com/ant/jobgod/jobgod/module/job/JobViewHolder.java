@@ -10,20 +10,16 @@ import com.ant.jobgod.jobgod.util.BaseViewHolder;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-
 class JobViewHolder extends BaseViewHolder<JobBrief> {
-    @InjectView(R.id.sdvHotJobImg)
-    SimpleDraweeView sdvHotJobImg;
-    @InjectView(R.id.tvTitle)
-    TextView tvTitle;
-    @InjectView(R.id.tvMoneyIntro)
-    TextView tvMoneyIntro;
+    private SimpleDraweeView sdvHotJobImg;
+    private TextView tvTitle;
+    private TextView tvMoneyIntro;
 
     public JobViewHolder(ViewGroup parent) {
         super(parent, R.layout.job_item_brief);
-        ButterKnife.inject(this, itemView);
+        sdvHotJobImg= (SimpleDraweeView) itemView.findViewById(R.id.sdvHotJobImg);
+        tvTitle= (TextView) itemView.findViewById(R.id.tvTitle);
+        tvMoneyIntro= (TextView) itemView.findViewById(R.id.tvMoneyIntro);
     }
 
     @Override
@@ -31,5 +27,6 @@ class JobViewHolder extends BaseViewHolder<JobBrief> {
         sdvHotJobImg.setImageURI(Uri.parse(data.getImg()));
         tvTitle.setText(data.getTitle());
         tvMoneyIntro.setText(data.getMoneyIntro());
+        Utils.Log("title:"+data.getTitle());
     }
 }

@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.Banner;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.jude.view.jpagerview.JPagerAdapter;
+import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -17,7 +17,7 @@ import butterknife.InjectView;
 /**
  * Created by alien on 2015/7/7.
  */
-public class AdAdapter extends JPagerAdapter {
+public class AdAdapter extends StaticPagerAdapter {
 
     @InjectView(R.id.sdvAdImg)
     SimpleDraweeView sdvAdImg;

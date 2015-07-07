@@ -27,6 +27,13 @@ public class LinearWrapContentRecyclerView extends LinearLayout {
     public void setAdapter(RecyclerView.Adapter adapter){
         this.mAdapter = adapter;
         notifyDataSetChanged();
+        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onChanged() {
+                super.onChanged();
+                notifyDataSetChanged();
+            }
+        });
     }
 
     public void notifyDataSetChanged(){

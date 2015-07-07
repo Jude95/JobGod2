@@ -9,9 +9,9 @@
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/sdvTradeImg"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_height="96dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
         fresco:actualImageScaleType="focusCrop"
         fresco:failureImage="@mipmap/error"
         fresco:progressBarImage="@mipmap/progress_bar"/>

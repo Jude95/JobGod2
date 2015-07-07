@@ -22,7 +22,7 @@
                 android:layout_marginRight="16dp"
                 android:gravity="bottom|center_horizontal"
                 android:textSize="18sp"
-                android:text="鏆傛棤涓撻"
+                android:text="暂无数据"
                 />
             <TextView
                 android:id="@+id/intro1"
@@ -32,7 +32,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:gravity="top|center_horizontal"
-                android:text="鏆傛棤涓撻"
+                android:text=""
                 android:textColor="@android:color/tertiary_text_light"/>
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/image1"
@@ -72,7 +72,7 @@
                         android:layout_marginRight="16dp"
                         android:gravity="bottom|center_horizontal"
                         android:textSize="18sp"
-                        android:text="鏆傛棤涓撻"
+                        android:text="暂无数据"
                         />
                     <TextView
                         android:id="@+id/intro2"
@@ -82,7 +82,7 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:gravity="top|center_horizontal"
-                        android:text="鏆傛棤涓撻"
+                        android:text=""
                         android:textColor="@android:color/tertiary_text_light"/>
                     </LinearLayout>
                 <com.facebook.drawee.view.SimpleDraweeView
@@ -116,7 +116,7 @@
                     android:layout_marginRight="16dp"
                     android:gravity="bottom|center_horizontal"
                     android:textSize="18sp"
-                    android:text="鏆傛棤涓撻"
+                    android:text="暂无数据"
                     />
                 <TextView
                     android:id="@+id/intro3"
@@ -126,7 +126,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     android:gravity="top|center_horizontal"
-                    android:text="鏆傛棤涓撻"
+                    android:text=""
                     android:textColor="@android:color/tertiary_text_light"/>
             </LinearLayout>
             <com.facebook.drawee.view.SimpleDraweeView
