@@ -30,6 +30,10 @@ public class LocationModel extends AbsModel implements Serializable{
         return getInstance(LocationModel.class);
     }
 
+    public Location getCurLocation(){
+        return location;
+    }
+
     @Override
     protected void onAppCreate(Context ctx) {
         File file = FileManager.getInstance().getChild(FileManager.Dir.Object,FILENAME);
