@@ -4,6 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="8dp"
     android:gravity="center">
 
     <com.facebook.drawee.view.SimpleDraweeView
@@ -12,14 +13,16 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         fresco:actualImageScaleType="focusCrop"
-        fresco:failureImage="@drawable/error"
-        fresco:progressBarImage="@drawable/progress_bar"/>
+        fresco:failureImage="@mipmap/error"
+        fresco:progressBarImage="@mipmap/progress_bar"/>
 
     <TextView android:id="@+id/tvTitle"
         android:text="服务"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         />
 
 </LinearLayout>

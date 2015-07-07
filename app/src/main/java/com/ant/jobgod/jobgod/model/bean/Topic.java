@@ -8,6 +8,11 @@ public class Topic {
     private String img;
     private String subTitle;
     private String intro;
+    private String title;
+
+    public String getTitle() {
+        return title;
+    }
 
     public String getId() {
         return id;

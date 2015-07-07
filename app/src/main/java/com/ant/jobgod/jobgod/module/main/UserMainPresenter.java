@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.JobModel;
+import com.ant.jobgod.jobgod.model.bean.Topic;
+import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.umeng.message.PushAgent;
 import com.umeng.update.UmengUpdateAgent;
@@ -26,10 +28,12 @@ public class UserMainPresenter extends BasePresenter<UserMainActivity>{
         getView().setTradeData(JobModel.getInstance().getTrade());
         Utils.Log("length:" + JobModel.getInstance().getTrade().length);
         Utils.Log(JobModel.getInstance().getTrade()[0].getName());
-    }
-
-    public void getAdData(){
-
+        JobModel.getInstance().getTopicList(new DataCallback<Topic[]>() {
+           @Override
+           public void success(String info, Topic[] data) {
+               getView().setTopicData(data);
+           }
+        });
     }
 
 }

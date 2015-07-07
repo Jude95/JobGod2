@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
+import com.ant.jobgod.jobgod.model.bean.JobBrief;
+import com.ant.jobgod.jobgod.model.bean.Topic;
 import com.ant.jobgod.jobgod.model.bean.Trade;
 import com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView;
 import com.jude.view.jpagerview.JPagerView;
@@ -40,8 +42,11 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
     LinearWrapContentRecyclerView guessjob;
     @InjectView(R.id.mDrawerLayout)
     DrawerLayout mDrawerLayout;
+    @InjectView(R.id.insetView)
+    TopicsView insetView;
     private ActionBarDrawerToggle mDrawerToggle;
     private ArrayAdapter<Trade> tradeArrayAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,10 +59,14 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
         mDrawerLayout.post(() -> mDrawerToggle.syncState());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         gdTrade.setAdapter(tradeArrayAdapter = new GridViewAdapter(this, R.layout.main_item_trade));
+        pagerviewRecommend.setAdapter(new HotJobAdapter(this));
     }
 
-    public void setTradeData(Trade[] t){
-        tradeArrayAdapter.addAll(t);
+    public void setTradeData(Trade[] t) {
+        if(t!=null){
+            tradeArrayAdapter.addAll(t);
+        }
     }
-
+    public void setTopicData(Topic[] topics){insetView.setTopic(topics);}
+    public void setHotJobData(JobBrief[] brief){}
 }

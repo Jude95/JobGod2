@@ -31,6 +31,7 @@ class GridViewAdapter extends ArrayAdapter<Trade> {
         View item = inflater.inflate(R.layout.main_item_trade, null);
         ButterKnife.inject(this, item);
         if(getItem(position).getIcon()!=null){
+            sdvTradeImg.setAspectRatio(1f);
             sdvTradeImg.setImageURI(Uri.parse(getItem(position).getIcon()));
         }
         tvTitle.setText(getItem(position).getName());
