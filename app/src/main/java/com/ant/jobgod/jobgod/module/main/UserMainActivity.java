@@ -100,5 +100,6 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
 
     public void update(){
         getPresenter().updateData();
+        srlRefresh.setRefreshing(false);
     }
 }
