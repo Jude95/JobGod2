@@ -3,13 +3,18 @@
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:background="@drawable/main_drawer_selector">
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/sdvHotJobImg"
-        android:layout_width="96dp"
-        android:layout_height="72dp"
-        android:layout_margin="16dp"
+        android:layout_width="112dp"
+        android:layout_height="80dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
         fresco:actualImageScaleType="focusCrop"
         fresco:failureImage="@mipmap/error"
         fresco:progressBarImage="@mipmap/progress_bar"/>
@@ -26,13 +31,20 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
+            android:singleLine="true"
             android:textSize="18sp"/>
 
         <TextView android:id="@+id/tvMoneyIntro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"/>
+            android:layout_marginRight="16dp"
+            android:singleLine="true"/>
     </LinearLayout>
+
+    <View android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="@color/bgDeep"
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

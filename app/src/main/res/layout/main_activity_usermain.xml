@@ -49,12 +49,12 @@
                 <LinearLayout android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
+                    android:layout_marginLeft="16dp"
                     android:padding="4dp">
 
                     <View android:layout_width="4dp"
                         android:layout_height="match_parent"
-                        android:background="@color/DeepOrange"
-                        android:layout_marginLeft="8dp"/>
+                        android:background="@color/DeepOrange" />
 
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -194,6 +194,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="4dp"

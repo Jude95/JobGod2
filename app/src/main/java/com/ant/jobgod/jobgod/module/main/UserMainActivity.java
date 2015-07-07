@@ -6,6 +6,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
@@ -15,7 +16,6 @@ import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.bean.Topic;
 import com.ant.jobgod.jobgod.model.bean.Trade;
 import com.ant.jobgod.jobgod.module.job.JobBriefAdapter;
-import com.ant.jobgod.jobgod.util.Utils;
 import com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView;
 import com.jude.rollviewpager.RollPagerView;
 
@@ -69,11 +69,13 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         gdTrade.setAdapter(tradeArrayAdapter = new GridViewAdapter(this, R.layout.main_item_trade));
         pagerviewRecommend.setAdapter(hotJobAdapter = new HotJobAdapter(this));
+        lwcrvGuessJob.setOrientation(LinearLayout.VERTICAL);
         lwcrvGuessJob.setAdapter(jobBriefAdapter = new JobBriefAdapter(this));
         pvAd.setAdapter(adAdapter = new AdAdapter(this));
         srlRefresh.setColorScheme(android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
+        srlRefresh.setOnRefreshListener(() -> update());
     }
 
     public void setTradeData(Trade[] tradeData) {
@@ -90,10 +92,13 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
 
     public void setJobBriefData(JobBrief[] jobs) {
         jobBriefAdapter.addAll(jobs);
-        Utils.Log("count:"+jobBriefAdapter.getItemCount());
     }
 
     public void setAdData(Banner[] banners) {
         adAdapter.setData(banners);
+    }
+
+    public void update(){
+        getPresenter().updateData();
     }
 }
