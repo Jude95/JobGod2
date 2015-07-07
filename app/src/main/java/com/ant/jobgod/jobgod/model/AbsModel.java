@@ -2,7 +2,7 @@ package com.ant.jobgod.jobgod.model;
 
 import android.content.Context;
 
-import com.ant.jobgod.jobgod.util.Utils;
+import com.ant.jobgod.jobgod.model.callback.CommonModel;
 
 import java.util.HashMap;
 
@@ -17,7 +17,8 @@ public abstract class AbsModel {
             AccountModel.class,
             LocationModel.class,
             PersonBriefModel.class,
-            JobModel.class
+            JobModel.class,
+            CommonModel.class
     };
 
 

@@ -30,11 +30,10 @@ public abstract class DataCallback<T> extends LinkCallback {
             jsonObject = new JSONObject(s);
             int status = jsonObject.getInt(API.KEY.STATUS);
             String info = jsonObject.getString(API.KEY.INFO);
-            JSONObject dataArr = jsonObject.getJSONObject(API.KEY.DATA);
             result(status, info);
             if (status == API.CODE.SUCCEED){
                 Gson gson = new GsonBuilder().setExclusionStrategies(new SpecificClassExclusionStrategy(null, Model.class)).create();
-                T data = gson.fromJson(dataArr.toString(), ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0]);
+                T data = gson.fromJson(jsonObject.getString(API.KEY.DATA), ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0]);
                 success(info,data);
             }else if (status == API.CODE.PERMISSION_DENIED){
                 authorizationFailure();

@@ -5,6 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.ant.jobgod.jobgod.app.BasePresenter;
+import com.ant.jobgod.jobgod.model.JobModel;
+import com.ant.jobgod.jobgod.model.bean.Banner;
+import com.ant.jobgod.jobgod.model.bean.JobBrief;
+import com.ant.jobgod.jobgod.model.bean.Topic;
+import com.ant.jobgod.jobgod.model.callback.CommonModel;
+import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.module.launch.UserLoginActivity;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.umeng.update.UmengUpdateAgent;
@@ -23,6 +29,8 @@ public class SettingPresenter extends BasePresenter<SettingActivity> {
                 new SettingItem("修改密码","通过手机号验证",null),
                 new SettingItem("应用设置"),
                 new SettingItem("意见反馈","",null),
+
+
                 new SettingItem("检查更新","",(View v)->{
                     UmengUpdateAgent.setUpdateAutoPopup(false);
                     UmengUpdateAgent.setUpdateListener((updateStatus, updateInfo) -> {
@@ -42,9 +50,45 @@ public class SettingPresenter extends BasePresenter<SettingActivity> {
                     });
                     UmengUpdateAgent.forceUpdate(getView());
                 }),
+
+
                 new SettingItem("关于","",null),
                 new SettingItem("调试设置"),
-                new SettingItem("调试按钮","",null),
+
+
+                new SettingItem("调试按钮","",(View v)->{
+                    Utils.Log("Trade:"+JobModel.getInstance().getTrade().length);
+                    CommonModel.getInstance().getBanner(new DataCallback<Banner[]>() {
+                        @Override
+                        public void success(String info, Banner[] data) {
+                            Utils.Log("getBanner:" + data.length);
+                        }
+                    });
+                    JobModel.getInstance().getHotJobList(new DataCallback<JobBrief[]>() {
+                        @Override
+                        public void result(int status, String info) {
+                            Utils.Log(status + info);
+                        }
+
+                        @Override
+                        public void success(String info, JobBrief[] data) {
+                            Utils.Log("getHotJobList:" + data.length);
+                        }
+                    });
+                    JobModel.getInstance().getTopicList(new DataCallback<Topic[]>() {
+                        @Override
+                        public void result(int status, String info) {
+                            Utils.Log(status+info);
+                        }
+
+                        @Override
+                        public void success(String info, Topic[] data) {
+                            Utils.Log("getTopicList:"+data.length);
+                        }
+                    });
+                }),
+
+
                 new SettingItem("打开调试界面","",null),
         };
     }

@@ -6,7 +6,7 @@ package com.ant.jobgod.jobgod.model.bean;
 public class JobPage {
     private int totalCount;
     private int curPage;
-    private Job[] jobs;
+    private JobBrief[] jobs;
 
     public int getTotalCount() {
         return totalCount;
@@ -24,11 +24,11 @@ public class JobPage {
         this.curPage = curPage;
     }
 
-    public Job[] getJobs() {
+    public JobBrief[] getJobs() {
         return jobs;
     }
 
-    public void setJobs(Job[] jobs) {
+    public void setJobs(JobBrief[] jobs) {
         this.jobs = jobs;
     }
 }
