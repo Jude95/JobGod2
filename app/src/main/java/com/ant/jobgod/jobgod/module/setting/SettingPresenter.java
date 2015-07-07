@@ -3,14 +3,11 @@ package com.ant.jobgod.jobgod.module.setting;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.module.launch.UserLoginActivity;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.umeng.update.UmengUpdateAgent;
-import com.umeng.update.UmengUpdateListener;
-import com.umeng.update.UpdateResponse;
 import com.umeng.update.UpdateStatus;
 
 /**
@@ -28,25 +25,22 @@ public class SettingPresenter extends BasePresenter<SettingActivity> {
                 new SettingItem("意见反馈","",null),
                 new SettingItem("检查更新","",(View v)->{
                     UmengUpdateAgent.setUpdateAutoPopup(false);
-                    UmengUpdateAgent.setUpdateListener(new UmengUpdateListener() {
-                        @Override
-                        public void onUpdateReturned(int updateStatus,UpdateResponse updateInfo) {
-                            switch (updateStatus) {
-                                case UpdateStatus.Yes: // has update
-                                    break;
-                                case UpdateStatus.No: // has no update
-                                    Utils.Toast("没有更新");
-                                    break;
-                                case UpdateStatus.NoneWifi: // none wifi
-                                    Utils.Toast("没有wifi连接，只在wifi下更新");
-                                    break;
-                                case UpdateStatus.Timeout: // time out
-                                    Utils.Toast("超时");
-                                    break;
-                            }
+                    UmengUpdateAgent.setUpdateListener((updateStatus, updateInfo) -> {
+                        switch (updateStatus) {
+                            case UpdateStatus.Yes: // has update
+                                break;
+                            case UpdateStatus.No: // has no update
+                                Utils.Toast("没有更新");
+                                break;
+                            case UpdateStatus.NoneWifi: // none wifi
+                                Utils.Toast("没有wifi连接，只在wifi下更新");
+                                break;
+                            case UpdateStatus.Timeout: // time out
+                                Utils.Toast("超时");
+                                break;
                         }
                     });
-                    UmengUpdateAgent.update(getView());
+                    UmengUpdateAgent.forceUpdate(getView());
                 }),
                 new SettingItem("关于","",null),
                 new SettingItem("调试设置"),

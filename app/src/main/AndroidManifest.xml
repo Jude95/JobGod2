@@ -199,9 +199,7 @@
             android:name="com.umeng.update.UpdateDialogActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" >
         </activity>
-        <!--&lt;!&ndash;用户反馈&ndash;&gt;-->
-        <!--<activity-->
-            <!--android:name="com.umeng.fb.ConversationActivity"/>-->
+
     </application>
 
 </manifest>
