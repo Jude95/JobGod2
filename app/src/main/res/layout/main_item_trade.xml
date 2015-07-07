@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
+    android:gravity="center">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/sdvTradeImg"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        fresco:actualImageScaleType="focusCrop"
+        fresco:failureImage="@drawable/error"
+        fresco:progressBarImage="@drawable/progress_bar"/>
+    <TextView android:id="@+id/tvTitle"
+        android:text="服务"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        />
+
+</LinearLayout>

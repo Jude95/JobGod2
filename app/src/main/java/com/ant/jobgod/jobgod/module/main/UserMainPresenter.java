@@ -17,4 +17,5 @@ public class UserMainPresenter extends BasePresenter<UserMainActivity>{
         PushAgent.getInstance(getView()).enable();
         UmengUpdateAgent.update(getView());
     }
+
 }
