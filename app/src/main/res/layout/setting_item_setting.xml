@@ -7,7 +7,6 @@
     android:background="@drawable/main_drawer_selector">
     <TextView
         android:id="@+id/tvTitle"
-        android:text="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
@@ -16,7 +15,6 @@
         android:textSize="@dimen/abc_text_size_title_material"/>
     <TextView
         android:id="@+id/tvIntro"
-        android:text="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
