@@ -35,7 +35,7 @@ public class SettingPresenter extends BasePresenter<SettingActivity> {
                                 case UpdateStatus.Yes: // has update
                                     break;
                                 case UpdateStatus.No: // has no update
-                                    Utils.Toast("没有更新");
+                                    Utils.Toast("已经最新版本");
                                     break;
                                 case UpdateStatus.NoneWifi: // none wifi
                                     Utils.Toast("没有wifi连接，只在wifi下更新");
