@@ -76,7 +76,7 @@ public class SettingPresenter extends BasePresenter<SettingActivity> {
 
                         @Override
                         public void success(String info, JobBrief[] data) {
-                            Utils.Log("getHotJobList:" + data.length);
+                            Utils.Log("getHotJobLij,st:" + data.length);
                         }
                     });
                     JobModel.getInstance().getTopicList(new DataCallback<Topic[]>() {
