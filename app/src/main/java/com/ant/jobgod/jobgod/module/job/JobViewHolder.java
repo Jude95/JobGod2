@@ -33,8 +33,9 @@ class JobViewHolder extends BaseViewHolder<JobBrief> {
         tvTitle.setText(data.getTitle());
         tvMoneyIntro.setText(data.getMoneyIntro());
         tvBizName.setText(data.getBizName());
+        ripple.setRippleColor(ripple.getContext().getResources().getColor(R.color.ripple));
         ripple.setOnClickListener(v -> {
-            Intent intent=new Intent(ripple.getContext(), JobBriefDetailActivity.class);
+            Intent intent=new Intent(ripple.getContext(), JobDetailActivity.class);
             intent.putExtra("id",data.getId());
             ripple.getContext().startActivity(intent);
         });

@@ -70,7 +70,7 @@
         </activity>
         <activity android:name=".module.setting.SettingActivity"
             android:label="设置"/>
-        <activity android:name=".module.job.JobBriefDetailActivity"/>
+        <activity android:name=".module.job.JobDetailActivity"/>
 
 
 

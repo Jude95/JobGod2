@@ -1,6 +1,7 @@
 package com.ant.jobgod.jobgod.module.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
+import com.ant.jobgod.jobgod.module.job.JobDetailActivity;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 
@@ -43,6 +45,11 @@ public class HotJobAdapter extends StaticPagerAdapter {
                 sdvHotJobImg.setImageURI(Uri.parse(data[index].getImg()));
                 tvTitle.setText(data[index].getTitle());
             }
+            item.setOnClickListener(v -> {
+                Intent intent=new Intent(item.getContext(), JobDetailActivity.class);
+                intent.putExtra("id",data[index].getId());
+                item.getContext().startActivity(intent);
+            });
             linearLayout.addView(item);
         }
         return linearLayout;

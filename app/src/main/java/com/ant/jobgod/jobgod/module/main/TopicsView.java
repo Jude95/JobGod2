@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.Topic;
+import com.balysv.materialripple.MaterialRippleLayout;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 /**
@@ -20,16 +21,19 @@ public class TopicsView extends RelativeLayout {
     private TextView title1;
     private TextView intro1;
     private SimpleDraweeView image1;
+    private MaterialRippleLayout ripple1;
 
     private View container2;
     private TextView title2;
     private TextView intro2;
     private SimpleDraweeView image2;
+    private MaterialRippleLayout ripple2;
 
     private View container3;
     private TextView title3;
     private TextView intro3;
     private SimpleDraweeView image3;
+    private MaterialRippleLayout ripple3;
 
     public TopicsView(Context context) {
         this(context, null);
@@ -50,16 +54,22 @@ public class TopicsView extends RelativeLayout {
         title1 = (TextView) view.findViewById(R.id.title1);
         intro1 = (TextView) view.findViewById(R.id.intro1);
         image1 = (SimpleDraweeView) view.findViewById(R.id.image1);
+        ripple1= (MaterialRippleLayout) view.findViewById(R.id.ripple1);
+        ripple1.setRippleColor(ripple1.getContext().getResources().getColor(R.color.ripple));
 
         container2 = view.findViewById(R.id.container2);
         title2 = (TextView) view.findViewById(R.id.title2);
         intro2 = (TextView) view.findViewById(R.id.intro2);
         image2 = (SimpleDraweeView) view.findViewById(R.id.image2);
+        ripple2= (MaterialRippleLayout) view.findViewById(R.id.ripple2);
+        ripple2.setRippleColor(ripple2.getContext().getResources().getColor(R.color.ripple));
 
         container3 = view.findViewById(R.id.container3);
         title3 = (TextView) view.findViewById(R.id.title3);
         intro3 = (TextView) view.findViewById(R.id.intro3);
         image3 = (SimpleDraweeView) view.findViewById(R.id.image3);
+        ripple3= (MaterialRippleLayout) view.findViewById(R.id.ripple3);
+        ripple3.setRippleColor(ripple3.getContext().getResources().getColor(R.color.ripple));
     }
 
     public void setTopic(final Topic[] topics){
