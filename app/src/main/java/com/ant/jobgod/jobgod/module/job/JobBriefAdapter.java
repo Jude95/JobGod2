@@ -24,6 +24,6 @@ public class JobBriefAdapter extends RecyclerArrayAdapter<JobBrief> {
 
     @Override
     public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
-        return new JobViewHolder(parent, R.layout.job_item_brief);
+        return new JobViewHolder(parent, R.layout.job_item_brief,getContext());
     }
 }

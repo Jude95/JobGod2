@@ -34,9 +34,9 @@
 
                 <GridView android:id="@+id/gdTrade"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:numColumns="4"/>
+                    android:layout_height="124dp"
+                    android:layout_margin="16dp"
+                    android:numColumns="5"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -46,41 +46,49 @@
                     android:layout_width="match_parent"
                     android:layout_height="4dp"
                     android:background="@drawable/top_shadow"/>
-                <LinearLayout android:orientation="horizontal"
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
                     android:layout_marginLeft="16dp"
-                    android:padding="4dp">
-
-                    <View android:layout_width="4dp"
+                    android:layout_marginRight="16dp"
+                    android:padding="4dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:orientation="horizontal">
+                    <View
+                        android:layout_width="4dp"
                         android:layout_height="match_parent"
-                        android:background="@color/DeepOrange" />
-
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_marginRight="8dp"
+                        android:background="@color/DeepOrange"/>
+                    <TextView
+                        android:layout_width="0dp"
                         android:layout_weight="1"
+                        android:layout_height="match_parent"
                         android:text="热门推荐"
                         android:textStyle="bold"
-                        android:textColor="@color/text_contrast"
                         android:gravity="center_vertical"
-                        android:layout_marginLeft="8dp"/>
-                    <TextView android:id="@+id/tvHotJobMore"
+                        android:textColor="@color/text_contrast"
+                        />
+                    <TextView
+                        android:id="@+id/tvHotJobMore"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="更多"
                         android:textColor="@color/text_selected"
-                        android:clickable="true"
-                        android:gravity="center"
-                        android:layout_gravity="end|bottom"
-                        android:padding="4dp"
-                        android:layout_marginRight="8dp"/>
+                        android:gravity="center_vertical"
+                        android:text="更多"/>
                 </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.3dp"
+                    android:background="@color/bgDeep"/>
 
                 <com.jude.rollviewpager.RollPagerView
                     android:id="@+id/pagerview_recommend"
                     android:layout_width="match_parent"
                     android:layout_height="132dp"
-                    android:layout_margin="16dp"
+                    android:layout_margin="8dp"
                     app:hint_alpha="1"
                     app:autoplay="10000"
                     app:hint_gravity="center"/>

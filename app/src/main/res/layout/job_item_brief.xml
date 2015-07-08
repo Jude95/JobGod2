@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.balysv.materialripple.MaterialRippleLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
+    xmlns:app="http://schemas.android.com/tools"
+    android:id="@+id/ripple"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clickable="true"
-    android:background="@drawable/main_drawer_selector">
+    android:layout_height="wrap_content"
+    app:mrl_rippleColor="@drawable/main_drawer_selector">
+
+<RelativeLayout android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/sdvHotJobImg"
-        android:layout_width="112dp"
-        android:layout_height="80dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="96dp"
+        android:layout_height="72dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         fresco:actualImageScaleType="focusCrop"
         fresco:failureImage="@mipmap/error"
         fresco:progressBarImage="@mipmap/progress_bar"/>
+
     <LinearLayout android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,19 +31,28 @@
         android:layout_alignBottom="@+id/sdvHotJobImg"
         android:gravity="center">
 
-        <TextView android:id="@+id/tvTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:singleLine="true"
-            android:textSize="18sp"/>
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:singleLine="true"
+                android:textSize="18sp"/>
 
-        <TextView android:id="@+id/tvMoneyIntro"
+            <TextView android:id="@+id/tvMoneyIntro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp"
+                android:textColor="@color/colorPrimary"
+                android:singleLine="true"/>
+        </RelativeLayout>
+
+        <TextView android:id="@+id/tvBizName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
             android:singleLine="true"/>
     </LinearLayout>
 
@@ -48,3 +62,5 @@
         android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
+
+</com.balysv.materialripple.MaterialRippleLayout>
