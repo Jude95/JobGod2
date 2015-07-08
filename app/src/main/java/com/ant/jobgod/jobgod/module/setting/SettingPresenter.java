@@ -6,11 +6,7 @@ import android.view.View;
 
 import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.JobModel;
-import com.ant.jobgod.jobgod.model.bean.Banner;
-import com.ant.jobgod.jobgod.model.bean.JobBrief;
-import com.ant.jobgod.jobgod.model.bean.Topic;
-import com.ant.jobgod.jobgod.model.bean.Trade;
-import com.ant.jobgod.jobgod.model.CommonModel;
+import com.ant.jobgod.jobgod.model.bean.Job;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.module.launch.UserLoginActivity;
 import com.ant.jobgod.jobgod.util.Utils;
@@ -58,47 +54,10 @@ public class SettingPresenter extends BasePresenter<SettingActivity> {
 
 
                 new SettingItem("调试按钮","",(View v)->{
-                    Utils.Log("Trades:" + JobModel.getInstance().getTrade().length);
-                    for (Trade t:JobModel.getInstance().getTrade()){
-                        Utils.Log("Trade"+t.getName());
-                    }
-                    CommonModel.getInstance().getBanner(new DataCallback<Banner[]>() {
+                    JobModel.getInstance().getJobDetail("1", new DataCallback<Job>() {
                         @Override
-                        public void success(String info, Banner[] data) {
-                            Utils.Log("getBanner:" + data.length);
-                        }
-                    });
-                    JobModel.getInstance().getHotJobList(new DataCallback<JobBrief[]>() {
-                        @Override
-                        public void result(int status, String info) {
-                            Utils.Log(status + info);
-                        }
-
-                        @Override
-                        public void success(String info, JobBrief[] data) {
-                            Utils.Log("getHotJobLij,st:" + data.length);
-                        }
-                    });
-                    JobModel.getInstance().getTopicList(new DataCallback<Topic[]>() {
-                        @Override
-                        public void result(int status, String info) {
-                            Utils.Log(status + info);
-                        }
-
-                        @Override
-                        public void success(String info, Topic[] data) {
-                            Utils.Log("getTopicList:" + data.length);
-                        }
-                    });
-                    JobModel.getInstance().getTopicJobList("1", new DataCallback<JobBrief[]>() {
-                        @Override
-                        public void result(int status, String info) {
-                            Utils.Log(status + info);
-                        }
-
-                        @Override
-                        public void success(String info, JobBrief[] data) {
-                            Utils.Log("getTopicJobList:" + data.length);
+                        public void success(String info, Job data) {
+                            Utils.Log(data.getTitle());
                         }
                     });
                 }),
