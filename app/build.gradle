@@ -70,5 +70,6 @@ dependencies {
     compile 'com.jakewharton:butterknife:6.1.0'
     compile 'com.android.support:support-v4:22.2.0'
     compile project(':RollViewPager')
+    compile project(':androidVolley')
     compile 'com.balysv:material-ripple:1.0.2'
 }
