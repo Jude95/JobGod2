@@ -56,8 +56,10 @@ public class UserMainPresenter extends BasePresenter<UserMainActivity>{
                 getView().setAdData(data);
             }
         });
-
     }
 
+    public void updateData(){
+        onCreateView(getView());
+    }
 
 }

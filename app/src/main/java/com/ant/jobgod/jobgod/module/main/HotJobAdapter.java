@@ -10,14 +10,13 @@ import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
-import com.ant.jobgod.jobgod.util.Utils;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.jude.view.jpagerview.JPagerAdapter;
+import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 
 /**
  * Created by alien on 2015/7/7.
  */
-public class HotJobAdapter extends JPagerAdapter {
+public class HotJobAdapter extends StaticPagerAdapter {
 
     SimpleDraweeView sdvHotJobImg;
     TextView tvTitle;
@@ -40,7 +39,6 @@ public class HotJobAdapter extends JPagerAdapter {
             sdvHotJobImg= (SimpleDraweeView) item.findViewById(R.id.sdvHotJobImg);
             tvTitle= (TextView) item.findViewById(R.id.tvTitle);
             int index = position * 3+i;
-            Utils.Log("index:"+index);
             if (index<data.length){
                 sdvHotJobImg.setImageURI(Uri.parse(data[index].getImg()));
                 tvTitle.setText(data[index].getTitle());
@@ -57,8 +55,6 @@ public class HotJobAdapter extends JPagerAdapter {
 
     public void setData(JobBrief[] data) {
         this.data = data;
-        Utils.Log("length:"+data.length);
         notifyDataSetChanged();
-
     }
 }
