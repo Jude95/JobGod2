@@ -22,8 +22,7 @@ import nucleus.factory.RequiresPresenter;
 @RequiresPresenter(JobDetailPresenter.class)
 public class JobDetailActivity extends BaseActivity<JobDetailPresenter> {
 
-    @InjectView(R.id.promulgator_face)
-    SimpleDraweeView promulgatorFace;
+
     @InjectView(R.id.bizName)
     TextView bizName;
     @InjectView(R.id.bizAvgFeel)
@@ -62,6 +61,8 @@ public class JobDetailActivity extends BaseActivity<JobDetailPresenter> {
     AppBarLayout appBar;
     @InjectView(R.id.floating_action_button)
     FloatingActionButton floatingActionButton;
+    @InjectView(R.id.bizFace)
+    SimpleDraweeView bizFace;
     private Intent intent;
     private String id;
 
@@ -70,23 +71,25 @@ public class JobDetailActivity extends BaseActivity<JobDetailPresenter> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.job_activity_job_brief_detail);
         ButterKnife.inject(this);
-        intent=getIntent();
-        id=intent.getStringExtra("id");
+        intent = getIntent();
+        id = intent.getStringExtra("id");
     }
 
-    public String getId(){
+    public String getId() {
         return id;
     }
-    public void setData(Job data){
+
+    public void setData(Job data) {
         setTitle(data.getTitle());
-        promulgatorFace.setImageURI(Uri.parse(data.getImg()));
+        jobImg.setImageURI(Uri.parse(data.getImg()));
+        bizFace.setImageURI(Uri.parse(data.getBizFace()));
         bizName.setText(data.getBizName());
         jobAddress.setText(data.getAddress());
         jobCount.setText(data.getApplyCount());
         applyBeginTime.setText(data.getApplyBeginTime() + "");
         applyEndTime.setText(data.getApplyCount() + "");
         jobBeginTime.setText(data.getJobBeginTime() + "");
-        jobEndTime.setText(data.getJobEndTime()+"");
+        jobEndTime.setText(data.getJobEndTime() + "");
         jobIntro.setText(data.getIntro());
     }
 

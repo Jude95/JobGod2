@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp">
                 <com.facebook.drawee.view.SimpleDraweeView
-                    android:id="@+id/promulgator_face"
+                    android:id="@+id/bizFace"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginRight="16dp"
