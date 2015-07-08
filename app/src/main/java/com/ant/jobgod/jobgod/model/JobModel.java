@@ -5,6 +5,7 @@ import android.content.Context;
 import com.android.http.RequestManager;
 import com.android.http.RequestMap;
 import com.ant.jobgod.jobgod.config.API;
+import com.ant.jobgod.jobgod.model.bean.Job;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.bean.JobPage;
 import com.ant.jobgod.jobgod.model.bean.Topic;
@@ -52,6 +53,10 @@ public class JobModel extends AbsModel{
 
     public void getTopicJobList(String topicId,DataCallback<JobBrief[]> callback){
         RequestManager.getInstance().post(API.URL.GetTopicJobList, new RequestMap("topicId",topicId), callback);
+    }
+
+    public void getJobDetail(String jobId,DataCallback<Job> callback){
+        RequestManager.getInstance().post(API.URL.GetJobDetail,new RequestMap("jobId",jobId),callback);
     }
 
     public void getJobList(int page,int count,String citycode,String type,int sort,String key,DataCallback<JobPage> callback){

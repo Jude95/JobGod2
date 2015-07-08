@@ -27,7 +27,7 @@ public class API {
         public static final String GetHotJobList = "https://apiview.com/test/327/Public/getHotJobList";
         public static final String GetJobList = "https://apiview.com/test/327/Public/getJobList";
         public static final String GetTrades = "https://apiview.com/test/327/Public/getTrades";
-
+        public static final String GetJobDetail = "https://apiview.com/test/327/Public/getJobDetail";
     }
 
     public static class KEY{

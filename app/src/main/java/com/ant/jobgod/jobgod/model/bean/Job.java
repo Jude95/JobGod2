@@ -8,7 +8,7 @@ public class Job {
     private String bizId;
     private String bizName;
     private int bizAvgFeel;
-    private int status;
+    private int style;
     private int trade;
     private String title;
     private String intro;
@@ -43,12 +43,12 @@ public class Job {
         this.bizId = bizId;
     }
 
-    public int getStatus() {
-        return status;
+    public int getStyle() {
+        return style;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setStyle(int style) {
+        this.style = style;
     }
 
     public int getTrade() {
