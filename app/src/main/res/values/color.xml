@@ -18,4 +18,7 @@
     <color name="blacktrans_light">#15000000</color>
     <color name="whitetrans">#99ffffff</color>
     <color name="whitetrans_light">#55ffffff</color>
+
+    <color name="colorPrimary">@color/DeepOrange</color>
+    <color name="colorPrimaryDark">@color/DeepOrange900</color>
 </resources>

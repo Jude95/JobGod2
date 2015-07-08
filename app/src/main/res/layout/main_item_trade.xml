@@ -9,7 +9,7 @@
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/sdvTradeImg"
         android:layout_width="match_parent"
-        android:layout_height="96dp"
+        android:layout_height="48dp"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         fresco:actualImageScaleType="focusCrop"
