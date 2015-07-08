@@ -5,16 +5,16 @@
     android:id="@+id/ripple"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:mrl_rippleColor="@drawable/main_drawer_selector">
+    app:mrl_rippleColor="@color/hint_foreground_material_dark">
 
 <RelativeLayout android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/sdvHotJobImg"
-        android:layout_width="96dp"
-        android:layout_height="72dp"
+        android:layout_width="76dp"
+        android:layout_height="56dp"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="8dp"
@@ -23,42 +23,39 @@
         fresco:failureImage="@mipmap/error"
         fresco:progressBarImage="@mipmap/progress_bar"/>
 
-    <LinearLayout android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/sdvHotJobImg"
-        android:layout_alignTop="@+id/sdvHotJobImg"
-        android:layout_alignBottom="@+id/sdvHotJobImg"
-        android:gravity="center">
-
-        <RelativeLayout android:layout_width="match_parent"
-            android:layout_height="wrap_content">
             <TextView android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
+                android:layout_toRightOf="@+id/sdvHotJobImg"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="4dp"
                 android:singleLine="true"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:text="暂无数据"/>
 
-            <TextView android:id="@+id/tvMoneyIntro"
+            <TextView android:id="@+id/tvBizName"
+                android:layout_below="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="16dp"
-                android:textColor="@color/colorPrimary"
-                android:singleLine="true"/>
-        </RelativeLayout>
+                android:layout_alignLeft="@+id/tvTitle"
+                android:singleLine="true"
+                android:text="暂无数据"/>
 
-        <TextView android:id="@+id/tvBizName"
-            android:layout_width="match_parent"
+        <TextView android:id="@+id/tvMoneyIntro"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:singleLine="true"/>
-    </LinearLayout>
+            android:layout_alignBottom="@+id/sdvHotJobImg"
+            android:layout_alignTop="@+id/sdvHotJobImg"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/colorPrimary"
+            android:singleLine="true"
+            android:text="暂无数据"/>
 
     <View android:layout_width="match_parent"
-        android:layout_height="0.3dp"
-        android:background="@color/bgDeep"
+        android:layout_height="@dimen/md_divider_height"
+        android:background="@color/md_divider_black"
         android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

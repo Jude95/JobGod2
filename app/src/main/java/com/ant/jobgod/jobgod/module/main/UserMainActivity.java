@@ -53,7 +53,7 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
     private ActionBarDrawerToggle mDrawerToggle;
     private ArrayAdapter<Trade> tradeArrayAdapter;
     private HotJobAdapter hotJobAdapter;
-    private JobBriefAdapter jobBriefAdapter;
+    private JobBriefAdapter guessAdapter;
     private AdAdapter adAdapter;
 
     @Override
@@ -70,15 +70,16 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
         gdTrade.setAdapter(tradeArrayAdapter = new GridViewAdapter(this, R.layout.main_item_trade));
         pagerviewRecommend.setAdapter(hotJobAdapter = new HotJobAdapter(this));
         lwcrvGuessJob.setOrientation(LinearLayout.VERTICAL);
-        lwcrvGuessJob.setAdapter(jobBriefAdapter = new JobBriefAdapter(this));
+        lwcrvGuessJob.setAdapter(guessAdapter = new JobBriefAdapter(this));
         pvAd.setAdapter(adAdapter = new AdAdapter(this));
-        srlRefresh.setColorScheme(android.R.color.holo_green_light,
+        srlRefresh.setColorSchemeResources(android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
         srlRefresh.setOnRefreshListener(() -> update());
     }
 
     public void setTradeData(Trade[] tradeData) {
+        tradeArrayAdapter.clear();
         tradeArrayAdapter.addAll(tradeData);
     }
 
@@ -90,8 +91,10 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
         hotJobAdapter.setData(jobData);
     }
 
-    public void setJobBriefData(JobBrief[] jobs) {
-        jobBriefAdapter.addAll(jobs);
+    public void setGuessData(JobBrief[] jobs) {
+        guessAdapter.clear();
+        guessAdapter.addAll(jobs);
+        srlRefresh.setRefreshing(false);
     }
 
     public void setAdData(Banner[] banners) {
@@ -99,8 +102,6 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
     }
 
     public void update(){
-        jobBriefAdapter.clear();
         getPresenter().updateData();
-        srlRefresh.setRefreshing(false);
     }
 }

@@ -29,6 +29,13 @@ public class UserMainPresenter extends BasePresenter<UserMainActivity>{
     @Override
     protected void onCreateView(UserMainActivity view) {
         super.onCreateView(view);
+        getData();
+    }
+
+    public void updateData(){
+        getData();
+    }
+    public void getData(){
         getView().setTradeData(JobModel.getInstance().getTrade());
 
         JobModel.getInstance().getTopicList(new DataCallback<Topic[]>() {
@@ -47,7 +54,7 @@ public class UserMainPresenter extends BasePresenter<UserMainActivity>{
         JobModel.getInstance().getJobList(0, 10, LocationModel.getInstance().getCurLocation().getRegionCode() + "", 0 + "", 0, "", new DataCallback<JobPage>() {
             @Override
             public void success(String info, JobPage data) {
-                getView().setJobBriefData(data.getJobs());
+                getView().setGuessData(data.getJobs());
             }
         });
         CommonModel.getInstance().getBanner(new DataCallback<Banner[]>() {
@@ -56,10 +63,6 @@ public class UserMainPresenter extends BasePresenter<UserMainActivity>{
                 getView().setAdData(data);
             }
         });
-    }
-
-    public void updateData(){
-        onCreateView(getView());
     }
 
 }

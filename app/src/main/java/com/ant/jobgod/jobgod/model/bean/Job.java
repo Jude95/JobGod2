@@ -7,6 +7,7 @@ public class Job {
     private String id;
     private String bizId;
     private String bizName;
+    private String bizFace;
     private int bizAvgFeel;
     private int style;
     private int trade;
@@ -33,6 +34,9 @@ public class Job {
 
     public void setId(String id) {
         this.id = id;
+    }
+    public String getBizFace() {
+        return bizFace;
     }
 
     public String getBizId() {

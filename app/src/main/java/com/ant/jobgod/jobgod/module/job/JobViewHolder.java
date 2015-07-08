@@ -1,16 +1,14 @@
 package com.ant.jobgod.jobgod.module.job;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.util.BaseViewHolder;
-import com.ant.jobgod.jobgod.util.Utils;
+import com.balysv.materialripple.MaterialRippleLayout;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 class JobViewHolder extends BaseViewHolder<JobBrief> {
@@ -18,23 +16,15 @@ class JobViewHolder extends BaseViewHolder<JobBrief> {
     private TextView tvTitle;
     private TextView tvMoneyIntro;
     private TextView tvBizName;
+    private MaterialRippleLayout ripple;
 
-    public JobViewHolder(ViewGroup parent, int job_item_brief, Context context) {
+    public JobViewHolder(ViewGroup parent) {
         super(parent, R.layout.job_item_brief);
         sdvHotJobImg= (SimpleDraweeView) itemView.findViewById(R.id.sdvHotJobImg);
         tvTitle= (TextView) itemView.findViewById(R.id.tvTitle);
         tvMoneyIntro= (TextView) itemView.findViewById(R.id.tvMoneyIntro);
         tvBizName=(TextView)itemView.findViewById(R.id.tvBizName);
-        itemView.setClickable(true);
-
-        itemView.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            context.startActivity(new Intent(context, JobBriefDetailActivity.class));
-                                            Utils.Log("点击了");
-                                        }
-                                    }
-        );
+        ripple= (MaterialRippleLayout) itemView.findViewById(R.id.ripple);
     }
 
     @Override
@@ -43,6 +33,11 @@ class JobViewHolder extends BaseViewHolder<JobBrief> {
         tvTitle.setText(data.getTitle());
         tvMoneyIntro.setText(data.getMoneyIntro());
         tvBizName.setText(data.getBizName());
+        ripple.setOnClickListener(v -> {
+            Intent intent=new Intent(ripple.getContext(), JobBriefDetailActivity.class);
+            intent.putExtra("id",data.getId());
+            ripple.getContext().startActivity(intent);
+        });
     }
 
 }
