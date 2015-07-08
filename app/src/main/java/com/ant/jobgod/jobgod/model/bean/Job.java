@@ -6,11 +6,6 @@ package com.ant.jobgod.jobgod.model.bean;
 public class Job {
     private String id;
     private String bizId;
-    private String bizName;
-    private String bizFace;
-    private int bizAvgFeel;
-    private int style;
-    private int trade;
     private String title;
     private String intro;
     private String img;
@@ -20,13 +15,13 @@ public class Job {
     private long applyEndTime;
     private long jobBeginTime;
     private long jobEndTime;
+    private String timeIntro;
+    private String bizName;
+    private String bizFace;
+    private int bizAvgFeel;
     private int personCount;
-    private int personCountIntro;
     private String address;
-    private String addCode;
-    private int collectCount;
     private int applyCount;
-    private int visitCount;
 
     public String getId() {
         return id;
@@ -47,22 +42,9 @@ public class Job {
         this.bizId = bizId;
     }
 
-    public int getStyle() {
-        return style;
+    public String getTimeIntro() {
+        return timeIntro;
     }
-
-    public void setStyle(int style) {
-        this.style = style;
-    }
-
-    public int getTrade() {
-        return trade;
-    }
-
-    public void setTrade(int trade) {
-        this.trade = trade;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -143,14 +125,6 @@ public class Job {
         this.personCount = personCount;
     }
 
-    public int getPersonCountIntro() {
-        return personCountIntro;
-    }
-
-    public void setPersonCountIntro(int personCountIntro) {
-        this.personCountIntro = personCountIntro;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -159,38 +133,12 @@ public class Job {
         this.address = address;
     }
 
-    public String getAddCode() {
-        return addCode;
-    }
-
-    public void setAddCode(String addCode) {
-        this.addCode = addCode;
-    }
-
-    public int getCollectCount() {
-        return collectCount;
-    }
-
-    public void setCollectCount(int collectCount) {
-        this.collectCount = collectCount;
-    }
-
     public int getApplyCount() {
         return applyCount;
     }
-
     public void setApplyCount(int applyCount) {
         this.applyCount = applyCount;
     }
-
-    public int getVisitCount() {
-        return visitCount;
-    }
-
-    public void setVisitCount(int visitCount) {
-        this.visitCount = visitCount;
-    }
-
 
     public int getBizAvgFeel() {
         return bizAvgFeel;
