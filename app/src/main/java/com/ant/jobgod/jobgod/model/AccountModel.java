@@ -3,7 +3,11 @@ package com.ant.jobgod.jobgod.model;
 import android.content.Context;
 
 import com.android.http.RequestManager;
+import com.android.http.RequestMap;
+import com.ant.jobgod.jobgod.config.API;
 import com.ant.jobgod.jobgod.model.bean.AccountInfo;
+import com.ant.jobgod.jobgod.model.callback.DataCallback;
+import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
 
@@ -15,7 +19,7 @@ import java.util.HashMap;
  * 会发送AccountInfo事件
  */
 public class AccountModel extends AbsModel{
-    public static final String ACCOUNTFILE = "account";
+    private static final String ACCOUNTFILE = "account";
     public static AccountModel getInstance() {
         return getInstance(AccountModel.class);
     }
@@ -44,9 +48,52 @@ public class AccountModel extends AbsModel{
         publicEvent(account);
     }
 
-    public void applyToken(String token){
+    private void applyToken(String token){
         HashMap<String, String> map = new HashMap();
         map.put("token", token);
         RequestManager.getInstance().setHeader(map);
     }
+
+
+    public void userRegister(String name,String tel,String password,String verify,StatusCallback callback){
+        RequestMap params = new RequestMap();
+        params.put("name",name);
+        params.put("tel",tel);
+        params.put("pass",password);
+        params.put("code",verify);
+        RequestManager.getInstance().post(API.URL.Register,params,callback);
+    }
+
+    public void isRegistered(String tel,StatusCallback callback){
+        RequestMap params = new RequestMap();
+        params.put("tel",tel);
+        RequestManager.getInstance().post(API.URL.IsRegistered,params,callback);
+    }
+
+    public void userLogin(String tel,String password,StatusCallback callback){
+        RequestMap params = new RequestMap();
+        params.put("tel", tel);
+        params.put("pass", password);
+        RequestManager.getInstance().post(API.URL.Login, params, callback.add(new DataCallback<AccountInfo>() {
+            @Override
+            public void success(String info, AccountInfo data) {
+                setAccount(data);
+            }
+
+            @Override
+            public void error(String errorInfo) {
+
+            }
+        }));
+    }
+
+    public void modifyPassword(String tel,String password,String verify,StatusCallback callback){
+        RequestMap params = new RequestMap();
+        params.put("tel",tel);
+        params.put("pass",password);
+        params.put("code",verify);
+        RequestManager.getInstance().post(API.URL.ModifyPassword, params, callback);
+    }
+
+
 }

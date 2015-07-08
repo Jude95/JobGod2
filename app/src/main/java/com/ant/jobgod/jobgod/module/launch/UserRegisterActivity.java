@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
+import com.ant.jobgod.jobgod.util.Utils;
 
 import nucleus.factory.RequiresPresenter;
 
@@ -112,6 +113,7 @@ public class UserRegisterActivity extends BaseActivity<UserRegisterPresenter> {
     }
 
     public void setRetryEnable(boolean enable){
+        Utils.Log("enable"+enable);
         btnRetry.setEnabled(enable);
         if (enable)btnRetry.setText("重新获取");
     }

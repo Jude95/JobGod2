@@ -2,6 +2,8 @@ package cn.smssdk.gui;
 
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -24,6 +26,7 @@ public class SMSManager {
     private int last = 0;
     private void startTimer(){
         timer = new Timer();
+        notifyEnable();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -42,7 +45,6 @@ public class SMSManager {
             SMSSDK.initSDK(ctx, "587c0a5919c6", "f8652efb1c8a638223bb22d5b02a4279");
             inited = true;
         }
-
         if (last==0) {
             SMSSDK.getVerificationCode("86", number);
             last = 60;
@@ -55,8 +57,14 @@ public class SMSManager {
 
     public void notifyLastTime(){
         for (TimeListener listener:timeList){
+            final TimeListener finalListener = listener;
             try {
-                listener.onLastTimeNotify(last);
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        finalListener.onLastTimeNotify(last);
+                    }
+                });
             }catch (Exception e){
                 unRegisterTimeListenre(listener);
             }
@@ -65,8 +73,14 @@ public class SMSManager {
 
     public void notifyEnable(){
         for (TimeListener listener:timeList){
+            final TimeListener finalListener = listener;
             try {
-            listener.onAbleNotify(last==0);
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        finalListener.onAbleNotify(last == 0);
+                    }
+                });
             }catch (Exception e){
                 unRegisterTimeListenre(listener);
             }

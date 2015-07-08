@@ -21,6 +21,8 @@ public abstract class AbsModel {
 
 
     private final static HashMap<Class<?>,AbsModel> mModelMap = new HashMap<>();
+
+    //每个model自己持有一个EventBus;
     private EventBus eventBus = new EventBus();
     public void registerEvent(Object object){
         eventBus.register(object);
@@ -28,6 +30,7 @@ public abstract class AbsModel {
     protected void publicEvent(Object object){
         eventBus.post(object);
     }
+
 
     public final static void init(Context ctx){
         for (Class m:MODELS) {

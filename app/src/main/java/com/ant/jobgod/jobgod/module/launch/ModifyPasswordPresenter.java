@@ -1,6 +1,6 @@
 package com.ant.jobgod.jobgod.module.launch;
 
-import com.ant.jobgod.jobgod.model.UserModel;
+import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.Utils;
 
@@ -17,7 +17,7 @@ public class ModifyPasswordPresenter extends Presenter<ModifyPasswordActivity> i
     public void checkIsRegister(String number){
         this.number = number;
         getView().showProgress("提交中");
-        UserModel.getInstance().isRegister(number, new StatusCallback() {
+        AccountModel.getInstance().isRegistered(number, new StatusCallback() {
             @Override
             public void result(int status, String info) {
                 getView().dismissProgress();
@@ -42,7 +42,7 @@ public class ModifyPasswordPresenter extends Presenter<ModifyPasswordActivity> i
     }
 
     public void sendModify(String number,String password,String code) {
-        UserModel.getInstance().modifyPassword(number, password, code, new StatusCallback() {
+        AccountModel.getInstance().modifyPassword(number, password, code, new StatusCallback() {
             @Override
             public void success(String info) {
 

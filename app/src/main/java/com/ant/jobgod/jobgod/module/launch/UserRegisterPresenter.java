@@ -3,7 +3,7 @@ package com.ant.jobgod.jobgod.module.launch;
 import android.app.Activity;
 
 import com.ant.jobgod.jobgod.app.BasePresenter;
-import com.ant.jobgod.jobgod.model.UserModel;
+import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.Utils;
 
@@ -25,7 +25,7 @@ public class UserRegisterPresenter extends BasePresenter<UserRegisterActivity> i
     public void checkIsRegister(String number){
         this.number = number;
         getView().showProgress("提交中");
-        UserModel.getInstance().isRegister(number, new StatusCallback() {
+        AccountModel.getInstance().isRegistered(number, new StatusCallback() {
             @Override
             public void result(int status, String info) {
                 getView().dismissProgress();
@@ -52,7 +52,7 @@ public class UserRegisterPresenter extends BasePresenter<UserRegisterActivity> i
 
     public void register(String name,String tel,String pass,String code){
         getView().showProgress("提交中");
-        UserModel.getInstance().register(name, tel, pass, code, new StatusCallback() {
+        AccountModel.getInstance().userRegister(name, tel, pass, code, new StatusCallback() {
             @Override
             public void success(String info) {
                 getView().dismissProgress();

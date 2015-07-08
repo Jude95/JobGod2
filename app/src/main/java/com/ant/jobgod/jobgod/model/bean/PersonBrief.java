@@ -4,6 +4,7 @@ import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.activeandroid.query.Select;
+import com.ant.jobgod.jobgod.model.RongYunModel;
 
 /**
  * Created by Mr.Jude on 2015/2/11.
@@ -56,13 +57,6 @@ public class PersonBrief extends Model {
         return sign;
     }
 
-    public String getNoNullUserName() {
-        if (name == null||name.isEmpty())
-            return "ID"+id;
-        else
-            return id;
-    }
-
     public void saveById(){
         PersonBrief person = new Select().from(PersonBrief.class).where("userId = ?", getUID()).executeSingle();
         if (person == null){
@@ -71,6 +65,7 @@ public class PersonBrief extends Model {
             person.clone(this);
             person.save();
         }
+        RongYunModel.getInstance().updateRongYunPersonBrief(this);
     }
 
 

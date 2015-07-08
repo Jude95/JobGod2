@@ -37,7 +37,7 @@
 
                 <android.support.v7.widget.AppCompatButton
                     android:id="@+id/btnRetry"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="重新获取"
                     android:enabled="false"
