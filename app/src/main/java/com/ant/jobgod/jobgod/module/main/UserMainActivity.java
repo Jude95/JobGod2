@@ -2,7 +2,6 @@ package com.ant.jobgod.jobgod.module.main;
 
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
@@ -48,8 +47,6 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
     RollPagerView pvAd;
     @InjectView(R.id.pagerview_recommend)
     RollPagerView pagerviewRecommend;
-    @InjectView(R.id.srlRefresh)
-    SwipeRefreshLayout srlRefresh;
     private ActionBarDrawerToggle mDrawerToggle;
     private ArrayAdapter<Trade> tradeArrayAdapter;
     private HotJobAdapter hotJobAdapter;
@@ -72,10 +69,6 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
         lwcrvGuessJob.setOrientation(LinearLayout.VERTICAL);
         lwcrvGuessJob.setAdapter(guessAdapter = new JobBriefAdapter(this));
         pvAd.setAdapter(adAdapter = new AdAdapter(this));
-        srlRefresh.setColorSchemeResources(android.R.color.holo_green_light,
-                android.R.color.holo_orange_light,
-                android.R.color.holo_red_light);
-        srlRefresh.setOnRefreshListener(() -> update());
     }
 
     public void setTradeData(Trade[] tradeData) {
@@ -94,14 +87,10 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
     public void setGuessData(JobBrief[] jobs) {
         guessAdapter.clear();
         guessAdapter.addAll(jobs);
-        srlRefresh.setRefreshing(false);
     }
 
     public void setAdData(Banner[] banners) {
         adAdapter.setData(banners);
     }
 
-    public void update(){
-        getPresenter().updateData();
-    }
 }

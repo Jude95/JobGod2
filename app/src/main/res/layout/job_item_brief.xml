@@ -48,7 +48,7 @@
             android:layout_alignTop="@+id/sdvHotJobImg"
             android:layout_alignParentRight="true"
             android:layout_marginRight="16dp"
-            android:gravity="center_vertical"
+            android:layout_centerInParent="true"
             android:textColor="@color/colorPrimary"
             android:singleLine="true"
             android:text="暂无数据"/>
