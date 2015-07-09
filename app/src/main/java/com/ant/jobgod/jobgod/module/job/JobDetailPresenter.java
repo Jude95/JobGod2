@@ -19,7 +19,6 @@ public class JobDetailPresenter extends BasePresenter<JobDetailActivity> {
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
-
     }
 
     @Override
@@ -49,10 +48,9 @@ public class JobDetailPresenter extends BasePresenter<JobDetailActivity> {
             @Override
             public void success(String info, Job data) {
                 if (data == null) {
-                    Utils.Log("datanull---------");
                 }
                 else
-                Utils.Log("datagettitle:"+data.getTitle());
+                Utils.Log("jobdetail:"+data.getIntro());
                 jobDetailData = data;
                 getView().setData(data);
             }
