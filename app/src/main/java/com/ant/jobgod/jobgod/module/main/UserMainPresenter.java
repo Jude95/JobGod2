@@ -23,7 +23,7 @@ public class UserMainPresenter extends BasePresenter<UserMainActivity>{
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
         PushAgent.getInstance(getView()).enable();
-        UmengUpdateAgent.update(getView());
+        //UmengUpdateAgent.update(getView());
     }
 
     @Override

@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * Created by Mr.Jude on 2015/7/7.
  */
-public class Job implements Serializable, Parcelable {
+public class Job  {
     private String id;
     private String bizId;
     private String title;
@@ -163,13 +163,11 @@ public class Job implements Serializable, Parcelable {
     }
 
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public void setTimeIntro(String timeIntro) {
+        this.timeIntro = timeIntro;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-
+    public void setBizFace(String bizFace) {
+        this.bizFace = bizFace;
     }
 }

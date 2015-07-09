@@ -13,6 +13,8 @@ import android.widget.TextView;
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
 import com.ant.jobgod.jobgod.model.bean.Job;
+import com.ant.jobgod.jobgod.util.RecentDateFormater;
+import com.ant.jobgod.jobgod.util.TimeTransform;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import butterknife.ButterKnife;
@@ -39,10 +41,6 @@ public class JobDetailActivity extends BaseActivity<JobDetailPresenter> {
     TextView applyBeginTime;
     @InjectView(R.id.applyEndTime)
     TextView applyEndTime;
-    @InjectView(R.id.jobBeginTime)
-    TextView jobBeginTime;
-    @InjectView(R.id.jobEndTime)
-    TextView jobEndTime;
     @InjectView(R.id.timeIntro)
     TextView timeIntro;
     @InjectView(R.id.jobPostedcount)
@@ -80,17 +78,18 @@ public class JobDetailActivity extends BaseActivity<JobDetailPresenter> {
     }
 
     public void setData(Job data) {
-        setTitle(data.getTitle());
+        collapsingToolbar.setTitle(data.getTitle());
+        timeIntro.setText(data.getTimeIntro());
         jobImg.setImageURI(Uri.parse(data.getImg()));
         bizFace.setImageURI(Uri.parse(data.getBizFace()));
         bizName.setText(data.getBizName());
         jobAddress.setText(data.getAddress());
-        jobCount.setText(data.getApplyCount());
-        applyBeginTime.setText(data.getApplyBeginTime() + "");
-        applyEndTime.setText(data.getApplyCount() + "");
-        jobBeginTime.setText(data.getJobBeginTime() + "");
-        jobEndTime.setText(data.getJobEndTime() + "");
+        jobCount.setText(data.getApplyCount()+"人");
+        applyBeginTime.setText(new TimeTransform(data.getApplyBeginTime()).toString(new RecentDateFormater()));
+        applyEndTime.setText(new TimeTransform(data.getApplyEndTime()).toString(new RecentDateFormater()));
         jobIntro.setText(data.getIntro());
+        jobAsk.setText(data.getAsk());
+        jobWage.setText(data.getMoneyIntro());
     }
 
 }

@@ -30,9 +30,20 @@ public class UserLoginPresenter extends BasePresenter<UserLoginActivity> {
         mController.getConfig().setSsoHandler(new SinaSsoHandler());
     }
 
+    @Override
+    protected void onTakeView(UserLoginActivity view) {
+        super.onTakeView(view);
+        String number = getView().getIntent().getStringExtra("number");
+        String password = getView().getIntent().getStringExtra("password");
+        if (number!=null&&password!=null)
+        getView().setNumberAndPassword(number,password);
+    }
+
     public void login(String tel,String pass){
 
     }
+
+
 
     public void loginByQQ(){
         mController.doOauthVerify(getView(), SHARE_MEDIA.QQ,new SocializeListeners.UMAuthListener() {
