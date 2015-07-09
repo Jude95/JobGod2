@@ -1,9 +1,14 @@
 package com.ant.jobgod.jobgod.model.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
 /**
  * Created by Mr.Jude on 2015/7/7.
  */
-public class Job {
+public class Job implements Serializable, Parcelable {
     private String id;
     private String bizId;
     private String title;
@@ -155,5 +160,16 @@ public class Job {
 
     public void setBizName(String bizName) {
         this.bizName = bizName;
+    }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
     }
 }
