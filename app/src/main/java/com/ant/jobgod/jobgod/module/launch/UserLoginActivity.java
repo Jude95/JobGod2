@@ -78,5 +78,8 @@ public class UserLoginActivity extends BaseActivity<UserLoginPresenter> {
         btnModifyPassword.setError("手机号还没有注册");
     }
 
-
+    public void setNumberAndPassword(String number,String password){
+        tilNumber.getEditText().setText(number);
+        tilPassword.getEditText().setText(password);
+    }
 }

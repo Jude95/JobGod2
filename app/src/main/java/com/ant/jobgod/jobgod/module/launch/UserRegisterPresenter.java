@@ -1,6 +1,7 @@
 package com.ant.jobgod.jobgod.module.launch;
 
 import android.app.Activity;
+import android.content.Intent;
 
 import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.AccountModel;
@@ -57,7 +58,10 @@ public class UserRegisterPresenter extends BasePresenter<UserRegisterActivity> i
             public void success(String info) {
                 getView().dismissProgress();
                 Utils.Toast("注册成功，诚客兼职欢迎您");
-                getView().setResult(Activity.RESULT_OK);
+                Intent i = new Intent();
+                i.putExtra("number",tel);
+                i.putExtra("password",tel);
+                getView().setResult(Activity.RESULT_OK,i);
                 getView().finish();
             }
 
