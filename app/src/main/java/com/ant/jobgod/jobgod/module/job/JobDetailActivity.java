@@ -1,6 +1,7 @@
 package com.ant.jobgod.jobgod.module.job;
 
 import android.content.Intent;
+import android.graphics.PointF;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -61,20 +62,13 @@ public class JobDetailActivity extends BaseActivity<JobDetailPresenter> {
     FloatingActionButton floatingActionButton;
     @InjectView(R.id.bizFace)
     SimpleDraweeView bizFace;
-    private Intent intent;
-    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.job_activity_job_brief_detail);
         ButterKnife.inject(this);
-        intent = getIntent();
-        id = intent.getStringExtra("id");
-    }
-
-    public String getId() {
-        return id;
+        jobImg.getHierarchy().setActualImageFocusPoint(new PointF(0.5f,0));
     }
 
     public void setData(Job data) {
