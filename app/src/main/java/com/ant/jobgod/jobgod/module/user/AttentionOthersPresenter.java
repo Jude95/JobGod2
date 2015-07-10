@@ -18,7 +18,5 @@ public class AttentionOthersPresenter extends Presenter<AttentionOthersFragment>
         super.onCreateView(view);
     }
 
-    public void setUersData(){
-
-    }
+    public void setUersData(){}
 }

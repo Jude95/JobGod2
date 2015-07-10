@@ -29,7 +29,7 @@ import nucleus.factory.RequiresPresenter;
 @RequiresPresenter(UserMainPresenter.class)
 public class UserMainActivity extends BaseActivity<UserMainPresenter> {
 
-    @InjectView(R.id.viewpager)
+    @InjectView(R.id.viewPager)
     ViewPager viewpager;
     @InjectView(R.id.drawerLayout)
     DrawerLayout drawerLayout;
