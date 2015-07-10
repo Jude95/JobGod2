@@ -38,6 +38,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:gravity="top|center_horizontal"
+                android:textSize="12sp"
                 android:text=""
                 android:textColor="@android:color/tertiary_text_light"/>
             <com.facebook.drawee.view.SimpleDraweeView
@@ -95,6 +96,8 @@
                         android:layout_marginRight="16dp"
                         android:gravity="top|center_horizontal"
                         android:text=""
+
+                        android:textSize="12sp"
                         android:textColor="@android:color/tertiary_text_light"/>
                     </LinearLayout>
                 <com.facebook.drawee.view.SimpleDraweeView
@@ -144,6 +147,8 @@
                     android:layout_marginRight="16dp"
                     android:gravity="top|center_horizontal"
                     android:text=""
+
+                    android:textSize="12sp"
                     android:textColor="@android:color/tertiary_text_light"/>
             </LinearLayout>
 
