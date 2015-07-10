@@ -1,8 +1,14 @@
 package com.ant.jobgod.jobgod.module.main;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.LinearLayout;
@@ -16,6 +22,7 @@ import com.ant.jobgod.jobgod.model.bean.Topic;
 import com.ant.jobgod.jobgod.model.bean.Trade;
 import com.ant.jobgod.jobgod.module.job.JobBriefAdapter;
 import com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.jude.rollviewpager.RollPagerView;
 
 import butterknife.ButterKnife;
@@ -64,7 +71,7 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mDrawerLayout.post(() -> mDrawerToggle.syncState());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        gdTrade.setAdapter(tradeArrayAdapter = new GridViewAdapter(this, R.layout.main_item_trade));
+        gdTrade.setAdapter(tradeArrayAdapter = new TradeAdapter(this, R.layout.main_item_trade));
         pagerviewRecommend.setAdapter(hotJobAdapter = new HotJobAdapter(this));
         lwcrvGuessJob.setOrientation(LinearLayout.VERTICAL);
         lwcrvGuessJob.setAdapter(guessAdapter = new JobBriefAdapter(this));
@@ -93,4 +100,34 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
         adAdapter.setData(banners);
     }
 
+    static class TradeAdapter extends ArrayAdapter<Trade> {
+        @InjectView(R.id.sdvTradeImg)
+        SimpleDraweeView sdvTradeImg;
+        @InjectView(R.id.tvTitle)
+        TextView tvTitle;
+
+        public TradeAdapter(Context context, int resource) {
+            super(context, resource);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            LayoutInflater inflater = LayoutInflater.from(getContext());
+            View item = inflater.inflate(R.layout.main_item_trade, null);
+            ButterKnife.inject(this, item);
+            if(getItem(position).getIcon()!=null){
+                sdvTradeImg.setAspectRatio(1f);
+                sdvTradeImg.setImageURI(Uri.parse(getItem(position).getIcon()));
+            }
+            tvTitle.setText(getItem(position).getName());
+            item.setOnClickListener(v -> {
+                Intent intent=new Intent(getContext(),TradeDetailActivity.class);
+                intent.putExtra("id",getItem(position).getId());
+                getContext().startActivity(intent);
+            });
+            return item;
+        }
+
+
+    }
 }

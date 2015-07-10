@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.ant.jobgod.jobgod.R;
-import com.ant.jobgod.jobgod.module.main.SimpleAdapter;
+import com.ant.jobgod.jobgod.module.main.TradeDetailActivity;
 import com.ant.jobgod.jobgod.util.Utils;
 
 import java.util.List;
@@ -21,11 +21,11 @@ import java.util.List;
 public class RegionView extends LinearLayout {
 
     private RecyclerView province;
-    private SimpleAdapter provinceAdapter;
+    private TradeDetailActivity.SimpleAdapter provinceAdapter;
     private RecyclerView city;
-    private SimpleAdapter cityAdapter;
+    private TradeDetailActivity.SimpleAdapter cityAdapter;
     private RecyclerView region;
-    private SimpleAdapter regionAdapter;
+    private TradeDetailActivity.SimpleAdapter regionAdapter;
     private int height;
     private List<String> provinceList,cityList,regionList;
 
@@ -55,11 +55,11 @@ public class RegionView extends LinearLayout {
         city.setLayoutParams(new LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
         region.setLayoutParams(new LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT,1));
 
-        provinceAdapter=new SimpleAdapter(getContext());
+        provinceAdapter=new TradeDetailActivity.SimpleAdapter(getContext());
         province.setAdapter(provinceAdapter);
-        cityAdapter=new SimpleAdapter(getContext());
+        cityAdapter=new TradeDetailActivity.SimpleAdapter(getContext());
         city.setAdapter(cityAdapter);
-        regionAdapter=new SimpleAdapter(getContext());
+        regionAdapter=new TradeDetailActivity.SimpleAdapter(getContext());
         region.setAdapter(regionAdapter);
 
         View view1 = new View(getContext());
