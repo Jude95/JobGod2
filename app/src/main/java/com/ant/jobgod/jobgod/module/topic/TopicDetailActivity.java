@@ -32,8 +32,9 @@ public class TopicDetailActivity extends BaseActivity<TopicDetailPresenter> {
     SimpleDraweeView imgTopic;
     @InjectView(R.id.collapsingToolbar)
     CollapsingToolbarLayout collapsingToolbar;
-    @InjectView(R.id.ryJobBrief)
-    RecyclerView ryJobBrief;
+    @InjectView(R.id.recyclerJobBrief)
+    RecyclerView recyclerJobBrief;
+
 
     private TopicHeaderView headerView;
 
@@ -56,19 +57,19 @@ public class TopicDetailActivity extends BaseActivity<TopicDetailPresenter> {
     }
 
     public void init() {
-        headerView=new TopicHeaderView();
-        ryJobBrief.setLayoutManager(new LinearLayoutManager(this));
+        headerView = new TopicHeaderView();
+        recyclerJobBrief.setLayoutManager(new LinearLayoutManager(this));
         jobBriefAdapter = new JobBriefAdapter(this);
         jobBriefAdapter.addHeader(headerView);
-        ryJobBrief.setAdapter(jobBriefAdapter);
+        recyclerJobBrief.setAdapter(jobBriefAdapter);
         imgTopic.setImageURI(Uri.parse(topic.getImg()));
         collapsingToolbar.setTitle(topic.getTitle());
     }
 
     public void setJobBriefData(JobBrief[] data) {
+        jobBriefAdapter.clear();
         jobBriefAdapter.addAll(data);
     }
-
 
 
     class TopicHeaderView implements RecyclerArrayAdapter.HeaderView {
@@ -79,10 +80,10 @@ public class TopicDetailActivity extends BaseActivity<TopicDetailPresenter> {
             textView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Utils.dip2px(72)));
             textView.setPadding(Utils.dip2px(16), Utils.dip2px(16), Utils.dip2px(16), Utils.dip2px(16));
             textView.setId(R.id.text);
-            View divider=new View(TopicDetailActivity.this);
-            divider.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,Utils.dip2px(1)));
+            View divider = new View(TopicDetailActivity.this);
+            divider.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Utils.dip2px(1)));
             divider.setBackgroundColor(R.color.md_divider_white);
-            LinearLayout linearLayout=new LinearLayout(TopicDetailActivity.this);
+            LinearLayout linearLayout = new LinearLayout(TopicDetailActivity.this);
             linearLayout.setOrientation(LinearLayout.VERTICAL);
             linearLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             linearLayout.addView(textView);
@@ -92,7 +93,7 @@ public class TopicDetailActivity extends BaseActivity<TopicDetailPresenter> {
 
         @Override
         public void onBindView(View headerView) {
-            TextView textView= (TextView) headerView.findViewById(R.id.text);
+            TextView textView = (TextView) headerView.findViewById(R.id.text);
             textView.setText(topic.getSubTitle());
         }
     }
