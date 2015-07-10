@@ -17,7 +17,10 @@ import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.bean.Topic;
 import com.ant.jobgod.jobgod.module.job.JobBriefAdapter;
 import com.ant.jobgod.jobgod.module.job.JobDetailActivity;
+import com.ant.jobgod.jobgod.util.Utils;
 import com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView;
+import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
+import com.facebook.drawee.generic.RoundingParams;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
@@ -56,7 +59,7 @@ public class RecommendFragment extends NucleusFragment<RecommendPresenter> {
         super.onCreateView(inflater,container,savedInstanceState);
         View rootView = inflater.inflate(R.layout.main_fragment_recommend, container, false);
         ButterKnife.inject(this, rootView);
-        vpgAd.setAdapter(mAdAdapter = new AdAdapter(getActivity()));
+        vpgAd.setAdapter(mAdAdapter = new AdAdapter());
         vpgHotJob.setAdapter(mHotJobAdapter = new HotJobAdapter(getActivity()));
         listGuess.setAdapter(mGuessAdapter = new JobBriefAdapter(getActivity()));
         return rootView;
@@ -89,22 +92,19 @@ public class RecommendFragment extends NucleusFragment<RecommendPresenter> {
      */
     public static class AdAdapter extends StaticPagerAdapter {
 
-        @InjectView(R.id.sdvAdImg)
-        SimpleDraweeView sdvAdImg;
+        SimpleDraweeView img;
         private Banner[] banners;
-        private Context context;
-
-        public AdAdapter(Context context) {
-            this.context = context;
-        }
 
         @Override
         public View getView(ViewGroup container, int position) {
-            LayoutInflater inflater = LayoutInflater.from(context);
-            View view = inflater.inflate(R.layout.main_item_ad, container, false);
-            ButterKnife.inject(this, view);
-            sdvAdImg.setImageURI(Uri.parse(banners[position].getImg()));
-            return view;
+            img = new SimpleDraweeView(container.getContext());
+            img.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,Utils.dip2px(180)));
+            GenericDraweeHierarchyBuilder builder =
+                    new GenericDraweeHierarchyBuilder(container.getResources());
+            builder.setRoundingParams(RoundingParams.fromCornersRadius(Utils.dip2px(2)));
+            img.setHierarchy(builder.build());
+            img.setImageURI(Uri.parse(banners[position].getImg()));
+            return img;
         }
 
         @Override

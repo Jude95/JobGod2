@@ -1,5 +1,6 @@
 package com.ant.jobgod.jobgod.module.main;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -10,6 +11,10 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
@@ -32,7 +37,9 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
     AppBarLayout appBarLayout;
     @InjectView(R.id.coordinator_layout)
     CoordinatorLayout coordinatorLayout;
-    @InjectView(R.id.tabLayout)
+    @InjectView(R.id.toolbar)
+    Toolbar toolbar;
+    @InjectView(R.id.tab_layout)
     TabLayout tabLayout;
 
     private ActionBarDrawerToggle mDrawerToggle;
@@ -42,6 +49,7 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity_usermain);
+        setTransparentStatusBar();
         ButterKnife.inject(this);
         setSwipeBackEnable(false);
         tabLayout.setTabTextColors(getResources().getColor(R.color.WhiteTrans80), getResources().getColor(R.color.White));
@@ -56,7 +64,7 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
         drawerLayout.setDrawerListener(mDrawerToggle);
     }
 
-    public class MainPagerAdapter extends FragmentStatePagerAdapter{
+    public class MainPagerAdapter extends FragmentStatePagerAdapter {
 
         public MainPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -64,7 +72,7 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
 
         @Override
         public Fragment getItem(int position) {
-            switch (position){
+            switch (position) {
                 case 0:
                     return new RecommendFragment();
                 case 1:
@@ -76,7 +84,7 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            switch (position){
+            switch (position) {
                 case 0:
                     return "推荐";
                 case 1:
@@ -92,5 +100,13 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
         }
     }
 
-
+    public void setTransparentStatusBar(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            Window window = getWindow();
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+            window.setStatusBarColor(getResources().getColor(android.R.color.transparent));
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        }
+    }
 }
