@@ -227,6 +227,10 @@
             android:name=".module.user.UserDetailActivity"
             android:label="@string/title_activity_user_detail" >
         </activity>
+        <activity
+            android:name=".module.topic.TopicDetailActivity"
+            android:label="@string/title_activity_topic_detail" >
+        </activity>
     </application>
 
 </manifest>

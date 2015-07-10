@@ -1,9 +1,11 @@
 package com.ant.jobgod.jobgod.model.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by Mr.Jude on 2015/7/7.
  */
-public class Topic {
+public class Topic implements Serializable{
     private String id;
     private String img;
     private String subTitle;

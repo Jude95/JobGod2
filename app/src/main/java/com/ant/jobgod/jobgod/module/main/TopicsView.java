@@ -1,6 +1,7 @@
 package com.ant.jobgod.jobgod.module.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.Topic;
+import com.ant.jobgod.jobgod.module.topic.TopicDetailActivity;
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -77,9 +79,9 @@ public class TopicsView extends RelativeLayout {
             container1.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    Intent i = new Intent(v.getContext(), TopicDetailActivity.class);
-//                    i.putExtra("topic", topics[0]);
-//                    v.getContext().startActivity(i);
+                    Intent i = new Intent(v.getContext(), TopicDetailActivity.class);
+                    i.putExtra("topic", topics[0]);
+                    v.getContext().startActivity(i);
                 }
             });
             title1.setText(topics[0].getTitle());
@@ -91,9 +93,9 @@ public class TopicsView extends RelativeLayout {
             container2.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    Intent i = new Intent(v.getContext(), TopicDetailActivity.class);
-//                    i.putExtra("topic",topics[1]);
-//                    v.getContext().startActivity(i);
+                    Intent i = new Intent(v.getContext(), TopicDetailActivity.class);
+                    i.putExtra("topic",topics[1]);
+                    v.getContext().startActivity(i);
                 }
             });
             title2.setText(topics[1].getTitle());
@@ -106,9 +108,9 @@ public class TopicsView extends RelativeLayout {
             container3.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    Intent i = new Intent(v.getContext(), TopicDetailActivity.class);
-//                    i.putExtra("topic", topics[2]);
-//                    v.getContext().startActivity(i);
+                    Intent i = new Intent(v.getContext(), TopicDetailActivity.class);
+                    i.putExtra("topic", topics[2]);
+                    v.getContext().startActivity(i);
                 }
             });
             title3.setText(topics[2].getTitle());
