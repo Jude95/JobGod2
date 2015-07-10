@@ -29,6 +29,7 @@ public class JobListPresenter extends Presenter<JobListFragment> {
             public void success(String info, JobPage data) {
                 getView().addJob(data.getJobs());
                 jobs.addAll(Lists.newArrayList(data.getJobs()));
+                page++;
             }
         });
     }
@@ -36,7 +37,7 @@ public class JobListPresenter extends Presenter<JobListFragment> {
     @Override
     protected void onCreateView(JobListFragment view) {
         super.onCreateView(view);
-        if (jobs!=null)getView().addJob((JobBrief[]) jobs.toArray());
+        if (jobs!=null)getView().addJob(jobs.toArray(new JobBrief[0]));
     }
 
     public void refresh(){
@@ -62,7 +63,6 @@ public class JobListPresenter extends Presenter<JobListFragment> {
                     }
                     getView().stopRefresh();
                     getView().addJob(data.getJobs());
-                    jobs.clear();
                     jobs.addAll(Lists.newArrayList(data.getJobs()));
                     page++;
                 }else{
