@@ -48,6 +48,7 @@ public class RecommendFragment extends NucleusFragment<RecommendPresenter> {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater,container,savedInstanceState);
+
         View rootView = inflater.inflate(R.layout.main_fragment_recommend, container, false);
         ButterKnife.inject(this, rootView);
         vpgAd.setAdapter(mAdAdapter = new AdAdapter());
