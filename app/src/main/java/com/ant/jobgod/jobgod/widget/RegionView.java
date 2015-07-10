@@ -22,14 +22,10 @@ public class RegionView extends LinearLayout {
 
     private RecyclerView province;
     private SimpleAdapter provinceAdapter;
-//    private RegionHeaderView provinceHeader;
     private RecyclerView city;
     private SimpleAdapter cityAdapter;
-//    private RegionHeaderView cityHeader;
     private RecyclerView region;
     private SimpleAdapter regionAdapter;
-//    private RegionHeaderView regionHeader;
-//    private RegionSelectCallback callback;
     private int height;
     private List<String> provinceList,cityList,regionList;
 
@@ -66,13 +62,12 @@ public class RegionView extends LinearLayout {
         regionAdapter=new SimpleAdapter(getContext());
         region.setAdapter(regionAdapter);
 
-        Utils.Log("provicedata:" + provinceAdapter.getItemCount());
         View view1 = new View(getContext());
         View view2 = new View(getContext());
         view1.setLayoutParams(new LayoutParams(Utils.dip2px(0.8f),ViewGroup.LayoutParams.MATCH_PARENT));
         view2.setLayoutParams(new LayoutParams(Utils.dip2px(0.8f),ViewGroup.LayoutParams.MATCH_PARENT));
-        view1.setBackgroundColor(R.color.ripple);
-        view2.setBackgroundColor(R.color.ripple);
+        view1.setBackgroundColor(R.color.divide);
+        view2.setBackgroundColor(R.color.divide);
 
         addView(province);
         addView(view1);

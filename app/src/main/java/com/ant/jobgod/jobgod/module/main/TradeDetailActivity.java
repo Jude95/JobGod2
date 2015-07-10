@@ -76,8 +76,8 @@ public class TradeDetailActivity extends BaseActivity<TradeDetailPresenter> {
         typeAdapter=new TypeAdapter(this,R.layout.main_item_hotjob);
 
         createRegionPopupWindow();
-        createTypePopupWindow(Utils.dip2px(240));
-        ctreateSortPopupWindow(Utils.dip2px(240));
+        createTypePopupWindow();
+        ctreateSortPopupWindow();
 
         btnRegion.setOnClickListener(v -> {
             if (IS_OPEN_POPUP_WINDOW == 0) {
@@ -115,6 +115,7 @@ public class TradeDetailActivity extends BaseActivity<TradeDetailPresenter> {
     public void createRegionPopupWindow() {
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
+        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,Utils.dip2px(240)));
 
         View view = new View(this);
         view.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Utils.dip2px(4)));
@@ -123,7 +124,7 @@ public class TradeDetailActivity extends BaseActivity<TradeDetailPresenter> {
         linearLayout.addView(mRegionView);
         linearLayout.addView(view);
 
-        mRegionPopupWindow = new PopupWindow(linearLayout, Utils.getScreenWidth(), Utils.dip2px(240));
+        mRegionPopupWindow = new PopupWindow(linearLayout, Utils.getScreenWidth(), ViewGroup.LayoutParams.WRAP_CONTENT);
         mRegionPopupWindow.setTouchable(false);
         mRegionPopupWindow.setFocusable(true);
     }
@@ -135,10 +136,10 @@ public class TradeDetailActivity extends BaseActivity<TradeDetailPresenter> {
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public void createTypePopupWindow(int height){
+    public void createTypePopupWindow(){
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
-        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Utils.dip2px(240)));
 
         GridView gridView = new GridView(this);
         gridView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
@@ -157,7 +158,7 @@ public class TradeDetailActivity extends BaseActivity<TradeDetailPresenter> {
         linearLayout.addView(gridView);
         linearLayout.addView(view);
 
-        mTypePopupWindow=new PopupWindow(linearLayout,Utils.getScreenWidth(),height);
+        mTypePopupWindow=new PopupWindow(linearLayout,Utils.getScreenWidth(), ViewGroup.LayoutParams.WRAP_CONTENT);
         mTypePopupWindow.setFocusable(true);
         mTypePopupWindow.setTouchable(false);
     }
@@ -167,7 +168,7 @@ public class TradeDetailActivity extends BaseActivity<TradeDetailPresenter> {
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public void ctreateSortPopupWindow(int height){
+    public void ctreateSortPopupWindow(){
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
         linearLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
@@ -194,6 +195,7 @@ public class TradeDetailActivity extends BaseActivity<TradeDetailPresenter> {
         view.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Utils.dip2px(4)));
         view.setBackground(getResources().getDrawable(R.drawable.bottom_shadow));
         linearLayout.addView(view);
+
         mSortPopupWindow=new PopupWindow(linearLayout,Utils.getScreenWidth(), ViewGroup.LayoutParams.WRAP_CONTENT);
         mSortPopupWindow.setFocusable(true);
         mSortPopupWindow.setTouchable(false);

@@ -14,6 +14,7 @@ import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.AccountInfo;
 import com.ant.jobgod.jobgod.module.job.JobDetailActivity;
 import com.ant.jobgod.jobgod.module.setting.SettingActivity;
+import com.ant.jobgod.jobgod.module.user.UserDetailActivity;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import butterknife.ButterKnife;
@@ -55,8 +56,9 @@ public class UserDrawerFragment extends NucleusFragment<UserDrawerPresenter> {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_fragment_drawer, container, false);
         ButterKnife.inject(this, view);
-        viewMessage.setOnClickListener((View)-> getPresenter().startActivity(JobDetailActivity.class));
+        viewMessage.setOnClickListener((View) -> getPresenter().startActivity(JobDetailActivity.class));
         viewSetting.setOnClickListener((View)-> getPresenter().startActivity(SettingActivity.class));
+        viewInformation.setOnClickListener(v -> getPresenter().startActivity(UserDetailActivity.class));
         imgFace.setImageURI(Uri.parse("http://img.hb.aicdn.com/83baf35e3d9f9069db3d6bbe87358b877664425532114-BzeCQd_fw658"));
         return view;
     }

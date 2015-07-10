@@ -1,6 +1,5 @@
 package com.ant.jobgod.jobgod.module.job;
 
-import android.content.Intent;
 import android.graphics.PointF;
 import android.net.Uri;
 import android.os.Bundle;
@@ -66,7 +65,7 @@ public class JobDetailActivity extends BaseActivity<JobDetailPresenter> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.job_activity_job_brief_detail);
+        setContentView(R.layout.job_activity_job_detail);
         ButterKnife.inject(this);
         jobImg.getHierarchy().setActualImageFocusPoint(new PointF(0.5f,0));
     }
