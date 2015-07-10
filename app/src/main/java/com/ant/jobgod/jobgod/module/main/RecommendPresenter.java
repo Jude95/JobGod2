@@ -2,10 +2,8 @@ package com.ant.jobgod.jobgod.module.main;
 
 import com.ant.jobgod.jobgod.model.CommonModel;
 import com.ant.jobgod.jobgod.model.JobModel;
-import com.ant.jobgod.jobgod.model.LocationModel;
 import com.ant.jobgod.jobgod.model.bean.Banner;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
-import com.ant.jobgod.jobgod.model.bean.JobPage;
 import com.ant.jobgod.jobgod.model.bean.Topic;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 
@@ -25,17 +23,10 @@ public class RecommendPresenter extends Presenter<RecommendFragment>{
                 getView().setTopic(data);
             }
         });
-        JobModel.getInstance().getHotJobList(new DataCallback<JobBrief[]>() {
+        JobModel.getInstance().getRecommendList(new DataCallback<JobBrief[]>() {
             @Override
             public void success(String info, JobBrief[] data) {
-                getView().setHotJob(data);
-            }
-        });
-
-        JobModel.getInstance().getJobList(0, 10, LocationModel.getInstance().getCurLocation().getRegionCode() + "", 0 + "", 0, "", new DataCallback<JobPage>() {
-            @Override
-            public void success(String info, JobPage data) {
-                getView().setGuess(data.getJobs());
+                getView().setRecommend(data);
             }
         });
         CommonModel.getInstance().getBanner(new DataCallback<Banner[]>() {

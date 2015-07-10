@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:background="@color/White">
 
     <com.balysv.materialripple.MaterialRippleLayout
         android:id="@+id/ripple1"
@@ -17,8 +18,8 @@
         android:id="@+id/container1"
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:layout_marginRight="0.3dp"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
             <TextView
                 android:id="@+id/title1"
                 android:layout_width="match_parent"
@@ -39,6 +40,7 @@
                 android:layout_marginRight="16dp"
                 android:gravity="top|center_horizontal"
                 android:textSize="12sp"
+                android:maxLength="2"
                 android:text=""
                 android:textColor="@android:color/tertiary_text_light"/>
             <com.facebook.drawee.view.SimpleDraweeView
@@ -46,14 +48,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"
-                fresco:actualImageScaleType="centerInside"
+                fresco:actualImageScaleType="centerCrop"
                 fresco:failureImage="@mipmap/error"
                 fresco:failureImageScaleType="centerInside"
                 fresco:progressBarImage="@mipmap/progress_bar"
                 fresco:progressBarImageScaleType="centerInside"/>
     </LinearLayout>
     </com.balysv.materialripple.MaterialRippleLayout>
-
+    <View
+        android:layout_width="@dimen/md_divider_height"
+        android:layout_height="match_parent"
+        android:background="@color/md_divider_black"/>
     <LinearLayout
         android:layout_width="0dp"
         android:layout_weight="3"
@@ -65,12 +70,15 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            app:mrl_rippleColor="@color/ripple">
+            app:mrl_rippleColor="@color/ripple"
+            >
         <LinearLayout
             android:id="@+id/container2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="0.3dp">
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            >
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="2"
@@ -94,9 +102,9 @@
                         android:layout_weight="1"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
+                        android:maxLength="2"
                         android:gravity="top|center_horizontal"
                         android:text=""
-
                         android:textSize="12sp"
                         android:textColor="@android:color/tertiary_text_light"/>
                     </LinearLayout>
@@ -105,26 +113,33 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    fresco:actualImageScaleType="focusCrop"
+                    fresco:actualImageScaleType="centerCrop"
                     fresco:failureImage="@mipmap/error"
                     fresco:progressBarImage="@mipmap/progress_bar"
                     />
             </LinearLayout>
         </com.balysv.materialripple.MaterialRippleLayout>
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/md_divider_height"
+            android:background="@color/md_divider_black"/>
         <com.balysv.materialripple.MaterialRippleLayout
             android:id="@+id/ripple3"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+
             app:mrl_rippleColor="@color/ripple">
         <LinearLayout
             android:id="@+id/container3"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            >
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="2"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:orientation="vertical"
                 android:layout_height="match_parent">
                 <TextView
@@ -146,8 +161,8 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     android:gravity="top|center_horizontal"
+                    android:maxLength="2"
                     android:text=""
-
                     android:textSize="12sp"
                     android:textColor="@android:color/tertiary_text_light"/>
             </LinearLayout>
@@ -158,7 +173,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 fresco:failureImage="@mipmap/error"
-                fresco:failureImageScaleType="centerInside"
+                fresco:failureImageScaleType="centerCrop"
                 fresco:progressBarImage="@mipmap/progress_bar"
                 fresco:progressBarImageScaleType="centerInside"
                 fresco:actualImageScaleType="centerInside"/>

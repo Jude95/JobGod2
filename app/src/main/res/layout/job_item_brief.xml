@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.balysv.materialripple.MaterialRippleLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/tools"
     android:id="@+id/ripple"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-<RelativeLayout android:orientation="horizontal"
+<RelativeLayout
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="64dp">
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/sdvHotJobImg"
@@ -26,19 +27,46 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/sdvHotJobImg"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="2dp"
+                android:layout_toLeftOf="@+id/tvMoneyIntro"
                 android:singleLine="true"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:text="暂无数据"/>
 
-            <TextView android:id="@+id/tvBizName"
-                android:layout_below="@+id/tvTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/tvTitle"
-                android:singleLine="true"
-                android:text="暂无数据"/>
+
+    <LinearLayout
+        android:layout_below="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_alignLeft="@+id/tvTitle"
+        android:layout_toLeftOf="@+id/tvMoneyIntro">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_address"/>
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="南岸区"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:maxLength="6"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:padding="2dp"
+            android:src="@drawable/ic_date"/>
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:text="10分钟前"/>
+    </LinearLayout>
 
         <TextView android:id="@+id/tvMoneyIntro"
             android:layout_width="wrap_content"
@@ -47,8 +75,8 @@
             android:layout_alignTop="@+id/sdvHotJobImg"
             android:layout_alignParentRight="true"
             android:layout_marginRight="16dp"
-            android:layout_centerInParent="true"
             android:textColor="?attr/colorPrimary"
+            android:gravity="center_vertical"
             android:singleLine="true"
             android:text="暂无数据"/>
 

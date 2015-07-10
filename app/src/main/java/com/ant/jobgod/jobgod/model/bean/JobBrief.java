@@ -13,6 +13,17 @@ public class JobBrief {
     private String moneyIntro;
     private long applyBeginTime;
 
+    public int getCityCode() {
+        return cityCode;
+    }
+
+    public void setCityCode(int cityCode) {
+        this.cityCode = cityCode;
+    }
+
+    private int cityCode;
+
+
     public String getId() {
         return id;
     }
