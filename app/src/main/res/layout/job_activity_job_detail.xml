@@ -52,7 +52,7 @@
                     android:text=""
                     android:gravity="center_vertical"
                     android:textSize="18sp"
-                    android:textColor="@color/colorPrimary"/>
+                    android:textColor="?attr/colorPrimary"/>
 
             </RelativeLayout>
 

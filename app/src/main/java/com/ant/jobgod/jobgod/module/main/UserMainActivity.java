@@ -1,29 +1,18 @@
 package com.ant.jobgod.jobgod.module.main;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
-import com.ant.jobgod.jobgod.model.bean.Banner;
-import com.ant.jobgod.jobgod.model.bean.JobBrief;
-import com.ant.jobgod.jobgod.model.bean.Topic;
-import com.ant.jobgod.jobgod.model.bean.Trade;
-import com.ant.jobgod.jobgod.module.job.JobBriefAdapter;
-import com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView;
-import com.facebook.drawee.view.SimpleDraweeView;
-import com.jude.rollviewpager.RollPagerView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -35,30 +24,19 @@ import nucleus.factory.RequiresPresenter;
 @RequiresPresenter(UserMainPresenter.class)
 public class UserMainActivity extends BaseActivity<UserMainPresenter> {
 
+    @InjectView(R.id.viewpager)
+    ViewPager viewpager;
+    @InjectView(R.id.drawerLayout)
+    DrawerLayout drawerLayout;
+    @InjectView(R.id.app_bar_layout)
+    AppBarLayout appBarLayout;
+    @InjectView(R.id.coordinator_layout)
+    CoordinatorLayout coordinatorLayout;
+    @InjectView(R.id.tabLayout)
+    TabLayout tabLayout;
 
-    @InjectView(R.id.gdTrade)
-    GridView gdTrade;
-    @InjectView(R.id.tvHotJobMore)
-    TextView tvHotJobMore;
-    @InjectView(R.id.tvTopicMore)
-    TextView tvTopicMore;
-    @InjectView(R.id.guess_more)
-    TextView guessMore;
-    @InjectView(R.id.mDrawerLayout)
-    DrawerLayout mDrawerLayout;
-    @InjectView(R.id.insetView)
-    TopicsView insetView;
-    @InjectView(R.id.lwcrvGuessJob)
-    LinearWrapContentRecyclerView lwcrvGuessJob;
-    @InjectView(R.id.pvAd)
-    RollPagerView pvAd;
-    @InjectView(R.id.pagerview_recommend)
-    RollPagerView pagerviewRecommend;
     private ActionBarDrawerToggle mDrawerToggle;
-    private ArrayAdapter<Trade> tradeArrayAdapter;
-    private HotJobAdapter hotJobAdapter;
-    private JobBriefAdapter guessAdapter;
-    private AdAdapter adAdapter;
+    private MainPagerAdapter mMainPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,68 +44,53 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
         setContentView(R.layout.main_activity_usermain);
         ButterKnife.inject(this);
         setSwipeBackEnable(false);
-
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, getToolbar(), R.string.drawer_open, R.string.drawer_close);
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
-        mDrawerLayout.post(() -> mDrawerToggle.syncState());
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        gdTrade.setAdapter(tradeArrayAdapter = new TradeAdapter(this, R.layout.main_item_trade));
-        pagerviewRecommend.setAdapter(hotJobAdapter = new HotJobAdapter(this));
-        lwcrvGuessJob.setOrientation(LinearLayout.VERTICAL);
-        lwcrvGuessJob.setAdapter(guessAdapter = new JobBriefAdapter(this));
-        pvAd.setAdapter(adAdapter = new AdAdapter(this));
+        tabLayout.setTabTextColors(getResources().getColor(R.color.WhiteTrans80), getResources().getColor(R.color.White));
+        viewpager.setAdapter(mMainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager()));
+        tabLayout.setupWithViewPager(viewpager);
+        mDrawerToggle = new ActionBarDrawerToggle(this
+                , drawerLayout
+                , getToolbar()
+                , R.string.drawer_open
+                , R.string.drawer_close);
+        drawerLayout.post(() -> mDrawerToggle.syncState());
+        drawerLayout.setDrawerListener(mDrawerToggle);
     }
 
-    public void setTradeData(Trade[] tradeData) {
-        tradeArrayAdapter.clear();
-        tradeArrayAdapter.addAll(tradeData);
-    }
+    public class MainPagerAdapter extends FragmentStatePagerAdapter{
 
-    public void setTopicData(Topic[] topics) {
-        insetView.setTopic(topics);
-    }
-
-    public void setHotJobData(JobBrief[] jobData) {
-        hotJobAdapter.setData(jobData);
-    }
-
-    public void setGuessData(JobBrief[] jobs) {
-        guessAdapter.clear();
-        guessAdapter.addAll(jobs);
-    }
-
-    public void setAdData(Banner[] banners) {
-        adAdapter.setData(banners);
-    }
-
-    static class TradeAdapter extends ArrayAdapter<Trade> {
-        @InjectView(R.id.sdvTradeImg)
-        SimpleDraweeView sdvTradeImg;
-        @InjectView(R.id.tvTitle)
-        TextView tvTitle;
-
-        public TradeAdapter(Context context, int resource) {
-            super(context, resource);
+        public MainPagerAdapter(FragmentManager fm) {
+            super(fm);
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            LayoutInflater inflater = LayoutInflater.from(getContext());
-            View item = inflater.inflate(R.layout.main_item_trade, null);
-            ButterKnife.inject(this, item);
-            if(getItem(position).getIcon()!=null){
-                sdvTradeImg.setAspectRatio(1f);
-                sdvTradeImg.setImageURI(Uri.parse(getItem(position).getIcon()));
+        public Fragment getItem(int position) {
+            switch (position){
+                case 0:
+                    return new RecommendFragment();
+                case 1:
+                    return new JobListFragment();
+                default:
+                    return new BBSFragment();
             }
-            tvTitle.setText(getItem(position).getName());
-            item.setOnClickListener(v -> {
-                Intent intent=new Intent(getContext(),TradeDetailActivity.class);
-                intent.putExtra("id",getItem(position).getId());
-                getContext().startActivity(intent);
-            });
-            return item;
         }
 
+        @Override
+        public CharSequence getPageTitle(int position) {
+            switch (position){
+                case 0:
+                    return "推荐";
+                case 1:
+                    return "兼职";
+                default:
+                    return "动态";
+            }
+        }
 
+        @Override
+        public int getCount() {
+            return 3;
+        }
     }
+
+
 }
