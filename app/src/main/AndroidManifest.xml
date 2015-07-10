@@ -83,12 +83,12 @@
             android:label="诚客兼职"
             android:theme="@style/AppTheme" >
         </activity>
-        <activity android:name=".module.job.JobDetailActivity" >
+        <activity android:name=".module.job.JobDetailManagerModeActivity" >
         </activity>
         <activity
             android:name=".module.setting.SettingActivity"
             android:label="设置" />
-        <activity android:name=".module.job.JobDetailActivity" />
+        <activity android:name=".module.job.JobDetailManagerModeActivity" />
 
         <!-- 分享及第三方登陆 -->
         <!-- 分享编辑页 -->
@@ -238,6 +238,10 @@
         <activity
             android:name=".module.user.AttentionActivity"
             android:label="@string/title_activity_attention" >
+        </activity>
+        <activity
+            android:name=".module.job.JobDetailReleaseModeActivity"
+            android:label="@string/title_activity_job_detail_release_mode" >
         </activity>
     </application>
 

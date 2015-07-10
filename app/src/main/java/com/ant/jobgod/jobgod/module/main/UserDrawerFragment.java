@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.AccountInfo;
-import com.ant.jobgod.jobgod.module.job.JobDetailActivity;
+import com.ant.jobgod.jobgod.module.job.JobDetailManagerModeActivity;
 import com.ant.jobgod.jobgod.module.setting.SettingActivity;
 import com.ant.jobgod.jobgod.module.user.AttentionActivity;
 import com.ant.jobgod.jobgod.module.user.UserDetailActivity;
@@ -57,7 +57,7 @@ public class UserDrawerFragment extends NucleusFragment<UserDrawerPresenter> {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_fragment_drawer, container, false);
         ButterKnife.inject(this, view);
-        viewMessage.setOnClickListener((View) -> getPresenter().startActivity(JobDetailActivity.class));
+        viewMessage.setOnClickListener((View) -> getPresenter().startActivity(JobDetailManagerModeActivity.class));
         viewSetting.setOnClickListener((View)-> getPresenter().startActivity(SettingActivity.class));
         viewInformation.setOnClickListener(v -> getPresenter().startActivity(UserDetailActivity.class));
         viewAttention.setOnClickListener(v -> getPresenter().startActivity(AttentionActivity.class));

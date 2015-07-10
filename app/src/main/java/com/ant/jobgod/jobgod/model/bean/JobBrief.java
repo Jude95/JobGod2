@@ -12,6 +12,11 @@ public class JobBrief {
     private String img;
     private String moneyIntro;
     private long applyBeginTime;
+    private int syle;
+
+    public int getSyle() {
+        return syle;
+    }
 
     public int getCityCode() {
         return cityCode;

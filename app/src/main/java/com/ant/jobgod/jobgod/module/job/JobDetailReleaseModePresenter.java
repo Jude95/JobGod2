@@ -8,35 +8,29 @@ import com.ant.jobgod.jobgod.model.bean.Job;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 
 /**
- * Created by alien on 2015/7/8.
+ * Created by alien on 2015/7/10.
  */
-public class JobDetailPresenter extends BasePresenter<JobDetailActivity> {
+public class JobDetailReleaseModePresenter extends BasePresenter<JobDetailReleaseModeActivity> {
+
     private String id;
+    private Job mJob;
 
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
         id = getView().getIntent().getStringExtra("id");
-    }
-
-    @Override
-    protected void onCreateView(JobDetailActivity view) {
-        super.onCreateView(view);
-        setData();
-    }
-
-    @Override
-    protected void onTakeView(JobDetailActivity view) {
-        super.onTakeView(view);
-    }
-
-    public void setData(){
         JobModel.getInstance().getJobDetail(id, new DataCallback<Job>() {
             @Override
             public void success(String info, Job data) {
-                getView().setData(data);
+                getView().setData(mJob=data);
             }
         });
     }
 
+    @Override
+    protected void onCreateView(JobDetailReleaseModeActivity view) {
+        super.onCreateView(view);
+        if (mJob!=null) getView().setData(mJob);
+
+    }
 }
