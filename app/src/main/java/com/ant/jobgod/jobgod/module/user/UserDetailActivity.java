@@ -2,6 +2,7 @@ package com.ant.jobgod.jobgod.module.user;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import nucleus.factory.RequiresPresenter;
 @RequiresPresenter(UserDetailPresenter.class)
 public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
 
+
     @InjectView(R.id.tvName)
     TextView tvName;
     @InjectView(R.id.tvSignature)
@@ -28,6 +30,14 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
     TextView tvHeight;
     @InjectView(R.id.tvLocation)
     TextView tvLocation;
+    @InjectView(R.id.imgFace)
+    SimpleDraweeView imgFace;
+    @InjectView(R.id.collapsingToolbar)
+    CollapsingToolbarLayout collapsingToolbar;
+    @InjectView(R.id.appBar)
+    AppBarLayout appBar;
+    @InjectView(R.id.floating_action_button)
+    FloatingActionButton floatingActionButton;
     @InjectView(R.id.tvEducation)
     TextView tvEducation;
     @InjectView(R.id.tvSchool)
@@ -46,12 +56,6 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
     TextView tvSpeciality;
     @InjectView(R.id.tvUserIntro)
     TextView tvUserIntro;
-    @InjectView(R.id.collapsingToolbar)
-    CollapsingToolbarLayout collapsingToolbar;
-    @InjectView(R.id.floating_action_button)
-    FloatingActionButton floatingActionButton;
-    @InjectView(R.id.imgFace)
-    SimpleDraweeView imgFace;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +67,7 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
     }
 
 
-    public void setUserDetailData(UserDetail data){
+    public void setUserDetailData(UserDetail data) {
         collapsingToolbar.setTitle(data.getName());
         imgFace.setImageURI(Uri.parse(data.getFace()));
         tvName.setText(data.getRealName());
