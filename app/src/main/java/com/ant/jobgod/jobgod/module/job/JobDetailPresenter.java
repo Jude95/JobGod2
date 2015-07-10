@@ -1,13 +1,9 @@
 package com.ant.jobgod.jobgod.module.job;
 
-import android.os.Bundle;
-import android.os.Parcelable;
-
 import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.JobModel;
 import com.ant.jobgod.jobgod.model.bean.Job;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
-import com.ant.jobgod.jobgod.util.Utils;
 
 /**
  * Created by alien on 2015/7/8.

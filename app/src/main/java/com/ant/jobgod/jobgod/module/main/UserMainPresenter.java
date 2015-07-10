@@ -12,7 +12,6 @@ import com.ant.jobgod.jobgod.model.bean.JobPage;
 import com.ant.jobgod.jobgod.model.bean.Topic;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.umeng.message.PushAgent;
-import com.umeng.update.UmengUpdateAgent;
 
 /**
  * Created by zhuchenxi on 15/6/27.

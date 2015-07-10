@@ -1,12 +1,112 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.ant.jobgod.jobgod.module.main.TradeDetailActivity">
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <com.malinskiy.superrecyclerview.SuperRecyclerView
+        xmlns:recycler="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/jobs_list"
+        android:layout_marginTop="56dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        recycler:layout_empty="@layout/view_empty"
+        recycler:layout_moreProgress="@layout/view_progress"
+        recycler:layout_progress="@layout/view_progress"
+        recycler:scrollbarStyle="insideInset"
+        recycler:recyclerPaddingTop="48dp"/>
 
-</RelativeLayout>
+    <LinearLayout
+        android:id="@+id/selectGroup"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="56dp"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/btnRegion"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/region"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="南岸区"/>
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:src="@mipmap/ic_dropdown"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/bgDeep"/>
+        <LinearLayout
+            android:id="@+id/btnType"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/type"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="全部行业"/>
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:src="@mipmap/ic_dropdown"/>
+        </LinearLayout>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/bgDeep"/>
+        <LinearLayout
+            android:id="@+id/btnSort"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/sort"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="智能排序"/>
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:src="@mipmap/ic_dropdown"/>
+        </LinearLayout>
+    </LinearLayout>
+    <include layout="@layout/include_toolbar"
+        android:gravity="right" />
+
+</FrameLayout>

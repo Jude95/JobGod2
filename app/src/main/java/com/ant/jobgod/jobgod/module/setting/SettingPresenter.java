@@ -10,6 +10,7 @@ import com.ant.jobgod.jobgod.model.bean.Job;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.module.launch.UserLoginActivity;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.umeng.analytics.MobclickAgent;
 import com.umeng.update.UmengUpdateAgent;
 import com.umeng.update.UpdateStatus;
 
@@ -32,16 +33,17 @@ public class SettingPresenter extends BasePresenter<SettingActivity> {
                     UmengUpdateAgent.setUpdateAutoPopup(false);
                     UmengUpdateAgent.setUpdateListener((updateStatus, updateInfo) -> {
                         switch (updateStatus) {
-                            case UpdateStatus.Yes: // has update
+                            case UpdateStatus.Yes:
+                                MobclickAgent.updateOnlineConfig(getView());
                                 break;
-                            case UpdateStatus.No: // has no update
+                            case UpdateStatus.No:
                                 Utils.Toast("没有更新");
                                 break;
-                            case UpdateStatus.NoneWifi: // none wifi
+                            case UpdateStatus.NoneWifi:
                                 Utils.Toast("没有wifi连接，只在wifi下更新");
                                 break;
-                            case UpdateStatus.Timeout: // time out
-                                Utils.Toast("超时");
+                            case UpdateStatus.Timeout:
+                                Utils.Toast("连接超时");
                                 break;
                         }
                     });

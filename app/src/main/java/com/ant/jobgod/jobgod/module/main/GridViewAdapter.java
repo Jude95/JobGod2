@@ -1,6 +1,7 @@
 package com.ant.jobgod.jobgod.module.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +36,11 @@ class GridViewAdapter extends ArrayAdapter<Trade> {
             sdvTradeImg.setImageURI(Uri.parse(getItem(position).getIcon()));
         }
         tvTitle.setText(getItem(position).getName());
+        item.setOnClickListener(v -> {
+            Intent intent=new Intent(getContext(),TradeDetailActivity.class);
+            intent.putExtra("id",getItem(position).getId());
+            getContext().startActivity(intent);
+        });
         return item;
     }
 

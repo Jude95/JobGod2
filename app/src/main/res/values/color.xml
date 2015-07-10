@@ -19,7 +19,10 @@
     <color name="whitetrans">#99ffffff</color>
     <color name="whitetrans_light">#55ffffff</color>
     <color name="ripple">#bdbdbd</color>
+    <color name="divide">#9e9e9e</color>
 
     <color name="colorPrimary">@color/DeepOrange</color>
     <color name="colorPrimaryDark">@color/DeepOrange900</color>
+
+
 </resources>
