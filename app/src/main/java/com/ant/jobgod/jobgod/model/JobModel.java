@@ -43,7 +43,7 @@ public class JobModel extends AbsModel{
         });
     }
 
-    public void getHotJobList(DataCallback<JobBrief[]> callback){
+    public void getRecommendList(DataCallback<JobBrief[]> callback){
         RequestManager.getInstance().post(API.URL.GetHotJobList,null,callback);
     }
 

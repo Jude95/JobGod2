@@ -37,8 +37,6 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
     AppBarLayout appBarLayout;
     @InjectView(R.id.coordinator_layout)
     CoordinatorLayout coordinatorLayout;
-    @InjectView(R.id.toolbar)
-    Toolbar toolbar;
     @InjectView(R.id.tab_layout)
     TabLayout tabLayout;
 
@@ -49,7 +47,7 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity_usermain);
-        setTransparentStatusBar();
+        //setTransparentStatusBar();
         ButterKnife.inject(this);
         setSwipeBackEnable(false);
         tabLayout.setTabTextColors(getResources().getColor(R.color.WhiteTrans80), getResources().getColor(R.color.White));
