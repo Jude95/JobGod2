@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/ryJobBrief"
+        android:id="@+id/recyclerJobBrief"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         recycler:layout_empty="@layout/view_empty"

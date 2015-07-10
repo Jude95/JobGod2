@@ -231,6 +231,10 @@
             android:name=".module.topic.TopicDetailActivity"
             android:label="@string/title_activity_topic_detail" >
         </activity>
+        <activity
+            android:name=".module.setting.ModifyPasswordActivity"
+            android:label="@string/title_activity_modify_password" >
+        </activity>
     </application>
 
 </manifest>
