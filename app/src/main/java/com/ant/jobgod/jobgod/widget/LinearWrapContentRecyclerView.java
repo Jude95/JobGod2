@@ -18,6 +18,7 @@ public class LinearWrapContentRecyclerView extends LinearLayout {
 
     public LinearWrapContentRecyclerView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        setOrientation( VERTICAL);
     }
 
     public LinearWrapContentRecyclerView(Context context, AttributeSet attrs, int defStyleAttr) {

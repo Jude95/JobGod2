@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <!--主色-->
         <item name="colorPrimary">@color/DeepOrange</item>
@@ -8,6 +8,10 @@
         <item name="colorPrimaryDark">@color/DeepOrange900</item>
         <!--醒目主色-->
         <item name="colorAccent">@color/Grange</item>
+    </style>
+
+    <style name="AppTheme" parent="AppTheme.Base">
+
     </style>
 
     <style name="TransTheme" parent="AppTheme">
