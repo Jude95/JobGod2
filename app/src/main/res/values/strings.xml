@@ -10,4 +10,8 @@
     <string name="title_activity_user_detail">个人资料</string>
     <string name="title_activity_topic_detail">专题</string>
     <string name="title_activity_modify_password">修改密码</string>
+    <string name="title_activity_attention">关注列表</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

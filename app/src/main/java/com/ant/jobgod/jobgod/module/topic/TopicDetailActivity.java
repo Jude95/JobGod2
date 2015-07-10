@@ -67,6 +67,7 @@ public class TopicDetailActivity extends BaseActivity<TopicDetailPresenter> {
     }
 
     public void setJobBriefData(JobBrief[] data) {
+        jobBriefAdapter.clear();
         jobBriefAdapter.addAll(data);
     }
 
