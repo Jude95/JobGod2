@@ -30,6 +30,7 @@
                     android:gravity="center_vertical"
                     android:paddingLeft="16dp"
                     android:textStyle="bold"
+                    android:textColor="@color/primary_text_disabled_material_light"
                     />
                 <LinearLayout android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -147,13 +148,14 @@
                 </LinearLayout>
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
+                    android:layout_marginTop="@dimen/abc_action_bar_content_inset_material"
                     android:background="@color/md_divider_black"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginBottom="24dp"
                 android:orientation="vertical">
 
@@ -164,6 +166,7 @@
                     android:gravity="center_vertical"
                     android:paddingLeft="16dp"
                     android:textStyle="bold"
+                    android:textColor="@color/primary_text_disabled_material_light"
                     />
                 <LinearLayout android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -281,14 +284,15 @@
                 </LinearLayout>
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
+                    android:layout_marginTop="@dimen/abc_action_bar_content_inset_material"
                     android:background="@color/md_divider_black"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="8dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -298,6 +302,7 @@
                     android:gravity="center_vertical"
                     android:paddingLeft="16dp"
                     android:textStyle="bold"
+                    android:textColor="@color/primary_text_disabled_material_light"
                     />
                 <LinearLayout android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -393,6 +398,7 @@
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
+                    android:layout_marginTop="@dimen/abc_action_bar_content_inset_material"
                     android:background="@color/md_divider_black"/>
             </LinearLayout>
 

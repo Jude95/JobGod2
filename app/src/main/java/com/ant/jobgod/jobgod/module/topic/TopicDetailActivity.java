@@ -35,6 +35,7 @@ public class TopicDetailActivity extends BaseActivity<TopicDetailPresenter> {
     @InjectView(R.id.ryJobBrief)
     RecyclerView ryJobBrief;
 
+    private TopicHeaderView headerView;
 
     private JobBriefAdapter jobBriefAdapter;
 
@@ -50,16 +51,15 @@ public class TopicDetailActivity extends BaseActivity<TopicDetailPresenter> {
         ButterKnife.inject(this);
         intent = getIntent();
         topic = (Topic) intent.getSerializableExtra("topic");
-        Utils.Log("topic:"+topic.getSubTitle());
         init();
 
     }
 
     public void init() {
+        headerView=new TopicHeaderView();
         ryJobBrief.setLayoutManager(new LinearLayoutManager(this));
         jobBriefAdapter = new JobBriefAdapter(this);
-        jobBriefAdapter.addHeader(new TopicIntroView());
-        jobBriefAdapter = new JobBriefAdapter(this);
+        jobBriefAdapter.addHeader(headerView);
         ryJobBrief.setAdapter(jobBriefAdapter);
         imgTopic.setImageURI(Uri.parse(topic.getImg()));
         collapsingToolbar.setTitle(topic.getTitle());
@@ -69,21 +69,31 @@ public class TopicDetailActivity extends BaseActivity<TopicDetailPresenter> {
         jobBriefAdapter.addAll(data);
     }
 
-    class TopicIntroView implements RecyclerArrayAdapter.HeaderView {
+
+
+    class TopicHeaderView implements RecyclerArrayAdapter.HeaderView {
 
         @Override
         public View onCreateView(ViewGroup parent) {
             TextView textView = new TextView(TopicDetailActivity.this);
             textView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Utils.dip2px(72)));
             textView.setPadding(Utils.dip2px(16), Utils.dip2px(16), Utils.dip2px(16), Utils.dip2px(16));
-            Utils.Log("onCreateView");
-            return textView;
+            textView.setId(R.id.text);
+            View divider=new View(TopicDetailActivity.this);
+            divider.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,Utils.dip2px(1)));
+            divider.setBackgroundColor(R.color.md_divider_white);
+            LinearLayout linearLayout=new LinearLayout(TopicDetailActivity.this);
+            linearLayout.setOrientation(LinearLayout.VERTICAL);
+            linearLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            linearLayout.addView(textView);
+            linearLayout.addView(divider);
+            return linearLayout;
         }
 
         @Override
         public void onBindView(View headerView) {
-            ((TextView) headerView).setText(topic.getSubTitle());
-            Utils.Log("onBindView");
+            TextView textView= (TextView) headerView.findViewById(R.id.text);
+            textView.setText(topic.getSubTitle());
         }
     }
 

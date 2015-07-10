@@ -66,7 +66,6 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
 
     }
 
-
     public void setUserDetailData(UserDetail data) {
         collapsingToolbar.setTitle(data.getName());
         imgFace.setImageURI(Uri.parse(data.getFace()));

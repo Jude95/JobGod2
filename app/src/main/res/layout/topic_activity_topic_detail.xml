@@ -5,8 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/ryJobBrief"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        recycler:layout_empty="@layout/view_empty"
+        recycler:layout_moreProgress="@layout/view_progress"
+        recycler:layout_progress="@layout/view_progress"
+        recycler:scrollbarStyle="insideInset"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBar"
@@ -43,19 +50,10 @@
                 app:layout_collapseMode="pin"
                 app:theme="@style/AppThemeDark"
                 >
+
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/ryJobBrief"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        recycler:layout_empty="@layout/view_empty"
-        recycler:layout_moreProgress="@layout/view_progress"
-        recycler:layout_progress="@layout/view_progress"
-        recycler:scrollbarStyle="insideInset"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 
 </android.support.design.widget.CoordinatorLayout>
