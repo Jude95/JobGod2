@@ -7,23 +7,7 @@
     <color name="White">#ffffff</color>
     <color name="Cyan">#00BCD4</color>
     <color name="Black">#000000</color>
-
-    <color name="text_contrast">#88000000</color>
-    <color name="text_contrast_w">#a0ffffff</color>
-    <color name="text_selected">#e0620d</color>
-    <color name="bg">@android:color/white</color>
-    <color name="bgDeep">#d8d8d8</color>
-
-    <color name="blacktrans">#a0000000</color>
-    <color name="blacktrans_light">#15000000</color>
-    <color name="whitetrans">#99ffffff</color>
-    <color name="whitetrans_light">#55ffffff</color>
-    <color name="ripple">#bdbdbd</color>
-    <color name="divide">#9e9e9e</color>
-    <color name="text_light">@color/divide</color>
-
-    <color name="colorPrimary">@color/DeepOrange</color>
-    <color name="colorPrimaryDark">@color/DeepOrange900</color>
-
+    <color name="Grey">#9E9E9E</color>
+    <color name="WhiteTrans80">#AFFF</color>
 
 </resources>

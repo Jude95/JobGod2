@@ -55,21 +55,21 @@ public class TopicsView extends RelativeLayout {
         intro1 = (TextView) view.findViewById(R.id.intro1);
         image1 = (SimpleDraweeView) view.findViewById(R.id.image1);
         ripple1= (MaterialRippleLayout) view.findViewById(R.id.ripple1);
-        ripple1.setRippleColor(ripple1.getContext().getResources().getColor(R.color.ripple));
+        ripple1.setRippleColor(ripple1.getContext().getResources().getColor(R.color.Grey));
 
         container2 = view.findViewById(R.id.container2);
         title2 = (TextView) view.findViewById(R.id.title2);
         intro2 = (TextView) view.findViewById(R.id.intro2);
         image2 = (SimpleDraweeView) view.findViewById(R.id.image2);
         ripple2= (MaterialRippleLayout) view.findViewById(R.id.ripple2);
-        ripple2.setRippleColor(ripple2.getContext().getResources().getColor(R.color.ripple));
+        ripple2.setRippleColor(ripple2.getContext().getResources().getColor(R.color.Grey));
 
         container3 = view.findViewById(R.id.container3);
         title3 = (TextView) view.findViewById(R.id.title3);
         intro3 = (TextView) view.findViewById(R.id.intro3);
         image3 = (SimpleDraweeView) view.findViewById(R.id.image3);
         ripple3= (MaterialRippleLayout) view.findViewById(R.id.ripple3);
-        ripple3.setRippleColor(ripple3.getContext().getResources().getColor(R.color.ripple));
+        ripple3.setRippleColor(ripple3.getContext().getResources().getColor(R.color.Grey));
     }
 
     public void setTopic(final Topic[] topics){

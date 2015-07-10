@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.jude.rollviewpager.RollPagerView
+            android:id="@+id/vpgAd"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            app:hint_mode="point"
+            app:hint_alpha="0"
+            app:autoplay="3000"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@drawable/bottom_shadow"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@drawable/top_shadow"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:padding="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+            <View
+                android:layout_width="4dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="8dp"
+                android:background="@color/DeepOrange"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="热门推荐"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                />
+            <TextView
+                android:id="@+id/tvHotJobMore"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="更多"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/md_divider_height"
+            android:background="@color/md_divider_black"/>
+
+        <com.jude.rollviewpager.RollPagerView
+            android:id="@+id/vpgHotJob"
+            android:layout_width="match_parent"
+            android:layout_height="132dp"
+            android:layout_margin="8dp"
+            app:hint_alpha="1"
+            app:autoplay="10000"
+            app:hint_gravity="center"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@drawable/bottom_shadow"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@drawable/top_shadow"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:padding="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+            <View
+                android:layout_width="4dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="8dp"
+                android:background="@color/DeepOrange"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="专题推荐"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                />
+            <TextView
+                android:id="@+id/tvTopicMore"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="更多"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/md_divider_height"
+            android:background="@color/md_divider_black"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/md_divider_height"
+            android:background="@color/md_divider_black"/>
+
+        <com.ant.jobgod.jobgod.module.main.TopicsView
+            android:id="@+id/viewTopic"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@drawable/bottom_shadow"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@drawable/top_shadow"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:padding="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+            <View
+                android:layout_width="4dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="8dp"
+                android:background="@color/DeepOrange"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="猜你喜欢"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                />
+            <TextView
+                android:id="@+id/tvGuessMore"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/DeepOrange"
+                android:gravity="center_vertical"
+                android:text="更多"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/md_divider_height"
+            android:background="@color/md_divider_black"/>
+        <!--name-->
+        <com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView
+            android:id="@+id/listGuess"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@drawable/bottom_shadow"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@drawable/top_shadow"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:autoLink="web"
+            android:text="想发布兼职？\n请登录 www.诚客兼职.com"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:textSize="14sp"
+            />
+    </LinearLayout>
+
+</ScrollView>

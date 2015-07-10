@@ -151,7 +151,7 @@ public class Presenter<ViewType> {
      */
     public void dropView() {
         onDropView();
-        this.view = null;
+        //this.view = null; //WHY
     }
 
     public void createView(ViewType view) {

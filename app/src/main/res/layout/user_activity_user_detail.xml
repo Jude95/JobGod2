@@ -27,7 +27,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:text="基本资料"
-                    android:textColor="@color/text_light"
                     android:gravity="center_vertical"
                     android:paddingLeft="16dp"
                     android:textStyle="bold"
@@ -147,8 +146,8 @@
                         android:textSize="18sp"/>
                 </LinearLayout>
                 <View android:layout_width="match_parent"
-                    android:layout_height="0.4dp"
-                    android:background="@color/divide"/>
+                    android:layout_height="@dimen/md_divider_height"
+                    android:background="@color/md_divider_black"/>
             </LinearLayout>
 
 

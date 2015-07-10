@@ -1,5 +1,7 @@
 package com.ant.jobgod.jobgod.module.main;
 
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,15 +9,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.AccountInfo;
+import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.module.job.JobDetailActivity;
 import com.ant.jobgod.jobgod.module.setting.SettingActivity;
 import com.ant.jobgod.jobgod.module.user.UserDetailActivity;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -74,5 +79,6 @@ public class UserDrawerFragment extends NucleusFragment<UserDrawerPresenter> {
         tvName.setText(info.getName());
         tvSign.setText(info.getSign());
     }
+
 
 }

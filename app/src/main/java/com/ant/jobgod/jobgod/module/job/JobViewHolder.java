@@ -8,7 +8,6 @@ import android.widget.TextView;
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.util.BaseViewHolder;
-import com.ant.jobgod.jobgod.util.Utils;
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -34,7 +33,7 @@ class JobViewHolder extends BaseViewHolder<JobBrief> {
         tvTitle.setText(data.getTitle());
         tvMoneyIntro.setText(data.getMoneyIntro());
         tvBizName.setText(data.getBizName());
-        ripple.setRippleColor(ripple.getContext().getResources().getColor(R.color.ripple));
+        ripple.setRippleColor(ripple.getContext().getResources().getColor(R.color.Grey));
         ripple.setOnClickListener(v -> {
             Intent intent=new Intent(ripple.getContext(), JobDetailActivity.class);
             intent.putExtra("id",data.getId());
