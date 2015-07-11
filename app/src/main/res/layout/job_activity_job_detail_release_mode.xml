@@ -316,6 +316,7 @@
             android:layout_height="match_parent"
             app:contentScrim="?colorPrimary"
             app:expandedTitleMarginStart="48dp"
+            app:expandedTitleMarginEnd="64dp"
             app:expandedTitleTextAppearance="@style/Title.Expanded"
             app:collapsedTitleTextAppearance="@style/Title.collapsed"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
