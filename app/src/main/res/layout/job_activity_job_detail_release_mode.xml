@@ -37,35 +37,37 @@
                 <TextView
                     android:id="@+id/bizName"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/bizFace"
                     android:layout_alignParentTop="true"
                     android:text=""
-                    android:gravity="center_vertical"
                     android:textSize="18sp"/>
                 <TextView
                     android:id="@+id/bizAvgFeel"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_toRightOf="@id/bizFace"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/bizName"
                     android:layout_alignParentTop="true"
                     android:text=""
                     android:gravity="center_vertical"
                     android:textSize="18sp"
                     android:textColor="?attr/colorPrimary"/>
 
-                <LinearLayout android:orientation="horizontal"
+                <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/bizName"
+                    android:layout_toRightOf="@+id/bizFace"
+                    android:layout_alignParentBottom="true"
                     android:layout_marginTop="8dp">
 
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="报名电话"/>
+                        android:text="报名电话:"/>
 
                     <TextView android:id="@+id/tvPhone"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"/>
                 </LinearLayout>

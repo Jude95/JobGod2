@@ -243,6 +243,10 @@
             android:name=".module.job.JobDetailReleaseModeActivity"
             android:label="@string/title_activity_job_detail_release_mode" >
         </activity>
+        <activity
+            android:name=".module.user.UserInfoModifyActivity"
+            android:label="@string/title_activity_user_info_modify" >
+        </activity>
     </application>
 
 </manifest>

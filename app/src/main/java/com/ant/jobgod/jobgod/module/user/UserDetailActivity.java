@@ -1,10 +1,9 @@
 package com.ant.jobgod.jobgod.module.user;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
@@ -20,42 +19,15 @@ import nucleus.factory.RequiresPresenter;
 public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
 
 
-    @InjectView(R.id.tvName)
-    TextView tvName;
-    @InjectView(R.id.tvSignature)
-    TextView tvSignature;
-    @InjectView(R.id.tvGender)
-    TextView tvGender;
-    @InjectView(R.id.tvHeight)
-    TextView tvHeight;
-    @InjectView(R.id.tvLocation)
-    TextView tvLocation;
+    @InjectView(R.id.modifyInfo)
+    TextView modifyInfo;
     @InjectView(R.id.imgFace)
     SimpleDraweeView imgFace;
     @InjectView(R.id.collapsingToolbar)
     CollapsingToolbarLayout collapsingToolbar;
-    @InjectView(R.id.appBar)
-    AppBarLayout appBar;
-    @InjectView(R.id.floating_action_button)
-    FloatingActionButton floatingActionButton;
-    @InjectView(R.id.tvEducation)
-    TextView tvEducation;
-    @InjectView(R.id.tvSchool)
-    TextView tvSchool;
-    @InjectView(R.id.tvMajor)
-    TextView tvMajor;
-    @InjectView(R.id.tvAwards)
-    TextView tvAwards;
-    @InjectView(R.id.tvHonor)
-    TextView tvHonor;
-    @InjectView(R.id.tvPersonality)
-    TextView tvPersonality;
-    @InjectView(R.id.tvHobby)
-    TextView tvHobby;
-    @InjectView(R.id.tvSpeciality)
-    TextView tvSpeciality;
-    @InjectView(R.id.tvUserIntro)
-    TextView tvUserIntro;
+    @InjectView(R.id.imgBgFace)
+    SimpleDraweeView imgBgFace;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,26 +35,12 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
         setContentView(R.layout.user_activity_user_detail);
         ButterKnife.inject(this);
 
+        modifyInfo.setOnClickListener(v -> startActivity(new Intent(UserDetailActivity.this, UserInfoModifyActivity.class)));
+        imgFace.setImageURI(Uri.parse("http://image.baidu.com/search/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=&sf=1&fmq=1435825300259_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&itg=0&ie=utf-8&word=%E5%A4%B4%E5%83%8F#z=0&pn=&ic=0&st=-1&face=0&s=0&lm=-1"));
 
     }
 
     public void setUserDetailData(UserDetail data) {
-        collapsingToolbar.setTitle(data.getName());
-        imgFace.setImageURI(Uri.parse(data.getFace()));
-        tvName.setText(data.getRealName());
-        tvGender.setText(data.getGender());
-        tvHeight.setText(data.getHeight());
-        tvLocation.setText(data.getAddress());
-        tvEducation.setText(data.getEduLevel());
-        tvSchool.setText(data.getSchool());
-        tvMajor.setText(data.getMajor());
-        tvAwards.setText(data.getAward());
-        tvHonor.setText(data.getCertificate());
-        tvPersonality.setText(data.getCharacter());
-        tvHobby.setText(data.getLike());
-        tvSpeciality.setText(data.getSpecialty());
-        tvUserIntro.setText(data.getIntro());
-
     }
 
 }
