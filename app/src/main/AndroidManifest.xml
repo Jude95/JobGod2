@@ -251,6 +251,18 @@
             android:name=".module.user.UserInfoModifyActivity"
             android:label="@string/title_activity_user_info_modify" >
         </activity>
+        <activity
+            android:name=".module.user.ModifyUserIntroAcitivity"
+            android:label="@string/title_activity_modify_user_intro" >
+        </activity>
+        <activity
+            android:name=".module.user.ModifyFaceAcitivity"
+            android:label="@string/title_activity_modify_face_acitivity" >
+        </activity>
+        <activity
+            android:name=".module.user.ModifyPhoneAcitvity"
+            android:label="@string/title_activity_modify_phone_acitvity" >
+        </activity>
     </application>
 
 </manifest>

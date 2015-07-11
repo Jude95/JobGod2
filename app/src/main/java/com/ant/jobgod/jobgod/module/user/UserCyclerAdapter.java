@@ -40,7 +40,7 @@ public class UserCyclerAdapter extends RecyclerArrayAdapter<PersonBrief> {
         TextView tvSignature;
 
         public PersonBriefViewHolder(ViewGroup parent) {
-            super(parent, R.layout.user_item_user_brief);
+            super(parent, R.layout.user_item_brief);
             ButterKnife.inject(getContext(),itemView);
         }
 
