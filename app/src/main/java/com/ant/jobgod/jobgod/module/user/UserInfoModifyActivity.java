@@ -87,22 +87,22 @@ public class UserInfoModifyActivity extends BaseActivity<UserInfoModifyPresenter
     }
 
     public void init() {
-        editName.setOnClickListener(v -> createEditDialog("输入", 16, "最多8字", displayName));
-        editSignature.setOnClickListener(v -> createEditDialog("输入", 64, "最多32字", displaySignature));
+        editName.setOnClickListener(v -> createEditDialog("输入", 8, "最多8字", displayName));
+        editSignature.setOnClickListener(v -> createEditDialog("输入", 32, "最多32字", displaySignature));
         editGender.setOnClickListener(v -> createSingleChoiceDialog("请选择", R.array.gender, displayGender));
-        editHeight.setOnClickListener(v -> createEditDialog("输入", 16, "最多8字", displayHeight));
-        editAddress.setOnClickListener(v -> createEditDialog("输入", 64, "最多32字", displayAddress));
+        editHeight.setOnClickListener(v -> createEditDialog("输入", 8, "最多8字", displayHeight));
+        editAddress.setOnClickListener(v -> createEditDialog("输入", 32, "最多32字", displayAddress));
 
         editEduLevel.setOnClickListener(v -> createSingleChoiceDialog("请选择", R.array.eduLevel, displayEduLevel));
-        editSchool.setOnClickListener(v -> createEditDialog("输入", 64, "最多32字", displaySchool));
-        editMajor.setOnClickListener(v -> createEditDialog("输入", 32, "最多16字", displayMajor));
-        editAward.setOnClickListener(v -> createEditDialog("输入", 64, "最多32字", displayAward));
-        editCertificate.setOnClickListener(v -> createEditDialog("输入", 16, "最多8字", displayCertificate));
+        editSchool.setOnClickListener(v -> createEditDialog("输入", 32, "最多32字", displaySchool));
+        editMajor.setOnClickListener(v -> createEditDialog("输入", 16, "最多16字", displayMajor));
+        editAward.setOnClickListener(v -> createEditDialog("输入", 32, "最多32字", displayAward));
+        editCertificate.setOnClickListener(v -> createEditDialog("输入", 8, "最多8字", displayCertificate));
 
-        editCharacter.setOnClickListener(v -> createEditDialog("输入", 32, "最多16字", displayCharacter));
-        editLike.setOnClickListener(v -> createEditDialog("输入", 64, "最多32字", displayLike));
-        editSpecialty.setOnClickListener(v -> createEditDialog("输入", 64, "最多32字", displaySpecialty));
-        editIntro.setOnClickListener(v -> createEditDialog("输入", 128, "最多64字", displayIntro));
+        editCharacter.setOnClickListener(v -> createEditDialog("输入", 16, "最多16字", displayCharacter));
+        editLike.setOnClickListener(v -> createEditDialog("输入", 32, "最多32字", displayLike));
+        editSpecialty.setOnClickListener(v -> createEditDialog("输入", 32, "最多32字", displaySpecialty));
+        editIntro.setOnClickListener(v -> createEditDialog("输入", 64, "最多64字", displayIntro));
     }
 
     /**
