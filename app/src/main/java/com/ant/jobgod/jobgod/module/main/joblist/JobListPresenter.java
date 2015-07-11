@@ -1,4 +1,4 @@
-package com.ant.jobgod.jobgod.module.main;
+package com.ant.jobgod.jobgod.module.main.joblist;
 
 import android.os.Bundle;
 

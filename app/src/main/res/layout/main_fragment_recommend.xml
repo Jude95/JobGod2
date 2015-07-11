@@ -59,7 +59,7 @@
                     android:text="更多"
                     android:textColor="?attr/colorPrimary"/>
             </LinearLayout>
-            <com.ant.jobgod.jobgod.module.main.TopicsView
+            <com.ant.jobgod.jobgod.module.main.recommend.TopicsView
                 android:id="@+id/viewTopic"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"

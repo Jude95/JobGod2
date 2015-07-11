@@ -1,4 +1,4 @@
-package com.ant.jobgod.jobgod.module.main;
+package com.ant.jobgod.jobgod.module.main.recommend;
 
 import android.os.Bundle;
 
@@ -8,7 +8,6 @@ import com.ant.jobgod.jobgod.model.bean.Banner;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.bean.Topic;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
-import com.ant.jobgod.jobgod.util.Utils;
 
 import nucleus.manager.Presenter;
 

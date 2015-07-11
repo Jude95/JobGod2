@@ -1,7 +1,8 @@
-package com.ant.jobgod.jobgod.module.main;
+package com.ant.jobgod.jobgod.module.main.recommend;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.ant.jobgod.jobgod.model.bean.Banner;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.bean.Topic;
 import com.ant.jobgod.jobgod.module.job.JobBriefAdapter;
+import com.ant.jobgod.jobgod.module.main.AbsMenuFragment;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView;
 import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
@@ -24,13 +26,12 @@ import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import nucleus.factory.RequiresPresenter;
-import nucleus.view.NucleusFragment;
 
 /**
  * Created by Mr.Jude on 2015/7/10.
  */
 @RequiresPresenter(RecommendPresenter.class)
-public class RecommendFragment extends NucleusFragment<RecommendPresenter> {
+public class RecommendFragment extends AbsMenuFragment<RecommendPresenter> {
     @InjectView(R.id.vpgAd)
     RollPagerView vpgAd;
     @InjectView(R.id.tvTopicMore)
@@ -72,6 +73,16 @@ public class RecommendFragment extends NucleusFragment<RecommendPresenter> {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.reset(this);
+    }
+
+    @Override
+    public int getMenu() {
+        return R.menu.menu_recommend;
+    }
+
+    @Override
+    public void onMenuSelect(@IdRes int id) {
+
     }
 
 

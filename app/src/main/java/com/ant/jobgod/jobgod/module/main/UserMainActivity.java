@@ -11,13 +11,17 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
+import com.ant.jobgod.jobgod.module.main.bbs.BBSFragment;
+import com.ant.jobgod.jobgod.module.main.joblist.JobListFragment;
+import com.ant.jobgod.jobgod.module.main.recommend.RecommendFragment;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -52,6 +56,22 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
         setSwipeBackEnable(false);
         tabLayout.setTabTextColors(getResources().getColor(R.color.WhiteTrans80), getResources().getColor(R.color.White));
         viewpager.setAdapter(mMainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager()));
+        viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                invalidateOptionsMenu();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         tabLayout.setupWithViewPager(viewpager);
         mDrawerToggle = new ActionBarDrawerToggle(this
                 , drawerLayout
@@ -60,6 +80,21 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
                 , R.string.drawer_close);
         drawerLayout.post(() -> mDrawerToggle.syncState());
         drawerLayout.setDrawerListener(mDrawerToggle);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if(mMainPagerAdapter!=null){
+            getMenuInflater().inflate(((AbsMenuFragment)mMainPagerAdapter.getItem(viewpager.getCurrentItem())).getMenu(),menu);
+            return true;
+        }
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        ((AbsMenuFragment)mMainPagerAdapter.getItem(viewpager.getCurrentItem())).onMenuSelect(item.getItemId());
+        return super.onOptionsItemSelected(item);
     }
 
     public class MainPagerAdapter extends FragmentStatePagerAdapter {

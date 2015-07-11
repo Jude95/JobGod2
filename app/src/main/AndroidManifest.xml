@@ -88,7 +88,11 @@
         <activity
             android:name=".module.setting.SettingActivity"
             android:label="设置" />
-        <activity android:name=".module.job.JobDetailManagerModeActivity" />
+
+
+        <activity android:name=".module.main.joblist.FiltrateActivity"
+            android:label="偏好设置"
+            ></activity>
 
         <!-- 分享及第三方登陆 -->
         <!-- 分享编辑页 -->
