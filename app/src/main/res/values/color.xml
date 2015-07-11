@@ -8,6 +8,7 @@
     <color name="Cyan">#00BCD4</color>
     <color name="Black">#000000</color>
     <color name="Grey">#9E9E9E</color>
+    <color name="Grey300">#E0E0E0</color>
     <color name="WhiteTrans80">#AFFF</color>
 
 </resources>

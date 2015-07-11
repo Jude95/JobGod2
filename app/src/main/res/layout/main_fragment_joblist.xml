@@ -1,29 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
     <com.malinskiy.superrecyclerview.SuperRecyclerView
         android:id="@+id/list_job"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_empty="@layout/view_empty"
         app:layout_moreProgress="@layout/view_progress"
         app:layout_progress="@layout/view_progress"
         app:scrollbarStyle="insideInset"/>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_filtrate"
-        android:layout_width="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_height="wrap_content"
-        app:layout_anchor="@id/list_job"
-        app:layout_anchorGravity="bottom|right|end"
-        android:src="@drawable/ic_filtrate"
-        app:elevation="6dp"
-        app:borderWidth="0dp"
-        />
-
-</android.support.design.widget.CoordinatorLayout>
