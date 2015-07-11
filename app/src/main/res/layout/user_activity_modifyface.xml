@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ant.jobgod.jobgod.module.user.ModifyFaceAcitivity">
+
+    <include layout="@layout/include_toolbar"/>
+
+
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true">
+
+        <TextView android:id="@+id/camera"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="@dimen/abc_text_size_medium_material"
+            android:textColor="@color/White"
+            android:background="?colorPrimary"
+            android:text="拍照"/>
+
+        <TextView android:id="@+id/album"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="@dimen/abc_text_size_medium_material"
+            android:textColor="@color/White"
+            android:background="?colorPrimary"
+            android:text="相册"/>
+
+        <TextView android:id="@+id/camera"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="@dimen/abc_text_size_medium_material"
+            android:textColor="@color/White"
+            android:background="?colorPrimary"
+            android:text="网络"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -16,4 +16,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_job_detail_release_mode">兼职信息</string>
     <string name="title_activity_user_info_modify">个人信息</string>
+    <string name="title_activity_modify_user_intro">修改简介</string>
+    <string name="title_activity_modify_face_acitivity">修改头像</string>
+    <string name="title_activity_modify_phone_acitvity">绑定手机</string>
 </resources>
