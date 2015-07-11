@@ -167,6 +167,10 @@ public class UserInfoModifyActivity extends BaseActivity<UserInfoModifyPresenter
                      * If you use alwaysCallSingleChoiceCallback(), which is discussed below,
                      * returning false here won't allow the newly selected radio button to actually be selected.
                      **/
+                if(text==null){
+                    Utils.Toast("请重新选择");
+                    return false;
+                }
                     display.setText(text.toString());
                     return true;
                 })

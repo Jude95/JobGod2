@@ -21,8 +21,6 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
 
     @InjectView(R.id.modifyInfo)
     TextView modifyInfo;
-    @InjectView(R.id.imgFace)
-    SimpleDraweeView imgFace;
     @InjectView(R.id.collapsingToolbar)
     CollapsingToolbarLayout collapsingToolbar;
     @InjectView(R.id.imgBgFace)
@@ -36,8 +34,9 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
         ButterKnife.inject(this);
 
         modifyInfo.setOnClickListener(v -> startActivity(new Intent(UserDetailActivity.this, UserInfoModifyActivity.class)));
-        imgFace.setImageURI(Uri.parse("http://image.baidu.com/search/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=&sf=1&fmq=1435825300259_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&itg=0&ie=utf-8&word=%E5%A4%B4%E5%83%8F#z=0&pn=&ic=0&st=-1&face=0&s=0&lm=-1"));
+        collapsingToolbar.setTitle("个人信息");
 
+        imgBgFace.setImageURI(Uri.parse("http://img4.imgtn.bdimg.com/it/u=2205791892,1328528914&fm=23&gp=0.jpg"));
     }
 
     public void setUserDetailData(UserDetail data) {
