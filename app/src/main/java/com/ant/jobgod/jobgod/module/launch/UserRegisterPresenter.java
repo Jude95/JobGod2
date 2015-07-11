@@ -60,7 +60,7 @@ public class UserRegisterPresenter extends BasePresenter<UserRegisterActivity> i
                 Utils.Toast("注册成功，诚客兼职欢迎您");
                 Intent i = new Intent();
                 i.putExtra("number",tel);
-                i.putExtra("password",tel);
+                i.putExtra("password",pass);
                 getView().setResult(Activity.RESULT_OK,i);
                 getView().finish();
             }

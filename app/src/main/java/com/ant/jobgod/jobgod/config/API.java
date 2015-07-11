@@ -10,7 +10,7 @@ public class API {
         //Account
         public static final String IsRegistered = BaseUrl + "home/index/checkTel";
         public static final String Register = BaseUrl + "home/user/register";
-        public static final String Login = BaseUrl + "xx";
+        public static final String Login = BaseUrl + "Home/User/login";
         public static final String ModifyPassword = BaseUrl + "xx";
 
         //Person

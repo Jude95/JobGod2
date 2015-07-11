@@ -10,6 +10,7 @@ import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.tencent.open.utils.Util;
 
 import java.util.HashMap;
 
@@ -59,7 +60,7 @@ public class AccountModel extends AbsModel{
         RequestMap params = new RequestMap();
         params.put("name",name);
         params.put("tel",tel);
-        params.put("pass",password);
+        params.put("pass",Utils.MD5(password.getBytes()));
         params.put("code",verify);
         RequestManager.getInstance().post(API.URL.Register,params,callback);
     }
@@ -71,6 +72,7 @@ public class AccountModel extends AbsModel{
     }
 
     public void userLogin(String tel,String password,StatusCallback callback){
+        Utils.Log("MD5:"+ Utils.MD5("abc".getBytes()));
         RequestMap params = new RequestMap();
         params.put("tel", tel);
         params.put("pass", password);

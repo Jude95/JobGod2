@@ -18,6 +18,7 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
@@ -30,9 +31,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListPopupWindow;
 import android.widget.TextView;
-
 import com.ant.jobgod.jobgod.BuildConfig;
-
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -549,15 +548,16 @@ public class Utils {
         view.setLayoutParams(params);
     }
 
-    public static String MD5(byte[] data) throws NoSuchAlgorithmException {
-        MessageDigest md5 = MessageDigest.getInstance("MD5");
-        md5.update(data);
+    public static String MD5(byte[] data) {
+		MessageDigest md5 = null;
+		try {
+			md5 = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		md5.update(data);
         byte[] m = md5.digest();//加密
-        StringBuffer sb = new StringBuffer();
-        for(int i = 0; i < m.length; i ++){
-            sb.append(m[i]);
-        }
-        return sb.toString();
+        return Base64.encodeToString(m, Base64.DEFAULT);
     }
 
 	public static String getStringFromAssets(Context ctx,String fileName){

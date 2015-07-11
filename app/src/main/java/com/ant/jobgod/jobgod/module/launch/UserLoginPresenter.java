@@ -1,10 +1,15 @@
 package com.ant.jobgod.jobgod.module.launch;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 
 import com.ant.jobgod.jobgod.app.BasePresenter;
+import com.ant.jobgod.jobgod.model.AccountModel;
+import com.ant.jobgod.jobgod.model.callback.StatusCallback;
+import com.ant.jobgod.jobgod.module.main.UserMainActivity;
+import com.ant.jobgod.jobgod.module.main.UserMainPresenter;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.controller.UMServiceFactory;
@@ -19,7 +24,11 @@ import com.umeng.socialize.sso.UMSsoHandler;
  * Created by Mr.Jude on 2015/6/6.
  */
 public class UserLoginPresenter extends BasePresenter<UserLoginActivity> {
+    private static final int REGISTER = 1243;
+
     UMSocialService mController;
+
+
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
@@ -30,17 +39,16 @@ public class UserLoginPresenter extends BasePresenter<UserLoginActivity> {
         mController.getConfig().setSsoHandler(new SinaSsoHandler());
     }
 
-    @Override
-    protected void onTakeView(UserLoginActivity view) {
-        super.onTakeView(view);
-        String number = getView().getIntent().getStringExtra("number");
-        String password = getView().getIntent().getStringExtra("password");
-        if (number!=null&&password!=null)
-        getView().setNumberAndPassword(number,password);
-    }
+
+
 
     public void login(String tel,String pass){
-
+        AccountModel.getInstance().userLogin(tel, pass, new StatusCallback() {
+            @Override
+            public void success(String info) {
+                getView().finish();
+            }
+        });
     }
 
 
@@ -99,7 +107,7 @@ public class UserLoginPresenter extends BasePresenter<UserLoginActivity> {
     }
 
     public void register(){
-        getView().startActivity(new Intent(getView(),UserRegisterActivity.class));
+        getView().startActivityForResult(new Intent(getView(),UserRegisterActivity.class),REGISTER);
     }
     public void modifyPassword(){
         getView().startActivity(new Intent(getView(),ModifyPasswordActivity.class));
@@ -113,5 +121,12 @@ public class UserLoginPresenter extends BasePresenter<UserLoginActivity> {
         if(ssoHandler != null){
             ssoHandler.authorizeCallBack(requestCode, resultCode, data);
         }
+        if (requestCode == REGISTER && resultCode == Activity.RESULT_OK){
+            String number = data.getStringExtra("number");
+            String password = data.getStringExtra("password");
+            if (number!=null&&password!=null)
+                getView().setNumberAndPassword(number,password);
+        }
+
     }
 }
