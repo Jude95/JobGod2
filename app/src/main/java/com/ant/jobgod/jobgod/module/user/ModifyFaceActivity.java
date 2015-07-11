@@ -8,7 +8,7 @@ import com.ant.jobgod.jobgod.app.BaseActivity;
 import nucleus.factory.RequiresPresenter;
 
 @RequiresPresenter(ModifyFacePresenter.class)
-public class ModifyFaceAcitivity extends BaseActivity<ModifyFacePresenter> {
+public class ModifyFaceActivity extends BaseActivity<ModifyFacePresenter> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

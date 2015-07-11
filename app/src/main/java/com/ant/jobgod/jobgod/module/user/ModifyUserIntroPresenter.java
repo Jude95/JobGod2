@@ -9,14 +9,14 @@ import com.ant.jobgod.jobgod.model.callback.DataCallback;
 /**
  * Created by alien on 2015/7/11.
  */
-public class ModifyUserIntroPresenter extends BasePresenter<ModifyUserIntroAcitivity> {
+public class ModifyUserIntroPresenter extends BasePresenter<ModifyUserIntroActivity> {
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
     }
 
     @Override
-    protected void onCreateView(ModifyUserIntroAcitivity view) {
+    protected void onCreateView(ModifyUserIntroActivity view) {
         super.onCreateView(view);
     }
 

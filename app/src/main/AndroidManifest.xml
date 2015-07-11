@@ -111,17 +111,19 @@
             android:label="@string/title_activity_user_info_modify" >
         </activity>
         <activity
-            android:name=".module.user.ModifyUserIntroAcitivity"
+            android:name=".module.user.ModifyUserIntroActivity"
             android:label="@string/title_activity_modify_user_intro" >
         </activity>
         <activity
-            android:name=".module.user.ModifyFaceAcitivity"
+            android:name=".module.user.ModifyFaceActivity"
             android:label="@string/title_activity_modify_face_acitivity" >
         </activity>
         <activity
-            android:name=".module.user.ModifyPhoneAcitvity"
+            android:name=".module.user.ModifyPhoneActivity"
             android:label="@string/title_activity_modify_phone_acitvity" >
         </activity>
+        <activity android:name=".module.user.AuthenticationActivity"
+            android:label="实名认证"/>
 
 
 

@@ -18,7 +18,7 @@ import butterknife.InjectView;
 import nucleus.factory.RequiresPresenter;
 
 @RequiresPresenter(ModifyUserIntroPresenter.class)
-public class ModifyUserIntroAcitivity extends BaseActivity<ModifyUserIntroPresenter> {
+public class ModifyUserIntroActivity extends BaseActivity<ModifyUserIntroPresenter> {
 
     @InjectView(R.id.name)
     TextInputLayout name;
@@ -40,12 +40,6 @@ public class ModifyUserIntroAcitivity extends BaseActivity<ModifyUserIntroPresen
                 Utils.Toast("不能为空");
                 return;
             }
-            if(submit.isClickable()){
-                submit.setBackgroundColor(R.color.link_text_material_light);
-            }
-            if (!submit.isClickable()){
-                submit.setBackgroundColor(R.attr.colorAccent);
-            }
             getPresenter().postNet(new DataCallback() {
                 @Override
                 public void success(String info, Object data) {
@@ -57,7 +51,7 @@ public class ModifyUserIntroAcitivity extends BaseActivity<ModifyUserIntroPresen
          * 修改头像
          */
         imgFace.setImageURI(Uri.parse("http://img4.imgtn.bdimg.com/it/u=2205791892,1328528914&fm=23&gp=0.jpg"));
-        imgFace.setOnClickListener(v -> startActivity(new Intent(ModifyUserIntroAcitivity.this,ModifyFaceAcitivity.class)));
+        imgFace.setOnClickListener(v -> startActivity(new Intent(ModifyUserIntroActivity.this,ModifyFaceActivity.class)));
 
     }
 

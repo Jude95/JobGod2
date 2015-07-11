@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -20,42 +21,6 @@ import nucleus.factory.RequiresPresenter;
 public class UserInfoModifyActivity extends BaseActivity<UserInfoModifyPresenter> {
 
 
-    @InjectView(R.id.displayEduLevel)
-    TextView displayEduLevel;
-    @InjectView(R.id.editEduLevel)
-    TextView editEduLevel;
-    @InjectView(R.id.displaySchool)
-    TextView displaySchool;
-    @InjectView(R.id.editSchool)
-    TextView editSchool;
-    @InjectView(R.id.displayMajor)
-    TextView displayMajor;
-    @InjectView(R.id.editMajor)
-    TextView editMajor;
-    @InjectView(R.id.displayAward)
-    TextView displayAward;
-    @InjectView(R.id.editAward)
-    TextView editAward;
-    @InjectView(R.id.displayCertificate)
-    TextView displayCertificate;
-    @InjectView(R.id.editCertificate)
-    TextView editCertificate;
-    @InjectView(R.id.displayCharacter)
-    TextView displayCharacter;
-    @InjectView(R.id.editCharacter)
-    TextView editCharacter;
-    @InjectView(R.id.displayLike)
-    TextView displayLike;
-    @InjectView(R.id.editLike)
-    TextView editLike;
-    @InjectView(R.id.displaySpecialty)
-    TextView displaySpecialty;
-    @InjectView(R.id.editSpecialty)
-    TextView editSpecialty;
-    @InjectView(R.id.displayIntro)
-    TextView displayIntro;
-    @InjectView(R.id.editIntro)
-    TextView editIntro;
     @InjectView(R.id.displayName)
     TextView displayName;
     @InjectView(R.id.editName)
@@ -76,7 +41,30 @@ public class UserInfoModifyActivity extends BaseActivity<UserInfoModifyPresenter
     TextView displayAddress;
     @InjectView(R.id.editAddress)
     TextView editAddress;
-
+    @InjectView(R.id.displayEduLevel)
+    TextView displayEduLevel;
+    @InjectView(R.id.editEduLevel)
+    TextView editEduLevel;
+    @InjectView(R.id.displaySchool)
+    TextView displaySchool;
+    @InjectView(R.id.editSchool)
+    TextView editSchool;
+    @InjectView(R.id.displayMajor)
+    TextView displayMajor;
+    @InjectView(R.id.editMajor)
+    TextView editMajor;
+    @InjectView(R.id.editAward)
+    EditText editAward;
+    @InjectView(R.id.editCertificate)
+    EditText editCertificate;
+    @InjectView(R.id.editCharacter)
+    EditText editCharacter;
+    @InjectView(R.id.editLike)
+    EditText editLike;
+    @InjectView(R.id.editSpecialty)
+    EditText editSpecialty;
+    @InjectView(R.id.editIntro)
+    EditText editIntro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,31 +84,25 @@ public class UserInfoModifyActivity extends BaseActivity<UserInfoModifyPresenter
         editEduLevel.setOnClickListener(v -> createSingleChoiceDialog("请选择", R.array.eduLevel, displayEduLevel));
         editSchool.setOnClickListener(v -> createEditDialog("输入", 32, "最多32字", displaySchool));
         editMajor.setOnClickListener(v -> createEditDialog("输入", 16, "最多16字", displayMajor));
-        editAward.setOnClickListener(v -> createEditDialog("输入", 32, "最多32字", displayAward));
-        editCertificate.setOnClickListener(v -> createEditDialog("输入", 8, "最多8字", displayCertificate));
 
-        editCharacter.setOnClickListener(v -> createEditDialog("输入", 16, "最多16字", displayCharacter));
-        editLike.setOnClickListener(v -> createEditDialog("输入", 32, "最多32字", displayLike));
-        editSpecialty.setOnClickListener(v -> createEditDialog("输入", 32, "最多32字", displaySpecialty));
-        editIntro.setOnClickListener(v -> createEditDialog("输入", 64, "最多64字", displayIntro));
     }
 
     /**
      * 网络请求参数
      */
-    public void submitInfo(){
-        RequestMap param=new RequestMap();
-        param.put("name",displayName.getText().toString());
-        param.put("sign",editSignature.getText().toString());
-        param.put("gender", editGender.getText().toString());
-        param.put("height", editHeight.getText().toString());
-        param.put("address", editAddress.getText().toString());
-        param.put("edulevel", editEduLevel.getText().toString());
-        param.put("school", editSchool.getText().toString());
-        param.put("major", editMajor.getText().toString());
+    public void submitInfo() {
+        RequestMap param = new RequestMap();
+        param.put("name", displayName.getText().toString());
+        param.put("sign", displaySignature.getText().toString());
+        param.put("gender", displayGender.getText().toString());
+        param.put("height", displayHeight.getText().toString());
+        param.put("address", displayAddress.getText().toString());
+        param.put("edulevel", displayEduLevel.getText().toString());
+        param.put("school", displaySchool.getText().toString());
+        param.put("major", displayMajor.getText().toString());
         param.put("award", editAward.getText().toString());
-        param.put("certofocate", editCertificate.getText().toString());
-        param.put("cjaracter", editCharacter.getText().toString());
+        param.put("certificate", editCertificate.getText().toString());
+        param.put("character", editCharacter.getText().toString());
         param.put("like", editLike.getText().toString());
         param.put("specialty", editSpecialty.getText().toString());
         param.put("intro", editIntro.getText().toString());
@@ -131,10 +113,11 @@ public class UserInfoModifyActivity extends BaseActivity<UserInfoModifyPresenter
 
     /**
      * 创建一个编辑对话框
-     * @param title 标题
+     *
+     * @param title     标题
      * @param maxLength 输入最大字符串长度
-     * @param hint 提示文字
-     * @param text 显示选择内容控件
+     * @param hint      提示文字
+     * @param text      显示选择内容控件
      */
 
     public void createEditDialog(String title, int maxLength, String hint, TextView text) {
@@ -154,11 +137,12 @@ public class UserInfoModifyActivity extends BaseActivity<UserInfoModifyPresenter
 
     /**
      * 创建一个单选项对话框
-     * @param title 标题
+     *
+     * @param title    标题
      * @param strArray 数组
-     * @param display 显示选择后的内容控件
+     * @param display  显示选择后的内容控件
      */
-    public void createSingleChoiceDialog(String title,int strArray,TextView display) {
+    public void createSingleChoiceDialog(String title, int strArray, TextView display) {
         new MaterialDialog.Builder(this)
                 .title(title)
                 .items(strArray)
@@ -167,18 +151,16 @@ public class UserInfoModifyActivity extends BaseActivity<UserInfoModifyPresenter
                      * If you use alwaysCallSingleChoiceCallback(), which is discussed below,
                      * returning false here won't allow the newly selected radio button to actually be selected.
                      **/
-                if(text==null){
-                    Utils.Toast("请重新选择");
-                    return false;
-                }
+                    if (text == null) {
+                        Utils.Toast("请重新选择");
+                        return false;
+                    }
                     display.setText(text.toString());
                     return true;
                 })
                 .positiveText("确定")
                 .show();
     }
-
-
 
 
     @Override
@@ -189,7 +171,7 @@ public class UserInfoModifyActivity extends BaseActivity<UserInfoModifyPresenter
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.submit:
                 submitInfo();
                 break;
