@@ -69,7 +69,7 @@ public class JobDetailManagerModeActivity extends BaseActivity<JobDetailManagerM
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.job_activity_job_detail_manager_mode);
+        setContentView(R.layout.job_activity_detailmanager);
         ButterKnife.inject(this);
         jobImg.getHierarchy().setActualImageFocusPoint(new PointF(0.5f, 0));
     }

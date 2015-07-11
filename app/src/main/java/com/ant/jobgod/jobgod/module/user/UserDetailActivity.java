@@ -30,7 +30,7 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_activity_user_detail);
+        setContentView(R.layout.user_activity_infodetail);
         ButterKnife.inject(this);
 
         modifyInfo.setOnClickListener(v -> startActivity(new Intent(UserDetailActivity.this, UserInfoModifyActivity.class)));

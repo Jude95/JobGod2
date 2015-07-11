@@ -61,7 +61,7 @@ public class JobDetailReleaseModeActivity extends BaseActivity<JobDetailReleaseM
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.job_activity_job_detail_release_mode);
+        setContentView(R.layout.job_activity_detailrelease);
         ButterKnife.inject(this);
     }
 

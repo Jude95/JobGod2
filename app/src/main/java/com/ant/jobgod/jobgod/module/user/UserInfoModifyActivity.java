@@ -81,7 +81,7 @@ public class UserInfoModifyActivity extends BaseActivity<UserInfoModifyPresenter
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_activity_user_info_modify);
+        setContentView(R.layout.user_activity_infomodify);
         ButterKnife.inject(this);
         init();
     }
