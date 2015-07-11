@@ -20,7 +20,7 @@ public class AttentionActivity extends BaseActivity<AttentionPresenter> {
 
     @InjectView(R.id.tabLayout)
     TabLayout tabLayout;
-    @InjectView(R.id.viewpager)
+    @InjectView(R.id.viewPager)
     ViewPager viewpager;
 
     private AttentionOthersFragment attentionOthersFragment;

@@ -1,413 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
 
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
-                android:layout_marginBottom="24dp"
-                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:text="基本资料"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="16dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/primary_text_disabled_material_light"
-                    />
-                <LinearLayout android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="8dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="24dp"
-                        android:text="姓名"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:id="@+id/tvName"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="16dp"
-                        android:text="里浓香"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
-                </LinearLayout>
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:orientation="horizontal">
 
                 <LinearLayout android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="8dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="24dp"
-                        android:text="签名"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:id="@+id/tvSignature"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="16dp"
-                        android:text="呵呵哒"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/hint_foreground_material_light"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="16dp"
+                            android:text="修改资料"
+                            android:textSize="@dimen/abc_text_size_medium_material"/>
+
+                    <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView android:id="@+id/a"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginBottom="8dp"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/abc_text_size_medium_material"
+                            android:text="资料完善"/>
+
+                        <TextView android:id="@+id/percent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/a"
+                            android:layout_marginLeft="16dp"
+                            android:layout_alignBottom="@+id/a"
+                            android:textSize="@dimen/abc_text_size_medium_material"
+                            android:text="20%"/>
+                    </RelativeLayout>
                 </LinearLayout>
 
-                <LinearLayout android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="8dp">
-                    <TextView
+                    <TextView android:id="@+id/modifyInfo"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="24dp"
-                        android:text="性别"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:id="@+id/tvGender"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="16dp"
-                        android:text="男"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
-                </LinearLayout>
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:text="修改"
+                        android:textSize="@dimen/abc_text_size_medium_material"
+                        android:textColor="?colorPrimary"/>
 
-                <LinearLayout android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="8dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="24dp"
-                        android:text="身高"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:id="@+id/tvHeight"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="16dp"
-                        android:text="170cm"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
-                </LinearLayout>
-
-                <LinearLayout android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="8dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="24dp"
-                        android:text="位置"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:id="@+id/tvLocation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="16dp"
-                        android:text="重庆邮电大学15栋"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
-                </LinearLayout>
-                <View android:layout_width="match_parent"
-                    android:layout_height="@dimen/md_divider_height"
-                    android:layout_marginTop="@dimen/abc_action_bar_content_inset_material"
-                    android:background="@color/md_divider_black"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp"
-                android:orientation="vertical">
+            <View android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/md_divider_black"
+                android:layout_marginBottom="8dp"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:text="学历专业"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="16dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/primary_text_disabled_material_light"
-                    />
-                <LinearLayout android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="8dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="24dp"
-                        android:text="学历"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:id="@+id/tvEducation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="16dp"
-                        android:text="本科"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
-                </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:orientation="horizontal">
 
                 <LinearLayout android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="8dp">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="24dp"
-                        android:text="学校"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:id="@+id/tvSchool"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
-                        android:text="重庆邮电大学"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textColor="@color/hint_foreground_material_light"
+                        android:textStyle="bold"
+                        android:text="修改资料"
+                        android:textSize="@dimen/abc_text_size_medium_material"/>
+
+                    <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView android:id="@+id/a"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginBottom="8dp"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/abc_text_size_medium_material"
+                            android:text="资料完善"/>
+
+                        <TextView android:id="@+id/percent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/a"
+                            android:layout_marginLeft="16dp"
+                            android:layout_alignBottom="@+id/a"
+                            android:textSize="@dimen/abc_text_size_medium_material"
+                            android:text="20%"/>
+                    </RelativeLayout>
                 </LinearLayout>
 
-                <LinearLayout android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="8dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="24dp"
-                        android:text="专业"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:id="@+id/tvMajor"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="16dp"
-                        android:text="计算机科学与技术"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
-                </LinearLayout>
+                <TextView android:id="@+id/modifyInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:text="修改"
+                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:textColor="?colorPrimary"/>
 
-                <LinearLayout android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="8dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="24dp"
-                        android:text="奖项"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:id="@+id/tvAwards"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="16dp"
-                        android:text="无"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
-                </LinearLayout>
-
-                <LinearLayout android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="8dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="24dp"
-                        android:text="证书"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:id="@+id/tvHonor"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="16dp"
-                        android:text="无"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
-                </LinearLayout>
-                <View android:layout_width="match_parent"
-                    android:layout_height="@dimen/md_divider_height"
-                    android:layout_marginTop="@dimen/abc_action_bar_content_inset_material"
-                    android:background="@color/md_divider_black"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="8dp"
-                android:orientation="vertical">
+            <View android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/md_divider_black"
+                android:layout_marginBottom="8dp"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:text="爱好个性"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="16dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/primary_text_disabled_material_light"
-                    />
-                <LinearLayout android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="8dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="24dp"
-                        android:text="性格"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:id="@+id/tvPersonality"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="16dp"
-                        android:text="脾气温和"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
-                </LinearLayout>
 
-                <LinearLayout android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="8dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="24dp"
-                        android:text="爱好"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:id="@+id/tvHobby"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="16dp"
-                        android:text="写代码"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
-                </LinearLayout>
-
-                <LinearLayout android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="8dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="24dp"
-                        android:text="擅长"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:id="@+id/tvSpeciality"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="16dp"
-                        android:text="编程"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
-                </LinearLayout>
-
-                <LinearLayout android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="8dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="24dp"
-                        android:text="简介"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:id="@+id/tvUserIntro"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="16dp"
-                        android:text="无犯罪记录"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
-                </LinearLayout>
-
-                <View android:layout_width="match_parent"
-                    android:layout_height="@dimen/md_divider_height"
-                    android:layout_marginTop="@dimen/abc_action_bar_content_inset_material"
-                    android:background="@color/md_divider_black"/>
-            </LinearLayout>
 
 
         </LinearLayout>
 
 
-
     </android.support.v4.widget.NestedScrollView>
+
+
+
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
@@ -424,7 +159,7 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             >
             <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/imgFace"
+                android:id="@+id/imgBgFace"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
@@ -445,14 +180,13 @@
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floating_action_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_star_white"
-        app:borderWidth="0dp"
-        app:layout_anchor="@id/appBar"
-        app:layout_anchorGravity="bottom|right|end"
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/imgFace"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        fresco:roundAsCircle="false"
+        fresco:failureImage="@mipmap/error"
+        fresco:progressBarImage="@mipmap/progress_bar"
+        fresco:layout_anchorGravity="bottom|right|end"
         />
 </android.support.design.widget.CoordinatorLayout>

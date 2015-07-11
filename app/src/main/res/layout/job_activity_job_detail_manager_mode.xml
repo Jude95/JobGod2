@@ -138,7 +138,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="发布时间: "
+                    android:text="报名开始时间: "
                     android:gravity="center_vertical"
                     android:textColor="@color/secondary_text_default_material_light"/>
                 <TextView
@@ -162,6 +162,44 @@
                     android:textColor="@color/secondary_text_default_material_light"/>
                 <TextView
                     android:id="@+id/applyEndTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text=""
+                    android:gravity="center_vertical"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="24dp"
+                android:paddingLeft="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="工作开始时间: "
+                    android:gravity="center_vertical"
+                    android:textColor="@color/secondary_text_default_material_light"/>
+                <TextView
+                    android:id="@+id/jobBeginTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text=""
+                    android:gravity="center_vertical"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="24dp"
+                android:paddingLeft="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="工作结束时间: "
+                    android:gravity="center_vertical"
+                    android:textColor="@color/secondary_text_default_material_light"/>
+                <TextView
+                    android:id="@+id/jobEndTime"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text=""
@@ -278,7 +316,6 @@
             android:layout_height="match_parent"
             app:contentScrim="?colorPrimary"
             app:expandedTitleMarginStart="48dp"
-            app:expandedTitleMarginEnd="64dp"
             app:expandedTitleTextAppearance="@style/Title.Expanded"
             app:collapsedTitleTextAppearance="@style/Title.collapsed"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"

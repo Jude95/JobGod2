@@ -8,7 +8,6 @@ import android.widget.TextView;
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.util.BaseViewHolder;
-import com.ant.jobgod.jobgod.util.RecentDateFormater;
 import com.ant.jobgod.jobgod.util.RecentShortDateFormater;
 import com.ant.jobgod.jobgod.util.TimeTransform;
 import com.balysv.materialripple.MaterialRippleLayout;
@@ -40,9 +39,23 @@ class JobViewHolder extends BaseViewHolder<JobBrief> {
         tvDate.setText(new TimeTransform(data.getApplyBeginTime()).toString(new RecentShortDateFormater()));
         ripple.setRippleColor(ripple.getContext().getResources().getColor(R.color.Grey));
         ripple.setOnClickListener(v -> {
-            Intent intent=new Intent(ripple.getContext(), JobDetailActivity.class);
-            intent.putExtra("id",data.getId());
-            ripple.getContext().startActivity(intent);
+            Intent intent = new Intent();
+            intent.putExtra("id", data.getId());
+            switch (data.getSyle()) {
+                case 0:
+                    intent.setClass(ripple.getContext(), JobDetailReleaseModeActivity.class);
+                    ripple.getContext().startActivity(intent);
+                    break;
+                case 1:
+                    intent.setClass(ripple.getContext(), JobDetailManagerModeActivity.class);
+                    ripple.getContext().startActivity(intent);
+                    break;
+                default:
+                    intent.setClass(ripple.getContext(), JobDetailReleaseModeActivity.class);
+                    ripple.getContext().startActivity(intent);
+                    break;
+            }
+
         });
     }
 

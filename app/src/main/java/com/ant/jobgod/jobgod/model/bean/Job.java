@@ -1,10 +1,5 @@
 package com.ant.jobgod.jobgod.model.bean;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import java.io.Serializable;
-
 /**
  * Created by Mr.Jude on 2015/7/7.
  */
@@ -27,6 +22,16 @@ public class Job  {
     private int personCount;
     private String address;
     private int applyCount;
+    private String phone;
+    private String personCountIntro;
+
+    public String getPersonCountIntro() {
+        return personCountIntro;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
 
     public String getId() {
         return id;

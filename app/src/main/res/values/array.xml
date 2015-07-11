@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="gender">
+        <item>男</item>
+        <item>女</item>
+    </array>
+
+    <array name="eduLevel">
+        <item>初中</item>
+        <item>高中</item>
+        <item>本科</item>
+        <item>硕士</item>
+        <item>博士</item>
+    </array>
+</resources>
