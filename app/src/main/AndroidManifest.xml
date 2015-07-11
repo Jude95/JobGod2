@@ -88,7 +88,6 @@
         <activity
             android:name=".module.setting.SettingActivity"
             android:label="设置" />
-        <activity android:name=".module.job.JobDetailManagerModeActivity" />
 
         <!-- 分享及第三方登陆 -->
         <!-- 分享编辑页 -->
@@ -215,14 +214,7 @@
             android:name="com.umeng.update.UpdateDialogActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" >
         </activity>
-        <activity
-            android:name=".module.main.MainActivity"
-            android:label="@string/title_activity_main" >
-        </activity>
-        <activity
-            android:name=".module.main.TradeDetailActivity"
-            android:label="@string/title_activity_trade_detail" >
-        </activity>
+
         <activity
             android:name=".module.user.UserDetailActivity"
             android:label="@string/title_activity_user_detail" >
@@ -231,10 +223,7 @@
             android:name=".module.topic.TopicDetailActivity"
             android:label="@string/title_activity_topic_detail" >
         </activity>
-        <activity
-            android:name=".module.setting.ModifyPasswordActivity"
-            android:label="@string/title_activity_modify_password" >
-        </activity>
+
         <activity
             android:name=".module.user.AttentionActivity"
             android:label="@string/title_activity_attention" >
