@@ -1,11 +1,12 @@
 package com.ant.jobgod.jobgod.module.main.joblist;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
@@ -117,4 +118,17 @@ public class FiltrateActivity extends BaseActivity<FiltratePresenter> {
                 .show();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_filtrate,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.filtrate){
+            getPresenter().saveAndExit();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

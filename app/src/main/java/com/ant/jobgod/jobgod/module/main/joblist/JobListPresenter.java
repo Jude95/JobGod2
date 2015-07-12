@@ -86,6 +86,7 @@ public class JobListPresenter extends Presenter<JobListFragment> {
     protected void onResult(int requestCode, int resultCode, Intent data) {
         super.onResult(requestCode, resultCode, data);
         if (requestCode == FILTRATE_FLAG && resultCode == Activity.RESULT_OK){
+            getView().startRefresh();
             refresh();
         }
     }

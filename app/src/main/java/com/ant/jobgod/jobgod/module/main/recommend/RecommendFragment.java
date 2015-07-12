@@ -19,7 +19,7 @@ import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
 import com.facebook.drawee.generic.RoundingParams;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jude.rollviewpager.RollPagerView;
-import com.jude.rollviewpager.adapter.StaticPagerAdapter;
+import com.jude.rollviewpager.adapter.DynamicPagerAdapter;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -77,7 +77,7 @@ public class RecommendFragment extends NucleusFragment<RecommendPresenter> {
     /**
      * Created by alien on 2015/7/7.
      */
-    public static class AdAdapter extends StaticPagerAdapter {
+    public static class AdAdapter extends DynamicPagerAdapter {
 
         SimpleDraweeView img;
         private Banner[] banners;

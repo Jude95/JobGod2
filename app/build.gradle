@@ -72,4 +72,5 @@ dependencies {
     compile project(':RollViewPager')
     compile project(':androidVolley')
     compile 'com.balysv:material-ripple:1.0.2'
+    compile files('libs/YoumiSdk_v5.00_2015-01-08.jar')
 }

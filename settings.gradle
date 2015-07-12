@@ -1,4 +1,4 @@
-include ':app', ':sqllitetool', ':IMKit', ':RollViewPager'
+include ':app', ':sqllitetool', ':IMKit', ':RollViewPager', ':imagetool'
 include ':social_sdk_library'
 include ':SMSSDK'
 include ':androidVolley'
