@@ -7,14 +7,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.RegionModel;
 import com.ant.jobgod.jobgod.model.bean.Region;
 import com.ant.jobgod.jobgod.util.BaseViewHolder;
 import com.ant.jobgod.jobgod.util.RecyclerArrayAdapter;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.balysv.materialripple.MaterialRippleLayout;
 
 import java.util.ArrayList;
 
@@ -153,22 +156,26 @@ public class RegionView extends LinearLayout {
                 private TextView tv;
                 private Region rg;
                 public RegionVH(View view) {
-                    super(new TextView(view.getContext()));
-                    tv = (TextView) itemView;
-                    tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Utils.dip2px(48)));
+                    super(new MaterialRippleLayout(getContext()));
+                    tv = new TextView(getContext());
+                    tv.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Utils.dip2px(48)));
                     tv.setGravity(Gravity.CENTER);
-                    tv.setOnClickListener(new OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            callback.selected(rg);
-                        }
-                    });
+                    ((MaterialRippleLayout)itemView).addView(tv);
+                    ((MaterialRippleLayout)itemView).setRippleColor(getContext().getResources().getColor(R.color.Grey));
+                    itemView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Utils.dip2px(48)));
                 }
 
                 @Override
                 public void setData(Region data) {
                     rg = data;
                     tv.setText(data.getName());
+                    itemView.setOnClickListener(new OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Utils.Log("onClick");
+                            callback.selected(rg);
+                        }
+                    });
                 }
             }
 
@@ -192,22 +199,27 @@ public class RegionView extends LinearLayout {
 
             @Override
             public View onCreateView(ViewGroup parent) {
+                MaterialRippleLayout layout = new MaterialRippleLayout(getContext());
                 TextView tv = new TextView(parent.getContext());
-                tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Utils.dip2px(48)));
+                tv.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Utils.dip2px(48)));
                 tv.setGravity(Gravity.CENTER);
                 tv.setText(title);
-                tv.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        callback.selected(region);
-                    }
-                });
-                return tv;
+                layout.addView(tv);
+                layout.setRippleColor(getContext().getResources().getColor(R.color.Grey));
+                layout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Utils.dip2px(48)));
+
+                return layout;
             }
 
             @Override
             public void onBindView(View headerView) {
-
+                headerView.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Utils.Log("onClick");
+                        callback.selected(region);
+                    }
+                });
             }
         }
 

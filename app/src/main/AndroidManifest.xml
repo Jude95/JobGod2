@@ -125,6 +125,8 @@
         <activity android:name=".module.user.AuthenticationActivity"
             android:label="实名认证"/>
 
+        <activity android:name=".module.main.joblist.FiltrateActivity"
+            android:label="偏好设置"></activity>
 
 
 

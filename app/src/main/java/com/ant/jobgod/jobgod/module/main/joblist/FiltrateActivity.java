@@ -1,6 +1,7 @@
 package com.ant.jobgod.jobgod.module.main.joblist;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -41,11 +42,12 @@ public class FiltrateActivity extends BaseActivity<FiltratePresenter> {
         ButterKnife.inject(this);
         gridTrade.setAdapter(mTradeAdapter = new FiltrateAdapter(position -> getPresenter().deleteTrade(position)));
         gridCity.setAdapter(mCityAdapter = new FiltrateAdapter(position -> getPresenter().deleteCity(position)));
-        imgTradeAdd.setOnClickListener(v -> getPresenter().onAddTrade());
-        imgCityAdd.setOnClickListener(v->getPresenter().onAddCity());
+        imgTradeAdd.setOnClickListener(v -> getPresenter().beginAddTrade());
+        imgCityAdd.setOnClickListener(v->getPresenter().beginAddCity());
+        tvSort.setOnClickListener(v->getPresenter().beginSetSort());
     }
 
-    private void setTrade(Trade[] trades){
+    public void setTrade(Trade[] trades){
         String[] texts = new String[trades.length];
         for (int i = 0; i < trades.length ; i++){
             texts[i] = trades[i].getName();
@@ -53,12 +55,31 @@ public class FiltrateActivity extends BaseActivity<FiltratePresenter> {
         mTradeAdapter.setTexts(texts);
     }
 
-    private void setCity(Region[] regions){
+    public void setCity(Region[] regions){
         String[] texts = new String[regions.length];
         for (int i = 0; i < regions.length ; i++){
             texts[i] = regions[i].getName();
         }
         mCityAdapter.setTexts(texts);
+    }
+
+    public void setSort(String sortName){
+        tvSort.setText(sortName);
+    }
+
+    public void showSortDialog(String[] sorts){
+        new MaterialDialog.Builder(this)
+                .title("选择排序方式")
+                .items(sorts)
+                .positiveText(R.string.ok)
+                .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
+                    @Override
+                    public boolean onSelection(MaterialDialog materialDialog, View view, int i, CharSequence charSequence) {
+                        getPresenter().finishSetSort(i);
+                        return true;
+                    }
+                })
+                .show();
     }
 
     public void showTradeDialog(final Trade[] trades){
@@ -69,6 +90,7 @@ public class FiltrateActivity extends BaseActivity<FiltratePresenter> {
         new MaterialDialog.Builder(this)
                 .title("选择感兴趣的行业")
                 .items(texts)
+                .positiveText(R.string.ok)
                 .itemsCallbackMultiChoice(null, new MaterialDialog.ListCallbackMultiChoice() {
                     @Override
                     public boolean onSelection(MaterialDialog materialDialog, Integer[] integers, CharSequence[] charSequences) {
@@ -76,27 +98,23 @@ public class FiltrateActivity extends BaseActivity<FiltratePresenter> {
                         for (int i = 0; i < integers.length; i++) {
                             add[i] = trades[integers[i]];
                         }
-                        getPresenter().addTrade(add);
+                        getPresenter().finishAddTrade(add);
                         return false;
                     }
                 })
                 .show();
     }
 
+    private MaterialDialog dialog;
     public void showCityDialog(int laseRegionCode){
-        RegionView view = new RegionView(this, new RegionView.RegionSelectCallback() {
-            @Override
-            public void selected(Region region) {
-                getPresenter().addCity(region);
-            }
+        RegionView view = new RegionView(this, region -> {
+            getPresenter().finishAddCity(region);
+            dialog.dismiss();
         }, laseRegionCode);
-        new MaterialDialog.Builder(this)
+        dialog = new MaterialDialog.Builder(this)
                 .title("选择感兴趣的地区")
                 .customView(view,false)
                 .show();
-
     }
-
-
 
 }

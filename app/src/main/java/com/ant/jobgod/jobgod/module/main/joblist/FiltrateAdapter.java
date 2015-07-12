@@ -44,8 +44,8 @@ public class FiltrateAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        View root = LayoutInflater.from(convertView.getContext()).inflate(R.layout.main_item_filtrate,parent,false);
-        ((TextView)root.findViewById(R.id.text)).setText(texts[position]);
+        View root = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_item_filtrate,parent,false);
+        ((TextView)root.findViewById(R.id.title)).setText(texts[position]);
         root.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
