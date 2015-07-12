@@ -7,14 +7,14 @@ import com.ant.jobgod.jobgod.app.BasePresenter;
 /**
  * Created by alien on 2015/7/11.
  */
-public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
+public class ModifyPhonePresenter extends BasePresenter<ModifyPhoneActivity> {
     @Override
     protected void onCreate(Bundle savedState) {
-        super.onCreate(savedState);
+
     }
 
     @Override
-    protected void onCreateView(ModifyFaceActivity view) {
+    protected void onCreateView(ModifyPhoneActivity view) {
         super.onCreateView(view);
     }
 }

@@ -18,16 +18,13 @@
                 android:layout_marginTop="48dp"
                 android:orientation="horizontal">
 
-                <com.facebook.drawee.view.SimpleDraweeView
+                <ImageView
                     android:id="@+id/imgFace"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
+                    android:src="@mipmap/ic_head"
                     android:layout_marginLeft="12dp"
                     android:layout_gravity="center_vertical"
-                    fresco:roundAsCircle="true"
-                    fresco:actualImageScaleType="focusCrop"
-                    fresco:failureImage="@mipmap/error"
-                    fresco:progressBarImage="@mipmap/progress_bar"
                     />
 
                 <LinearLayout android:layout_width="match_parent"
@@ -78,14 +75,17 @@
                         android:textColor="?colorPrimary"/>
 
             </LinearLayout>
+
             <View android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_alignParentBottom="true"
+                android:layout_marginTop="8dp"
                 android:background="@color/md_divider_black"/>
 
 
             <LinearLayout android:layout_width="match_parent"
                 android:layout_height="72dp"
+                android:layout_marginTop="8dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -109,7 +109,6 @@
                         android:textColor="@color/hint_foreground_material_light"
                         android:textStyle="bold"
                         android:layout_marginLeft="16dp"
-                        android:layout_marginTop="8dp"
                         android:text="绑定手机号"
                         android:textSize="@dimen/abc_text_size_medium_material"/>
 
@@ -131,7 +130,7 @@
                 <TextView android:id="@+id/modifyPhone"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:gravity="center_vertical"
                     android:padding="16dp"
                     android:text="修改"
                     android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
@@ -213,6 +212,7 @@
 
             <LinearLayout android:layout_width="match_parent"
                 android:layout_height="72dp"
+                android:layout_marginTop="8dp"
                 android:orientation="horizontal">
 
                 <ImageView

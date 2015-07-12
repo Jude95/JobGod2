@@ -20,9 +20,6 @@ import nucleus.factory.RequiresPresenter;
 @RequiresPresenter(UserDetailPresenter.class)
 public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
 
-
-    @InjectView(R.id.imgFace)
-    SimpleDraweeView imgFace;
     @InjectView(R.id.a)
     TextView a;
     @InjectView(R.id.percent)
@@ -61,7 +58,6 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
         setAllListener();
 
         collapsingToolbar.setTitle("个人信息");
-        imgFace.setImageURI(Uri.parse("http://img4.imgtn.bdimg.com/it/u=2205791892,1328528914&fm=23&gp=0.jpg"));
         imgBgFace.setImageURI(Uri.parse("http://img4.imgtn.bdimg.com/it/u=2205791892,1328528914&fm=23&gp=0.jpg"));
     }
 
@@ -72,7 +68,9 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
     public void setAllListener(){
         modifyInfo.setOnClickListener(v -> getPresenter().startAcitivity(UserInfoModifyActivity.class));
         modifyPassword.setOnClickListener(v -> getPresenter().startAcitivity(ModifyPasswordActivity.class));
-        fabEdit.setOnClickListener(v -> getPresenter().startAcitivity(ModifyUserIntroAcitivity.class));
+        fabEdit.setOnClickListener(v -> getPresenter().startAcitivity(ModifyUserIntroActivity.class));
+        modifyPhone.setOnClickListener(v -> getPresenter().startAcitivity(ModifyPhoneActivity.class));
+        realName.setOnClickListener(v -> getPresenter().startAcitivity(AuthenticationActivity.class));
     }
 
 }
