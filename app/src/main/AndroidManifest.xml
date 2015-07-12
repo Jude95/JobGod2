@@ -133,7 +133,20 @@
 
 
 
-
+        <!--ImageTool-->
+        <activity
+            android:name="com.ant.jobgod.imagetool.imageprovider.net.NetImageSearchActivity"
+            android:label="搜索图片">
+        </activity>
+        <activity
+            android:name="com.ant.jobgod.imagetool.photoview.ImageViewActivity"
+            android:label="查看图片"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            >
+        </activity>
+        <activity
+            android:name="com.ant.jobgod.imagetool.corpimage.CropImage"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar"/>
 
         <!-- 分享及第三方登陆 -->
         <!-- 分享编辑页 -->

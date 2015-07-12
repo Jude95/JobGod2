@@ -6,7 +6,7 @@
     <include layout="@layout/include_toolbar"/>
 
 
-    <ImageView android:id="@+id/example"
+    <ImageView android:id="@+id/img_face"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:scaleType="centerCrop"
@@ -18,7 +18,7 @@
         android:layout_height="48dp"
         android:layout_alignParentBottom="true">
 
-        <TextView android:id="@+id/camera"
+        <TextView android:id="@+id/tv_camera"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -33,7 +33,7 @@
             android:background="@color/White"
             android:layout_gravity="center_vertical"/>
 
-        <TextView android:id="@+id/album"
+        <TextView android:id="@+id/tv_album"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -48,7 +48,7 @@
             android:background="@color/White"
             android:layout_gravity="center_vertical"/>
 
-        <TextView android:id="@+id/net"
+        <TextView android:id="@+id/tv_net"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
