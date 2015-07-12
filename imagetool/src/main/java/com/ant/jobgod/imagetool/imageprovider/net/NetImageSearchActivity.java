@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
@@ -36,7 +36,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class NetImageSearchActivity extends ActionBarActivity {
+public class NetImageSearchActivity extends AppCompatActivity {
 
     public static final String Key_seacher = "seacher";
 
@@ -51,13 +51,12 @@ public class NetImageSearchActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-        Utils.initialize(getApplication(), "NetImageSearch");
         initSeacher();
         setContentView(R.layout.fragment);
         Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_return_black);
         setSupportActionBar(toolbar);
-
+        Utils.initialize(getApplication(),"IMAGE_TOOL");
         recycleview = (RecyclerView) findViewById(R.id.recyclerview);
         StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recycleview.setLayoutManager(manager);

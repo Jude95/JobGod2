@@ -31,8 +31,10 @@ import nucleus.view.NucleusFragment;
  */
 @RequiresPresenter(RecommendPresenter.class)
 public class RecommendFragment extends NucleusFragment<RecommendPresenter> {
-    @InjectView(R.id.vpgAd)
-    RollPagerView vpgAd;
+
+
+    @InjectView(R.id.vpgBanner)
+    RollPagerView vpgBanner;
     @InjectView(R.id.tvTopicMore)
     TextView tvTopicMore;
     @InjectView(R.id.viewTopic)
@@ -41,28 +43,33 @@ public class RecommendFragment extends NucleusFragment<RecommendPresenter> {
     TextView tvRecommendMore;
     @InjectView(R.id.listRecommend)
     LinearWrapContentRecyclerView listRecommend;
-
-    private AdAdapter mAdAdapter;
+    @InjectView(R.id.tvAdMore)
+    TextView tvAdMore;
+    @InjectView(R.id.vpgAd)
+    RollPagerView vpgAd;
+    private AdAdapter mBannerAdapter;
     private JobBriefAdapter mRecommendAdapter;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreateView(inflater,container,savedInstanceState);
+        super.onCreateView(inflater, container, savedInstanceState);
         View rootView = inflater.inflate(R.layout.main_fragment_recommend, container, false);
         ButterKnife.inject(this, rootView);
-        vpgAd.setAdapter(mAdAdapter = new AdAdapter());
+        vpgBanner.setAdapter(mBannerAdapter = new AdAdapter());
         listRecommend.setAdapter(mRecommendAdapter = new JobBriefAdapter(getActivity()));
         return rootView;
     }
 
-    public void setAd(Banner[] banner){
-        mAdAdapter.setData(banner);
+    public void setAd(Banner[] banner) {
+        mBannerAdapter.setData(banner);
     }
-    public void setTopic(Topic[] topics){
+
+    public void setTopic(Topic[] topics) {
         viewTopic.setTopic(topics);
     }
 
-    public void setRecommend(JobBrief[] jobs){
+    public void setRecommend(JobBrief[] jobs) {
         mRecommendAdapter.clear();
         mRecommendAdapter.addAll(jobs);
     }
@@ -85,7 +92,7 @@ public class RecommendFragment extends NucleusFragment<RecommendPresenter> {
         @Override
         public View getView(ViewGroup container, int position) {
             img = new SimpleDraweeView(container.getContext());
-            img.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,Utils.dip2px(180)));
+            img.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Utils.dip2px(180)));
             GenericDraweeHierarchyBuilder builder =
                     new GenericDraweeHierarchyBuilder(container.getResources());
             builder.setRoundingParams(RoundingParams.fromCornersRadius(Utils.dip2px(2)));
@@ -96,7 +103,7 @@ public class RecommendFragment extends NucleusFragment<RecommendPresenter> {
 
         @Override
         public int getCount() {
-            return banners==null?0:banners.length;
+            return banners == null ? 0 : banners.length;
         }
 
         public void setData(Banner[] banners) {
