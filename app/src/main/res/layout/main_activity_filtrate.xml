@@ -7,7 +7,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_margin="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:orientation="horizontal">
 
         <TextView
@@ -15,6 +16,8 @@
             android:layout_weight="1"
             android:layout_height="48dp"
             android:text="行业"
+            android:textSize="16sp"
+            android:textStyle="bold"
             android:textColor="?attr/colorPrimary"
             android:gravity="center_vertical"
             />
@@ -27,11 +30,22 @@
     <GridView
         android:id="@+id/grid_trade"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:horizontalSpacing="8dp"
+        android:verticalSpacing="8dp"
+        android:numColumns="4"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/md_divider_height"
+        android:background="@color/md_divider_black"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_margin="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:orientation="horizontal">
 
         <TextView
@@ -39,6 +53,8 @@
             android:layout_weight="1"
             android:layout_height="48dp"
             android:text="地区"
+            android:textSize="16sp"
+            android:textStyle="bold"
             android:textColor="?attr/colorPrimary"
             android:gravity="center_vertical"
             />
@@ -51,31 +67,47 @@
     <GridView
         android:id="@+id/grid_city"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:horizontalSpacing="8dp"
+        android:verticalSpacing="8dp"
+        android:numColumns="4"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/md_divider_height"
+        android:background="@color/md_divider_black"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_margin="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="48dp"
-            android:text="地区"
+            android:text="排序方式"
+            android:textSize="16sp"
+            android:textStyle="bold"
             android:textColor="?attr/colorPrimary"
             android:gravity="center_vertical"
             />
 
         <TextView
             android:id="@+id/tv_sort"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:text="按发布时间排序"
             android:textColor="?attr/colorPrimary"
             android:gravity="center_vertical"
             />
     </LinearLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/md_divider_height"
+        android:background="@color/md_divider_black"/>
 </LinearLayout>

@@ -15,8 +15,9 @@ public abstract class AbsModel {
             AccountModel.class,
             LocationModel.class,
             PersonBriefModel.class,
+            CommonModel.class,
+            RegionModel.class,
             JobModel.class,
-            CommonModel.class
     };
 
 

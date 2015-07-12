@@ -122,7 +122,8 @@
             android:name=".module.user.ModifyPhoneAcitvity"
             android:label="@string/title_activity_modify_phone_acitvity" >
         </activity>
-
+        <activity android:name=".module.main.joblist.FiltrateActivity"
+            android:label="偏好设置"></activity>
 
 
 
