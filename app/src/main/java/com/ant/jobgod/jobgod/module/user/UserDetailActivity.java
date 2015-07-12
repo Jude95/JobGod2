@@ -45,6 +45,8 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
     RelativeLayout viewAuthentication;
     @InjectView(R.id.viewModifyPassword)
     RelativeLayout viewModifyPassword;
+    @InjectView(R.id.viewData)
+    RelativeLayout viewData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +64,8 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
     }
 
     public void setAllListener() {
-        viewFace.setOnClickListener(v -> getPresenter().startAcitivity(UserInfoModifyActivity.class));
+        viewFace.setOnClickListener(v -> getPresenter().startAcitivity(ModifyFaceActivity.class));
+        viewData.setOnClickListener(v -> getPresenter().startAcitivity(ModifyInfoActivity.class));
         viewModifyPassword.setOnClickListener(v -> getPresenter().startAcitivity(ModifyPasswordActivity.class));
         viewPhone.setOnClickListener(v -> getPresenter().startAcitivity(ModifyPhoneActivity.class));
         viewAuthentication.setOnClickListener(v -> getPresenter().startAcitivity(AuthenticationActivity.class));

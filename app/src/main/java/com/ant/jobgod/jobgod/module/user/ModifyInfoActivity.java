@@ -1,9 +1,11 @@
 package com.ant.jobgod.jobgod.module.user;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -16,8 +18,8 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import nucleus.factory.RequiresPresenter;
 
-@RequiresPresenter(UserInfoModifyPresenter.class)
-public class UserInfoModifyActivity extends BaseActivity<UserInfoModifyPresenter> {
+@RequiresPresenter(ModifyInfoPresenter.class)
+public class ModifyInfoActivity extends BaseActivity<ModifyInfoPresenter> {
 
 
     @InjectView(R.id.name)
@@ -36,6 +38,18 @@ public class UserInfoModifyActivity extends BaseActivity<UserInfoModifyPresenter
     TextView school;
     @InjectView(R.id.major)
     TextView major;
+    @InjectView(R.id.viewAward)
+    RelativeLayout viewAward;
+    @InjectView(R.id.viewCertificate)
+    RelativeLayout viewCertificate;
+    @InjectView(R.id.viewCharacter)
+    RelativeLayout viewCharacter;
+    @InjectView(R.id.viewLike)
+    RelativeLayout viewLike;
+    @InjectView(R.id.viewSpecialty)
+    RelativeLayout viewSpecialty;
+    @InjectView(R.id.viewIntro)
+    RelativeLayout viewIntro;
     @InjectView(R.id.award)
     TextView award;
     @InjectView(R.id.certificate)
@@ -49,10 +63,13 @@ public class UserInfoModifyActivity extends BaseActivity<UserInfoModifyPresenter
     @InjectView(R.id.intro)
     TextView intro;
 
+    private final int REQUEST_CODE=1;
+    private final int RESULT_CODE=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_activity_infomodify);
+        setContentView(R.layout.user_activity_modifyinfo);
         ButterKnife.inject(this);
         init();
     }
@@ -67,6 +84,13 @@ public class UserInfoModifyActivity extends BaseActivity<UserInfoModifyPresenter
         eduLevel.setOnClickListener(v -> createSingleChoiceDialog("请选择", R.array.eduLevel, eduLevel));
         school.setOnClickListener(v -> createEditDialog("输入", 32, "最多32字", school));
         major.setOnClickListener(v -> createEditDialog("输入", 16, "最多16字", major));
+
+        viewAward.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult("award"));
+        viewCertificate.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult("certificate"));
+        viewCharacter.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult("character"));
+        viewIntro.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult("intro"));
+        viewLike.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult("like"));
+        viewSpecialty.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult("specialty"));
 
     }
 
@@ -90,8 +114,34 @@ public class UserInfoModifyActivity extends BaseActivity<UserInfoModifyPresenter
         param.put("specialty", specialty.getText().toString());
         param.put("intro", intro.getText().toString());
 
-
         getPresenter().submitInfo(param);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==REQUEST_CODE&&resultCode==RESULT_CODE){
+            switch (data.getStringExtra("viewName")){
+                case "award":
+                    award.setText(data.getStringExtra("data"));
+                    break;
+                case "certificate":
+                    certificate.setText(data.getStringExtra("data"));
+                    break;
+                case "character":
+                    character.setText(data.getStringExtra("data"));
+                    break;
+                case "like":
+                    like.setText(data.getStringExtra("data"));
+                    break;
+                case "specialty":
+                    specialty.setText(data.getStringExtra("data"));
+                    break;
+                case "intro":
+                    intro.setText(data.getStringExtra("data"));
+                    break;
+            }
+        }
     }
 
     /**

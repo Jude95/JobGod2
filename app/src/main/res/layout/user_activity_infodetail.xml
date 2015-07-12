@@ -126,7 +126,7 @@
                 android:layout_height="wrap_content"
                 app:mrl_rippleColor="@color/Grey">
 
-            <RelativeLayout
+            <RelativeLayout android:id="@+id/viewData"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
