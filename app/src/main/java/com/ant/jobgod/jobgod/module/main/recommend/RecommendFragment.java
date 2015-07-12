@@ -1,5 +1,6 @@
 package com.ant.jobgod.jobgod.module.main.recommend;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,6 +15,8 @@ import com.ant.jobgod.jobgod.model.bean.Banner;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.bean.Topic;
 import com.ant.jobgod.jobgod.module.job.JobBriefAdapter;
+import com.ant.jobgod.jobgod.module.job.RecommendActivity;
+import com.ant.jobgod.jobgod.module.job.TopicListActivity;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView;
 import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
@@ -63,6 +66,8 @@ public class RecommendFragment extends NucleusFragment<RecommendPresenter> {
         vpgBanner.setAdapter(mBannerAdapter = new BannerAdapter());
         listRecommend.setAdapter(mRecommendAdapter = new JobBriefAdapter(getActivity()));
         viewAd.addView(new AdView(getActivity(), AdSize.SIZE_468x60));
+        tvTopicMore.setOnClickListener(v -> startActivity(new Intent(getActivity(), TopicListActivity.class)));
+        tvRecommendMore.setOnClickListener(v->startActivity(new Intent(getActivity(), RecommendActivity.class)));
         return rootView;
     }
 
