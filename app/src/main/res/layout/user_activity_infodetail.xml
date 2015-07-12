@@ -113,7 +113,7 @@
                     android:textSize="@dimen/abc_text_size_medium_material"
                     android:text="实名认证"/>
 
-                <TextView android:id="@+id/percent"
+                <TextView android:id="@+id/authentication"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -124,35 +124,33 @@
 
             </RelativeLayout>
 
+            <View android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/md_divider_black"/>
 
+            <RelativeLayout android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical">
 
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="16dp"
+                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:text="修改密码"/>
 
-
-            <LinearLayout android:layout_width="match_parent"
-                android:layout_height="72dp"
-                android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="72dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/hint_foreground_material_light"
-                        android:textStyle="bold"
-                        android:text="实名认证"
-                        android:textSize="@dimen/abc_text_size_medium_material"/>
-
-                <TextView android:id="@+id/authentication"
+                <TextView android:id="@+id/modifyPassword"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:padding="16dp"
-                    android:text="未认证"
-                    android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
-                    android:textColor="?colorPrimary"/>
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="16dp"
+                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:textColor="@color/secondary_text_default_material_light"
+                    android:text="未认证"/>
 
-            </LinearLayout>
+            </RelativeLayout>
 
 
             <View android:layout_width="match_parent"
