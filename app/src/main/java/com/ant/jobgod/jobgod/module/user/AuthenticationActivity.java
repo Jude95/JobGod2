@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.widget.Button;
 
+import com.android.http.RequestMap;
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -23,10 +24,10 @@ public class AuthenticationActivity extends BaseActivity<AuthenticationPresenter
     SimpleDraweeView imgFace;
     @InjectView(R.id.name)
     TextInputLayout name;
-    @InjectView(R.id.signature)
-    TextInputLayout signature;
     @InjectView(R.id.submit)
     Button submit;
+    @InjectView(R.id.ID)
+    TextInputLayout ID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,5 +36,13 @@ public class AuthenticationActivity extends BaseActivity<AuthenticationPresenter
         ButterKnife.inject(this);
 
         imgFace.setImageURI(Uri.parse("http://img1.imgtn.bdimg.com/it/u=1571729784,3682383797&fm=11&gp=0.jpg"));
+    }
+
+
+    public RequestMap setParam(){
+        RequestMap param=new RequestMap();
+        param.put("name",name.getEditText().getText().toString());
+        param.put("ID",ID.getEditText().getText().toString());
+        return param;
     }
 }
