@@ -2,6 +2,7 @@ package com.ant.jobgod.jobgod.module.user;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.android.http.RequestMap;
 import com.ant.jobgod.jobgod.app.BasePresenter;
@@ -31,9 +32,10 @@ public class ModifyInfoPresenter extends BasePresenter<ModifyInfoActivity> {
          */
     }
 
-    public void toModifyDataActivityForResult(String viewName){
+    public void toModifyDataActivityForResult(String viewName,TextView view){
         Intent intent=new Intent(getView(),ModifyDataActivity.class);
         intent.putExtra("viewName",viewName);
+        intent.putExtra("data",view.getText().toString());
         getView().startActivityForResult(intent, REQUEST_CODE);
     }
 

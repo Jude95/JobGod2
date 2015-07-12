@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -22,6 +22,8 @@ import nucleus.factory.RequiresPresenter;
 public class ModifyInfoActivity extends BaseActivity<ModifyInfoPresenter> {
 
 
+    private final int REQUEST_CODE = 1;
+    private final int RESULT_CODE = 0;
     @InjectView(R.id.name)
     TextView name;
     @InjectView(R.id.signature)
@@ -38,33 +40,30 @@ public class ModifyInfoActivity extends BaseActivity<ModifyInfoPresenter> {
     TextView school;
     @InjectView(R.id.major)
     TextView major;
-    @InjectView(R.id.viewAward)
-    RelativeLayout viewAward;
-    @InjectView(R.id.viewCertificate)
-    RelativeLayout viewCertificate;
-    @InjectView(R.id.viewCharacter)
-    RelativeLayout viewCharacter;
-    @InjectView(R.id.viewLike)
-    RelativeLayout viewLike;
-    @InjectView(R.id.viewSpecialty)
-    RelativeLayout viewSpecialty;
-    @InjectView(R.id.viewIntro)
-    RelativeLayout viewIntro;
     @InjectView(R.id.award)
     TextView award;
+    @InjectView(R.id.viewAward)
+    LinearLayout viewAward;
     @InjectView(R.id.certificate)
     TextView certificate;
+    @InjectView(R.id.viewCertificate)
+    LinearLayout viewCertificate;
     @InjectView(R.id.character)
     TextView character;
+    @InjectView(R.id.viewCharacter)
+    LinearLayout viewCharacter;
     @InjectView(R.id.like)
     TextView like;
+    @InjectView(R.id.viewLike)
+    LinearLayout viewLike;
     @InjectView(R.id.specialty)
     TextView specialty;
+    @InjectView(R.id.viewSpecialty)
+    LinearLayout viewSpecialty;
     @InjectView(R.id.intro)
     TextView intro;
-
-    private final int REQUEST_CODE=1;
-    private final int RESULT_CODE=0;
+    @InjectView(R.id.viewIntro)
+    LinearLayout viewIntro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,13 +84,12 @@ public class ModifyInfoActivity extends BaseActivity<ModifyInfoPresenter> {
         school.setOnClickListener(v -> createEditDialog("输入", 32, "最多32字", school));
         major.setOnClickListener(v -> createEditDialog("输入", 16, "最多16字", major));
 
-        viewAward.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult("award"));
-        viewCertificate.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult("certificate"));
-        viewCharacter.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult("character"));
-        viewIntro.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult("intro"));
-        viewLike.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult("like"));
-        viewSpecialty.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult("specialty"));
-
+        viewAward.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult("award",award));
+        viewCertificate.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult("certificate",certificate));
+        viewCharacter.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult("character",character));
+        viewIntro.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult("intro",intro));
+        viewLike.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult("like",like));
+        viewSpecialty.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult("specialty",specialty));
     }
 
     /**
@@ -120,8 +118,8 @@ public class ModifyInfoActivity extends BaseActivity<ModifyInfoPresenter> {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==REQUEST_CODE&&resultCode==RESULT_CODE){
-            switch (data.getStringExtra("viewName")){
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_CODE&&data!=null) {
+            switch (data.getStringExtra("viewName")) {
                 case "award":
                     award.setText(data.getStringExtra("data"));
                     break;

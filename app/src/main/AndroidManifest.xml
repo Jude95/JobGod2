@@ -109,7 +109,7 @@
         </activity>
         <activity
             android:name=".module.user.ModifyInfoActivity"
-            android:label="@string/title_activity_user_info_modify" >
+            android:label="基本资料" >
         </activity>
         <activity
             android:name=".module.user.ModifyUserIntroActivity"
