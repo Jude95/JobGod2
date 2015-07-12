@@ -1,15 +1,21 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.ant.jobgod.jobgod.module.user.UserInfoModifyActivity">
 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context="com.ant.jobgod.jobgod.module.user.UserInfoModifyActivity"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/include_toolbar"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
     <LinearLayout android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <include layout="@layout/include_toolbar"/>
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -25,9 +31,10 @@
                 <TextView android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:text="基本信息"
+                    android:layout_marginLeft="16dp"
                     android:textColor="@color/Grange"
                     android:textSize="@dimen/abc_text_size_subhead_material"
-                    android:gravity="center"/>
+                    android:gravity="center_vertical"/>
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
@@ -35,33 +42,25 @@
 
                 <RelativeLayout android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp">
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical">
 
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:layout_marginLeft="16dp"
-                        android:layout_alignBottom="@+id/editName"
                         android:textSize="@dimen/abc_text_size_medium_material"
                         android:text="姓名"/>
 
-                    <TextView android:id="@+id/displayName"
+                    <TextView android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="72dp"
-                        android:layout_alignBottom="@+id/editName"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="16dp"
                         android:textSize="@dimen/abc_text_size_medium_material"
+                        android:textColor="@color/secondary_text_default_material_light"
                         android:text="林龙鑫"/>
 
-                    <TextView android:id="@+id/editName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="16dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:text="编辑"
-                        android:textSize="@dimen/abc_text_size_medium_material"
-                        android:textColor="@color/primary_text_disabled_material_light"/>
                 </RelativeLayout>
 
                 <View android:layout_width="match_parent"
@@ -70,37 +69,27 @@
 
                 <RelativeLayout android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp">
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical">
 
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:layout_marginLeft="16dp"
-                        android:layout_centerVertical="true"
-                        android:layout_alignBottom="@+id/editSignature"
                         android:textSize="@dimen/abc_text_size_medium_material"
                         android:text="签名"/>
 
-                    <TextView android:id="@+id/displaySignature"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:layout_marginLeft="72dp"
-                        android:layout_marginRight="72dp"
-                        android:layout_alignBottom="@+id/editSignature"
-                        android:textSize="@dimen/abc_text_size_medium_material"
-                        android:text="呵呵哒"/>
-
-                    <TextView android:id="@+id/editSignature"
+                    <TextView android:id="@+id/signature"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="16dp"
                         android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:text="编辑"
+                        android:layout_marginRight="16dp"
                         android:textSize="@dimen/abc_text_size_medium_material"
-                        android:textColor="@color/primary_text_disabled_material_light"/>
+                        android:textColor="@color/secondary_text_default_material_light"
+                        android:text="呵呵哒"/>
+
                 </RelativeLayout>
+
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
@@ -108,35 +97,27 @@
 
                 <RelativeLayout android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp">
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical">
 
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:layout_marginLeft="16dp"
-                        android:layout_centerVertical="true"
-                        android:layout_alignBottom="@+id/editGender"
                         android:textSize="@dimen/abc_text_size_medium_material"
                         android:text="性别"/>
 
-                    <TextView android:id="@+id/displayGender"
+                    <TextView android:id="@+id/gender"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="72dp"
-                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="16dp"
                         android:textSize="@dimen/abc_text_size_medium_material"
+                        android:textColor="@color/secondary_text_default_material_light"
                         android:text="男"/>
 
-                    <TextView android:id="@+id/editGender"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="16dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:text="编辑"
-                        android:textSize="@dimen/abc_text_size_medium_material"
-                        android:textColor="@color/primary_text_disabled_material_light"/>
                 </RelativeLayout>
+
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
@@ -144,34 +125,25 @@
 
                 <RelativeLayout android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp">
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical">
 
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:layout_marginLeft="16dp"
-                        android:layout_centerVertical="true"
-                        android:layout_alignBottom="@+id/editHeight"
                         android:textSize="@dimen/abc_text_size_medium_material"
                         android:text="身高"/>
 
-                    <TextView android:id="@+id/displayHeight"
+                    <TextView android:id="@+id/height"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="72dp"
-                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="16dp"
                         android:textSize="@dimen/abc_text_size_medium_material"
+                        android:textColor="@color/secondary_text_default_material_light"
                         android:text="170cm"/>
 
-                    <TextView android:id="@+id/editHeight"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="16dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:text="编辑"
-                        android:textSize="@dimen/abc_text_size_medium_material"
-                        android:textColor="@color/primary_text_disabled_material_light"/>
                 </RelativeLayout>
 
                 <View android:layout_width="match_parent"
@@ -180,36 +152,25 @@
 
                 <RelativeLayout android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp">
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical">
 
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:layout_marginLeft="16dp"
-                        android:layout_centerVertical="true"
-                        android:layout_alignBottom="@+id/editAddress"
                         android:textSize="@dimen/abc_text_size_medium_material"
                         android:text="地址"/>
 
-                    <TextView android:id="@+id/displayAddress"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:layout_marginLeft="72dp"
-                        android:layout_marginRight="72dp"
-                        android:layout_centerVertical="true"
-                        android:textSize="@dimen/abc_text_size_medium_material"
-                        android:text="重庆邮电大学15栋"/>
-
-                    <TextView android:id="@+id/editAddress"
+                    <TextView android:id="@+id/address"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="16dp"
                         android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:text="编辑"
+                        android:layout_marginRight="16dp"
                         android:textSize="@dimen/abc_text_size_medium_material"
-                        android:textColor="@color/primary_text_disabled_material_light"/>
+                        android:textColor="@color/secondary_text_default_material_light"
+                        android:text="重庆邮电大学15栋"/>
+
                 </RelativeLayout>
 
                 <View android:layout_width="match_parent"
@@ -239,7 +200,8 @@
                     android:text="学历专业"
                     android:textColor="@color/Grange"
                     android:textSize="@dimen/abc_text_size_subhead_material"
-                    android:gravity="center"/>
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="16dp"/>
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
@@ -247,33 +209,25 @@
 
                 <RelativeLayout android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp">
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical">
 
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:layout_marginLeft="16dp"
-                        android:layout_alignBottom="@+id/editEduLevel"
                         android:textSize="@dimen/abc_text_size_medium_material"
                         android:text="学历"/>
 
-                    <TextView android:id="@+id/displayEduLevel"
+                    <TextView android:id="@+id/eduLevel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="72dp"
-                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="16dp"
                         android:textSize="@dimen/abc_text_size_medium_material"
+                        android:textColor="@color/secondary_text_default_material_light"
                         android:text="本科"/>
 
-                    <TextView android:id="@+id/editEduLevel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="16dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:text="编辑"
-                        android:textSize="@dimen/abc_text_size_medium_material"
-                        android:textColor="@color/primary_text_disabled_material_light"/>
                 </RelativeLayout>
 
                 <View android:layout_width="match_parent"
@@ -282,34 +236,25 @@
 
                 <RelativeLayout android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp">
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical">
 
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:layout_marginLeft="16dp"
-                        android:layout_centerVertical="true"
-                        android:layout_alignBottom="@+id/editSchool"
                         android:textSize="@dimen/abc_text_size_medium_material"
                         android:text="学校"/>
 
-                    <TextView android:id="@+id/displaySchool"
+                    <TextView android:id="@+id/school"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="72dp"
-                        android:layout_alignBottom="@+id/editSchool"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="16dp"
                         android:textSize="@dimen/abc_text_size_medium_material"
+                        android:textColor="@color/secondary_text_default_material_light"
                         android:text="重庆邮电大学"/>
 
-                    <TextView android:id="@+id/editSchool"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="16dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:text="编辑"
-                        android:textSize="@dimen/abc_text_size_medium_material"
-                        android:textColor="@color/primary_text_disabled_material_light"/>
                 </RelativeLayout>
 
                 <View android:layout_width="match_parent"
@@ -318,94 +263,70 @@
 
                 <RelativeLayout android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp">
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical">
 
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:layout_marginLeft="16dp"
-                        android:layout_centerVertical="true"
-                        android:layout_alignBottom="@+id/editMajor"
                         android:textSize="@dimen/abc_text_size_medium_material"
                         android:text="专业"/>
 
-                    <TextView android:id="@+id/displayMajor"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:layout_marginRight="72dp"
-                        android:layout_marginLeft="72dp"
-                        android:layout_centerVertical="true"
-                        android:textSize="@dimen/abc_text_size_medium_material"
-                        android:text="计算机科学与技术"/>
-
-                    <TextView android:id="@+id/editMajor"
+                    <TextView android:id="@+id/major"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="16dp"
                         android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:text="编辑"
+                        android:layout_marginRight="16dp"
                         android:textSize="@dimen/abc_text_size_medium_material"
-                        android:textColor="@color/primary_text_disabled_material_light"/>
+                        android:textColor="@color/secondary_text_default_material_light"
+                        android:text="计算机科学与技术"/>
+
                 </RelativeLayout>
+
+
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
                     android:background="@color/md_divider_black"/>
 
-                <RelativeLayout android:padding="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_alignBottom="@+id/editAward"
-                        android:layout_alignTop="@+id/editAward"
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:textStyle="bold"
-                        android:gravity="center"
+                        android:layout_marginLeft="16dp"
                         android:textSize="@dimen/abc_text_size_medium_material"
                         android:text="奖项"/>
 
-                    <EditText android:id="@+id/editAward"
-                        android:layout_width="match_parent"
+                    <TextView android:id="@+id/award"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="60dp"
-                        android:hint="直接输入"
-                        android:textColorHint="@color/hint_foreground_material_light"
-                        android:gravity="top"
-                        android:background="@color/White"/>
+                        android:background="@drawable/main_drawer_selector"
+                        android:maxLines="3"
+                        android:layout_marginLeft="16dp"
+                        android:textSize="@dimen/abc_text_size_small_material"
+                        android:textColor="@color/secondary_text_default_material_light"
+                        android:text="无"/>
 
-                </RelativeLayout>
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
                     android:background="@color/md_divider_black"/>
 
-                <RelativeLayout android:padding="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="16dp"
+                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:text="证书"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_alignBottom="@+id/editCertificate"
-                        android:layout_alignTop="@+id/editCertificate"
-                        android:textStyle="bold"
-                        android:gravity="center"
-                        android:textSize="@dimen/abc_text_size_medium_material"
-                        android:text="证书"/>
-
-                    <EditText android:id="@+id/editCertificate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="60dp"
-                        android:hint="直接输入"
-                        android:textColorHint="@color/hint_foreground_material_light"
-                        android:gravity="top"
-                        android:background="@color/White"/>
-
-                </RelativeLayout>
+                <TextView android:id="@+id/certificate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/main_drawer_selector"
+                    android:maxLines="3"
+                    android:layout_marginLeft="16dp"
+                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textColor="@color/secondary_text_default_material_light"
+                    android:text="无"/>
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
@@ -431,128 +352,99 @@
 
                 <TextView android:layout_width="match_parent"
                     android:layout_height="48dp"
+                    android:layout_marginLeft="16dp"
                     android:text="爱好个性"
                     android:textColor="@color/Grange"
                     android:textSize="@dimen/abc_text_size_subhead_material"
-                    android:gravity="center"/>
+                    android:gravity="center_vertical"/>
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
                     android:background="@color/md_divider_black"/>
 
-                <RelativeLayout android:padding="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_alignBottom="@+id/editCharacter"
-                        android:layout_alignTop="@+id/editCharacter"
-                        android:textStyle="bold"
-                        android:gravity="center"
-                        android:textSize="@dimen/abc_text_size_medium_material"
-                        android:text="性格"/>
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="16dp"
+                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:text="性格"/>
 
-                    <EditText android:id="@+id/editCharacter"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="60dp"
-                        android:hint="直接输入"
-                        android:textColorHint="@color/hint_foreground_material_light"
-                        android:gravity="top"
-                        android:background="@color/White"/>
-
-                </RelativeLayout>
-
+                <TextView android:id="@+id/character"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/main_drawer_selector"
+                    android:maxLines="3"
+                    android:layout_marginLeft="16dp"
+                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textColor="@color/secondary_text_default_material_light"
+                    android:text="脾气温和"/>
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
                     android:background="@color/md_divider_black"/>
 
-                <RelativeLayout android:padding="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="16dp"
+                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:text="爱好"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_alignBottom="@+id/editLike"
-                        android:layout_alignTop="@+id/editLike"
-                        android:textStyle="bold"
-                        android:gravity="center"
-                        android:textSize="@dimen/abc_text_size_medium_material"
-                        android:text="爱好"/>
-
-                    <EditText android:id="@+id/editLike"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="60dp"
-                        android:hint="直接输入"
-                        android:textColorHint="@color/hint_foreground_material_light"
-                        android:gravity="top"
-                        android:background="@color/White"/>
-
-                </RelativeLayout>
+                <TextView android:id="@+id/like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/main_drawer_selector"
+                    android:maxLines="3"
+                    android:layout_marginLeft="16dp"
+                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textColor="@color/secondary_text_default_material_light"
+                    android:text="写代码"/>
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
                     android:background="@color/md_divider_black"/>
 
-                <RelativeLayout android:padding="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="16dp"
+                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:text="擅长"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_alignBottom="@+id/editSpecialty"
-                        android:layout_alignTop="@+id/editSpecialty"
-                        android:textStyle="bold"
-                        android:gravity="center"
-                        android:textSize="@dimen/abc_text_size_medium_material"
-                        android:text="擅长"/>
-
-                    <EditText android:id="@+id/editSpecialty"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="60dp"
-                        android:hint="直接输入"
-                        android:textColorHint="@color/hint_foreground_material_light"
-                        android:gravity="top"
-                        android:background="@color/White"/>
-
-                </RelativeLayout>
+                <TextView android:id="@+id/specialty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/main_drawer_selector"
+                    android:maxLines="3"
+                    android:layout_marginLeft="16dp"
+                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textColor="@color/secondary_text_default_material_light"
+                    android:text="编程"/>
 
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
                     android:background="@color/md_divider_black"/>
 
-                <RelativeLayout android:padding="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_alignBottom="@+id/editIntro"
-                        android:layout_alignTop="@+id/editIntro"
-                        android:textStyle="bold"
-                        android:gravity="center"
-                        android:textSize="@dimen/abc_text_size_medium_material"
-                        android:text="简介"/>
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="16dp"
+                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:text="简介"/>
 
-                    <EditText android:id="@+id/editIntro"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="60dp"
-                        android:hint="直接输入"
-                        android:textColorHint="@color/hint_foreground_material_light"
-                        android:gravity="top"
-                        android:background="@color/White"/>
+                <TextView android:id="@+id/intro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/main_drawer_selector"
+                    android:maxLines="3"
+                    android:layout_marginLeft="16dp"
+                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textColor="@color/secondary_text_default_material_light"
+                    android:text="校级三好学生"/>
 
-                </RelativeLayout>
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
                     android:background="@color/md_divider_black"/>
@@ -562,8 +454,9 @@
         </android.support.v7.widget.CardView>
 
 
+    </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
 
 
-</ScrollView>

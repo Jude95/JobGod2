@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -21,50 +20,34 @@ import nucleus.factory.RequiresPresenter;
 public class UserInfoModifyActivity extends BaseActivity<UserInfoModifyPresenter> {
 
 
-    @InjectView(R.id.displayName)
-    TextView displayName;
-    @InjectView(R.id.editName)
-    TextView editName;
-    @InjectView(R.id.displaySignature)
-    TextView displaySignature;
-    @InjectView(R.id.editSignature)
-    TextView editSignature;
-    @InjectView(R.id.displayGender)
-    TextView displayGender;
-    @InjectView(R.id.editGender)
-    TextView editGender;
-    @InjectView(R.id.displayHeight)
-    TextView displayHeight;
-    @InjectView(R.id.editHeight)
-    TextView editHeight;
-    @InjectView(R.id.displayAddress)
-    TextView displayAddress;
-    @InjectView(R.id.editAddress)
-    TextView editAddress;
-    @InjectView(R.id.displayEduLevel)
-    TextView displayEduLevel;
-    @InjectView(R.id.editEduLevel)
-    TextView editEduLevel;
-    @InjectView(R.id.displaySchool)
-    TextView displaySchool;
-    @InjectView(R.id.editSchool)
-    TextView editSchool;
-    @InjectView(R.id.displayMajor)
-    TextView displayMajor;
-    @InjectView(R.id.editMajor)
-    TextView editMajor;
-    @InjectView(R.id.editAward)
-    EditText editAward;
-    @InjectView(R.id.editCertificate)
-    EditText editCertificate;
-    @InjectView(R.id.editCharacter)
-    EditText editCharacter;
-    @InjectView(R.id.editLike)
-    EditText editLike;
-    @InjectView(R.id.editSpecialty)
-    EditText editSpecialty;
-    @InjectView(R.id.editIntro)
-    EditText editIntro;
+    @InjectView(R.id.name)
+    TextView name;
+    @InjectView(R.id.signature)
+    TextView signature;
+    @InjectView(R.id.gender)
+    TextView gender;
+    @InjectView(R.id.height)
+    TextView height;
+    @InjectView(R.id.address)
+    TextView address;
+    @InjectView(R.id.eduLevel)
+    TextView eduLevel;
+    @InjectView(R.id.school)
+    TextView school;
+    @InjectView(R.id.major)
+    TextView major;
+    @InjectView(R.id.award)
+    TextView award;
+    @InjectView(R.id.certificate)
+    TextView certificate;
+    @InjectView(R.id.character)
+    TextView character;
+    @InjectView(R.id.like)
+    TextView like;
+    @InjectView(R.id.specialty)
+    TextView specialty;
+    @InjectView(R.id.intro)
+    TextView intro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,15 +58,15 @@ public class UserInfoModifyActivity extends BaseActivity<UserInfoModifyPresenter
     }
 
     public void init() {
-        editName.setOnClickListener(v -> createEditDialog("输入", 8, "最多8字", displayName));
-        editSignature.setOnClickListener(v -> createEditDialog("输入", 32, "最多32字", displaySignature));
-        editGender.setOnClickListener(v -> createSingleChoiceDialog("请选择", R.array.gender, displayGender));
-        editHeight.setOnClickListener(v -> createEditDialog("输入", 8, "最多8字", displayHeight));
-        editAddress.setOnClickListener(v -> createEditDialog("输入", 32, "最多32字", displayAddress));
+        name.setOnClickListener(v -> createEditDialog("输入", 8, "最多8字", name));
+        signature.setOnClickListener(v -> createEditDialog("输入", 32, "最多32字", signature));
+        gender.setOnClickListener(v -> createSingleChoiceDialog("请选择", R.array.gender, gender));
+        height.setOnClickListener(v -> createEditDialog("输入", 8, "最多8字", height));
+        address.setOnClickListener(v -> createEditDialog("输入", 32, "最多32字", address));
 
-        editEduLevel.setOnClickListener(v -> createSingleChoiceDialog("请选择", R.array.eduLevel, displayEduLevel));
-        editSchool.setOnClickListener(v -> createEditDialog("输入", 32, "最多32字", displaySchool));
-        editMajor.setOnClickListener(v -> createEditDialog("输入", 16, "最多16字", displayMajor));
+        eduLevel.setOnClickListener(v -> createSingleChoiceDialog("请选择", R.array.eduLevel, eduLevel));
+        school.setOnClickListener(v -> createEditDialog("输入", 32, "最多32字", school));
+        major.setOnClickListener(v -> createEditDialog("输入", 16, "最多16字", major));
 
     }
 
@@ -92,20 +75,20 @@ public class UserInfoModifyActivity extends BaseActivity<UserInfoModifyPresenter
      */
     public void submitInfo() {
         RequestMap param = new RequestMap();
-        param.put("name", displayName.getText().toString());
-        param.put("sign", displaySignature.getText().toString());
-        param.put("gender", displayGender.getText().toString());
-        param.put("height", displayHeight.getText().toString());
-        param.put("address", displayAddress.getText().toString());
-        param.put("edulevel", displayEduLevel.getText().toString());
-        param.put("school", displaySchool.getText().toString());
-        param.put("major", displayMajor.getText().toString());
-        param.put("award", editAward.getText().toString());
-        param.put("certificate", editCertificate.getText().toString());
-        param.put("character", editCharacter.getText().toString());
-        param.put("like", editLike.getText().toString());
-        param.put("specialty", editSpecialty.getText().toString());
-        param.put("intro", editIntro.getText().toString());
+        param.put("name", name.getText().toString());
+        param.put("sign", signature.getText().toString());
+        param.put("gender", gender.getText().toString());
+        param.put("height", height.getText().toString());
+        param.put("address", address.getText().toString());
+        param.put("edulevel", eduLevel.getText().toString());
+        param.put("school", school.getText().toString());
+        param.put("major", major.getText().toString());
+        param.put("award", award.getText().toString());
+        param.put("certificate", certificate.getText().toString());
+        param.put("character", character.getText().toString());
+        param.put("like", like.getText().toString());
+        param.put("specialty", specialty.getText().toString());
+        param.put("intro", intro.getText().toString());
 
 
         getPresenter().submitInfo(param);
