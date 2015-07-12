@@ -91,7 +91,7 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
                 case 1:
                     return "兼职";
                 default:
-                    return "动态";
+                    return "社区";
             }
         }
 

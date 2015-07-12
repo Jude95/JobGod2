@@ -95,7 +95,7 @@
             android:label="@string/title_activity_user_detail" >
         </activity>
         <activity
-            android:name=".module.topic.TopicDetailActivity"
+            android:name=".module.job.TopicDetailActivity"
             android:label="@string/title_activity_topic_detail" >
         </activity>
 
@@ -128,6 +128,12 @@
 
         <activity android:name=".module.main.joblist.FiltrateActivity"
             android:label="偏好设置"></activity>
+
+        <activity android:name=".module.job.TopicListActivity"
+            android:label="专题列表"></activity>
+
+        <activity android:name=".module.job.RecommendActivity"
+            android:label="推荐列表"></activity>
 
 
 

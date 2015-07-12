@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.Topic;
-import com.ant.jobgod.jobgod.module.topic.TopicDetailActivity;
+import com.ant.jobgod.jobgod.module.job.TopicDetailActivity;
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.facebook.drawee.view.SimpleDraweeView;
 
