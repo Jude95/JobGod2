@@ -6,6 +6,13 @@
     <include layout="@layout/include_toolbar"/>
 
 
+    <ImageView android:id="@+id/example"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:scaleType="centerCrop"
+        android:layout_centerInParent="true"
+        android:src="@mipmap/ic_placeholder"/>
+
     <LinearLayout android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -21,6 +28,12 @@
             android:background="?colorPrimary"
             android:text="拍照"/>
 
+        <View android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/White"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"/>
+
         <TextView android:id="@+id/album"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -31,7 +44,13 @@
             android:background="?colorPrimary"
             android:text="相册"/>
 
-        <TextView android:id="@+id/camera"
+        <View android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/White"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView android:id="@+id/net"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

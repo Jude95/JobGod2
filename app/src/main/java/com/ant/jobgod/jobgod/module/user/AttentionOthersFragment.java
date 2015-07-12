@@ -36,7 +36,7 @@ public class AttentionOthersFragment extends NucleusFragment<AttentionOthersPres
         View view = inflater.inflate(R.layout.user_fragment_othersattention, container, false);
         ButterKnife.inject(this, view);
         recycler.setAdapter(adapter);
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return view;
     }
 
     @Override
