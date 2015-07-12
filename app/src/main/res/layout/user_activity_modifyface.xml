@@ -15,7 +15,7 @@
 
     <LinearLayout android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="48dp"
         android:layout_alignParentBottom="true">
 
         <TextView android:id="@+id/camera"
@@ -28,11 +28,10 @@
             android:background="?colorPrimary"
             android:text="拍照"/>
 
-        <View android:layout_width="2dp"
-            android:layout_height="match_parent"
+        <View android:layout_width="1dp"
+            android:layout_height="32dp"
             android:background="@color/White"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"/>
+            android:layout_gravity="center_vertical"/>
 
         <TextView android:id="@+id/album"
             android:layout_width="0dp"
@@ -44,11 +43,10 @@
             android:background="?colorPrimary"
             android:text="相册"/>
 
-        <View android:layout_width="2dp"
-            android:layout_height="match_parent"
+        <View android:layout_width="1dp"
+            android:layout_height="32dp"
             android:background="@color/White"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"/>
+            android:layout_gravity="center_vertical"/>
 
         <TextView android:id="@+id/net"
             android:layout_width="0dp"

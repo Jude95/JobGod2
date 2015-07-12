@@ -5,10 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 
 import com.ant.jobgod.jobgod.app.BasePresenter;
+import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
 
 import java.io.File;
@@ -21,9 +21,8 @@ import java.util.Date;
 public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
 
     private final String IMAGE_TYPE = "image/*";
-    private final int ACMERA_REQUEST_CODE=1,ACMERA_RESULT_CODE=1;
-    private final int ALBUM_REQUEST_CODE=1,ALBUM_RESULT_CODE=2;
-
+    private final int ACMERA_REQUEST_CODE=1;
+    private final int ALBUM_REQUEST_CODE=2;
 
     @Override
     protected void onCreate(Bundle savedState) {
@@ -36,12 +35,22 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
     }
 
 
-    public void openCamera(){
-        Intent iCamera=new Intent(Intent.ACTION_GET_CONTENT);
-        iCamera.setType(IMAGE_TYPE);
+
+    public Uri openCamera(){
+        Intent iCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        File img= FileManager.getInstance().getChild(FileManager.Dir.Image,getPhotoFileName());
+        // 指定调用相机拍照后照片的储存路径，这里是为了剪切时找到它
+        iCamera.putExtra(MediaStore.EXTRA_OUTPUT,
+                Uri.fromFile(img));
         getView().startActivityForResult(iCamera, ACMERA_REQUEST_CODE);
+        return Uri.fromFile(img);
     }
 
+    public void openAlbum(){
+        Intent iAlbum=new Intent(Intent.ACTION_GET_CONTENT);
+        iAlbum.setType(IMAGE_TYPE);
+        getView().startActivityForResult(iAlbum, ALBUM_REQUEST_CODE);
+    }
 
 
     /**
@@ -50,11 +59,11 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
      * @param uri 对应的图片的uri
      * @param  requestCode 请求码
      */
-    public static File startPhotoZoom(Context context,Uri uri,int requestCode) {
+    public File startPhotoZoom(Context context,Uri uri,int requestCode) {
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(uri, "image/*");
 
-        File cutImgAdress= createFile();
+        File cutImgAdress= FileManager.getInstance().getChild(FileManager.Dir.Image,getPhotoFileName());
 
         intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(cutImgAdress));
         intent.putExtra("crop", "true");/*调用系统剪切图片*/
@@ -68,24 +77,11 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
         return cutImgAdress;
     }
 
-    /**
-     * 创建一个文件，当前时间作为文件名
-     * @return
-     */
-    public static File createFile(){
-        /*判断sd卡是否存在*/
-        boolean sdCardExist=Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
-        Utils.Log("getDataDirctory:"+Environment.getDataDirectory());
-        if(sdCardExist){
-            return new File(Environment.getDataDirectory(),getPhotoFileName());
-        }
-        return null;
-    }
 
     /**
      * 使用系统当前日期md5加密后作为照片的名称
      */
-    public static String getPhotoFileName() {
+    public String getPhotoFileName() {
         Date date = new Date(System.currentTimeMillis());
         SimpleDateFormat dateFormat = new SimpleDateFormat(
                 "'IMG'_yyyyMMdd_HHmmss");
