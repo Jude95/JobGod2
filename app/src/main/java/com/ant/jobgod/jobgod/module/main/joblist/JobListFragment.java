@@ -55,6 +55,10 @@ public class JobListFragment extends NucleusFragment<JobListPresenter> {
         listJob.hideMoreProgress();
     }
 
+    public void startRefresh(){
+        listJob.getSwipeToRefresh().setRefreshing(true);
+    }
+
     public void addJob(JobBrief[] jobs) {
         mJobAdapter.addAll(jobs);
     }

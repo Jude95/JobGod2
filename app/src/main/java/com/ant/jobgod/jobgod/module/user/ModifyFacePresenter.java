@@ -1,94 +1,113 @@
 package com.ant.jobgod.jobgod.module.user;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.os.Handler;
 
+import com.ant.jobgod.imagetool.corpimage.CropImageIntentBuilder;
+import com.ant.jobgod.imagetool.imageprovider.ImageElement;
+import com.ant.jobgod.imagetool.imageprovider.ImageProvider;
+import com.ant.jobgod.imagetool.imageprovider.OnImageSelectListener;
 import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.facebook.common.references.CloseableReference;
+import com.facebook.datasource.DataSource;
+import com.facebook.datasource.DataSubscriber;
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.imagepipeline.core.ImagePipeline;
+import com.facebook.imagepipeline.datasource.BaseBitmapDataSubscriber;
+import com.facebook.imagepipeline.image.CloseableImage;
+import com.facebook.imagepipeline.request.ImageRequestBuilder;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by alien on 2015/7/11.
  */
 public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
+    private static final int REQUEST_CROP_PICTURE = 1365;
 
-    private final String IMAGE_TYPE = "image/*";
-    private final int ACMERA_REQUEST_CODE=1;
-    private final int ALBUM_REQUEST_CODE=2;
+    private static final String TEMP_IMG = "userFaceTempImage.jpg";
+    //最终文件名用变量即时变化，为了处理fresco的图片缓存
+    private String mFinalImg;
+    private ImageProvider mProvider;
 
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
+        mProvider = new ImageProvider(getView());
+        //getView().setImgFace(Uri.parse(AccountModel.getInstance().getAccount().getFace()));
+    }
+
+    public void getImageFromCamera(){
+        mProvider.getImageFromCamera(new OnImageSelectListener<ImageElement>() {
+            @Override
+            public void onImageSelect(ImageElement imageElement) {
+                startCrop(imageElement.getLargeImage());
+            }
+        });
+    }
+
+    public void getImageFromAlbum(){
+        mProvider.getImageFromAlbum(new OnImageSelectListener<ImageElement>() {
+            @Override
+            public void onImageSelect(ImageElement imageElement) {
+                startCrop(imageElement.getLargeImage());
+            }
+        });
+    }
+
+    public void getImageFromNet(){
+        mProvider.getImageFromNet(ImageProvider.Searcher.SOSO, new OnImageSelectListener<ImageElement>() {
+            @Override
+            public void onImageSelect(final ImageElement imageElement) {
+                getView().showProgress("图片下载中");
+                ImagePipeline imagePipeline = Fresco.getImagePipeline();
+                DataSource<CloseableReference<CloseableImage>>
+                        dataSource = imagePipeline.fetchDecodedImage(ImageRequestBuilder.newBuilderWithSource(imageElement.getLargeImage()).build(), this);
+                DataSubscriber dataSubscriber = new BaseBitmapDataSubscriber() {
+                    @Override
+                    protected void onNewResultImpl(Bitmap bitmap) {
+                        File temp = FileManager.getInstance().getChild(FileManager.Dir.Image,TEMP_IMG);
+                        Utils.BitmapSave(bitmap, temp.getPath());
+                        getView().dismissProgress();
+                        startCrop(Uri.fromFile(temp));
+                    }
+
+                    @Override
+                    protected void onFailureImpl(DataSource<CloseableReference<CloseableImage>> closeableReferenceDataSource) {
+                        getView().dismissProgress();
+                        Utils.Toast("图片下载失败");
+                    }
+                };
+                final Handler handler = new Handler();
+                dataSource.subscribe(dataSubscriber, command -> handler.post(command));
+            }
+        });
+    }
+
+    public void startCrop(Uri data){
+        //删除上一次的图片
+        FileManager.getInstance().deletChild(FileManager.Dir.Image,mFinalImg);
+        //用时间来取名，临时措施
+        mFinalImg = System.currentTimeMillis()+".jpg";
+        CropImageIntentBuilder cropImage = new CropImageIntentBuilder(960, 1080,960, 1080, Uri.fromFile(FileManager.getInstance().getChild(FileManager.Dir.Image, mFinalImg)));
+        cropImage.setSourceImage(data);
+        getView().startActivityForResult(cropImage.getIntent(getView()), REQUEST_CROP_PICTURE);
     }
 
     @Override
-    protected void onCreateView(ModifyFaceActivity view) {
-        super.onCreateView(view);
+    protected void onResult(int requestCode, int resultCode, Intent data) {
+        super.onResult(requestCode, resultCode, data);
+        mProvider.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CROP_PICTURE && resultCode == Activity.RESULT_OK){
+            getView().setImgFace(Uri.fromFile(FileManager.getInstance().getChild(FileManager.Dir.Image, mFinalImg)));
+            //裁剪成功，删除临时文件
+            FileManager.getInstance().deletChild(FileManager.Dir.Image, TEMP_IMG);
+        }
     }
-
-
-
-    public Uri openCamera(){
-        Intent iCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        File img= FileManager.getInstance().getChild(FileManager.Dir.Image,getPhotoFileName());
-        // 指定调用相机拍照后照片的储存路径，这里是为了剪切时找到它
-        iCamera.putExtra(MediaStore.EXTRA_OUTPUT,
-                Uri.fromFile(img));
-        getView().startActivityForResult(iCamera, ACMERA_REQUEST_CODE);
-        return Uri.fromFile(img);
-    }
-
-    public void openAlbum(){
-        Intent iAlbum=new Intent(Intent.ACTION_GET_CONTENT);
-        iAlbum.setType(IMAGE_TYPE);
-        getView().startActivityForResult(iAlbum, ALBUM_REQUEST_CODE);
-    }
-
-
-    /**
-     * 调用系统剪切功能剪切照片
-     * @param context 对应的Acitivity
-     * @param uri 对应的图片的uri
-     * @param  requestCode 请求码
-     */
-    public File startPhotoZoom(Context context,Uri uri,int requestCode) {
-        Intent intent = new Intent("com.android.camera.action.CROP");
-        intent.setDataAndType(uri, "image/*");
-
-        File cutImgAdress= FileManager.getInstance().getChild(FileManager.Dir.Image,getPhotoFileName());
-
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(cutImgAdress));
-        intent.putExtra("crop", "true");/*调用系统剪切图片*/
-        intent.putExtra("aspectX", 1);
-        intent.putExtra("aspectY", 1);
-        intent.putExtra("outputX", 300);
-        intent.putExtra("outputY", 300);
-        intent.putExtra("return-data", true);
-        intent.putExtra("noFaceDetection", true);
-        ((Activity)context).startActivityForResult(intent, requestCode);
-        return cutImgAdress;
-    }
-
-
-    /**
-     * 使用系统当前日期md5加密后作为照片的名称
-     */
-    public String getPhotoFileName() {
-        Date date = new Date(System.currentTimeMillis());
-        SimpleDateFormat dateFormat = new SimpleDateFormat(
-                "'IMG'_yyyyMMdd_HHmmss");
-        String fileName= dateFormat.format(date);
-        fileName=Utils.MD5(fileName.getBytes());
-        return  fileName+ ".jpg";
-    }
-
-
 }

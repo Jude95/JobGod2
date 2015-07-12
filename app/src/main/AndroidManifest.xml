@@ -22,6 +22,7 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <uses-feature android:name="android.hardware.camera" />
 
@@ -132,7 +133,20 @@
 
 
 
-
+        <!--ImageTool-->
+        <activity
+            android:name="com.ant.jobgod.imagetool.imageprovider.net.NetImageSearchActivity"
+            android:label="搜索图片">
+        </activity>
+        <activity
+            android:name="com.ant.jobgod.imagetool.photoview.ImageViewActivity"
+            android:label="查看图片"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            >
+        </activity>
+        <activity
+            android:name="com.ant.jobgod.imagetool.corpimage.CropImage"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar"/>
 
         <!-- 分享及第三方登陆 -->
         <!-- 分享编辑页 -->
@@ -259,8 +273,22 @@
             android:name="com.umeng.update.UpdateDialogActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" >
         </activity>
-
-
+        <!-- 有米AD-->
+        <activity
+            android:name="net.youmi.android.AdBrowser"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+        </activity>
+        <service
+            android:name="net.youmi.android.AdService" >
+        </service>
+        <receiver
+            android:name="net.youmi.android.AdReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

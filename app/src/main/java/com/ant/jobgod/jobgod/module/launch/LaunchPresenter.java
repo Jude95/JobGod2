@@ -2,6 +2,7 @@ package com.ant.jobgod.jobgod.module.launch;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 
 import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.AccountModel;
@@ -14,7 +15,10 @@ public class LaunchPresenter extends BasePresenter<LaunchActivity> {
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
-        getView().startActivity(new Intent(getView(), AccountModel.getInstance().isUser() ? UserMainActivity.class : UserMainActivity.class));
-        getView().finish();
+        new Handler().postDelayed(() -> {
+                getView().startActivity(new Intent(getView(), AccountModel.getInstance().isUser() ? UserMainActivity.class : UserMainActivity.class));
+                getView().finish();
+        },0);
+
     }
 }

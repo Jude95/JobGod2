@@ -22,7 +22,7 @@ public class FiltratePresenter extends BasePresenter<FiltrateActivity> {
 
     private boolean changed =false;
 
-    public static final String[] SORTNAME = {
+    public static final String[] SORT_NAME = {
             "最近发布","关注最多"
     };
 
@@ -39,7 +39,7 @@ public class FiltratePresenter extends BasePresenter<FiltrateActivity> {
         super.onCreateView(view);
         getView().setTrade(mTrades.toArray(new Trade[0]));
         getView().setCity(mRegion.toArray(new Region[0]));
-        getView().setSort(SORTNAME[mSort]);
+        getView().setSort(SORT_NAME[mSort]);
     }
 
     public void beginAddTrade(){
@@ -61,14 +61,14 @@ public class FiltratePresenter extends BasePresenter<FiltrateActivity> {
     }
 
     public void beginSetSort(){
-        getView().showSortDialog(SORTNAME);
+        getView().showSortDialog(SORT_NAME);
     }
 
     public void finishSetSort(int index){
         if (mSort!=index){
             mSort = index;
             changed = true;
-            getView().setSort(SORTNAME[mSort]);
+            getView().setSort(SORT_NAME[mSort]);
         }
     }
 
@@ -98,14 +98,14 @@ public class FiltratePresenter extends BasePresenter<FiltrateActivity> {
         changed = true;
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    public void saveAndExit(){
         if (changed){
             JobModel.getInstance().savaFiltrateSort(mSort);
             JobModel.getInstance().saveFiltrateRegion(mRegion.toArray(new Region[0]));
             JobModel.getInstance().saveFiltrateTrade(mTrades.toArray(new Trade[0]));
             getView().setResult(Activity.RESULT_OK);
         }
+        getView().finish();
     }
+
 }
