@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
@@ -25,7 +26,7 @@ public class ModifyPhoneActivity extends BaseActivity<ModifyPhonePresenter> {
     @InjectView(R.id.sendCode)
     Button sendCode;
     @InjectView(R.id.submit)
-    Button submit;
+    TextView submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -2,8 +2,9 @@ package com.ant.jobgod.jobgod.module.user;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.TextInputLayout;
-import android.widget.Button;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.ImageView;
 
 import com.android.http.RequestMap;
 import com.ant.jobgod.jobgod.R;
@@ -20,14 +21,11 @@ import nucleus.factory.RequiresPresenter;
 @RequiresPresenter(AuthenticationPresenter.class)
 public class AuthenticationActivity extends BaseActivity<AuthenticationPresenter> {
 
+
     @InjectView(R.id.imgFace)
     SimpleDraweeView imgFace;
-    @InjectView(R.id.name)
-    TextInputLayout name;
-    @InjectView(R.id.submit)
-    Button submit;
-    @InjectView(R.id.ID)
-    TextInputLayout ID;
+    @InjectView(R.id.ImgID)
+    ImageView ImgID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +37,21 @@ public class AuthenticationActivity extends BaseActivity<AuthenticationPresenter
     }
 
 
-    public RequestMap setParam(){
-        RequestMap param=new RequestMap();
-        param.put("name",name.getEditText().getText().toString());
-        param.put("ID",ID.getEditText().getText().toString());
+    public RequestMap setParam() {
+        RequestMap param = new RequestMap();
+//        param.put("name", name.getEditText().getText().toString());
         return param;
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_user_authentication, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }

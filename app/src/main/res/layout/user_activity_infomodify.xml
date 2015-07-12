@@ -57,7 +57,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_medium_material"
+                        android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
                         android:textColor="@color/secondary_text_default_material_light"
                         android:text="林龙鑫"/>
 
@@ -84,7 +84,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_medium_material"
+                        android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
                         android:textColor="@color/secondary_text_default_material_light"
                         android:text="呵呵哒"/>
 
@@ -112,7 +112,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_medium_material"
+                        android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
                         android:textColor="@color/secondary_text_default_material_light"
                         android:text="男"/>
 
@@ -140,7 +140,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_medium_material"
+                        android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
                         android:textColor="@color/secondary_text_default_material_light"
                         android:text="170cm"/>
 
@@ -167,7 +167,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_medium_material"
+                        android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
                         android:textColor="@color/secondary_text_default_material_light"
                         android:text="重庆邮电大学15栋"/>
 
@@ -224,7 +224,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_medium_material"
+                        android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
                         android:textColor="@color/secondary_text_default_material_light"
                         android:text="本科"/>
 
@@ -251,7 +251,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_medium_material"
+                        android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
                         android:textColor="@color/secondary_text_default_material_light"
                         android:text="重庆邮电大学"/>
 
@@ -278,7 +278,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_medium_material"
+                        android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
                         android:textColor="@color/secondary_text_default_material_light"
                         android:text="计算机科学与技术"/>
 
@@ -302,8 +302,9 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/main_drawer_selector"
                         android:maxLines="3"
+                        android:layout_marginTop="8dp"
                         android:layout_marginLeft="16dp"
-                        android:textSize="@dimen/abc_text_size_small_material"
+                        android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
                         android:textColor="@color/secondary_text_default_material_light"
                         android:text="无"/>
 
@@ -323,8 +324,9 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/main_drawer_selector"
                     android:maxLines="3"
+                    android:layout_marginTop="8dp"
                     android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
                     android:textColor="@color/secondary_text_default_material_light"
                     android:text="无"/>
 
@@ -375,8 +377,9 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/main_drawer_selector"
                     android:maxLines="3"
+                    android:layout_marginTop="4dp"
                     android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
                     android:textColor="@color/secondary_text_default_material_light"
                     android:text="脾气温和"/>
 
@@ -396,8 +399,9 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/main_drawer_selector"
                     android:maxLines="3"
+                    android:layout_marginTop="4dp"
                     android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
                     android:textColor="@color/secondary_text_default_material_light"
                     android:text="写代码"/>
 
@@ -418,7 +422,8 @@
                     android:background="@drawable/main_drawer_selector"
                     android:maxLines="3"
                     android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:layout_marginTop="4dp"
+                    android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
                     android:textColor="@color/secondary_text_default_material_light"
                     android:text="编程"/>
 
@@ -440,8 +445,9 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/main_drawer_selector"
                     android:maxLines="3"
+                    android:layout_marginTop="4dp"
                     android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
                     android:textColor="@color/secondary_text_default_material_light"
                     android:text="校级三好学生"/>
 
