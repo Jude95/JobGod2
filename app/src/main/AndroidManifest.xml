@@ -108,8 +108,8 @@
             android:label="@string/title_activity_job_detail_release_mode" >
         </activity>
         <activity
-            android:name=".module.user.UserInfoModifyActivity"
-            android:label="@string/title_activity_user_info_modify" >
+            android:name=".module.user.ModifyInfoActivity"
+            android:label="基本资料" >
         </activity>
         <activity
             android:name=".module.user.ModifyUserIntroActivity"
@@ -135,6 +135,8 @@
         <activity android:name=".module.job.RecommendActivity"
             android:label="推荐列表"></activity>
 
+        <activity android:name=".module.user.ModifyDataActivity"
+            android:label="修改信息"/>
 
 
 

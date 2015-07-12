@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context="com.ant.jobgod.jobgod.module.user.UserInfoModifyActivity"
+        tools:context="com.ant.jobgod.jobgod.module.user.ModifyInfoActivity"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="?actionBarSize"
             android:layout_margin="8dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="2dp">
 
             <LinearLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
                     android:layout_height="@dimen/md_divider_height"
                     android:background="@color/md_divider_black"/>
 
-                <RelativeLayout android:orientation="horizontal"
+                <LinearLayout android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:gravity="center_vertical">
@@ -54,6 +54,9 @@
 
                     <TextView android:id="@+id/name"
                         android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:layout_marginLeft="16dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="16dp"
@@ -61,13 +64,13 @@
                         android:textColor="@color/Grey"
                         android:text="林龙鑫"/>
 
-                </RelativeLayout>
+                </LinearLayout>
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
                     android:background="@color/md_divider_black"/>
 
-                <RelativeLayout android:orientation="horizontal"
+                <LinearLayout android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:gravity="center_vertical">
@@ -82,27 +85,28 @@
                     <TextView android:id="@+id/signature"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:textSize="@dimen/abc_text_size_body_1_material"
                         android:textColor="@color/Grey"
                         android:text="呵呵哒"/>
 
-                </RelativeLayout>
+                </LinearLayout>
 
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
                     android:background="@color/md_divider_black"/>
 
-                <RelativeLayout android:orientation="horizontal"
+                <LinearLayout android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:gravity="center_vertical">
 
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        
                         android:layout_marginLeft="16dp"
                         android:textSize="@dimen/abc_text_size_subhead_material"
                         android:text="性别"/>
@@ -110,20 +114,22 @@
                     <TextView android:id="@+id/gender"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:textSize="@dimen/abc_text_size_body_1_material"
                         android:textColor="@color/Grey"
                         android:text="男"/>
 
-                </RelativeLayout>
+                </LinearLayout>
 
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
                     android:background="@color/md_divider_black"/>
 
-                <RelativeLayout android:orientation="horizontal"
+                <LinearLayout android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:gravity="center_vertical">
@@ -138,26 +144,27 @@
                     <TextView android:id="@+id/height"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:textSize="@dimen/abc_text_size_body_1_material"
                         android:textColor="@color/Grey"
                         android:text="170cm"/>
 
-                </RelativeLayout>
+                </LinearLayout>
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
                     android:background="@color/md_divider_black"/>
 
-                <RelativeLayout android:orientation="horizontal"
+                <LinearLayout android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:gravity="center_vertical">
 
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        
                         android:layout_marginLeft="16dp"
                         android:textSize="@dimen/abc_text_size_subhead_material"
                         android:text="地址"/>
@@ -165,13 +172,15 @@
                     <TextView android:id="@+id/address"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:textSize="@dimen/abc_text_size_body_1_material"
                         android:textColor="@color/Grey"
                         android:text="重庆邮电大学15栋"/>
 
-                </RelativeLayout>
+                </LinearLayout>
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
@@ -189,7 +198,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="?actionBarSize"
             android:layout_margin="8dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="2dp">
 
             <LinearLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -207,14 +216,13 @@
                     android:layout_height="@dimen/md_divider_height"
                     android:background="@color/md_divider_black"/>
 
-                <RelativeLayout android:orientation="horizontal"
+                <LinearLayout android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:gravity="center_vertical">
 
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        
                         android:layout_marginLeft="16dp"
                         android:textSize="@dimen/abc_text_size_subhead_material"
                         android:text="学历"/>
@@ -222,19 +230,21 @@
                     <TextView android:id="@+id/eduLevel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:textSize="@dimen/abc_text_size_body_1_material"
                         android:textColor="@color/Grey"
                         android:text="本科"/>
 
-                </RelativeLayout>
+                </LinearLayout>
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
                     android:background="@color/md_divider_black"/>
 
-                <RelativeLayout android:orientation="horizontal"
+                <LinearLayout android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:gravity="center_vertical">
@@ -249,19 +259,21 @@
                     <TextView android:id="@+id/school"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:textSize="@dimen/abc_text_size_body_1_material"
                         android:textColor="@color/Grey"
                         android:text="重庆邮电大学"/>
 
-                </RelativeLayout>
+                </LinearLayout>
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
                     android:background="@color/md_divider_black"/>
 
-                <RelativeLayout android:orientation="horizontal"
+                <LinearLayout android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:gravity="center_vertical">
@@ -275,13 +287,15 @@
                     <TextView android:id="@+id/major"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:textSize="@dimen/abc_text_size_body_1_material"
                         android:textColor="@color/Grey"
                         android:text="计算机科学与技术"/>
 
-                </RelativeLayout>
+                </LinearLayout>
 
 
 
@@ -289,9 +303,13 @@
                     android:layout_height="@dimen/md_divider_height"
                     android:background="@color/md_divider_black"/>
 
+                <LinearLayout android:id="@+id/viewAward"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="16dp"
                         android:textSize="@dimen/abc_text_size_subhead_material"
@@ -307,10 +325,16 @@
                         android:textColor="@color/Grey"
                         android:text="无"/>
 
+                </LinearLayout>
+
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
                     android:background="@color/md_divider_black"/>
 
+                <LinearLayout android:id="@+id/viewCertificate"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
@@ -328,6 +352,7 @@
                     android:textSize="@dimen/abc_text_size_body_1_material"
                     android:textColor="@color/Grey"
                     android:text="无"/>
+                </LinearLayout>
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
@@ -345,7 +370,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="?actionBarSize"
             android:layout_margin="8dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="2dp">
 
             <LinearLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -364,6 +389,11 @@
                     android:background="@color/md_divider_black"/>
 
 
+                <LinearLayout android:orientation="vertical"
+                    android:id="@+id/viewCharacter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -380,11 +410,16 @@
                     android:textSize="@dimen/abc_text_size_body_1_material"
                     android:textColor="@color/Grey"
                     android:text="脾气温和"/>
+                </LinearLayout>
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
                     android:background="@color/md_divider_black"/>
 
+                <LinearLayout android:orientation="vertical"
+                    android:id="@+id/viewLike"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -402,10 +437,15 @@
                     android:textColor="@color/Grey"
                     android:text="写代码"/>
 
+                </LinearLayout>
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
                     android:background="@color/md_divider_black"/>
 
+                <LinearLayout android:orientation="vertical"
+                    android:id="@+id/viewSpecialty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -422,12 +462,16 @@
                     android:textSize="@dimen/abc_text_size_body_1_material"
                     android:textColor="@color/Grey"
                     android:text="编程"/>
-
+                </LinearLayout>
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
                     android:background="@color/md_divider_black"/>
 
+                <LinearLayout android:id="@+id/viewIntro"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -445,6 +489,7 @@
                     android:textSize="@dimen/abc_text_size_body_1_material"
                     android:textColor="@color/Grey"
                     android:text="校级三好学生"/>
+                </LinearLayout>
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"

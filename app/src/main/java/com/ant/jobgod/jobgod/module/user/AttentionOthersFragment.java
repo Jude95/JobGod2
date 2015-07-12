@@ -2,6 +2,7 @@ package com.ant.jobgod.jobgod.module.user;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +36,7 @@ public class AttentionOthersFragment extends NucleusFragment<AttentionOthersPres
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.user_fragment_othersattention, container, false);
         ButterKnife.inject(this, view);
+        recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
         recycler.setAdapter(adapter);
         return view;
     }
