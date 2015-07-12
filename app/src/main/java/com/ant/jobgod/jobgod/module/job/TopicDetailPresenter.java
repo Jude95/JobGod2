@@ -1,4 +1,4 @@
-package com.ant.jobgod.jobgod.module.topic;
+package com.ant.jobgod.jobgod.module.job;
 
 import android.os.Bundle;
 
@@ -8,6 +8,7 @@ import com.ant.jobgod.jobgod.model.LocationModel;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.bean.JobPage;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
+import com.ant.jobgod.jobgod.module.job.TopicDetailActivity;
 
 /**
  * Created by alien on 2015/7/10.

@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
@@ -20,6 +21,9 @@ import com.facebook.drawee.generic.RoundingParams;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.DynamicPagerAdapter;
+
+import net.youmi.android.banner.AdSize;
+import net.youmi.android.banner.AdView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -43,11 +47,11 @@ public class RecommendFragment extends NucleusFragment<RecommendPresenter> {
     TextView tvRecommendMore;
     @InjectView(R.id.listRecommend)
     LinearWrapContentRecyclerView listRecommend;
-    @InjectView(R.id.tvAdMore)
-    TextView tvAdMore;
-    @InjectView(R.id.vpgAd)
-    RollPagerView vpgAd;
-    private AdAdapter mBannerAdapter;
+    @InjectView(R.id.viewAd)
+    LinearLayout viewAd;
+
+
+    private BannerAdapter mBannerAdapter;
     private JobBriefAdapter mRecommendAdapter;
 
     @Nullable
@@ -56,8 +60,9 @@ public class RecommendFragment extends NucleusFragment<RecommendPresenter> {
         super.onCreateView(inflater, container, savedInstanceState);
         View rootView = inflater.inflate(R.layout.main_fragment_recommend, container, false);
         ButterKnife.inject(this, rootView);
-        vpgBanner.setAdapter(mBannerAdapter = new AdAdapter());
+        vpgBanner.setAdapter(mBannerAdapter = new BannerAdapter());
         listRecommend.setAdapter(mRecommendAdapter = new JobBriefAdapter(getActivity()));
+        viewAd.addView(new AdView(getActivity(), AdSize.SIZE_468x60));
         return rootView;
     }
 
@@ -84,7 +89,7 @@ public class RecommendFragment extends NucleusFragment<RecommendPresenter> {
     /**
      * Created by alien on 2015/7/7.
      */
-    public static class AdAdapter extends DynamicPagerAdapter {
+    public static class BannerAdapter extends DynamicPagerAdapter {
 
         SimpleDraweeView img;
         private Banner[] banners;
