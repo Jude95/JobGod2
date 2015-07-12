@@ -16,17 +16,11 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <View android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/md_divider_black"/>
 
             <View android:layout_width="match_parent"
                 android:layout_height="6dp"
                 android:background="@drawable/top_shadow"/>
 
-            <View android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/md_divider_black"/>
 
             <com.balysv.materialripple.MaterialRippleLayout
                 android:layout_width="match_parent"
@@ -37,23 +31,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="88dp">
 
-                <TextView android:id="@+id/name"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:textSize="16sp"
                     android:text="头像"/>
 
-                <com.facebook.drawee.view.SimpleDraweeView android:id="@+id/imgFace"
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/imgFace"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:layout_alignParentRight="true"
                     android:layout_margin="16dp"
-                    fresco:roundAsCircle="true"
-                    fresco:actualImageScaleType="focusCrop"
-                    fresco:failureImage="@mipmap/error"
-                    fresco:progressBarImage="@mipmap/progress_bar"/>
+                    fresco:roundAsCircle="true"/>
 
             </RelativeLayout>
 
@@ -77,7 +69,7 @@
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:textSize="16sp"
                     android:text="昵称"/>
 
                 <TextView android:id="@+id/name"
@@ -85,8 +77,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="16dp"
-                    android:textSize="@dimen/abc_text_size_subhead_material"
-                    android:textColor="@color/secondary_text_default_material_light"
+                    android:textSize="@dimen/abc_text_size_body_1_material"
+                    android:textColor="@color/Grey"
                     android:text="王二小"/>
             </RelativeLayout>
 
@@ -111,15 +103,15 @@
 
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:textSize="16sp"
                     android:text="签名"/>
 
                 <TextView android:id="@+id/signature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:textSize="@dimen/abc_text_size_subhead_material"
-                    android:textColor="@color/secondary_text_default_material_light"
+                    android:textSize="@dimen/abc_text_size_body_1_material"
+                    android:textColor="@color/Grey"
                     android:text="我是一个兵"/>
 
             </LinearLayout>
@@ -144,7 +136,7 @@
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:textSize="16sp"
                     android:text="详细资料"/>
 
                 <TextView android:id="@+id/percent"
@@ -152,8 +144,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="16dp"
-                    android:textSize="@dimen/abc_text_size_subhead_material"
-                    android:textColor="@color/secondary_text_default_material_light"
+                    android:textSize="@dimen/abc_text_size_body_1_material"
+                    android:textColor="@color/Grey"
                     android:text="完善度 20%"/>
 
             </RelativeLayout>
@@ -162,16 +154,12 @@
 
 
             <View android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/md_divider_black"/>
-
-            <View android:layout_width="match_parent"
                 android:layout_height="6dp"
                 android:background="@drawable/bottom_shadow"/>
-
             <View android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/md_divider_black"/>
+                android:layout_height="6dp"
+                android:background="@drawable/top_shadow"/>
+
             <com.balysv.materialripple.MaterialRippleLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -187,7 +175,7 @@
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
-                        android:textSize="@dimen/abc_text_size_medium_material"
+                        android:textSize="16sp"
                         android:text="绑定手机号"/>
 
                     <TextView android:id="@+id/phone"
@@ -195,8 +183,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_subhead_material"
-                        android:textColor="@color/secondary_text_default_material_light"
+                        android:textSize="@dimen/abc_text_size_body_1_material"
+                        android:textColor="@color/Grey"
                         android:text="18983679028"/>
 
                 </RelativeLayout>
@@ -221,7 +209,7 @@
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:textSize="16sp"
                     android:text="实名认证"/>
 
                 <TextView android:id="@+id/authentication"
@@ -229,8 +217,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="16dp"
-                    android:textSize="@dimen/abc_text_size_subhead_material"
-                    android:textColor="@color/secondary_text_default_material_light"
+                    android:textSize="@dimen/abc_text_size_body_1_material"
+                    android:textColor="@color/Grey"
                     android:text="未认证"/>
 
             </RelativeLayout>
@@ -255,7 +243,7 @@
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:textSize="16sp"
                     android:text="修改密码"/>
 
             </RelativeLayout>
@@ -263,16 +251,11 @@
             </com.balysv.materialripple.MaterialRippleLayout>
 
             <View android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/md_divider_black"/>
-
-            <View android:layout_width="match_parent"
                 android:layout_height="6dp"
                 android:background="@drawable/bottom_shadow"/>
-
             <View android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/md_divider_black"/>
+                android:layout_height="6dp"
+                android:background="@drawable/top_shadow"/>
 
             <com.balysv.materialripple.MaterialRippleLayout
                 android:layout_width="match_parent"
@@ -289,7 +272,7 @@
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:textSize="16sp"
                     android:text="能力等级"/>
 
                 <TextView android:id="@+id/ability"
@@ -297,8 +280,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="16dp"
-                    android:textSize="@dimen/abc_text_size_subhead_material"
-                    android:textColor="@color/secondary_text_default_material_light"
+                    android:textSize="@dimen/abc_text_size_body_1_material"
+                    android:textColor="@color/Grey"
                     android:text="50/100"/>
 
             </RelativeLayout>
@@ -323,7 +306,7 @@
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:textSize="16sp"
                     android:text="信用等级"/>
 
                 <TextView android:id="@+id/credit"
@@ -331,8 +314,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="16dp"
-                    android:textSize="@dimen/abc_text_size_subhead_material"
-                    android:textColor="@color/secondary_text_default_material_light"
+                    android:textSize="@dimen/abc_text_size_body_1_material"
+                    android:textColor="@color/Grey"
                     android:text="50/100"/>
 
             </RelativeLayout>
@@ -356,7 +339,7 @@
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:textSize="16sp"
                     android:text="态度等级"/>
 
                 <TextView android:id="@+id/attitude"
@@ -364,24 +347,16 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="16dp"
-                    android:textSize="@dimen/abc_text_size_subhead_material"
-                    android:textColor="@color/secondary_text_default_material_light"
+                    android:textSize="@dimen/abc_text_size_body_1_material"
+                    android:textColor="@color/Grey"
                     android:text="50/100"/>
 
             </RelativeLayout>
             </com.balysv.materialripple.MaterialRippleLayout>
 
             <View android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/md_divider_black"/>
-
-            <View android:layout_width="match_parent"
                 android:layout_height="6dp"
                 android:background="@drawable/bottom_shadow"/>
-
-            <View android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/md_divider_black"/>
 
         </LinearLayout>
 

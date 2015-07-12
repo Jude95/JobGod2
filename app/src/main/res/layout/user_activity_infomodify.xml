@@ -47,9 +47,9 @@
 
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
+                        
                         android:layout_marginLeft="16dp"
-                        android:textSize="@dimen/abc_text_size_medium_material"
+                        android:textSize="@dimen/abc_text_size_subhead_material"
                         android:text="姓名"/>
 
                     <TextView android:id="@+id/name"
@@ -57,8 +57,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
-                        android:textColor="@color/secondary_text_default_material_light"
+                        android:textSize="@dimen/abc_text_size_body_1_material"
+                        android:textColor="@color/Grey"
                         android:text="林龙鑫"/>
 
                 </RelativeLayout>
@@ -74,9 +74,9 @@
 
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
+                        
                         android:layout_marginLeft="16dp"
-                        android:textSize="@dimen/abc_text_size_medium_material"
+                        android:textSize="@dimen/abc_text_size_subhead_material"
                         android:text="签名"/>
 
                     <TextView android:id="@+id/signature"
@@ -84,8 +84,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
-                        android:textColor="@color/secondary_text_default_material_light"
+                        android:textSize="@dimen/abc_text_size_body_1_material"
+                        android:textColor="@color/Grey"
                         android:text="呵呵哒"/>
 
                 </RelativeLayout>
@@ -102,9 +102,9 @@
 
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
+                        
                         android:layout_marginLeft="16dp"
-                        android:textSize="@dimen/abc_text_size_medium_material"
+                        android:textSize="@dimen/abc_text_size_subhead_material"
                         android:text="性别"/>
 
                     <TextView android:id="@+id/gender"
@@ -112,8 +112,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
-                        android:textColor="@color/secondary_text_default_material_light"
+                        android:textSize="@dimen/abc_text_size_body_1_material"
+                        android:textColor="@color/Grey"
                         android:text="男"/>
 
                 </RelativeLayout>
@@ -130,9 +130,9 @@
 
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
+                        
                         android:layout_marginLeft="16dp"
-                        android:textSize="@dimen/abc_text_size_medium_material"
+                        android:textSize="@dimen/abc_text_size_subhead_material"
                         android:text="身高"/>
 
                     <TextView android:id="@+id/height"
@@ -140,8 +140,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
-                        android:textColor="@color/secondary_text_default_material_light"
+                        android:textSize="@dimen/abc_text_size_body_1_material"
+                        android:textColor="@color/Grey"
                         android:text="170cm"/>
 
                 </RelativeLayout>
@@ -157,9 +157,9 @@
 
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
+                        
                         android:layout_marginLeft="16dp"
-                        android:textSize="@dimen/abc_text_size_medium_material"
+                        android:textSize="@dimen/abc_text_size_subhead_material"
                         android:text="地址"/>
 
                     <TextView android:id="@+id/address"
@@ -167,8 +167,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
-                        android:textColor="@color/secondary_text_default_material_light"
+                        android:textSize="@dimen/abc_text_size_body_1_material"
+                        android:textColor="@color/Grey"
                         android:text="重庆邮电大学15栋"/>
 
                 </RelativeLayout>
@@ -214,9 +214,9 @@
 
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
+                        
                         android:layout_marginLeft="16dp"
-                        android:textSize="@dimen/abc_text_size_medium_material"
+                        android:textSize="@dimen/abc_text_size_subhead_material"
                         android:text="学历"/>
 
                     <TextView android:id="@+id/eduLevel"
@@ -224,8 +224,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
-                        android:textColor="@color/secondary_text_default_material_light"
+                        android:textSize="@dimen/abc_text_size_body_1_material"
+                        android:textColor="@color/Grey"
                         android:text="本科"/>
 
                 </RelativeLayout>
@@ -241,9 +241,9 @@
 
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
+                        
                         android:layout_marginLeft="16dp"
-                        android:textSize="@dimen/abc_text_size_medium_material"
+                        android:textSize="@dimen/abc_text_size_subhead_material"
                         android:text="学校"/>
 
                     <TextView android:id="@+id/school"
@@ -251,8 +251,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
-                        android:textColor="@color/secondary_text_default_material_light"
+                        android:textSize="@dimen/abc_text_size_body_1_material"
+                        android:textColor="@color/Grey"
                         android:text="重庆邮电大学"/>
 
                 </RelativeLayout>
@@ -268,9 +268,8 @@
 
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
                         android:layout_marginLeft="16dp"
-                        android:textSize="@dimen/abc_text_size_medium_material"
+                        android:textSize="@dimen/abc_text_size_subhead_material"
                         android:text="专业"/>
 
                     <TextView android:id="@+id/major"
@@ -278,8 +277,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
-                        android:textColor="@color/secondary_text_default_material_light"
+                        android:textSize="@dimen/abc_text_size_body_1_material"
+                        android:textColor="@color/Grey"
                         android:text="计算机科学与技术"/>
 
                 </RelativeLayout>
@@ -292,9 +291,10 @@
 
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
+                        
                         android:layout_marginLeft="16dp"
-                        android:textSize="@dimen/abc_text_size_medium_material"
+                        android:layout_marginTop="16dp"
+                        android:textSize="@dimen/abc_text_size_subhead_material"
                         android:text="奖项"/>
 
                     <TextView android:id="@+id/award"
@@ -302,10 +302,9 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/main_drawer_selector"
                         android:maxLines="3"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginLeft="16dp"
-                        android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
-                        android:textColor="@color/secondary_text_default_material_light"
+                        android:layout_margin="16dp"
+                        android:textSize="@dimen/abc_text_size_body_1_material"
+                        android:textColor="@color/Grey"
                         android:text="无"/>
 
                 <View android:layout_width="match_parent"
@@ -314,9 +313,10 @@
 
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
+
                     android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:layout_marginTop="16dp"
+                    android:textSize="@dimen/abc_text_size_subhead_material"
                     android:text="证书"/>
 
                 <TextView android:id="@+id/certificate"
@@ -324,10 +324,9 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/main_drawer_selector"
                     android:maxLines="3"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
-                    android:textColor="@color/secondary_text_default_material_light"
+                    android:layout_margin="16dp"
+                    android:textSize="@dimen/abc_text_size_body_1_material"
+                    android:textColor="@color/Grey"
                     android:text="无"/>
 
                 <View android:layout_width="match_parent"
@@ -367,9 +366,9 @@
 
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
+                    android:layout_marginTop="16dp"
                     android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:textSize="@dimen/abc_text_size_subhead_material"
                     android:text="性格"/>
 
                 <TextView android:id="@+id/character"
@@ -377,10 +376,9 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/main_drawer_selector"
                     android:maxLines="3"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
-                    android:textColor="@color/secondary_text_default_material_light"
+                    android:layout_margin="16dp"
+                    android:textSize="@dimen/abc_text_size_body_1_material"
+                    android:textColor="@color/Grey"
                     android:text="脾气温和"/>
 
                 <View android:layout_width="match_parent"
@@ -389,9 +387,9 @@
 
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
+                    android:layout_marginTop="16dp"
                     android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:textSize="@dimen/abc_text_size_subhead_material"
                     android:text="爱好"/>
 
                 <TextView android:id="@+id/like"
@@ -399,10 +397,9 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/main_drawer_selector"
                     android:maxLines="3"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
-                    android:textColor="@color/secondary_text_default_material_light"
+                    android:layout_margin="16dp"
+                    android:textSize="@dimen/abc_text_size_body_1_material"
+                    android:textColor="@color/Grey"
                     android:text="写代码"/>
 
                 <View android:layout_width="match_parent"
@@ -411,9 +408,9 @@
 
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
+                    android:layout_marginTop="16dp"
                     android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:textSize="@dimen/abc_text_size_subhead_material"
                     android:text="擅长"/>
 
                 <TextView android:id="@+id/specialty"
@@ -421,10 +418,9 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/main_drawer_selector"
                     android:maxLines="3"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="4dp"
-                    android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
-                    android:textColor="@color/secondary_text_default_material_light"
+                    android:layout_margin="16dp"
+                    android:textSize="@dimen/abc_text_size_body_1_material"
+                    android:textColor="@color/Grey"
                     android:text="编程"/>
 
 
@@ -435,9 +431,9 @@
 
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
+                    android:layout_marginTop="16dp"
                     android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:textSize="@dimen/abc_text_size_subhead_material"
                     android:text="简介"/>
 
                 <TextView android:id="@+id/intro"
@@ -445,10 +441,9 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/main_drawer_selector"
                     android:maxLines="3"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_subtitle_material_toolbar"
-                    android:textColor="@color/secondary_text_default_material_light"
+                    android:layout_margin="16dp"
+                    android:textSize="@dimen/abc_text_size_body_1_material"
+                    android:textColor="@color/Grey"
                     android:text="校级三好学生"/>
 
                 <View android:layout_width="match_parent"
