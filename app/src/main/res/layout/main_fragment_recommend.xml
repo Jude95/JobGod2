@@ -1,169 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            app:cardBackgroundColor="@color/White"
-            >
+            app:cardBackgroundColor="@color/White">
+
             <com.jude.rollviewpager.RollPagerView
                 android:id="@+id/vpgBanner"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                app:hint_mode="point"
+                app:autoplay="3000"
                 app:hint_alpha="0"
-                app:autoplay="3000"/>
+                app:hint_mode="point" />
         </android.support.v7.widget.CardView>
 
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
             app:cardBackgroundColor="@color/White">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
+                android:layout_marginBottom="4dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:padding="4dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="4dp">
+
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:text="专题推荐"
-                    android:textStyle="bold"
+                    android:layout_weight="1"
                     android:gravity="center_vertical"
-                    />
+                    android:text="专题推荐"
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/tvTopicMore"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:text="更多"
-                    android:textColor="?attr/colorPrimary"/>
+                    android:textColor="?attr/colorPrimary" />
             </LinearLayout>
+
             <com.ant.jobgod.jobgod.module.main.recommend.TopicsView
                 android:id="@+id/viewTopic"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_width="match_parent"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="16dp"
-                android:layout_height="160dp"/>
+                android:layout_marginTop="40dp" />
 
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
-            app:cardBackgroundColor="@color/White"
-            >
+            app:cardBackgroundColor="@color/White">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
+                android:layout_marginBottom="4dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:padding="4dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="4dp">
+
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:text="品质推荐"
-                    android:textStyle="bold"
+                    android:layout_weight="1"
                     android:gravity="center_vertical"
-                    />
+                    android:text="品质推荐"
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/tvRecommendMore"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:textColor="@color/DeepOrange"
                     android:gravity="center_vertical"
-                    android:text="更多"/>
+                    android:text="更多"
+                    android:textColor="@color/DeepOrange" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/md_divider_height"
-                android:background="@color/md_divider_black"
-                android:layout_marginTop="40dp"/>
+                android:layout_marginTop="40dp"
+                android:background="@color/md_divider_black" />
 
             <com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView
                 android:id="@+id/listRecommend"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="41dp"
-                />
+                android:layout_marginTop="41dp" />
 
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
-            app:cardBackgroundColor="@color/White"
-            >
+            app:cardBackgroundColor="@color/White">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
+                android:layout_marginBottom="4dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:padding="4dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="4dp">
+
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:text="推广"
-                    android:textStyle="bold"
+                    android:layout_weight="1"
                     android:gravity="center_vertical"
-                    />
+                    android:text="推广"
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/tvAdMore"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:text="更多"
-                    android:textColor="?attr/colorPrimary"/>
+                    android:textColor="?attr/colorPrimary" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/md_divider_height"
-                android:background="@color/md_divider_black"
-                android:layout_marginTop="40dp"/>
+                android:layout_marginTop="40dp"
+                android:background="@color/md_divider_black" />
 
             <LinearLayout
                 android:id="@+id/viewAd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                android:padding="8dp"/>
+                android:padding="8dp" />
         </android.support.v7.widget.CardView>
 
     </LinearLayout>

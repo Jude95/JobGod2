@@ -65,6 +65,13 @@ public class ModifyInfoActivity extends BaseActivity<ModifyInfoPresenter> {
     @InjectView(R.id.viewIntro)
     LinearLayout viewIntro;
 
+    public final static String KEY_FLAG="flag";
+    public final static String DATA="data";
+
+    public enum InfoFlag{
+        AWARD,CERTIFICATE,CHARACTER,LIKE,SPECIALTY,INTRO
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,12 +91,12 @@ public class ModifyInfoActivity extends BaseActivity<ModifyInfoPresenter> {
         school.setOnClickListener(v -> createEditDialog("输入", 32, "最多32字", school));
         major.setOnClickListener(v -> createEditDialog("输入", 16, "最多16字", major));
 
-        viewAward.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult("award",award));
-        viewCertificate.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult("certificate",certificate));
-        viewCharacter.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult("character",character));
-        viewIntro.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult("intro",intro));
-        viewLike.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult("like",like));
-        viewSpecialty.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult("specialty",specialty));
+        viewAward.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult(InfoFlag.AWARD, award));
+        viewCertificate.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult(InfoFlag.CERTIFICATE, certificate));
+        viewCharacter.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult(InfoFlag.CHARACTER, character));
+        viewIntro.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult(InfoFlag.INTRO, intro));
+        viewLike.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult(InfoFlag.LIKE, like));
+        viewSpecialty.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult(InfoFlag.SPECIALTY, specialty));
     }
 
     /**
@@ -118,25 +125,26 @@ public class ModifyInfoActivity extends BaseActivity<ModifyInfoPresenter> {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE && resultCode == RESULT_CODE&&data!=null) {
-            switch (data.getStringExtra("viewName")) {
-                case "award":
-                    award.setText(data.getStringExtra("data"));
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_CODE && data != null) {
+            InfoFlag flag= (InfoFlag) data.getSerializableExtra(KEY_FLAG);
+            switch (flag) {
+                case AWARD:
+                    award.setText(data.getStringExtra(DATA));
                     break;
-                case "certificate":
-                    certificate.setText(data.getStringExtra("data"));
+                case CERTIFICATE:
+                    certificate.setText(data.getStringExtra(DATA));
                     break;
-                case "character":
-                    character.setText(data.getStringExtra("data"));
+                case CHARACTER:
+                    character.setText(data.getStringExtra(DATA));
                     break;
-                case "like":
-                    like.setText(data.getStringExtra("data"));
+                case LIKE:
+                    like.setText(data.getStringExtra(DATA));
                     break;
-                case "specialty":
-                    specialty.setText(data.getStringExtra("data"));
+                case SPECIALTY:
+                    specialty.setText(data.getStringExtra(DATA));
                     break;
-                case "intro":
-                    intro.setText(data.getStringExtra("data"));
+                case INTRO:
+                    intro.setText(data.getStringExtra(DATA));
                     break;
             }
         }

@@ -12,8 +12,8 @@ import com.ant.jobgod.jobgod.app.BasePresenter;
  */
 public class ModifyInfoPresenter extends BasePresenter<ModifyInfoActivity> {
 
-    private final int REQUEST_CODE=1;
-    private final int RESULT_CODE=0;
+    private final int REQUEST_CODE = 1;
+    private final int RESULT_CODE = 0;
 
     @Override
     protected void onCreate(Bundle savedState) {
@@ -25,17 +25,17 @@ public class ModifyInfoPresenter extends BasePresenter<ModifyInfoActivity> {
         super.onCreateView(view);
     }
 
-    public void submitInfo(RequestMap param){
+    public void submitInfo(RequestMap param) {
         param.put("id", readStandVar("id", 0) + "");
         /**
          * 接下来去post到服务器
          */
     }
 
-    public void toModifyDataActivityForResult(String viewName,TextView view){
-        Intent intent=new Intent(getView(),ModifyDataActivity.class);
-        intent.putExtra("viewName",viewName);
-        intent.putExtra("data",view.getText().toString());
+    public void toModifyDataActivityForResult(ModifyInfoActivity.InfoFlag flag, TextView view) {
+        Intent intent = new Intent(getView(), ModifyDataActivity.class);
+        intent.putExtra(ModifyInfoActivity.KEY_FLAG, flag);
+        intent.putExtra("data", view.getText().toString());
         getView().startActivityForResult(intent, REQUEST_CODE);
     }
 

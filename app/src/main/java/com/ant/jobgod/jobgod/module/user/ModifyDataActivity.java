@@ -8,7 +8,6 @@ import android.view.MenuItem;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
-import com.ant.jobgod.jobgod.util.Utils;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -25,47 +24,46 @@ public class ModifyDataActivity extends BaseActivity<ModifyFacePresenter> {
 
     private Intent intent;
 
-    private final int RESULT_DATA=0;
+    private final int RESULT_DATA = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_activity_modifydata);
         ButterKnife.inject(this);
-        intent=getIntent();
+        intent = getIntent();
         setTitleAndResult();
 
     }
 
-    public void setTitleAndResult(){
-        String viewName=intent.getStringExtra("viewName");
-        String content=intent.getStringExtra("data");
-        intent.putExtra("viewName", viewName);
-        switch (viewName){
-            case "award":
+    public void setTitleAndResult() {
+        ModifyInfoActivity.InfoFlag flag = (ModifyInfoActivity.InfoFlag) intent.getSerializableExtra(ModifyInfoActivity.KEY_FLAG);
+        String content = intent.getStringExtra(ModifyInfoActivity.DATA);
+        intent.putExtra(ModifyInfoActivity.KEY_FLAG, flag);
+        switch (flag) {
+            case AWARD:
                 setTitle("修改奖项");
                 data.setHint("奖项");
                 break;
-            case "certificate":
+            case CERTIFICATE:
                 setTitle("修改证书");
                 data.setHint("证书");
                 break;
-            case "character":
+            case CHARACTER:
                 setTitle("修改性格");
                 data.setHint("性格");
                 break;
-            case "like":
+            case LIKE:
                 setTitle("修改爱好");
                 data.setHint("爱好");
                 break;
-            case "specialty":
+            case SPECIALTY:
                 setTitle("修改特长");
                 data.setHint("特长");
                 break;
-            case "intro":
+            case INTRO:
                 setTitle("修改简介");
                 data.setHint("简介");
-                data.getEditText().setHint("修改简介");
                 break;
         }
         data.getEditText().setText(content);
@@ -73,15 +71,14 @@ public class ModifyDataActivity extends BaseActivity<ModifyFacePresenter> {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_user_modifydata,menu);
+        getMenuInflater().inflate(R.menu.menu_user_modifydata, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId()==R.id.submit){
-            intent.putExtra("data",data.getEditText().getText().toString());
-            Utils.Log("data:" + data.getEditText().getText().toString());
+        if (item.getItemId() == R.id.submit) {
+            intent.putExtra(ModifyInfoActivity.DATA, data.getEditText().getText().toString());
             setResult(RESULT_DATA, intent);
             finish();
         }

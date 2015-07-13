@@ -1,61 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
+
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="18dp"
                     android:text="基本资料"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/darker_gray"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="40dp"
-                    android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="8dp"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:text="姓名"/>
-
-                <TextView
-                    android:id="@+id/name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="8dp"
-                    android:textSize="16sp"
-                    android:text="林龙鑫"/>
-
-            </LinearLayout>
+                    android:textColor="@android:color/darker_gray"
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -66,23 +37,52 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="32dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textStyle="bold"
+                        android:text="姓名"
                         android:textSize="16sp"
-                        android:text="签名"/>
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="4dp"
+                        android:text="林龙鑫"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="40dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="4dp"
+                        android:text="签名"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/signature"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textSize="16sp"
-                        android:text="今天好热"/>
+                        android:text="今天好热"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -95,23 +95,23 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="32dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textStyle="bold"
+                        android:text="性别"
                         android:textSize="16sp"
-                        android:text="性别"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/gender"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textSize="16sp"
-                        android:text="男"/>
+                        android:text="男"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -124,23 +124,23 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="32dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textStyle="bold"
+                        android:text="身高"
                         android:textSize="16sp"
-                        android:text="身高"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/height"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textSize="16sp"
-                        android:text="170cm"/>
+                        android:text="170cm"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -153,23 +153,23 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="32dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textStyle="bold"
+                        android:text="地址"
                         android:textSize="16sp"
-                        android:text="地址"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/address"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textSize="16sp"
-                        android:text="重庆邮电大学15栋"/>
+                        android:text="重庆邮电大学15栋"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -180,20 +180,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.3dp"
                 android:layout_margin="16dp"
-                android:background="@android:color/darker_gray"/>
+                android:background="@android:color/darker_gray" />
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="18dp"
                     android:text="学历专业"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/darker_gray"/>
+                    android:textColor="@android:color/darker_gray"
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -204,23 +204,23 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="32dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textStyle="bold"
+                        android:text="学历"
                         android:textSize="16sp"
-                        android:text="学历"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/eduLevel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textSize="16sp"
-                        android:text="本科"/>
+                        android:text="本科"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -233,23 +233,23 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="32dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textStyle="bold"
+                        android:text="学校"
                         android:textSize="16sp"
-                        android:text="学校"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/school"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textSize="16sp"
-                        android:text="重庆邮电大学"/>
+                        android:text="重庆邮电大学"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -262,23 +262,23 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="32dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textStyle="bold"
+                        android:text="专业"
                         android:textSize="16sp"
-                        android:text="专业"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/major"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textSize="16sp"
-                        android:text="计算机科学与技术"/>
+                        android:text="计算机科学与技术"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -291,23 +291,23 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="32dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textStyle="bold"
+                        android:text="奖项"
                         android:textSize="16sp"
-                        android:text="奖项"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/award"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textSize="16sp"
-                        android:text="无"/>
+                        android:text="无"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -320,23 +320,23 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="32dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textStyle="bold"
+                        android:text="证书"
                         android:textSize="16sp"
-                        android:text="证书"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/certificate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textSize="16sp"
-                        android:text="无"/>
+                        android:text="无"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -347,20 +347,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.3dp"
                 android:layout_margin="16dp"
-                android:background="@android:color/darker_gray"/>
+                android:background="@android:color/darker_gray" />
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="18dp"
                     android:text="爱好个性"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/darker_gray"/>
+                    android:textColor="@android:color/darker_gray"
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -371,23 +371,23 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="32dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textStyle="bold"
+                        android:text="性格"
                         android:textSize="16sp"
-                        android:text="性格"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/character"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textSize="16sp"
-                        android:text="脾气好好滴"/>
+                        android:text="脾气好好滴"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -400,23 +400,23 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="32dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textStyle="bold"
+                        android:text="爱好"
                         android:textSize="16sp"
-                        android:text="爱好"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/like"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textSize="16sp"
-                        android:text="写代码"/>
+                        android:text="写代码"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -429,23 +429,23 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="32dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textStyle="bold"
+                        android:text="擅长"
                         android:textSize="16sp"
-                        android:text="擅长"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/specialty"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textSize="16sp"
-                        android:text="男"/>
+                        android:text="男"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -458,23 +458,23 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="32dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textStyle="bold"
+                        android:text="简介"
                         android:textSize="16sp"
-                        android:text="简介"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/intro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:textSize="16sp"
-                        android:text="三好学生"/>
+                        android:text="三好学生"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -484,14 +484,12 @@
                 android:id="@+id/divider"
                 android:layout_width="match_parent"
                 android:layout_height="0.3dp"
-                android:layout_marginTop="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:background="@android:color/darker_gray"/>
+                android:layout_marginTop="16dp"
+                android:background="@android:color/darker_gray" />
 
         </LinearLayout>
-
-
 
 
     </android.support.v4.widget.NestedScrollView>
@@ -500,39 +498,37 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
-        >
+        android:layout_height="240dp">
+
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsingToolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:collapsedTitleTextAppearance="@style/Title.collapsed"
             app:contentScrim="?colorPrimary"
             app:expandedTitleMarginStart="48dp"
             app:expandedTitleTextAppearance="@style/Title.Expanded"
-            app:collapsedTitleTextAppearance="@style/Title.collapsed"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            >
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imgFace"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                app:layout_collapseMode="parallax"
                 app:actualImageScaleType="focusCrop"
-                />
+                app:layout_collapseMode="parallax" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="240dp"
-                android:background="@drawable/main_drawer_gradient"
-                />
+                android:background="@drawable/main_drawer_gradient" />
+
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
-                android:layout_height="?attr/actionBarSize"
                 android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:theme="@style/AppThemeDark"
-                >
-            </android.support.v7.widget.Toolbar>
+                app:theme="@style/AppThemeDark"></android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 

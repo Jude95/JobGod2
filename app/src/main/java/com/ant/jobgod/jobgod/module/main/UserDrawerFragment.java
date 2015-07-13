@@ -53,12 +53,12 @@ public class UserDrawerFragment extends NucleusFragment<UserDrawerPresenter> {
     FrameLayout viewWallet;
     @InjectView(R.id.viewInformation)
     FrameLayout viewInformation;
+    @InjectView(R.id.viewCollection)
+    FrameLayout viewCollection;
     @InjectView(R.id.viewExperience)
     FrameLayout viewExperience;
     @InjectView(R.id.viewSetting)
     FrameLayout viewSetting;
-
-    private FrameLayout viewCollection;
 
     @Nullable
     @Override
@@ -66,15 +66,15 @@ public class UserDrawerFragment extends NucleusFragment<UserDrawerPresenter> {
         View view = inflater.inflate(R.layout.main_fragment_drawer, container, false);
         ButterKnife.inject(this, view);
 
-        viewCollection= (FrameLayout) view.findViewById(R.id.viewCollection);
 
         imgFace.setImageURI(Uri.parse("http://img.hb.aicdn.com/83baf35e3d9f9069db3d6bbe87358b877664425532114-BzeCQd_fw658"));
         viewMessage.setOnClickListener((View) -> getPresenter().startActivity(JobDetailManagerActivity.class));
         viewSetting.setOnClickListener((View) -> getPresenter().startActivity(SettingActivity.class));
         viewInformation.setOnClickListener(v -> getPresenter().startActivity(UserDetailActivity.class));
+
         viewAttention.setOnClickListener(v -> getPresenter().startActivity(AttentionActivity.class));
         viewExperience.setOnClickListener(v -> getPresenter().startActivity(PersonDetailAcitivity.class));
-//        viewCollection.setOnClickListener(v -> getPresenter().startActivity(CollectActivity.class));
+        viewCollection.setOnClickListener(v -> getPresenter().startActivity(CollectActivity.class));
         return view;
     }
 
