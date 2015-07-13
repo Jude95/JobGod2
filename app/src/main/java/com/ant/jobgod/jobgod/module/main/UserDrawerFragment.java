@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.AccountInfo;
-import com.ant.jobgod.jobgod.module.job.JobDetailManagerModeActivity;
+import com.ant.jobgod.jobgod.module.job.JobDetailManagerActivity;
 import com.ant.jobgod.jobgod.module.setting.SettingActivity;
 import com.ant.jobgod.jobgod.module.user.AttentionActivity;
 import com.ant.jobgod.jobgod.module.user.UserDetailActivity;
@@ -51,17 +51,22 @@ public class UserDrawerFragment extends NucleusFragment<UserDrawerPresenter> {
     FrameLayout viewInformation;
     @InjectView(R.id.viewSetting)
     FrameLayout viewSetting;
+    @InjectView(R.id.viewCollection)
+    FrameLayout viewCollection;
+    @InjectView(R.id.viewExperience)
+    FrameLayout viewExperience;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_fragment_drawer, container, false);
         ButterKnife.inject(this, view);
-        viewMessage.setOnClickListener((View) -> getPresenter().startActivity(JobDetailManagerModeActivity.class));
-        viewSetting.setOnClickListener((View)-> getPresenter().startActivity(SettingActivity.class));
+        viewMessage.setOnClickListener((View) -> getPresenter().startActivity(JobDetailManagerActivity.class));
+        viewSetting.setOnClickListener((View) -> getPresenter().startActivity(SettingActivity.class));
         viewInformation.setOnClickListener(v -> getPresenter().startActivity(UserDetailActivity.class));
         viewAttention.setOnClickListener(v -> getPresenter().startActivity(AttentionActivity.class));
         imgFace.setImageURI(Uri.parse("http://img.hb.aicdn.com/83baf35e3d9f9069db3d6bbe87358b877664425532114-BzeCQd_fw658"));
+        viewExperience.setOnClickListener(v -> getPresenter().startActivity(PersonDetailAcitivity.class));
         return view;
     }
 
@@ -71,7 +76,7 @@ public class UserDrawerFragment extends NucleusFragment<UserDrawerPresenter> {
         ButterKnife.reset(this);
     }
 
-    public void setAccount(AccountInfo info){
+    public void setAccount(AccountInfo info) {
         imgFace.setImageURI(Uri.parse(info.getFace()));
         tvName.setText(info.getName());
         tvSign.setText(info.getSign());

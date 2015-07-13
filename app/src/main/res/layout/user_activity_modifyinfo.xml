@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="?actionBarSize"
             android:layout_margin="8dp"
+            android:background="@color/White"
             app:cardCornerRadius="2dp">
 
             <LinearLayout android:layout_width="match_parent"
@@ -184,7 +185,6 @@
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
-                    android:layout_marginBottom="4dp"
                     android:background="@color/md_divider_black"/>
 
             </LinearLayout>
@@ -198,6 +198,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="?actionBarSize"
             android:layout_margin="8dp"
+            android:background="@color/White"
             app:cardCornerRadius="2dp">
 
             <LinearLayout android:layout_width="match_parent"
@@ -356,7 +357,6 @@
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"
-                    android:layout_marginBottom="4dp"
                     android:background="@color/md_divider_black"/>
 
             </LinearLayout>
@@ -370,6 +370,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="?actionBarSize"
             android:layout_margin="8dp"
+            android:background="@color/White"
             app:cardCornerRadius="2dp">
 
             <LinearLayout android:layout_width="match_parent"
