@@ -74,4 +74,5 @@ dependencies {
     compile 'com.balysv:material-ripple:1.0.2'
     compile files('libs/YoumiSdk_v5.00_2015-01-08.jar')
     compile project(':imagetool')
+    compile 'cn.bingoogolapple:bga-flowlayout:1.0.0@aar'
 }
