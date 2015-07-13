@@ -1,5 +1,6 @@
 package com.ant.jobgod.jobgod.module.main.joblist;
 
+import android.database.DataSetObserver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +15,24 @@ import com.ant.jobgod.jobgod.R;
 public class FiltrateAdapter extends BaseAdapter {
     String[] texts;
     onCloseListener listener;
+    ViewGroup container;
     public interface onCloseListener{
         void onClose(int position);
     }
 
-    public FiltrateAdapter(onCloseListener listener) {
+    public FiltrateAdapter(onCloseListener listener,ViewGroup container) {
         this.listener = listener;
+        this.container = container;
+
+        registerDataSetObserver(new DataSetObserver() {
+            @Override
+            public void onChanged() {
+                container.removeAllViews();
+                for (int i = 0 ; i < getCount() ; i++){
+                    container.addView(getView(i,null,container));
+                }
+            }
+        });
     }
 
     public void setTexts(String[] texts){

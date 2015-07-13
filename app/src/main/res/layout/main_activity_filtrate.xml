@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
     <include layout="@layout/include_toolbar"/>
 
@@ -27,16 +29,16 @@
             android:layout_height="match_parent"
             android:src="@drawable/ic_add"/>
     </LinearLayout>
-    <GridView
+    <cn.bingoogolapple.flowlayout.BGAFlowLayout
         android:id="@+id/grid_trade"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
-        android:horizontalSpacing="8dp"
-        android:verticalSpacing="8dp"
-        android:numColumns="4"/>
+        app:fl_horizontalChildGap="16dp"
+        app:fl_verticalChildGap="16dp"
+        app:fl_isDistributionWhiteSpacing="false"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/md_divider_height"
@@ -64,16 +66,16 @@
             android:layout_height="match_parent"
             android:src="@drawable/ic_add"/>
     </LinearLayout>
-    <GridView
+    <cn.bingoogolapple.flowlayout.BGAFlowLayout
         android:id="@+id/grid_city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
-        android:horizontalSpacing="8dp"
-        android:verticalSpacing="8dp"
-        android:numColumns="4"/>
+        app:fl_horizontalChildGap="16dp"
+        app:fl_verticalChildGap="16dp"
+        app:fl_isDistributionWhiteSpacing="false"/>
 
     <View
         android:layout_width="match_parent"
