@@ -141,6 +141,9 @@
         <activity android:name=".module.main.PersonDetailAcitivity"
             android:label="信息列表"/>
 
+        <activity android:name=".module.user.CollectActivity"
+            android:label="收藏列表"/>
+
 
 
         <!--ImageTool-->

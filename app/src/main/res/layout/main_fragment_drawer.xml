@@ -231,6 +231,7 @@
                     android:textColor="@color/secondary_text_default_material_light"
                     android:textSize="16sp"/>
             </FrameLayout>
+
             <FrameLayout
                 android:id="@+id/viewCollection"
                 android:layout_width="match_parent"
@@ -242,8 +243,8 @@
                     android:layout_height="match_parent"
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
-                    android:layout_marginLeft="16dp"
                     android:adjustViewBounds="true"
+                    android:layout_marginLeft="16dp"
                     android:src="@drawable/personal_collection"/>
                 <TextView
                     android:layout_width="match_parent"
@@ -255,6 +256,7 @@
                     android:textColor="@color/secondary_text_default_material_light"
                     android:textSize="16sp"/>
             </FrameLayout>
+
             <FrameLayout
                 android:id="@+id/viewExperience"
                 android:layout_width="match_parent"
@@ -266,8 +268,8 @@
                     android:layout_height="match_parent"
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
-                    android:layout_marginLeft="16dp"
                     android:adjustViewBounds="true"
+                    android:layout_marginLeft="16dp"
                     android:src="@drawable/personal_work"/>
                 <TextView
                     android:layout_width="match_parent"

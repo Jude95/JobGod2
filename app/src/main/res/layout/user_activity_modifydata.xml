@@ -11,7 +11,7 @@
         android:layout_margin="8dp">
         <EditText android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/main_data_edit"
+            android:background="@drawable/edit_border"
             android:padding="8dp"
             android:gravity="top"/>
     </android.support.design.widget.TextInputLayout>

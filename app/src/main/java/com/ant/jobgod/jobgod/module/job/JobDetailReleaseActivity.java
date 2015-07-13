@@ -27,8 +27,6 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
     TextView bizName;
     @InjectView(R.id.bizAvgFeel)
     TextView bizAvgFeel;
-    @InjectView(R.id.tvPhone)
-    TextView tvPhone;
     @InjectView(R.id.promulgator)
     RelativeLayout promulgator;
     @InjectView(R.id.jobWage)
@@ -57,6 +55,8 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
     CollapsingToolbarLayout collapsingToolbar;
     @InjectView(R.id.personCountIntro)
     TextView personCountIntro;
+    @InjectView(R.id.tvApply)
+    TextView tvApply;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,8 +78,9 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
         jobIntro.setText(data.getIntro());
         jobAsk.setText(data.getAsk());
         jobWage.setText(data.getMoneyIntro());
-        tvPhone.setText(data.getPhone());
         personCountIntro.setText(data.getPersonCountIntro());
+
+//        tvApply.setText();
     }
 
 
