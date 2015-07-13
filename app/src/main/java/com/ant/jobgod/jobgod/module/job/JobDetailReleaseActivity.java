@@ -1,12 +1,9 @@
 package com.ant.jobgod.jobgod.module.job;
 
-import android.graphics.PointF;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.widget.Toolbar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,14 +18,17 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import nucleus.factory.RequiresPresenter;
 
-@RequiresPresenter(JobDetailManagerModePresenter.class)
-public class JobDetailManagerModeActivity extends BaseActivity<JobDetailManagerModePresenter> {
+@RequiresPresenter(JobDetailReleasePresenter.class)
+public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePresenter> {
 
-
+    @InjectView(R.id.bizFace)
+    SimpleDraweeView bizFace;
     @InjectView(R.id.bizName)
     TextView bizName;
     @InjectView(R.id.bizAvgFeel)
     TextView bizAvgFeel;
+    @InjectView(R.id.tvPhone)
+    TextView tvPhone;
     @InjectView(R.id.promulgator)
     RelativeLayout promulgator;
     @InjectView(R.id.jobWage)
@@ -51,27 +51,18 @@ public class JobDetailManagerModeActivity extends BaseActivity<JobDetailManagerM
     TextView jobAsk;
     @InjectView(R.id.jobImg)
     SimpleDraweeView jobImg;
-    @InjectView(R.id.toolbar)
-    Toolbar toolbar;
-    @InjectView(R.id.collapsingToolbar)
-    CollapsingToolbarLayout collapsingToolbar;
-    @InjectView(R.id.appBar)
-    AppBarLayout appBar;
     @InjectView(R.id.floating_action_button)
     FloatingActionButton floatingActionButton;
-    @InjectView(R.id.bizFace)
-    SimpleDraweeView bizFace;
-    @InjectView(R.id.jobBeginTime)
-    TextView jobBeginTime;
-    @InjectView(R.id.jobEndTime)
-    TextView jobEndTime;
+    @InjectView(R.id.collapsingToolbar)
+    CollapsingToolbarLayout collapsingToolbar;
+    @InjectView(R.id.personCountIntro)
+    TextView personCountIntro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.job_activity_detailmanager);
+        setContentView(R.layout.job_activity_detailrelease);
         ButterKnife.inject(this);
-        jobImg.getHierarchy().setActualImageFocusPoint(new PointF(0.5f, 0));
     }
 
     public void setData(Job data) {
@@ -87,8 +78,9 @@ public class JobDetailManagerModeActivity extends BaseActivity<JobDetailManagerM
         jobIntro.setText(data.getIntro());
         jobAsk.setText(data.getAsk());
         jobWage.setText(data.getMoneyIntro());
-        jobBeginTime.setText(new TimeTransform(data.getJobBeginTime()).toString(new RecentDateFormater()));
-        jobEndTime.setText(new TimeTransform(data.getJobEndTime()).toString(new RecentDateFormater()));
+        tvPhone.setText(data.getPhone());
+        personCountIntro.setText(data.getPersonCountIntro());
     }
+
 
 }

@@ -43,15 +43,15 @@ class JobViewHolder extends BaseViewHolder<JobBrief> {
             intent.putExtra("id", data.getId());
             switch (data.getSyle()) {
                 case 0:
-                    intent.setClass(ripple.getContext(), JobDetailReleaseModeActivity.class);
+                    intent.setClass(ripple.getContext(), JobDetailReleaseActivity.class);
                     ripple.getContext().startActivity(intent);
                     break;
                 case 1:
-                    intent.setClass(ripple.getContext(), JobDetailManagerModeActivity.class);
+                    intent.setClass(ripple.getContext(), JobDetailManagerActivity.class);
                     ripple.getContext().startActivity(intent);
                     break;
                 default:
-                    intent.setClass(ripple.getContext(), JobDetailReleaseModeActivity.class);
+                    intent.setClass(ripple.getContext(), JobDetailReleaseActivity.class);
                     ripple.getContext().startActivity(intent);
                     break;
             }

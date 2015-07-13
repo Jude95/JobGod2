@@ -8,10 +8,9 @@ import com.ant.jobgod.jobgod.model.bean.Job;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 
 /**
- * Created by alien on 2015/7/10.
+ * Created by alien on 2015/7/8.
  */
-public class JobDetailReleaseModePresenter extends BasePresenter<JobDetailReleaseModeActivity> {
-
+public class JobDetailManagerPresenter extends BasePresenter<JobDetailManagerActivity> {
     private String id;
     private Job mJob;
 
@@ -28,9 +27,11 @@ public class JobDetailReleaseModePresenter extends BasePresenter<JobDetailReleas
     }
 
     @Override
-    protected void onCreateView(JobDetailReleaseModeActivity view) {
+    protected void onCreateView(JobDetailManagerActivity view) {
         super.onCreateView(view);
-        if (mJob!=null) getView().setData(mJob);
-
+        if (mJob!=null) {
+            getView().setData(mJob);
+        }
     }
+
 }
