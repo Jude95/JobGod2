@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.PersonBrief;
-import com.ant.jobgod.jobgod.module.main.PersonDetailAcitivity;
+import com.ant.jobgod.jobgod.module.main.PersonDetailActivity;
 import com.ant.jobgod.jobgod.util.BaseViewHolder;
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -43,6 +43,6 @@ class UserBriefViewHolder extends BaseViewHolder<PersonBrief> {
         imgFace.setImageURI(Uri.parse(data.getFace()));
         tvName.setText(data.getName());
         tvSignature.setText(data.getSign());
-        ripple.setOnClickListener(v -> itemView.getContext().startActivity(new Intent(itemView.getContext(), PersonDetailAcitivity.class)));
+        ripple.setOnClickListener(v -> itemView.getContext().startActivity(new Intent(itemView.getContext(), PersonDetailActivity.class)));
     }
 }

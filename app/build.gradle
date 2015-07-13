@@ -15,6 +15,7 @@ android {
         targetSdkVersion 22
         versionCode 10
         versionName "2.0.1"
+        multiDexEnabled true
     }
 
 
@@ -43,6 +44,8 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+
 }
 
 dependencies {
@@ -75,4 +78,5 @@ dependencies {
     compile files('libs/YoumiSdk_v5.00_2015-01-08.jar')
     compile project(':imagetool')
     compile 'cn.bingoogolapple:bga-flowlayout:1.0.0@aar'
+    compile 'com.android.support:multidex:1.0.0'
 }

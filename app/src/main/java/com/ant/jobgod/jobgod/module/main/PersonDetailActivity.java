@@ -18,7 +18,7 @@ import nucleus.factory.RequiresPresenter;
  * Created by alien on 2015/7/13.
  */
 @RequiresPresenter(PersonDetailPresenter.class)
-public class PersonDetailAcitivity extends BaseActivity<PersonDetailPresenter> {
+public class PersonDetailActivity extends BaseActivity<PersonDetailPresenter> {
 
 
     @InjectView(R.id.name)

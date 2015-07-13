@@ -1,6 +1,8 @@
 package com.ant.jobgod.jobgod.app;
 
 import android.app.Application;
+import android.content.Context;
+import android.support.multidex.MultiDex;
 
 import com.activeandroid.ActiveAndroid;
 import com.android.http.RequestManager;
@@ -50,4 +52,8 @@ public class APP extends Application {
         ActiveAndroid.dispose();
     }
 
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base); MultiDex.install(this);
+    }
 }

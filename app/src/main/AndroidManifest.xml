@@ -84,7 +84,7 @@
             android:label="诚客兼职"
             android:theme="@style/AppTheme" >
         </activity>
-        <activity android:name=".module.job.JobDetailManagerActivity" >
+        <activity android:name=".module.job.JobDetailManActivity" >
         </activity>
         <activity
             android:name=".module.setting.SettingActivity"
@@ -127,18 +127,18 @@
             android:label="实名认证"/>
 
         <activity android:name=".module.main.joblist.FiltrateActivity"
-            android:label="偏好设置"></activity>
+            android:label="偏好设置"/>
 
         <activity android:name=".module.job.TopicListActivity"
-            android:label="专题列表"></activity>
+            android:label="专题列表"/>
 
         <activity android:name=".module.job.RecommendActivity"
-            android:label="推荐列表"></activity>
+            android:label="推荐列表"/>
 
         <activity android:name=".module.user.ModifyDataActivity"
             android:label="修改信息"/>
 
-        <activity android:name=".module.main.PersonDetailAcitivity"
+        <activity android:name=".module.main.PersonDetailActivity"
             android:label="信息列表"/>
 
         <activity android:name=".module.user.CollectActivity"

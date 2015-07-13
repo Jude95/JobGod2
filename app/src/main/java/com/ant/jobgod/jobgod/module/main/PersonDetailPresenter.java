@@ -7,7 +7,7 @@ import com.ant.jobgod.jobgod.app.BasePresenter;
 /**
  * Created by alien on 2015/7/13.
  */
-public class PersonDetailPresenter extends BasePresenter<PersonDetailAcitivity> {
+public class PersonDetailPresenter extends BasePresenter<PersonDetailActivity> {
 
     @Override
     protected void onCreate(Bundle savedState) {
@@ -15,7 +15,7 @@ public class PersonDetailPresenter extends BasePresenter<PersonDetailAcitivity> 
     }
 
     @Override
-    protected void onCreateView(PersonDetailAcitivity view) {
+    protected void onCreateView(PersonDetailActivity view) {
         super.onCreateView(view);
     }
 }
