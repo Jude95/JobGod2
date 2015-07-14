@@ -41,7 +41,9 @@ public class AttentionActivity extends BaseActivity<AttentionPresenter> {
         tabLayout.setupWithViewPager(viewpager);
     }
 
-
+    /**
+     * viewpager适配器
+     */
     class ViewPagerAdapter extends FragmentPagerAdapter{
 
         public ViewPagerAdapter(FragmentManager fm) {

@@ -22,6 +22,7 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <uses-feature android:name="android.hardware.camera" />
 
@@ -83,12 +84,82 @@
             android:label="诚客兼职"
             android:theme="@style/AppTheme" >
         </activity>
-        <activity android:name=".module.job.JobDetailManagerModeActivity" >
+        <activity android:name=".module.job.JobDetailManActivity" >
         </activity>
         <activity
             android:name=".module.setting.SettingActivity"
             android:label="设置" />
-        <activity android:name=".module.job.JobDetailManagerModeActivity" />
+
+        <activity
+            android:name=".module.user.UserDetailActivity"
+            android:label="@string/title_activity_user_detail" >
+        </activity>
+        <activity
+            android:name=".module.job.TopicDetailActivity"
+            android:label="@string/title_activity_topic_detail" >
+        </activity>
+
+        <activity
+            android:name=".module.user.AttentionActivity"
+            android:label="@string/title_activity_attention" >
+        </activity>
+        <activity
+            android:name=".module.job.JobDetailReleaseActivity"
+            android:label="@string/title_activity_job_detail_release_mode" >
+        </activity>
+        <activity
+            android:name=".module.user.ModifyInfoActivity"
+            android:label="基本资料" >
+        </activity>
+        <activity
+            android:name=".module.user.ModifyUserIntroActivity"
+            android:label="@string/title_activity_modify_user_intro" >
+        </activity>
+        <activity
+            android:name=".module.user.ModifyFaceActivity"
+            android:label="@string/title_activity_modify_face_acitivity" >
+        </activity>
+        <activity
+            android:name=".module.user.ModifyPhoneActivity"
+            android:label="@string/title_activity_modify_phone_acitvity" >
+        </activity>
+        <activity android:name=".module.user.AuthenticationActivity"
+            android:label="实名认证"/>
+
+        <activity android:name=".module.main.joblist.FiltrateActivity"
+            android:label="偏好设置"/>
+
+        <activity android:name=".module.job.TopicListActivity"
+            android:label="专题列表"/>
+
+        <activity android:name=".module.job.RecommendActivity"
+            android:label="推荐列表"/>
+
+        <activity android:name=".module.user.ModifyDataActivity"
+            android:label="修改信息"/>
+
+        <activity android:name=".module.main.PersonDetailActivity"
+            android:label="信息列表"/>
+
+        <activity android:name=".module.user.CollectActivity"
+            android:label="收藏列表"/>
+
+
+
+        <!--ImageTool-->
+        <activity
+            android:name="com.ant.jobgod.imagetool.imageprovider.net.NetImageSearchActivity"
+            android:label="搜索图片">
+        </activity>
+        <activity
+            android:name="com.ant.jobgod.imagetool.photoview.ImageViewActivity"
+            android:label="查看图片"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            >
+        </activity>
+        <activity
+            android:name="com.ant.jobgod.imagetool.corpimage.CropImage"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar"/>
 
         <!-- 分享及第三方登陆 -->
         <!-- 分享编辑页 -->
@@ -215,38 +286,22 @@
             android:name="com.umeng.update.UpdateDialogActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" >
         </activity>
+        <!-- 有米AD-->
         <activity
-            android:name=".module.main.MainActivity"
-            android:label="@string/title_activity_main" >
+            android:name="net.youmi.android.AdBrowser"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
-        <activity
-            android:name=".module.main.TradeDetailActivity"
-            android:label="@string/title_activity_trade_detail" >
-        </activity>
-        <activity
-            android:name=".module.user.UserDetailActivity"
-            android:label="@string/title_activity_user_detail" >
-        </activity>
-        <activity
-            android:name=".module.topic.TopicDetailActivity"
-            android:label="@string/title_activity_topic_detail" >
-        </activity>
-        <activity
-            android:name=".module.setting.ModifyPasswordActivity"
-            android:label="@string/title_activity_modify_password" >
-        </activity>
-        <activity
-            android:name=".module.user.AttentionActivity"
-            android:label="@string/title_activity_attention" >
-        </activity>
-        <activity
-            android:name=".module.job.JobDetailReleaseModeActivity"
-            android:label="@string/title_activity_job_detail_release_mode" >
-        </activity>
-        <activity
-            android:name=".module.user.UserInfoModifyActivity"
-            android:label="@string/title_activity_user_info_modify" >
-        </activity>
+        <service
+            android:name="net.youmi.android.AdService" >
+        </service>
+        <receiver
+            android:name="net.youmi.android.AdReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

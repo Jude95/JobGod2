@@ -24,6 +24,9 @@ public class UserDetail {
      * id : 1
      * height : 170
      */
+    private String tel;
+
+    private long birthday;
     private String specialty;
     private String address;
     private String gender;
@@ -41,6 +44,8 @@ public class UserDetail {
     private String name;
     private String id;
     private String height;
+
+
 
     public void setSpecialty(String specialty) {
         this.specialty = specialty;

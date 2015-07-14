@@ -11,13 +11,15 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
+import com.ant.jobgod.jobgod.module.main.bbs.BBSFragment;
+import com.ant.jobgod.jobgod.module.main.joblist.JobListFragment;
+import com.ant.jobgod.jobgod.module.main.recommend.RecommendFragment;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -62,6 +64,7 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
         drawerLayout.setDrawerListener(mDrawerToggle);
     }
 
+
     public class MainPagerAdapter extends FragmentStatePagerAdapter {
 
         public MainPagerAdapter(FragmentManager fm) {
@@ -88,7 +91,7 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
                 case 1:
                     return "兼职";
                 default:
-                    return "动态";
+                    return "社区";
             }
         }
 

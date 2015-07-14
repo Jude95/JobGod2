@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.ant.jobgod.jobgod.module.user.ModifyFaceActivity">
+    <item android:id="@+id/submit"
+        android:title="提交"
+        android:orderInCategory="100"
+        app:showAsAction="always" />
+</menu>

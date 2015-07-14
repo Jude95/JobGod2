@@ -1,14 +1,14 @@
 package com.ant.jobgod.jobgod.module.user;
 
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
 import com.ant.jobgod.jobgod.model.bean.UserDetail;
+import com.ant.jobgod.jobgod.module.launch.ModifyPasswordActivity;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import butterknife.ButterKnife;
@@ -19,28 +19,56 @@ import nucleus.factory.RequiresPresenter;
 public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
 
 
-    @InjectView(R.id.modifyInfo)
-    TextView modifyInfo;
+    @InjectView(R.id.name)
+    TextView name;
     @InjectView(R.id.imgFace)
     SimpleDraweeView imgFace;
-    @InjectView(R.id.collapsingToolbar)
-    CollapsingToolbarLayout collapsingToolbar;
-    @InjectView(R.id.imgBgFace)
-    SimpleDraweeView imgBgFace;
-
+    @InjectView(R.id.signature)
+    TextView signature;
+    @InjectView(R.id.percent)
+    TextView percent;
+    @InjectView(R.id.phone)
+    TextView phone;
+    @InjectView(R.id.authentication)
+    TextView authentication;
+    @InjectView(R.id.ability)
+    TextView ability;
+    @InjectView(R.id.credit)
+    TextView credit;
+    @InjectView(R.id.attitude)
+    TextView attitude;
+    @InjectView(R.id.viewFace)
+    RelativeLayout viewFace;
+    @InjectView(R.id.viewPhone)
+    RelativeLayout viewPhone;
+    @InjectView(R.id.viewAuthentication)
+    RelativeLayout viewAuthentication;
+    @InjectView(R.id.viewModifyPassword)
+    RelativeLayout viewModifyPassword;
+    @InjectView(R.id.viewData)
+    RelativeLayout viewData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_activity_user_detail);
+        setContentView(R.layout.user_activity_infodetail);
         ButterKnife.inject(this);
 
-        modifyInfo.setOnClickListener(v -> startActivity(new Intent(UserDetailActivity.this, UserInfoModifyActivity.class)));
-        imgFace.setImageURI(Uri.parse("http://image.baidu.com/search/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=&sf=1&fmq=1435825300259_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&itg=0&ie=utf-8&word=%E5%A4%B4%E5%83%8F#z=0&pn=&ic=0&st=-1&face=0&s=0&lm=-1"));
+        setAllListener();
 
+        imgFace.setImageURI(Uri.parse("http://img4.imgtn.bdimg.com/it/u=2205791892,1328528914&fm=23&gp=0.jpg"));
     }
 
     public void setUserDetailData(UserDetail data) {
+
+    }
+
+    public void setAllListener() {
+        viewFace.setOnClickListener(v -> getPresenter().startAcitivity(ModifyFaceActivity.class));
+        viewData.setOnClickListener(v -> getPresenter().startAcitivity(ModifyInfoActivity.class));
+        viewModifyPassword.setOnClickListener(v -> getPresenter().startAcitivity(ModifyPasswordActivity.class));
+        viewPhone.setOnClickListener(v -> getPresenter().startAcitivity(ModifyPhoneActivity.class));
+        viewAuthentication.setOnClickListener(v -> getPresenter().startAcitivity(AuthenticationActivity.class));
     }
 
 }

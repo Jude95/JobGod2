@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="发布者"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:textStyle="bold"
+                />
+            <RelativeLayout
+                android:id="@+id/promulgator"
+                android:layout_width="match_parent"
+                android:layout_height="56dp">
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/bizFace"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_centerVertical="true"/>
+                <TextView
+                    android:id="@+id/bizName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@id/bizFace"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textSize="18sp"/>
+                <TextView
+                    android:id="@+id/bizAvgFeel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@id/bizName"
+                    android:text=""
+                    android:gravity="center_vertical"
+                    android:textSize="18sp"
+                    android:textColor="?attr/colorPrimary"/>
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:layout_marginTop="16dp"
+                android:background="@android:color/darker_gray"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="岗位信息"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="24dp"
+                android:paddingLeft="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="工资待遇 : "
+                    android:gravity="center_vertical"
+                    android:textColor="@color/secondary_text_default_material_light"/>
+                <TextView
+                    android:id="@+id/jobWage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text=""
+                    android:gravity="center_vertical"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="24dp"
+                android:paddingLeft="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:minHeight="24dp"
+                    android:text="工作地点 : "
+                    android:gravity="center_vertical"
+                    android:textColor="@color/secondary_text_default_material_light"/>
+                <TextView
+                    android:id="@+id/jobAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text=""
+                    android:gravity="center_vertical"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="24dp"
+                android:paddingLeft="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="招聘人数 : "
+                    android:gravity="center_vertical"
+                    android:textColor="@color/secondary_text_default_material_light"/>
+                <TextView
+                    android:id="@+id/jobCount"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text=""
+                    android:gravity="center_vertical"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="24dp"
+                android:paddingLeft="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="发布时间: "
+                    android:gravity="center_vertical"
+                    android:textColor="@color/secondary_text_default_material_light"/>
+                <TextView
+                    android:id="@+id/applyBeginTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text=""
+                    android:gravity="center_vertical"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="24dp"
+                android:paddingLeft="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="报名结束时间: "
+                    android:gravity="center_vertical"
+                    android:textColor="@color/secondary_text_default_material_light"/>
+                <TextView
+                    android:id="@+id/applyEndTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text=""
+                    android:gravity="center_vertical"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="24dp"
+                android:paddingLeft="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="工作时间安排: "
+                    android:gravity="center_vertical"
+                    android:textColor="@color/secondary_text_default_material_light"/>
+                <TextView
+                    android:id="@+id/timeIntro"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text=""
+                    android:gravity="center_vertical"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="24dp"
+                android:paddingLeft="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="兼职人数描述: "
+                    android:gravity="center_vertical"
+                    android:textColor="@color/secondary_text_default_material_light"/>
+                <TextView
+                    android:id="@+id/personCountIntro"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text=""
+                    android:gravity="center_vertical"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:paddingLeft="16dp"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="已报名 : "
+                    android:gravity="center_vertical"
+                    android:textColor="@color/secondary_text_default_material_light"/>
+                <TextView
+                    android:id="@+id/jobPostedcount"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text=""
+                    android:gravity="center_vertical"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:layout_marginTop="16dp"
+                android:background="@android:color/darker_gray"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="工作简介"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                />
+            <TextView
+                android:id="@+id/jobIntro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="8dp"
+                android:textColor="@color/secondary_text_default_material_light"
+                android:lineSpacingExtra="8dp"
+                android:textIsSelectable="true"
+                android:textScaleX="1"
+                android:text=""
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:layout_marginTop="16dp"
+                android:background="@android:color/darker_gray"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="岗位要求"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                />
+            <TextView
+                android:id="@+id/jobAsk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:textColor="@color/secondary_text_default_material_light"
+                android:lineSpacingExtra="8dp"
+                android:textIsSelectable="true"
+                android:textScaleX="1"
+                android:text=""/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:layout_marginTop="16dp"
+                android:background="@android:color/darker_gray"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="联系方式"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="16dp"/>
+
+                <TextView android:id="@+id/tvApply"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingTop="8dp"
+                    android:layout_marginBottom="48dp"
+                    android:textColor="@color/secondary_text_default_material_light"
+                    android:lineSpacingExtra="8dp"
+                    android:textIsSelectable="true"
+                    android:textScaleX="1"
+                    android:text="18983679028"/>
+
+
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        >
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="?colorPrimary"
+            app:expandedTitleMarginStart="48dp"
+            app:expandedTitleMarginEnd="64dp"
+            app:expandedTitleTextAppearance="@style/Title.Expanded"
+            app:collapsedTitleTextAppearance="@style/Title.collapsed"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            >
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/jobImg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax"
+                app:actualImageScaleType="focusCrop"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:background="@drawable/main_drawer_gradient"
+                />
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_width="match_parent"
+                app:layout_collapseMode="pin"
+                app:theme="@style/AppThemeDark"
+                >
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floating_action_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_star_white"
+        app:borderWidth="0dp"
+        app:layout_anchor="@id/appBar"
+        app:layout_anchorGravity="bottom|right|end"
+        />
+</android.support.design.widget.CoordinatorLayout>

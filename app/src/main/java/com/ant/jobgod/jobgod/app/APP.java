@@ -2,6 +2,8 @@ package com.ant.jobgod.jobgod.app;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
+import android.support.multidex.MultiDex;
 
 import com.activeandroid.ActiveAndroid;
 import com.android.http.RequestManager;
@@ -14,6 +16,8 @@ import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.umeng.analytics.MobclickAgent;
+
+import net.youmi.android.AdManager;
 
 import io.rong.imkit.RongIM;
 
@@ -37,9 +41,10 @@ public class APP extends Application {
         RequestManager.getInstance().init(this);
         RequestManager.getInstance().setDebugMode(BuildConfig.DEBUG, "GodNet");
         VolleyLog.setTag("xxxxxx");
+        RequestManager.getInstance().setDebugMode(true, "GodNet");
         RequestManager.getInstance().setCacheEnable(true);
         Utils.initialize(this, "GodLog", "5,28,0");
-
+        AdManager.getInstance(this).init("5aa51ecd2360f2e1", "d4c8d06a735d82d0", true);
         RongIM.init(this);
 
         ActiveAndroid.initialize(this);
@@ -55,9 +60,9 @@ public class APP extends Application {
         ActiveAndroid.dispose();
     }
 
-    public void notifyLogin(){
-        Activity ctx = ActivityManager.getInstance().currentActivity();
-        //new NotifyLoginDialogFragment().show(ctx.getFragmentManager(),"notifyLogin");
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base); MultiDex.install(this);
     }
 
 }

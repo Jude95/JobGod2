@@ -13,7 +13,7 @@ import com.ant.jobgod.jobgod.util.TimeTransform;
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.facebook.drawee.view.SimpleDraweeView;
 
-class JobViewHolder extends BaseViewHolder<JobBrief> {
+public class JobViewHolder extends BaseViewHolder<JobBrief> {
     private SimpleDraweeView sdvHotJobImg;
     private TextView tvTitle;
     private TextView tvMoneyIntro;
@@ -35,28 +35,47 @@ class JobViewHolder extends BaseViewHolder<JobBrief> {
     public void setData(JobBrief data) {
         sdvHotJobImg.setImageURI(Uri.parse(data.getImg()));
         tvTitle.setText(data.getTitle());
-        tvMoneyIntro.setText(data.getMoneyIntro());
         tvDate.setText(new TimeTransform(data.getApplyBeginTime()).toString(new RecentShortDateFormater()));
+
         ripple.setRippleColor(ripple.getContext().getResources().getColor(R.color.Grey));
         ripple.setOnClickListener(v -> {
             Intent intent = new Intent();
             intent.putExtra("id", data.getId());
             switch (data.getSyle()) {
                 case 0:
-                    intent.setClass(ripple.getContext(), JobDetailReleaseModeActivity.class);
+                    intent.setClass(ripple.getContext(), JobDetailReleaseActivity.class);
                     ripple.getContext().startActivity(intent);
                     break;
                 case 1:
-                    intent.setClass(ripple.getContext(), JobDetailManagerModeActivity.class);
+                    intent.setClass(ripple.getContext(), JobDetailManagerActivity.class);
                     ripple.getContext().startActivity(intent);
                     break;
                 default:
-                    intent.setClass(ripple.getContext(), JobDetailReleaseModeActivity.class);
+                    intent.setClass(ripple.getContext(), JobDetailReleaseActivity.class);
                     ripple.getContext().startActivity(intent);
                     break;
             }
 
         });
+
+        switch (data.getStatus()){
+            case 0:
+                tvMoneyIntro.setText(data.getMoneyIntro());
+                break;
+            case 1:
+                tvMoneyIntro.setText("报名中");
+                break;
+            case 2:
+                tvMoneyIntro.setText("报名结束");
+                break;
+            case 3:
+                tvMoneyIntro.setText("工作中");
+                break;
+            case 4:
+                tvMoneyIntro.setText("兼职结束");
+                break;
+        }
+
     }
 
 }
