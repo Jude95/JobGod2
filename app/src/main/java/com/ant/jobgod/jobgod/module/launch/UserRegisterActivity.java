@@ -25,7 +25,7 @@ public class UserRegisterActivity extends BaseActivity<UserRegisterPresenter> {
     private TextInputLayout tilPassword;
     private CheckBox checkbox;
     private AppCompatButton btnMessage;
-    private TextInputLayout tilCode;
+    private TextInputLayout  tilCode;
     private AppCompatButton btnRetry;
     private AppCompatButton btnSend;
     private android.support.v7.widget.CardView cardMessage;
@@ -113,7 +113,6 @@ public class UserRegisterActivity extends BaseActivity<UserRegisterPresenter> {
     }
 
     public void setRetryEnable(boolean enable){
-        Utils.Log("enable"+enable);
         btnRetry.setEnabled(enable);
         if (enable)btnRetry.setText("重新获取");
     }

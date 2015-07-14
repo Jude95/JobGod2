@@ -62,6 +62,7 @@ public class AccountModel extends AbsModel{
         params.put("tel",tel);
         params.put("pass",Utils.MD5(password.getBytes()));
         params.put("code",verify);
+        Utils.Log(verify);
         RequestManager.getInstance().post(API.URL.Register,params,callback);
     }
 
