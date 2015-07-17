@@ -40,6 +40,7 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
         mProvider = new ImageProvider(getView());
+        Utils.Log("onCreate");
         //getView().setImgFace(Uri.parse(AccountModel.getInstance().getAccount().getFace()));
     }
 
@@ -92,6 +93,7 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
 
     public void startCrop(Uri data){
         //删除上一次的图片
+        if (mFinalImg != null)
         FileManager.getInstance().deletChild(FileManager.Dir.Image,mFinalImg);
         //用时间来取名，临时措施
         mFinalImg = System.currentTimeMillis()+".jpg";
