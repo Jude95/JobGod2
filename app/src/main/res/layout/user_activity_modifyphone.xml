@@ -20,16 +20,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/imgFace"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
-                fresco:roundAsCircle="true"
-                fresco:actualImageScaleType="focusCrop"
-                fresco:progressBarImage="@mipmap/progress_bar"
-                fresco:failureImage="@mipmap/error"/>
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/phone"
@@ -40,8 +30,7 @@
                 android:layout_marginTop="16dp">
                 <EditText android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="手机号"
-                    android:maxLength="8"/>
+                    android:hint="手机号"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -57,51 +46,19 @@
                     android:maxLength="8"/>
             </android.support.design.widget.TextInputLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/SMScode"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@+id/sendCode"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginTop="16dp">
-                    <EditText android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="验证码"
-                        android:maxLength="8"/>
-                </android.support.design.widget.TextInputLayout>
-
-                <Button android:id="@+id/sendCode"
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/sendCode"
+                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="16dp"
-                    android:text="发送验证码"
-                    android:layout_alignBottom="@+id/SMScode"
-                    android:background="@color/White"
-                    android:textColor="?colorAccent"/>
+                    android:layout_gravity="right"
+                    android:layout_margin="16dp"
+                    android:text="短信验证" />
 
-            </RelativeLayout>
-
-            <TextView android:id="@+id/submit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:text="保存"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:background="@color/White"
-                android:textColor="?colorAccent"/>
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
+
+    <include layout="@layout/include_messagecode" />
 
 </LinearLayout>

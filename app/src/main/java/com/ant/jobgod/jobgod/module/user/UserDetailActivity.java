@@ -9,6 +9,7 @@ import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
 import com.ant.jobgod.jobgod.model.bean.UserDetail;
 import com.ant.jobgod.jobgod.module.launch.ModifyPasswordActivity;
+import com.balysv.materialripple.MaterialRippleLayout;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import butterknife.ButterKnife;
@@ -47,6 +48,10 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
     RelativeLayout viewModifyPassword;
     @InjectView(R.id.viewData)
     RelativeLayout viewData;
+    @InjectView(R.id.rippleName)
+    MaterialRippleLayout rippleName;
+    @InjectView(R.id.rippleSignature)
+    MaterialRippleLayout rippleSignature;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +74,10 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
         viewModifyPassword.setOnClickListener(v -> getPresenter().startAcitivity(ModifyPasswordActivity.class));
         viewPhone.setOnClickListener(v -> getPresenter().startAcitivity(ModifyPhoneActivity.class));
         viewAuthentication.setOnClickListener(v -> getPresenter().startAcitivity(AuthenticationActivity.class));
+        rippleName.setOnClickListener(v -> getPresenter().createEditDialog("输入昵称",8,"昵称",name));
+        rippleSignature.setOnClickListener(v -> getPresenter().createEditDialog("输入签名",8,"签名",signature));
     }
+
+
 
 }

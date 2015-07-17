@@ -33,7 +33,6 @@ public class AttentionActivity extends BaseActivity<AttentionPresenter> {
         setContentView(R.layout.user_activity_attention);
         ButterKnife.inject(this);
 
-        setSwipeBackEnable(false);
         attentionOthersFragment=new AttentionOthersFragment();
         othersAttentionMeFragment=new OthersAttentionMeFragment();
         adapter=new ViewPagerAdapter(getSupportFragmentManager());
@@ -54,8 +53,10 @@ public class AttentionActivity extends BaseActivity<AttentionPresenter> {
         public Fragment getItem(int position) {
             switch (position){
                 case 0:
+                    setSwipeBackEnable(true);
                     return attentionOthersFragment;
                 case 1:
+                    setSwipeBackEnable(false);
                     return othersAttentionMeFragment;
             }
             return null;

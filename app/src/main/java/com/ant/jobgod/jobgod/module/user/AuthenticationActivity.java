@@ -2,6 +2,8 @@ package com.ant.jobgod.jobgod.module.user;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
+import android.support.v7.widget.AppCompatButton;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -9,7 +11,6 @@ import android.widget.ImageView;
 import com.android.http.RequestMap;
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
-import com.facebook.drawee.view.SimpleDraweeView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -22,10 +23,14 @@ import nucleus.factory.RequiresPresenter;
 public class AuthenticationActivity extends BaseActivity<AuthenticationPresenter> {
 
 
-    @InjectView(R.id.imgFace)
-    SimpleDraweeView imgFace;
-    @InjectView(R.id.ImgID)
-    ImageView ImgID;
+    @InjectView(R.id.imgID)
+    ImageView imgID;
+    @InjectView(R.id.ID)
+    TextInputLayout ID;
+    @InjectView(R.id.realName)
+    TextInputLayout realName;
+    @InjectView(R.id.sendCode)
+    AppCompatButton sendCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +38,12 @@ public class AuthenticationActivity extends BaseActivity<AuthenticationPresenter
         setContentView(R.layout.user_activity_authentication);
         ButterKnife.inject(this);
 
-        imgFace.setImageURI(Uri.parse("http://img1.imgtn.bdimg.com/it/u=1571729784,3682383797&fm=11&gp=0.jpg"));
+        imgID.setOnClickListener(v -> getPresenter().getImageFromCamera());
+
+    }
+
+    public void setImg(Uri uri){
+        imgID.setImageURI(uri);
     }
 
 
