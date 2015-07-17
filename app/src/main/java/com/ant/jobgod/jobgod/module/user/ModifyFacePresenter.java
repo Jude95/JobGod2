@@ -40,6 +40,7 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
         mProvider = new ImageProvider(getView());
+        Utils.Log("onCreate");
         //getView().setImgFace(Uri.parse(AccountModel.getInstance().getAccount().getFace()));
     }
 

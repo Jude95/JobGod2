@@ -10,7 +10,6 @@ import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
-import com.tencent.open.utils.Util;
 
 import java.util.HashMap;
 
@@ -52,6 +51,8 @@ public class AccountModel extends AbsModel{
     private void applyToken(String token){
         HashMap<String, String> map = new HashMap();
         map.put("token", token);
+        map.put("type", "android");
+        map.put("version",Utils.getAppVersionCode()+"");
         RequestManager.getInstance().setHeader(map);
     }
 
