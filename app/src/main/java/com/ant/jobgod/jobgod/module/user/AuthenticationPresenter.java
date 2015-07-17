@@ -49,7 +49,7 @@ public class AuthenticationPresenter extends BasePresenter<AuthenticationActivit
 
     public void startCrop(Uri data){
         //删除上一次的图片
-//        FileManager.getInstance().deletChild(FileManager.Dir.Image,mFinalImg);
+        FileManager.getInstance().deletChild(FileManager.Dir.Image,mFinalImg);
         //用时间来取名，临时措施
         mFinalImg = System.currentTimeMillis()+".jpg";
         CropImageIntentBuilder cropImage = new CropImageIntentBuilder(960, 1080,960, 1080, Uri.fromFile(FileManager.getInstance().getChild(FileManager.Dir.Image, mFinalImg)));

@@ -37,6 +37,7 @@ public class AttentionActivity extends BaseActivity<AttentionPresenter> {
         othersAttentionMeFragment=new OthersAttentionMeFragment();
         adapter=new ViewPagerAdapter(getSupportFragmentManager());
         viewpager.setAdapter(adapter);
+        viewpager.addOnPageChangeListener(new ChangeListener());
         tabLayout.setupWithViewPager(viewpager);
     }
 
@@ -53,10 +54,8 @@ public class AttentionActivity extends BaseActivity<AttentionPresenter> {
         public Fragment getItem(int position) {
             switch (position){
                 case 0:
-                    setSwipeBackEnable(true);
                     return attentionOthersFragment;
                 case 1:
-                    setSwipeBackEnable(false);
                     return othersAttentionMeFragment;
             }
             return null;
@@ -77,6 +76,28 @@ public class AttentionActivity extends BaseActivity<AttentionPresenter> {
                 default:
                     return "";
             }
+        }
+    }
+
+    class ChangeListener implements ViewPager.OnPageChangeListener{
+
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            if (position==0){
+                setSwipeBackEnable(true);
+            }
+            else
+                setSwipeBackEnable(false);
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
         }
     }
 
