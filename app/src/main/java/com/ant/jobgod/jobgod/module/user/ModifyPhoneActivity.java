@@ -71,7 +71,7 @@ public class ModifyPhoneActivity extends BaseActivity<ModifyPhonePresenter> {
     }
 
     public void setNumberNoExist() {
-        phone.setError("手机号未注册");
+        phone.setError("手机号已注册");
     }
 
 

@@ -1,31 +1,19 @@
 package com.ant.jobgod.jobgod.module.user;
 
-import android.os.Bundle;
-
 import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.Utils;
 
 import cn.smssdk.gui.SMSManager;
+import cn.smssdk.gui.TimeListener;
 
 /**
  * Created by alien on 2015/7/11.
  */
-public class ModifyPhonePresenter extends BasePresenter<ModifyPhoneActivity> {
+public class ModifyPhonePresenter extends BasePresenter<ModifyPhoneActivity> implements TimeListener {
 
     private String number;
-
-    @Override
-    protected void onCreate(Bundle savedState) {
-
-    }
-
-    @Override
-    protected void onCreateView(ModifyPhoneActivity view) {
-        super.onCreateView(view);
-    }
-
 
     public void checkIsRegister(String number){
         this.number = number;
@@ -63,5 +51,14 @@ public class ModifyPhonePresenter extends BasePresenter<ModifyPhoneActivity> {
         SMSManager.getInstance().sendMessage(getView(), number);
     }
 
+    @Override
+    public void onLastTimeNotify(int lastSecond) {
+        getView().setRetryTime(lastSecond);
+    }
+
+    @Override
+    public void onAbleNotify(boolean valuable) {
+
+    }
 
 }

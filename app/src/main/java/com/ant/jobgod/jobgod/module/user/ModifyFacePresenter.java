@@ -48,6 +48,7 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
         mProvider.getImageFromCamera(new OnImageSelectListener<ImageElement>() {
             @Override
             public void onImageSelect(ImageElement imageElement) {
+                Utils.Log("uri----:"+imageElement.getLargeImage());
                 startCrop(imageElement.getLargeImage());
             }
         });
@@ -107,6 +108,7 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
         super.onResult(requestCode, resultCode, data);
         mProvider.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CROP_PICTURE && resultCode == Activity.RESULT_OK){
+            Utils.Log("uri:"+FileManager.getInstance().getChild(FileManager.Dir.Image, mFinalImg));
             getView().setImgFace(Uri.fromFile(FileManager.getInstance().getChild(FileManager.Dir.Image, mFinalImg)));
             //裁剪成功，删除临时文件
             FileManager.getInstance().deletChild(FileManager.Dir.Image, TEMP_IMG);

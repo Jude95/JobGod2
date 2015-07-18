@@ -63,7 +63,7 @@ public class JobViewHolder extends BaseViewHolder<JobBrief> {
                 tvMoneyIntro.setText(data.getMoneyIntro());
                 break;
             case 1:
-                tvMoneyIntro.setText("报名中");
+                tvMoneyIntro.setText("待审核");
                 break;
             case 2:
                 tvMoneyIntro.setText("报名结束");
