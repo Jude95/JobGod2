@@ -81,8 +81,6 @@ public class ModifyInfoActivity extends BaseActivity<ModifyInfoPresenter> {
     }
 
     public void init() {
-        name.setOnClickListener(v -> createEditDialog("输入", 8, "最多8字", name));
-        signature.setOnClickListener(v -> createEditDialog("输入", 32, "最多32字", signature));
         gender.setOnClickListener(v -> createSingleChoiceDialog("请选择", R.array.gender, gender));
         height.setOnClickListener(v -> createEditDialog("输入", 8, "最多8字", height));
         address.setOnClickListener(v -> createEditDialog("输入", 32, "最多32字", address));

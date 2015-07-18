@@ -40,6 +40,7 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
         mProvider = new ImageProvider(getView());
+        Utils.Log("onCreate");
         //getView().setImgFace(Uri.parse(AccountModel.getInstance().getAccount().getFace()));
     }
 
@@ -47,6 +48,7 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
         mProvider.getImageFromCamera(new OnImageSelectListener<ImageElement>() {
             @Override
             public void onImageSelect(ImageElement imageElement) {
+                Utils.Log("uri----:"+imageElement.getLargeImage());
                 startCrop(imageElement.getLargeImage());
             }
         });
@@ -92,6 +94,7 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
 
     public void startCrop(Uri data){
         //删除上一次的图片
+        if (mFinalImg != null)
         FileManager.getInstance().deletChild(FileManager.Dir.Image,mFinalImg);
         //用时间来取名，临时措施
         mFinalImg = System.currentTimeMillis()+".jpg";
@@ -105,6 +108,7 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
         super.onResult(requestCode, resultCode, data);
         mProvider.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CROP_PICTURE && resultCode == Activity.RESULT_OK){
+            Utils.Log("uri:"+FileManager.getInstance().getChild(FileManager.Dir.Image, mFinalImg));
             getView().setImgFace(Uri.fromFile(FileManager.getInstance().getChild(FileManager.Dir.Image, mFinalImg)));
             //裁剪成功，删除临时文件
             FileManager.getInstance().deletChild(FileManager.Dir.Image, TEMP_IMG);

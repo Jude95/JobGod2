@@ -56,6 +56,7 @@
                 android:background="@color/md_divider_black"/>
 
             <com.balysv.materialripple.MaterialRippleLayout
+                android:id="@+id/rippleName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:mrl_rippleColor="@color/Grey">
@@ -89,6 +90,7 @@
                 android:background="@color/md_divider_black"/>
 
             <com.balysv.materialripple.MaterialRippleLayout
+                android:id="@+id/rippleSignature"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:mrl_rippleColor="@color/Grey">
