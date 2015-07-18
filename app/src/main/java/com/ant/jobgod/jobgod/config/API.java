@@ -8,10 +8,10 @@ public class API {
         private static final String BaseUrl = "http://103.238.226.48:81/index.php/";
 
         //Account
-        public static final String IsRegistered = BaseUrl + "home/index/checkTel";
+        public static final String IsRegistered = BaseUrl + "home/user/checkTel";
         public static final String Register = BaseUrl + "home/user/register";
         public static final String Login = BaseUrl + "Home/User/login";
-        public static final String ModifyPassword = BaseUrl + "xx";
+        public static final String ModifyPassword = BaseUrl + "Home/Index/modPass";
 
         //Person
         public static final String GetPersonBrief = "";
@@ -25,7 +25,7 @@ public class API {
         public static final String GetTopicJobList = "https://apiview.com/test/327/Public/getTopicJobList";
         public static final String GetTopicList =  "https://apiview.com/test/327/Public/getTopicList";
         public static final String GetHotJobList = "https://apiview.com/test/327/Public/getHotJobList";
-        public static final String GetJobList = "https://apiview.com/test/327/Public/getJobList";
+        public static final String GetJobList = BaseUrl + "home/job/getJobList";
         public static final String GetTrades = "https://apiview.com/test/327/Public/getTrades";
         public static final String GetJobDetail = "https://apiview.com/test/327/Public/getJobDetail";
     }

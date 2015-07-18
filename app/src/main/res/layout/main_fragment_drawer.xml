@@ -50,7 +50,6 @@
                         android:id="@+id/tvName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Jude95"
                         android:textColor="@color/White"
                         android:textStyle="bold" />
 
@@ -58,7 +57,6 @@
                         android:id="@+id/tvSign"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="I won't be ignore"
                         android:textColor="@color/White" />
                 </LinearLayout>
 

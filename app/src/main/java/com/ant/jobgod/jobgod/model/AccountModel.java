@@ -31,6 +31,8 @@ public class AccountModel extends AbsModel{
         account = (AccountInfo) Utils.readObjectFromFile(FileManager.getInstance().getChild(FileManager.Dir.Object,ACCOUNTFILE));
         if (account!=null)
             applyToken(account.getTokenApp());
+        else
+            applyToken("");
     }
 
     public boolean isUser(){
@@ -62,8 +64,7 @@ public class AccountModel extends AbsModel{
         params.put("name",name);
         params.put("tel",tel);
         params.put("pass",Utils.MD5(password.getBytes()));
-        params.put("code",verify);
-        Utils.Log(verify);
+        params.put("code", verify);
         RequestManager.getInstance().post(API.URL.Register,params,callback);
     }
 
@@ -74,10 +75,9 @@ public class AccountModel extends AbsModel{
     }
 
     public void userLogin(String tel,String password,StatusCallback callback){
-        Utils.Log("MD5:"+ Utils.MD5("abc".getBytes()));
         RequestMap params = new RequestMap();
         params.put("tel", tel);
-        params.put("pass", password);
+        params.put("pass", Utils.MD5(password.getBytes()));
         RequestManager.getInstance().post(API.URL.Login, params, callback.add(new DataCallback<AccountInfo>() {
             @Override
             public void success(String info, AccountInfo data) {

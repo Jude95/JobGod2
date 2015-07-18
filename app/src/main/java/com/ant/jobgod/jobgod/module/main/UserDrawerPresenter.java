@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.bean.AccountInfo;
+import com.ant.jobgod.jobgod.module.launch.UserLoginActivity;
 
 import nucleus.manager.Presenter;
 
@@ -30,6 +31,7 @@ public class UserDrawerPresenter extends Presenter<UserDrawerFragment> {
     }
 
     public void startActivity(Class<?> clazz){
+        if(AccountModel.getInstance().getAccount() == null)clazz = UserLoginActivity.class;
         getView().startActivity(new Intent(getView().getActivity(), clazz));
     }
 }
