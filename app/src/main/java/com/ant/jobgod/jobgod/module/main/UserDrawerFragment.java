@@ -65,13 +65,10 @@ public class UserDrawerFragment extends NucleusFragment<UserDrawerPresenter> {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_fragment_drawer, container, false);
         ButterKnife.inject(this, view);
-
-
         imgFace.setImageURI(Uri.parse("http://img.hb.aicdn.com/83baf35e3d9f9069db3d6bbe87358b877664425532114-BzeCQd_fw658"));
-        viewMessage.setOnClickListener((View) -> getPresenter().startActivity(JobDetailManagerActivity.class));
-        viewSetting.setOnClickListener((View) -> getPresenter().startActivity(SettingActivity.class));
+        viewMessage.setOnClickListener(v -> getPresenter().startActivity(JobDetailManagerActivity.class));
+        viewSetting.setOnClickListener(v -> getPresenter().startActivity(SettingActivity.class));
         viewInformation.setOnClickListener(v -> getPresenter().startActivity(UserDetailActivity.class));
-
         viewAttention.setOnClickListener(v -> getPresenter().startActivity(AttentionActivity.class));
         viewExperience.setOnClickListener(v -> getPresenter().startActivity(PersonDetailActivity.class));
         viewCollection.setOnClickListener(v -> getPresenter().startActivity(CollectActivity.class));

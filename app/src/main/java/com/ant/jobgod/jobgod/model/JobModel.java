@@ -43,13 +43,13 @@ public class JobModel extends AbsModel{
     //取行业分类的偏好项
     public Trade[] getFiltrateTrade(){
         Trade[] trades = (Trade[]) Utils.readObjectFromFile(FileManager.getInstance().getChild(FileManager.Dir.Object, FILTRATE_TRADE_FILE));
-        return trades==null?new Trade[0]:trades;
+        return trades==null?getTrade():trades;
     }
 
     //取地区偏好项
     public Region[] getFiltrateRegion(){
         Region[] trades = (Region[]) Utils.readObjectFromFile(FileManager.getInstance().getChild(FileManager.Dir.Object, FILTRATE_REGION_FILE));
-        return trades==null?new Region[0]:trades;
+        return trades==null?new Region[]{RegionModel.getInstance().findCity(LocationModel.getInstance().getCurLocation().getRegionCode())}:trades;
     }
 
     public int getFiltrateSort(){

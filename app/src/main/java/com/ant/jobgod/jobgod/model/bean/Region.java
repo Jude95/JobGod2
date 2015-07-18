@@ -66,6 +66,12 @@ public class Region implements Serializable{
 
     @Override
     public boolean equals(Object o) {
+        if (!(o instanceof Region))return false;
         return getCid()==((Region)o).getCid();
+    }
+
+    @Override
+    public int hashCode() {
+        return getCid();
     }
 }

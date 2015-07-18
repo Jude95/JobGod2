@@ -29,6 +29,7 @@ public class AccountModel extends AbsModel{
     @Override
     protected void onAppCreate(Context ctx) {
         super.onAppCreate(ctx);
+        Utils.Log(Utils.MD5("abc".getBytes()));
         account = (AccountInfo) Utils.readObjectFromFile(FileManager.getInstance().getChild(FileManager.Dir.Object,ACCOUNTFILE));
         if (account!=null)
             applyToken(account.getTokenApp());
@@ -73,10 +74,9 @@ public class AccountModel extends AbsModel{
     }
 
     public void userLogin(String tel,String password,StatusCallback callback){
-        Utils.Log("MD5:"+ Utils.MD5("abc".getBytes()));
         RequestMap params = new RequestMap();
         params.put("tel", tel);
-        params.put("pass", password);
+        params.put("pass", Utils.MD5(password.getBytes()));
         RequestManager.getInstance().post(API.URL.Login, params, callback.add(new DataCallback<AccountInfo>() {
             @Override
             public void success(String info, AccountInfo data) {

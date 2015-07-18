@@ -1,17 +1,13 @@
 package com.ant.jobgod.jobgod.app;
 
-import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
 import com.activeandroid.ActiveAndroid;
 import com.android.http.RequestManager;
-import com.android.volley.VolleyLog;
 import com.ant.jobgod.jobgod.BuildConfig;
-import com.ant.jobgod.jobgod.config.Config;
 import com.ant.jobgod.jobgod.model.AbsModel;
-import com.ant.jobgod.jobgod.util.ActivityManager;
 import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -35,12 +31,10 @@ public class APP extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
         instance = this;
         Fresco.initialize(this);
         RequestManager.getInstance().init(this);
         RequestManager.getInstance().setDebugMode(BuildConfig.DEBUG, "GodNet");
-        VolleyLog.setTag("xxxxxx");
         RequestManager.getInstance().setDebugMode(true, "GodNet");
         RequestManager.getInstance().setCacheEnable(true);
         Utils.initialize(this, "GodLog", "5,28,0");
