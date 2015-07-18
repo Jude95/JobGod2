@@ -84,8 +84,6 @@
             android:label="诚客兼职"
             android:theme="@style/AppTheme" >
         </activity>
-        <activity android:name=".module.job.JobDetailManActivity" >
-        </activity>
         <activity
             android:name=".module.setting.SettingActivity"
             android:label="设置" />
@@ -143,6 +141,8 @@
 
         <activity android:name=".module.user.CollectActivity"
             android:label="收藏列表"/>
+        <activity android:name=".module.job.JobDetailManagerActivity"
+            android:label="兼职详情"/>
 
 
 

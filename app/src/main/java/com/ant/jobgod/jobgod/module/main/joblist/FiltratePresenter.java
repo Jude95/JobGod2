@@ -81,6 +81,11 @@ public class FiltratePresenter extends BasePresenter<FiltrateActivity> {
     }
 
     public void finishAddCity(Region regions){
+        for (Region r:mRegion) {
+            if (r.equals(regions)){
+                return;
+            }
+        }
         mRegion.add(regions);
         getView().setCity(mRegion.toArray(new Region[0]));
         changed = true;

@@ -16,7 +16,6 @@ import nucleus.factory.RequiresPresenter;
  */
 @RequiresPresenter(ModifyPasswordPresenter.class)
 public class ModifyPasswordActivity extends BaseActivity<ModifyPasswordPresenter> {
-    private android.support.design.widget.TextInputLayout tilName;
     private android.support.design.widget.TextInputLayout tilNumber;
     private android.support.design.widget.TextInputLayout tilPassword;
     private android.support.v7.widget.AppCompatButton btnMessage;
@@ -36,7 +35,6 @@ public class ModifyPasswordActivity extends BaseActivity<ModifyPasswordPresenter
         this.btnMessage = (AppCompatButton) findViewById(R.id.btnMessage);
         this.tilPassword = (TextInputLayout) findViewById(R.id.tilPassword);
         this.tilNumber = (TextInputLayout) findViewById(R.id.tilNumber);
-        this.tilName = (TextInputLayout) findViewById(R.id.tilName);
         btnMessage.setOnClickListener((View v)->checkIsLogin());
         btnSend.setOnClickListener((View v) -> sendModify());
         btnRetry.setOnClickListener((View v)->getPresenter().retry());
@@ -78,7 +76,6 @@ public class ModifyPasswordActivity extends BaseActivity<ModifyPasswordPresenter
 
     public void enableInfoEdit(boolean enable) {
         tilCode.getEditText().requestFocus();
-        tilName.getEditText().setEnabled(enable);
         tilNumber.getEditText().setEnabled(enable);
         tilPassword.setEnabled(enable);
     }

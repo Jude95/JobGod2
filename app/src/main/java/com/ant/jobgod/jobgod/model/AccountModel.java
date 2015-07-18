@@ -28,6 +28,7 @@ public class AccountModel extends AbsModel{
     @Override
     protected void onAppCreate(Context ctx) {
         super.onAppCreate(ctx);
+        Utils.Log(Utils.MD5("abc".getBytes()));
         account = (AccountInfo) Utils.readObjectFromFile(FileManager.getInstance().getChild(FileManager.Dir.Object,ACCOUNTFILE));
         if (account!=null)
             applyToken(account.getTokenApp());

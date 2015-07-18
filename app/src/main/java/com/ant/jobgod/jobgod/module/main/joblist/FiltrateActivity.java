@@ -25,10 +25,8 @@ import nucleus.factory.RequiresPresenter;
 public class FiltrateActivity extends BaseActivity<FiltratePresenter> {
     @InjectView(R.id.img_trade_add)
     ImageView imgTradeAdd;
-
     @InjectView(R.id.img_city_add)
     ImageView imgCityAdd;
-
     @InjectView(R.id.tv_sort)
     TextView tvSort;
     @InjectView(R.id.grid_trade)
