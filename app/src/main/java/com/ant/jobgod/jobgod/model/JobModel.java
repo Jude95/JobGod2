@@ -80,7 +80,7 @@ public class JobModel extends AbsModel{
     }
 
     public void getRecommendList(DataCallback<JobBrief[]> callback){
-        RequestManager.getInstance().post(API.URL.GetHotJobList,null,callback);
+        RequestManager.getInstance().post(API.URL.GetRecommendList,null,callback);
     }
 
     public void getTopicList(DataCallback<Topic[]> callback){
@@ -95,14 +95,17 @@ public class JobModel extends AbsModel{
         RequestManager.getInstance().post(API.URL.GetJobDetail,new RequestMap("jobId",jobId),callback);
     }
 
-    public void getJobList(int page,int count,String citycode,String type,int sort,String key,DataCallback<JobPage> callback){
+    public void getJobList(int page,int count,DataCallback<JobPage> callback){
         RequestMap params = new RequestMap();
         params.put("page",page+"");
         params.put("count",count+"");
-        params.put("citycode",citycode+"");
-        params.put("type",type+"");
-        params.put("sort",sort+"");
-        params.put("key",key);
+        for (Region r:getFiltrateRegion()){
+            params.put("cityCode[]",r.getCid()+"");
+        }
+        for (Trade t:getFiltrateTrade()){
+            params.put("trade[]",t.getId()+"");
+        }
+        params.put("sort",getFiltrateSort()+"");
         RequestManager.getInstance().post(API.URL.GetJobList, params, callback);
     }
 }

@@ -8,9 +8,9 @@ import android.widget.TextView;
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.PersonBrief;
 import com.ant.jobgod.jobgod.module.main.PersonDetailActivity;
-import com.ant.jobgod.jobgod.util.BaseViewHolder;
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;

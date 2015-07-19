@@ -75,6 +75,7 @@ public class ModifyPasswordActivity extends BaseActivity<ModifyPasswordPresenter
     }
 
     public void enableInfoEdit(boolean enable) {
+        btnMessage.setEnabled(enable);
         tilCode.getEditText().requestFocus();
         tilNumber.getEditText().setEnabled(enable);
         tilPassword.setEnabled(enable);

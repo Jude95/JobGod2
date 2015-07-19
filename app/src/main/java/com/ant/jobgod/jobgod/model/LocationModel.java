@@ -84,9 +84,9 @@ public class LocationModel extends AbsModel implements Serializable{
     public void uploadAddress(){
         if (AccountModel.getInstance().getAccount() == null)return;
         RequestMap params = new RequestMap();
-        params.put("userLng",location.getLongitude()+"");
-        params.put("userLat",location.getLatitude()+"");
-        params.put("userAddress",location.getAddress());
+        params.put("lng",location.getLongitude()+"");
+        params.put("lat",location.getLatitude()+"");
+        params.put("address",location.getAddress());
         RequestManager.getInstance().post(API.URL.UpdateLocation,params,null);
     }
 }

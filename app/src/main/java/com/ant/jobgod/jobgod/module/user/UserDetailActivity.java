@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
-import com.ant.jobgod.jobgod.model.bean.UserDetail;
+import com.ant.jobgod.jobgod.model.bean.UserAccountData;
 import com.ant.jobgod.jobgod.module.launch.ModifyPasswordActivity;
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -58,24 +58,32 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_activity_infodetail);
         ButterKnife.inject(this);
-
         setAllListener();
 
-        imgFace.setImageURI(Uri.parse("http://img4.imgtn.bdimg.com/it/u=2205791892,1328528914&fm=23&gp=0.jpg"));
     }
 
-    public void setUserDetailData(UserDetail data) {
-
+    public void setUserDetailData(UserAccountData data) {
+        name.setText(data.getName());
+        imgFace.setImageURI(Uri.parse(data.getFace()));
+        signature.setText(data.getSign());
+        phone.setText(data.getTel());
+        authentication.setText(data.getRealname());
+        percent.setText("完善度20%");
+        ability.setText(data.getDetail().getAvgAbility()+"/100");
+        attitude.setText(data.getDetail().getAvgAttitude()+"/100");
+        credit.setText(data.getDetail().getAvgCredit()+"/100");
     }
+
+
 
     public void setAllListener() {
-        viewFace.setOnClickListener(v -> getPresenter().startAcitivity(ModifyFaceActivity.class));
-        viewData.setOnClickListener(v -> getPresenter().startAcitivity(ModifyInfoActivity.class));
-        viewModifyPassword.setOnClickListener(v -> getPresenter().startAcitivity(ModifyPasswordActivity.class));
-        viewPhone.setOnClickListener(v -> getPresenter().startAcitivity(ModifyPhoneActivity.class));
-        viewAuthentication.setOnClickListener(v -> getPresenter().startAcitivity(AuthenticationActivity.class));
-        rippleName.setOnClickListener(v -> getPresenter().createEditDialog("输入昵称",8,"昵称",name));
-        rippleSignature.setOnClickListener(v -> getPresenter().createEditDialog("输入签名",8,"签名",signature));
+        viewFace.setOnClickListener(v -> getPresenter().startActivity(ModifyFaceActivity.class));
+        viewData.setOnClickListener(v -> getPresenter().startActivity(ModifyInfoActivity.class));
+        viewModifyPassword.setOnClickListener(v -> getPresenter().startActivity(ModifyPasswordActivity.class));
+        viewPhone.setOnClickListener(v -> getPresenter().startActivity(ModifyPhoneActivity.class));
+        viewAuthentication.setOnClickListener(v -> getPresenter().startActivity(AuthenticationActivity.class));
+        rippleName.setOnClickListener(v -> getPresenter().editName());
+        rippleSignature.setOnClickListener(v -> getPresenter().editSign());
     }
 
 

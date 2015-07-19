@@ -14,10 +14,10 @@ import android.widget.TextView;
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.RegionModel;
 import com.ant.jobgod.jobgod.model.bean.Region;
-import com.ant.jobgod.jobgod.util.BaseViewHolder;
-import com.ant.jobgod.jobgod.util.RecyclerArrayAdapter;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.balysv.materialripple.MaterialRippleLayout;
+import com.jude.easyrecyclerview.adapter.BaseViewHolder;
+import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 
 import java.util.ArrayList;
 
@@ -135,7 +135,7 @@ public class RegionView extends LinearLayout {
         }
 
 
-        private class RegionAdapter extends RecyclerArrayAdapter<Region>{
+        private class RegionAdapter extends RecyclerArrayAdapter<Region> {
             private RegionSelectCallback callback;
             public RegionAdapter(Context context,RegionSelectCallback callback) {
                 super(context);
@@ -181,7 +181,7 @@ public class RegionView extends LinearLayout {
 
         }
 
-        private class RegionHeaderView implements RecyclerArrayAdapter.HeaderView{
+        private class RegionHeaderView implements RecyclerArrayAdapter.ItemView{
             private RegionSelectCallback callback;
             private Region region;
             private String title;

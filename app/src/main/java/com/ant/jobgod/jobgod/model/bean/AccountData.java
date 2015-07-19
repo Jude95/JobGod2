@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by Mr.Jude on 2015/6/13.
  */
-public class AccountInfo implements Serializable{
+public class AccountData implements Serializable{
     private String id;
     private String tokenApp;
     private String name;
@@ -13,7 +13,6 @@ public class AccountInfo implements Serializable{
     private String sign;
     private String password;
     private String rongToken;
-    private String blogImage;
     private int type;
 
     public int getType() {
@@ -80,11 +79,4 @@ public class AccountInfo implements Serializable{
         this.rongToken = rongToken;
     }
 
-    public String getBlogImage() {
-        return blogImage;
-    }
-
-    public void setBlogImage(String blogImage) {
-        this.blogImage = blogImage;
-    }
 }

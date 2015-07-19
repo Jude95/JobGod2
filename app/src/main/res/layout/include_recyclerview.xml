@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.malinskiy.superrecyclerview.SuperRecyclerView
-    xmlns:recycler="http://schemas.android.com/apk/res-auto"
+<com.jude.easyrecyclerview.EasyRecyclerView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/recyclerview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    recycler:layout_empty="@layout/view_empty"
-    recycler:layout_moreProgress="@layout/view_moreprogress"
-    recycler:scrollbarStyle="insideInset" />
+    app:layout_empty="@layout/view_empty"
+    app:layout_progress="@layout/view_progress"
+    app:scrollbarStyle="insideInset" />

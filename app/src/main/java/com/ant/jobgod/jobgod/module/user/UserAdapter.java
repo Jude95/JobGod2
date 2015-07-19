@@ -7,9 +7,9 @@ import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.PersonBrief;
-import com.ant.jobgod.jobgod.util.BaseViewHolder;
-import com.ant.jobgod.jobgod.util.RecyclerArrayAdapter;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.jude.easyrecyclerview.adapter.BaseViewHolder;
+import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -17,10 +17,10 @@ import butterknife.InjectView;
 /**
  * Created by alien on 2015/7/10.
  */
-public class UserCyclerAdapter extends RecyclerArrayAdapter<PersonBrief> {
+public class UserAdapter extends RecyclerArrayAdapter<PersonBrief> {
 
 
-    public UserCyclerAdapter(Context context) {
+    public UserAdapter(Context context) {
         super(context);
     }
 

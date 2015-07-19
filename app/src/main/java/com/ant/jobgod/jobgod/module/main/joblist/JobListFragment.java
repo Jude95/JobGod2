@@ -13,7 +13,8 @@ import android.view.ViewGroup;
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.module.job.JobBriefAdapter;
-import com.malinskiy.superrecyclerview.SuperRecyclerView;
+import com.jude.easyrecyclerview.EasyRecyclerView;
+import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -27,11 +28,10 @@ import nucleus.view.NucleusFragment;
 public class JobListFragment extends NucleusFragment<JobListPresenter> {
 
     @InjectView(R.id.list_job)
-    SuperRecyclerView listJob;
+    EasyRecyclerView listJob;
 
     private JobBriefAdapter mJobAdapter;
-
-
+    private RecyclerArrayAdapter.ItemView mEmptyFooter;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,29 +39,45 @@ public class JobListFragment extends NucleusFragment<JobListPresenter> {
         View rootView = inflater.inflate(R.layout.main_fragment_joblist, container, false);
         ButterKnife.inject(this, rootView);
         listJob.setLayoutManager(new LinearLayoutManager(getActivity()));
-        listJob.setAdapter(mJobAdapter = new JobBriefAdapter(getActivity()));
-        listJob.setRefreshListener(() -> getPresenter().refresh());
-        listJob.setOnMoreListener((i, i1, i2) -> getPresenter().loadMore());
-        listJob.getSwipeToRefresh().setRefreshing(true);
+        listJob.setAdapterWithProgress(mJobAdapter = new JobBriefAdapter(getActivity()));
+        listJob.setRefreshListener(() -> startRefresh());
+
         setHasOptionsMenu(true);
         return rootView;
     }
 
-    public void stopRefresh() {
-        mJobAdapter.clear();
-    }
-
     public void stopLoadMore() {
-        listJob.hideMoreProgress();
+        mJobAdapter.stopMore();
+        mJobAdapter.addFooter(mEmptyFooter = new RecyclerArrayAdapter.ItemView() {
+            @Override
+            public View onCreateView(ViewGroup viewGroup) {
+                return LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.view_nomore, viewGroup, false);
+            }
+
+            @Override
+            public void onBindView(View view) {
+
+            }
+        });
     }
 
-    public void startRefresh(){
+    public void startRefresh() {
         listJob.getSwipeToRefresh().setRefreshing(true);
+        mJobAdapter.removeFooter(mEmptyFooter);
+        mJobAdapter.stopMore();
+        getPresenter().refresh();
+    }
+
+    public void addJobWithRefresh(JobBrief[] jobs){
+        mJobAdapter.clear();
+        mJobAdapter.addAll(jobs);
+        mJobAdapter.setMore(R.layout.view_more, () -> getPresenter().loadMore());
     }
 
     public void addJob(JobBrief[] jobs) {
         mJobAdapter.addAll(jobs);
     }
+
 
     @Override
     public void onDestroyView() {
@@ -71,12 +87,12 @@ public class JobListFragment extends NucleusFragment<JobListPresenter> {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_job,menu);
+        inflater.inflate(R.menu.menu_job, menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.filtrate){
+        if (item.getItemId() == R.id.filtrate) {
             getPresenter().startFiltrate();
             return true;
         }

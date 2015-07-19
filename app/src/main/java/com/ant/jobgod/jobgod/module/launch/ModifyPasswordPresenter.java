@@ -14,6 +14,12 @@ import nucleus.manager.Presenter;
 public class ModifyPasswordPresenter extends Presenter<ModifyPasswordActivity> implements TimeListener{
     private String number;
 
+    @Override
+    protected void onCreateView(ModifyPasswordActivity view) {
+        super.onCreateView(view);
+        SMSManager.getInstance().registerTimeListenre(this);
+    }
+
     public void checkIsRegister(String number){
         this.number = number;
         getView().showProgress("提交中");
@@ -45,7 +51,8 @@ public class ModifyPasswordPresenter extends Presenter<ModifyPasswordActivity> i
         AccountModel.getInstance().modifyPassword(number, password, code, new StatusCallback() {
             @Override
             public void success(String info) {
-
+                Utils.Toast("密码修改成功");
+                getView().finish();
             }
         });
     }

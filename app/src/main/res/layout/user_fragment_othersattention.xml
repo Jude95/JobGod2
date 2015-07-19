@@ -6,9 +6,5 @@
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        recycler:layout_empty="@layout/view_empty"
-        recycler:layout_moreProgress="@layout/view_progress"
-        recycler:layout_progress="@layout/view_progress"
-        recycler:scrollbarStyle="insideInset"
         recycler:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
