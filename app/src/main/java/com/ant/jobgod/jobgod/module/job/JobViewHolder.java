@@ -22,7 +22,7 @@ public class JobViewHolder extends BaseViewHolder<JobBrief> {
     private MaterialRippleLayout ripple;
 
     public JobViewHolder(ViewGroup parent) {
-        super(parent, R.layout.job_item_brief);
+        super(parent, R.layout.job_item_job);
         sdvHotJobImg= (SimpleDraweeView) itemView.findViewById(R.id.sdvHotJobImg);
         tvTitle= (TextView) itemView.findViewById(R.id.tvTitle);
         tvMoneyIntro= (TextView) itemView.findViewById(R.id.tvMoneyIntro);

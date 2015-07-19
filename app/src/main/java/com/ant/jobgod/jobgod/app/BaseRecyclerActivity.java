@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.ant.jobgod.jobgod.R;
@@ -19,6 +21,8 @@ import nucleus.manager.Presenter;
 public abstract class BaseRecyclerActivity<T extends Presenter,E> extends BaseActivity<T> {
     protected EasyRecyclerView recyclerView;
     protected DataAdapter adapter;
+    private RecyclerArrayAdapter.ItemView mEmptyFooter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +36,7 @@ public abstract class BaseRecyclerActivity<T extends Presenter,E> extends BaseAc
         recyclerView.setRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                BaseRecyclerActivity.this.onRefresh();
+                startRefresh();
             }
         });
     }
@@ -44,10 +48,6 @@ public abstract class BaseRecyclerActivity<T extends Presenter,E> extends BaseAc
                 BaseRecyclerActivity.this.onLoadMore();
             }
         });
-    }
-
-    public void stopLoadmore(){
-        adapter.stopMore();
     }
 
     public DataAdapter getAdapter(){
@@ -63,10 +63,38 @@ public abstract class BaseRecyclerActivity<T extends Presenter,E> extends BaseAc
         adapter.addAll(data);
     }
 
-    public void refreshData(E[] data){
+
+    //添加数据
+    public void addDataWithRefresh(E[] data){
         adapter.clear();
         adapter.addAll(data);
+        adapter.setMore(R.layout.view_more, () -> onLoadMore());
     }
+
+    //当最后一页，手动调用
+    public void stopLoadMore() {
+        adapter.stopMore();
+        adapter.addFooter(mEmptyFooter = new RecyclerArrayAdapter.ItemView() {
+            @Override
+            public View onCreateView(ViewGroup viewGroup) {
+                return LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.view_nomore, viewGroup, false);
+            }
+
+            @Override
+            public void onBindView(View view) {
+
+            }
+        });
+    }
+
+    //可以主动调用
+    public void startRefresh() {
+        recyclerView.getSwipeToRefresh().setRefreshing(true);
+        adapter.removeFooter(mEmptyFooter);
+        adapter.stopMore();
+        onRefresh();
+    }
+
 
     protected class DataAdapter extends RecyclerArrayAdapter<E> {
 

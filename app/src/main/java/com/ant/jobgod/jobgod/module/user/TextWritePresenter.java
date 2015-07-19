@@ -7,7 +7,7 @@ import com.ant.jobgod.jobgod.app.BasePresenter;
 /**
  * Created by alien on 2015/7/12.
  */
-public class ModifyDataPresenter extends BasePresenter<ModifyDataActivity> {
+public class TextWritePresenter extends BasePresenter<TextWriteActivity> {
 
     private final int REQUEST_CODE=1;
 
@@ -17,7 +17,7 @@ public class ModifyDataPresenter extends BasePresenter<ModifyDataActivity> {
     }
 
     @Override
-    protected void onCreateView(ModifyDataActivity view) {
+    protected void onCreateView(TextWriteActivity view) {
         super.onCreateView(view);
     }
 

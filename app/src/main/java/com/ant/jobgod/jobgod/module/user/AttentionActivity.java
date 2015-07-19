@@ -23,8 +23,8 @@ public class AttentionActivity extends BaseActivity<AttentionPresenter> {
     @InjectView(R.id.viewPager)
     ViewPager viewpager;
 
-    private AttentionOthersFragment attentionOthersFragment;
-    private OthersAttentionMeFragment othersAttentionMeFragment;
+    private AttentionFromMeFragment attentionOthersFragment;
+    private AttentionToMeFragment othersAttentionMeFragment;
     private ViewPagerAdapter adapter;
 
     @Override
@@ -33,8 +33,8 @@ public class AttentionActivity extends BaseActivity<AttentionPresenter> {
         setContentView(R.layout.user_activity_attention);
         ButterKnife.inject(this);
 
-        attentionOthersFragment=new AttentionOthersFragment();
-        othersAttentionMeFragment=new OthersAttentionMeFragment();
+        attentionOthersFragment=new AttentionFromMeFragment();
+        othersAttentionMeFragment=new AttentionToMeFragment();
         adapter=new ViewPagerAdapter(getSupportFragmentManager());
         viewpager.setAdapter(adapter);
         viewpager.addOnPageChangeListener(new ChangeListener());

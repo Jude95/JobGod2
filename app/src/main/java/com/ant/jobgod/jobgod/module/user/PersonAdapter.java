@@ -17,10 +17,10 @@ import butterknife.InjectView;
 /**
  * Created by alien on 2015/7/10.
  */
-public class UserAdapter extends RecyclerArrayAdapter<PersonBrief> {
+public class PersonAdapter extends RecyclerArrayAdapter<PersonBrief> {
 
 
-    public UserAdapter(Context context) {
+    public PersonAdapter(Context context) {
         super(context);
     }
 
@@ -40,7 +40,7 @@ public class UserAdapter extends RecyclerArrayAdapter<PersonBrief> {
         TextView tvSignature;
 
         public PersonBriefViewHolder(ViewGroup parent) {
-            super(parent, R.layout.user_item_brief);
+            super(parent, R.layout.user_item_person);
             ButterKnife.inject(getContext(),itemView);
         }
 

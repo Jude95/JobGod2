@@ -19,7 +19,7 @@ public class RecommendPresenter extends BasePresenter<RecommendActivity> {
         JobModel.getInstance().getRecommendList(new DataCallback<JobBrief[]>() {
             @Override
             public void success(String info, JobBrief[] data) {
-                getView().refreshData(jobs = data);
+                getView().addDataWithRefresh(jobs = data);
             }
         });
     }
@@ -27,6 +27,6 @@ public class RecommendPresenter extends BasePresenter<RecommendActivity> {
     @Override
     protected void onCreateView(RecommendActivity view) {
         super.onCreateView(view);
-        getView().refreshData(jobs);
+        getView().addDataWithRefresh(jobs);
     }
 }

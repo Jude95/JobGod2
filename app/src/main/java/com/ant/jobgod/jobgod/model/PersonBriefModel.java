@@ -31,7 +31,7 @@ public class PersonBriefModel extends AbsModel {
 
     @Override
     protected void onAppCreate(Context ctx) {
-        sysnPersonBriefs();
+        syncPersonBriefs();
     }
 
     public PersonBrief getPersonBriefOnBlock(String id){
@@ -69,14 +69,14 @@ public class PersonBriefModel extends AbsModel {
         return person;
     }
 
-    public void sysnPersonBriefs(){
+    public void syncPersonBriefs(){
         List<PersonBrief> list = new Select().from(PersonBrief.class).execute();
         RequestMap params = new RequestMap();
         for (PersonBrief p:list) {
             params.put("userId[]",p.getUID());
         }
         params.put("time", Utils.getPreference().getString(SP.PersonSyncTime,"0"));
-        RequestManager.getInstance().post(API.URL.UpdateGetPersonBrief, params, new DataCallback<PersonBrief[]>() {
+        RequestManager.getInstance().post(API.URL.SyncPersonBriefs, params, new DataCallback<PersonBrief[]>() {
             @Override
             public void success(String info, PersonBrief[] data) {
                 Utils.getPreference().edit().putString(SP.PersonSyncTime,System.currentTimeMillis()/1000+"").commit();

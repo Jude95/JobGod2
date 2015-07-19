@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.PersonBrief;
-import com.ant.jobgod.jobgod.module.main.PersonDetailActivity;
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
@@ -15,7 +14,7 @@ import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-class UserBriefViewHolder extends BaseViewHolder<PersonBrief> {
+class PersonBriefViewHolder extends BaseViewHolder<PersonBrief> {
 
     @InjectView(R.id.imgFace)
     SimpleDraweeView imgFace;
@@ -31,10 +30,9 @@ class UserBriefViewHolder extends BaseViewHolder<PersonBrief> {
      *
      * @param parent
      */
-    public UserBriefViewHolder(ViewGroup parent) {
-        super(parent, R.layout.user_item_brief);
-
-        ButterKnife.inject(itemView.getContext(), itemView);
+    public PersonBriefViewHolder(ViewGroup parent) {
+        super(parent, R.layout.user_item_person);
+        ButterKnife.inject(this, itemView);
     }
 
     @Override
@@ -43,6 +41,6 @@ class UserBriefViewHolder extends BaseViewHolder<PersonBrief> {
         imgFace.setImageURI(Uri.parse(data.getFace()));
         tvName.setText(data.getName());
         tvSignature.setText(data.getSign());
-        ripple.setOnClickListener(v -> itemView.getContext().startActivity(new Intent(itemView.getContext(), PersonDetailActivity.class)));
+        ripple.setOnClickListener(v -> itemView.getContext().startActivity(new Intent(itemView.getContext(), UserDetailActivity.class)));
     }
 }

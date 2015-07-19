@@ -89,7 +89,7 @@
             android:label="设置" />
 
         <activity
-            android:name=".module.user.UserDetailActivity"
+            android:name=".module.user.UserDataActivity"
             android:label="@string/title_activity_user_detail" >
         </activity>
         <activity
@@ -106,19 +106,15 @@
             android:label="@string/title_activity_job_detail_release_mode" >
         </activity>
         <activity
-            android:name=".module.user.ModifyInfoActivity"
+            android:name=".module.user.ModifyDetailActivity"
             android:label="基本资料" >
-        </activity>
-        <activity
-            android:name=".module.user.ModifyUserIntroActivity"
-            android:label="@string/title_activity_modify_user_intro" >
         </activity>
         <activity
             android:name=".module.user.ModifyFaceActivity"
             android:label="@string/title_activity_modify_face_acitivity" >
         </activity>
         <activity
-            android:name=".module.user.ModifyPhoneActivity"
+            android:name=".module.user.ModifyTelActivity"
             android:label="@string/title_activity_modify_phone_acitvity" >
         </activity>
         <activity android:name=".module.user.AuthenticationActivity"
@@ -133,17 +129,18 @@
         <activity android:name=".module.job.RecommendActivity"
             android:label="推荐列表"/>
 
-        <activity android:name=".module.user.ModifyDataActivity"
+        <activity android:name=".module.user.TextWriteActivity"
             android:label="修改信息"/>
 
-        <activity android:name=".module.main.PersonDetailActivity"
+        <activity android:name=".module.user.UserDetailActivity"
             android:label="信息列表"/>
 
         <activity android:name=".module.user.CollectActivity"
             android:label="收藏列表"/>
         <activity android:name=".module.job.JobDetailManagerActivity"
             android:label="兼职详情"/>
-
+        <activity android:name=".module.user.AroundFriendsActivity"
+            android:label="附近朋友"/>
 
 
         <!--ImageTool-->

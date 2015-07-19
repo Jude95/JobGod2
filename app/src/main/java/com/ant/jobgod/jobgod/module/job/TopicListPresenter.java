@@ -19,7 +19,7 @@ public class TopicListPresenter extends BasePresenter<TopicListActivity> {
         JobModel.getInstance().getTopicList(new DataCallback<Topic[]>() {
             @Override
             public void success(String info, Topic[] data) {
-                getView().refreshData(topics = data);
+                getView().addDataWithRefresh(topics = data);
             }
         });
     }
@@ -27,6 +27,6 @@ public class TopicListPresenter extends BasePresenter<TopicListActivity> {
     @Override
     protected void onCreateView(TopicListActivity view) {
         super.onCreateView(view);
-        getView().refreshData(topics);
+        getView().addDataWithRefresh(topics);
     }
 }

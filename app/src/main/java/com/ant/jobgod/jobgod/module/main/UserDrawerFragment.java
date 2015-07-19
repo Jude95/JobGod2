@@ -14,10 +14,12 @@ import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.AccountData;
 import com.ant.jobgod.jobgod.module.job.JobDetailManagerActivity;
 import com.ant.jobgod.jobgod.module.setting.SettingActivity;
+import com.ant.jobgod.jobgod.module.user.AroundFriendsActivity;
 import com.ant.jobgod.jobgod.module.user.AttentionActivity;
 import com.ant.jobgod.jobgod.module.user.CollectActivity;
 import com.ant.jobgod.jobgod.module.user.ModifyFaceActivity;
 import com.ant.jobgod.jobgod.module.user.UserDetailActivity;
+import com.ant.jobgod.jobgod.module.user.UserDataActivity;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import butterknife.ButterKnife;
@@ -69,10 +71,10 @@ public class UserDrawerFragment extends NucleusFragment<UserDrawerPresenter> {
         imgFace.setOnClickListener(v -> getPresenter().startActivity(ModifyFaceActivity.class));
         viewMessage.setOnClickListener((View) -> getPresenter().startActivity(JobDetailManagerActivity.class));
         viewSetting.setOnClickListener((View) -> getPresenter().startActivity(SettingActivity.class));
-        viewInformation.setOnClickListener(v -> getPresenter().startActivity(UserDetailActivity.class));
-
+        viewInformation.setOnClickListener(v -> getPresenter().startActivity(UserDataActivity.class));
+        viewNearby.setOnClickListener(v->getPresenter().startActivity(AroundFriendsActivity.class));
         viewAttention.setOnClickListener(v -> getPresenter().startActivity(AttentionActivity.class));
-        viewExperience.setOnClickListener(v -> getPresenter().startActivity(PersonDetailActivity.class));
+        viewExperience.setOnClickListener(v -> getPresenter().startActivity(UserDetailActivity.class));
         viewCollection.setOnClickListener(v -> getPresenter().startActivity(CollectActivity.class));
         return view;
     }

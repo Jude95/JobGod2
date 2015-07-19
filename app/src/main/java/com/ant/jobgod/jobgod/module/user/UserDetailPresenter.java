@@ -1,93 +1,35 @@
 package com.ant.jobgod.jobgod.module.user;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputType;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.ant.jobgod.jobgod.app.BasePresenter;
-import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.UserModel;
-import com.ant.jobgod.jobgod.model.bean.UserAccountData;
-import com.ant.jobgod.jobgod.model.callback.StatusCallback;
-import com.ant.jobgod.jobgod.util.Utils;
+import com.ant.jobgod.jobgod.model.bean.UserDetail;
+import com.ant.jobgod.jobgod.model.callback.DataCallback;
 
 /**
- * Created by alien on 2015/7/10.
+ * Created by alien on 2015/7/13.
  */
 public class UserDetailPresenter extends BasePresenter<UserDetailActivity> {
-
-    private Intent intent;
+    private String id;
+    private UserDetail userDetail;
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
-        AccountModel.getInstance().registerEvent(this);
+        //id = getView().getIntent().getStringExtra("id");
+        id = "3";
+        UserModel.getInstance().getUserDetail(id, new DataCallback<UserDetail>() {
+            @Override
+            public void success(String info, UserDetail data) {
+                getView().setUserDetail(userDetail = data);
+            }
+        });
     }
 
     @Override
     protected void onCreateView(UserDetailActivity view) {
         super.onCreateView(view);
-        getView().setUserDetailData(AccountModel.getInstance().getUserAccount());
+        if (userDetail!=null)
+        getView().setUserDetail(userDetail);
     }
-
-    public void onEvent(UserAccountData info){
-        getView().setUserDetailData(info);
-    }
-
-    public void startActivity(Class<?> ctx){
-        intent=new Intent();
-        intent.setClass(getView(),ctx);
-        getView().startActivity(intent);
-    }
-
-    public void editName(){
-        new MaterialDialog.Builder(getView())
-                .title("修改昵称")
-                .inputType(InputType.TYPE_CLASS_TEXT)
-                .inputMaxLength(8)
-                .input("昵称", "", (dialog, input) -> {
-                    if (input.toString().trim().isEmpty()) {
-                        Utils.Toast("昵称不能为空");
-                        return;
-                    } else {
-                        getView().showProgress("修改中");
-                        UserModel.getInstance().modifyName(input.toString(), new StatusCallback() {
-                            @Override
-                            public void success(String info) {
-                                AccountModel.getInstance().updateAccountData();
-                            }
-
-                            @Override
-                            public void result(int status, String info) {
-                                super.result(status, info);
-                                getView().dismissProgress();
-                            }
-                        });
-                    }
-                }).show();
-    }
-
-    public void editSign(){
-        new MaterialDialog.Builder(getView())
-                .title("修改签名")
-                .inputType(InputType.TYPE_CLASS_TEXT)
-                .inputMaxLength(32)
-                .input("签名", "", (dialog, input) -> {
-                    getView().showProgress("修改中");
-                    UserModel.getInstance().modifySign(input.toString(), new StatusCallback() {
-                        @Override
-                        public void success(String info) {
-                            AccountModel.getInstance().updateAccountData();
-                        }
-
-                        @Override
-                        public void result(int status, String info) {
-                            super.result(status, info);
-                            getView().dismissProgress();
-                        }
-                    });
-
-                }).show();
-    }
-
 }

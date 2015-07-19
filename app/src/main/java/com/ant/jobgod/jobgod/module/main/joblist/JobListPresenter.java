@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.ant.jobgod.jobgod.model.JobModel;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
-import com.ant.jobgod.jobgod.model.bean.JobPage;
+import com.ant.jobgod.jobgod.model.bean.JobBriefPage;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.facebook.common.internal.Lists;
 
@@ -26,13 +26,13 @@ public class JobListPresenter extends Presenter<JobListFragment> {
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
-        JobModel.getInstance().getJobList(0, PAGE_COUNT, new DataCallback<JobPage>() {
+        JobModel.getInstance().getJobList(0, PAGE_COUNT, new DataCallback<JobBriefPage>() {
             @Override
-            public void success(String info, JobPage data) {
+            public void success(String info, JobBriefPage data) {
                 getView().addJobWithRefresh(data.getJobs());
                 jobs.addAll(Lists.newArrayList(data.getJobs()));
                 page++;
-                if ((data.getTotalCount()-1)/PAGE_COUNT == 0){
+                if ((data.getTotalCount()-1)/PAGE_COUNT <= 0){
                     getView().stopLoadMore();
                 }
             }
@@ -46,14 +46,14 @@ public class JobListPresenter extends Presenter<JobListFragment> {
     }
 
     public void refresh(){
-        JobModel.getInstance().getJobList(0, PAGE_COUNT, new DataCallback<JobPage>() {
+        JobModel.getInstance().getJobList(0, PAGE_COUNT, new DataCallback<JobBriefPage>() {
             @Override
-            public void success(String info, JobPage data) {
+            public void success(String info, JobBriefPage data) {
                 jobs.clear();
                 getView().addJobWithRefresh(data.getJobs());
                 jobs.addAll(Lists.newArrayList(data.getJobs()));
                 page = 0;
-                if ((data.getTotalCount()-1)/PAGE_COUNT == 0){
+                if ((data.getTotalCount()-1)/PAGE_COUNT <= 0){
                     getView().stopLoadMore();
                 }
             }
@@ -61,9 +61,9 @@ public class JobListPresenter extends Presenter<JobListFragment> {
     }
 
     public void loadMore(){
-        JobModel.getInstance().getJobList(page+1, PAGE_COUNT, new DataCallback<JobPage>() {
+        JobModel.getInstance().getJobList(page+1, PAGE_COUNT, new DataCallback<JobBriefPage>() {
             @Override
-            public void success(String info, JobPage data) {
+            public void success(String info, JobBriefPage data) {
                 if (data.getCurPage()==page+1){
                     getView().addJob(data.getJobs());
                     jobs.addAll(Lists.newArrayList(data.getJobs()));
@@ -87,7 +87,6 @@ public class JobListPresenter extends Presenter<JobListFragment> {
         super.onResult(requestCode, resultCode, data);
         if (requestCode == FILTRATE_FLAG && resultCode == Activity.RESULT_OK){
             getView().startRefresh();
-            refresh();
         }
     }
 }
