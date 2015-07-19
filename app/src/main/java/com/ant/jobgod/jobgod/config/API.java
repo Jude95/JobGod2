@@ -14,16 +14,27 @@ public class API {
         public static final String ModifyPassword = BaseUrl + "Home/user/modPass";
 
         //Person
-        public static final String GetPersonBrief = "";
-        public static final String UpdateGetPersonBrief = "";
+        public static final String GetPersonBrief = BaseUrl +"home/user/getPersonBrief";
+        public static final String SyncPersonBriefs = BaseUrl +"home/user/syncPeopleBrief";
         public static final String ModifyName = BaseUrl +"Home/index/modName";
         public static final String ModifySign = BaseUrl +"Home/index/modSign";
         public static final String ModifyFace = BaseUrl +"Home/index/modFace";
         public static final String GetUserData = BaseUrl +"home/user/getMyData";
-        //LBS
-        public static final String UpdateLocation = BaseUrl+"home/index/syncAddress";
+        public static final String GetUserDetail = BaseUrl + "home/user/getUserDetail";
+        public static final String UpdateUserDetail = BaseUrl + "home/user/updateDetail";
 
-        //public
+        public static final String GetAttentionFromMe = BaseUrl + "home/user/getUserDetail";
+        public static final String GetAttentionToMe = BaseUrl + "home/user/getPersonDetail";
+
+        public static final String GetAroundFriends = BaseUrl + "home/user/getNearbyUser";
+
+        public static final String GetCollections = BaseUrl + "home/user/getPersonDetail";
+        public static final String GetJoin = BaseUrl + "home/user/getPersonDetail";
+
+        //LBS
+        public static final String SyncLocation = BaseUrl+"home/index/syncAddress";
+
+        //Public
         public static final String GetBanner = BaseUrl + "home/index/getBanner";
         public static final String GetTopicJobList = BaseUrl + "home/job/getTopicJobList";
         public static final String GetTopicList = BaseUrl +  "home/job/getTopicList";
@@ -31,6 +42,10 @@ public class API {
         public static final String GetJobList = BaseUrl + "home/job/getJobList";
         public static final String GetTrades = BaseUrl + "home/index/getTrades";
         public static final String GetJobDetail = "https://apiview.com/test/327/Public/getJobDetail";
+
+
+
+
     }
 
     public static class KEY{

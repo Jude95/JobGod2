@@ -10,7 +10,7 @@ import com.ant.jobgod.jobgod.app.BasePresenter;
 /**
  * Created by alien on 2015/7/10.
  */
-public class ModifyInfoPresenter extends BasePresenter<ModifyInfoActivity> {
+public class ModifyDetailPresenter extends BasePresenter<ModifyDetailActivity> {
 
     private final int REQUEST_CODE = 1;
     private final int RESULT_CODE = 0;
@@ -21,7 +21,7 @@ public class ModifyInfoPresenter extends BasePresenter<ModifyInfoActivity> {
     }
 
     @Override
-    protected void onCreateView(ModifyInfoActivity view) {
+    protected void onCreateView(ModifyDetailActivity view) {
         super.onCreateView(view);
     }
 
@@ -32,9 +32,9 @@ public class ModifyInfoPresenter extends BasePresenter<ModifyInfoActivity> {
          */
     }
 
-    public void toModifyDataActivityForResult(ModifyInfoActivity.InfoFlag flag, TextView view) {
-        Intent intent = new Intent(getView(), ModifyDataActivity.class);
-        intent.putExtra(ModifyInfoActivity.KEY_FLAG, flag);
+    public void toModifyDataActivityForResult(ModifyDetailActivity.InfoFlag flag, TextView view) {
+        Intent intent = new Intent(getView(), TextWriteActivity.class);
+        intent.putExtra(ModifyDetailActivity.KEY_FLAG, flag);
         intent.putExtra("data", view.getText().toString());
         getView().startActivityForResult(intent, REQUEST_CODE);
     }

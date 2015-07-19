@@ -1,13 +1,13 @@
 package com.ant.jobgod.jobgod.model.bean;
 
 /**
- * Created by Mr.Jude on 2015/7/7.
+ * Created by Mr.Jude on 2015/7/19.
  */
-public class JobPage {
+public class AroundPersonBriefPage {
     private int totalCount;
     private int curPage;
 
-    private JobBrief[] jobs;
+    private AroundPersonBrief[] people;
 
     public int getTotalCount() {
         return totalCount;
@@ -25,11 +25,11 @@ public class JobPage {
         this.curPage = curPage;
     }
 
-    public JobBrief[] getJobs() {
-        return jobs;
+    public AroundPersonBrief[] getPeople() {
+        return people;
     }
 
-    public void setJobs(JobBrief[] jobs) {
-        this.jobs = jobs;
+    public void setPeople(AroundPersonBrief[] people) {
+        this.people = people;
     }
 }

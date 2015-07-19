@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.JobModel;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
-import com.ant.jobgod.jobgod.model.bean.JobPage;
+import com.ant.jobgod.jobgod.model.bean.JobBriefPage;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 
 /**
@@ -17,9 +17,9 @@ public class TopicDetailPresenter extends BasePresenter<TopicDetailActivity> {
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
-        JobModel.getInstance().getJobList(0, 10, new DataCallback<JobPage>() {
+        JobModel.getInstance().getJobList(0, 10, new DataCallback<JobBriefPage>() {
             @Override
-            public void success(String info, JobPage data) {
+            public void success(String info, JobBriefPage data) {
                 getView().setJobBriefData(jobBriefs=data.getJobs());
             }
         });

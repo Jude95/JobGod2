@@ -17,7 +17,7 @@ import nucleus.factory.RequiresPresenter;
  * Created by alien on 2015/7/12.
  */
 @RequiresPresenter(ModifyFacePresenter.class)
-public class ModifyDataActivity extends BaseActivity<ModifyFacePresenter> {
+public class TextWriteActivity extends BaseActivity<ModifyFacePresenter> {
 
     @InjectView(R.id.data)
     TextInputLayout data;
@@ -29,7 +29,7 @@ public class ModifyDataActivity extends BaseActivity<ModifyFacePresenter> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_activity_modifydata);
+        setContentView(R.layout.user_activity_textwrite);
         ButterKnife.inject(this);
         intent = getIntent();
         setTitleAndResult();
@@ -37,9 +37,9 @@ public class ModifyDataActivity extends BaseActivity<ModifyFacePresenter> {
     }
 
     public void setTitleAndResult() {
-        ModifyInfoActivity.InfoFlag flag = (ModifyInfoActivity.InfoFlag) intent.getSerializableExtra(ModifyInfoActivity.KEY_FLAG);
-        String content = intent.getStringExtra(ModifyInfoActivity.DATA);
-        intent.putExtra(ModifyInfoActivity.KEY_FLAG, flag);
+        ModifyDetailActivity.InfoFlag flag = (ModifyDetailActivity.InfoFlag) intent.getSerializableExtra(ModifyDetailActivity.KEY_FLAG);
+        String content = intent.getStringExtra(ModifyDetailActivity.DATA);
+        intent.putExtra(ModifyDetailActivity.KEY_FLAG, flag);
         switch (flag) {
             case AWARD:
                 setTitle("修改奖项");
@@ -78,7 +78,7 @@ public class ModifyDataActivity extends BaseActivity<ModifyFacePresenter> {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.submit) {
-            intent.putExtra(ModifyInfoActivity.DATA, data.getEditText().getText().toString());
+            intent.putExtra(ModifyDetailActivity.DATA, data.getEditText().getText().toString());
             setResult(RESULT_DATA, intent);
             finish();
         }

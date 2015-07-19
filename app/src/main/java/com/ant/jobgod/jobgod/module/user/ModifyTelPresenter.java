@@ -11,7 +11,7 @@ import cn.smssdk.gui.TimeListener;
 /**
  * Created by alien on 2015/7/11.
  */
-public class ModifyPhonePresenter extends BasePresenter<ModifyPhoneActivity> implements TimeListener {
+public class ModifyTelPresenter extends BasePresenter<ModifyTelActivity> implements TimeListener {
 
     private String number;
 

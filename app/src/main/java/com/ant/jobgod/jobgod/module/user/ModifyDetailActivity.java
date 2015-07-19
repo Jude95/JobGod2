@@ -18,8 +18,8 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import nucleus.factory.RequiresPresenter;
 
-@RequiresPresenter(ModifyInfoPresenter.class)
-public class ModifyInfoActivity extends BaseActivity<ModifyInfoPresenter> {
+@RequiresPresenter(ModifyDetailPresenter.class)
+public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
 
 
     private final int REQUEST_CODE = 1;
@@ -75,7 +75,7 @@ public class ModifyInfoActivity extends BaseActivity<ModifyInfoPresenter> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_activity_modifyinfo);
+        setContentView(R.layout.user_activity_modifydetail);
         ButterKnife.inject(this);
         init();
     }

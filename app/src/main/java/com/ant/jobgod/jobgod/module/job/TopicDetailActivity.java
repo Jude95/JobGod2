@@ -47,7 +47,7 @@ public class TopicDetailActivity extends BaseActivity<TopicDetailPresenter> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.topic_activity_detail);
+        setContentView(R.layout.job_activity_topic);
         ButterKnife.inject(this);
         intent = getIntent();
         topic = (Topic) intent.getSerializableExtra("topic");

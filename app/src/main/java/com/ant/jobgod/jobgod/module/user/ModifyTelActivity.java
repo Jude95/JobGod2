@@ -13,8 +13,8 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import nucleus.factory.RequiresPresenter;
 
-@RequiresPresenter(ModifyPhonePresenter.class)
-public class ModifyPhoneActivity extends BaseActivity<ModifyPhonePresenter> {
+@RequiresPresenter(ModifyTelPresenter.class)
+public class ModifyTelActivity extends BaseActivity<ModifyTelPresenter> {
 
     @InjectView(R.id.phone)
     TextInputLayout phone;
@@ -35,7 +35,7 @@ public class ModifyPhoneActivity extends BaseActivity<ModifyPhonePresenter> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_activity_modifyphone);
+        setContentView(R.layout.user_activity_modifytel);
         ButterKnife.inject(this);
 
         sendCode.setOnClickListener(v -> checkIsLogin());
