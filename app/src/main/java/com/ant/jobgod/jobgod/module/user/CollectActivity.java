@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 import com.ant.jobgod.jobgod.app.BaseRecyclerActivity;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.module.job.JobViewHolder;
-import com.ant.jobgod.jobgod.util.BaseViewHolder;
+import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 
 import nucleus.factory.RequiresPresenter;
 

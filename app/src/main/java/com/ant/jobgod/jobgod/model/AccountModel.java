@@ -5,11 +5,15 @@ import android.content.Context;
 import com.android.http.RequestManager;
 import com.android.http.RequestMap;
 import com.ant.jobgod.jobgod.config.API;
-import com.ant.jobgod.jobgod.model.bean.AccountInfo;
+import com.ant.jobgod.jobgod.model.bean.AccountData;
+import com.ant.jobgod.jobgod.model.bean.UserAccountData;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 
@@ -23,37 +27,77 @@ public class AccountModel extends AbsModel{
     public static AccountModel getInstance() {
         return getInstance(AccountModel.class);
     }
-    public AccountInfo account;
+
+    public boolean isUser = true;
+    public UserAccountData userAccountData;
 
     @Override
     protected void onAppCreate(Context ctx) {
         super.onAppCreate(ctx);
-        account = (AccountInfo) Utils.readObjectFromFile(FileManager.getInstance().getChild(FileManager.Dir.Object,ACCOUNTFILE));
-        if (account!=null)
-            applyToken(account.getTokenApp());
+        userAccountData = (UserAccountData) Utils.readObjectFromFile(FileManager.getInstance().getChild(FileManager.Dir.Object,ACCOUNTFILE));
+        if (userAccountData !=null) {
+            applyToken(userAccountData.getTokenApp());
+            updateAccountData();
+        } else {
+            applyToken("");
+        }
     }
 
     public boolean isUser(){
-        return account == null?true:account.getType()==0;
+        return isUser;
     }
 
-    public AccountInfo getAccount() {
-        return account;
+    public AccountData getAccount(){
+        if (isUser)
+            return userAccountData;
+        else
+            return null;
     }
 
-    public void setAccount(AccountInfo account){
-        this.account = account;
-        Utils.writeObjectToFile(account,FileManager.getInstance().getChild(FileManager.Dir.Object,ACCOUNTFILE));
-        applyToken(account.getTokenApp());
-        publicEvent(account);
+    public UserAccountData getUserAccount() {
+        return userAccountData;
     }
+
+
+    public void updateAccountData(){
+        RequestManager.getInstance().post(API.URL.GetUserData, null, new DataCallback<UserAccountData>() {
+            @Override
+            public void success(String info, UserAccountData data) {
+                setUserAccountData(data);
+            }
+        });
+    }
+
+    public void setUserAccountData(UserAccountData userAccountData){
+        isUser = true;
+        this.userAccountData = userAccountData;
+        saveAccount();
+        applyToken(userAccountData.getTokenApp());
+        publicEvent(userAccountData);
+    }
+
+    public void saveAccount(){
+        if (isUser){
+            Utils.writeObjectToFile(userAccountData,FileManager.getInstance().getChild(FileManager.Dir.Object, ACCOUNTFILE));
+        }else{
+
+        }
+    }
+
 
     private void applyToken(String token){
         HashMap<String, String> map = new HashMap();
-        map.put("token", token);
-        map.put("type", "android");
-        map.put("version",Utils.getAppVersionCode()+"");
+        JSONObject json = new JSONObject();
+        try {
+            json.put("token", token);
+            json.put("type", "android");
+            json.put("version",Utils.getAppVersionCode()+"");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        map.put("token", json.toString());
         RequestManager.getInstance().setHeader(map);
+        Utils.Log("setToken:" + json.toString());
     }
 
 
@@ -62,8 +106,7 @@ public class AccountModel extends AbsModel{
         params.put("name",name);
         params.put("tel",tel);
         params.put("pass",Utils.MD5(password.getBytes()));
-        params.put("code",verify);
-        Utils.Log(verify);
+        params.put("code", verify);
         RequestManager.getInstance().post(API.URL.Register,params,callback);
     }
 
@@ -74,14 +117,13 @@ public class AccountModel extends AbsModel{
     }
 
     public void userLogin(String tel,String password,StatusCallback callback){
-        Utils.Log("MD5:"+ Utils.MD5("abc".getBytes()));
         RequestMap params = new RequestMap();
         params.put("tel", tel);
-        params.put("pass", password);
-        RequestManager.getInstance().post(API.URL.Login, params, callback.add(new DataCallback<AccountInfo>() {
+        params.put("pass", Utils.MD5(password.getBytes()));
+        RequestManager.getInstance().post(API.URL.Login, params, callback.add(new DataCallback<UserAccountData>() {
             @Override
-            public void success(String info, AccountInfo data) {
-                setAccount(data);
+            public void success(String info, UserAccountData data) {
+                setUserAccountData(data);
             }
 
             @Override
@@ -94,7 +136,7 @@ public class AccountModel extends AbsModel{
     public void modifyPassword(String tel,String password,String verify,StatusCallback callback){
         RequestMap params = new RequestMap();
         params.put("tel",tel);
-        params.put("pass",password);
+        params.put("newP",Utils.MD5(password.getBytes()));
         params.put("code",verify);
         RequestManager.getInstance().post(API.URL.ModifyPassword, params, callback);
     }

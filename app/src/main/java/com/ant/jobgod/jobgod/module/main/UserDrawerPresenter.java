@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.ant.jobgod.jobgod.model.AccountModel;
-import com.ant.jobgod.jobgod.model.bean.AccountInfo;
+import com.ant.jobgod.jobgod.model.bean.AccountData;
+import com.ant.jobgod.jobgod.module.launch.UserLoginActivity;
+import com.ant.jobgod.jobgod.util.Utils;
 
 import nucleus.manager.Presenter;
 
@@ -17,19 +19,24 @@ public class UserDrawerPresenter extends Presenter<UserDrawerFragment> {
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
         AccountModel.getInstance().registerEvent(this);
-        AccountInfo info = AccountModel.getInstance().getAccount();
+        AccountData info = AccountModel.getInstance().getAccount();
         if (info != null){
             getView().setAccount(info);
         }
     }
 
-    public void onEvent(AccountInfo info){
+    public void onEvent(AccountData info){
         if (info != null){
             getView().setAccount(info);
         }
     }
+
 
     public void startActivity(Class<?> clazz){
+        if(AccountModel.getInstance().getAccount() == null){
+            Utils.Toast("请先登录再使用这些功能");
+            clazz = UserLoginActivity.class;
+        }
         getView().startActivity(new Intent(getView().getActivity(), clazz));
     }
 }

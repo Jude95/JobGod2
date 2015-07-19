@@ -11,11 +11,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
-import com.ant.jobgod.jobgod.model.bean.AccountInfo;
+import com.ant.jobgod.jobgod.model.bean.AccountData;
 import com.ant.jobgod.jobgod.module.job.JobDetailManagerActivity;
 import com.ant.jobgod.jobgod.module.setting.SettingActivity;
 import com.ant.jobgod.jobgod.module.user.AttentionActivity;
 import com.ant.jobgod.jobgod.module.user.CollectActivity;
+import com.ant.jobgod.jobgod.module.user.ModifyFaceActivity;
 import com.ant.jobgod.jobgod.module.user.UserDetailActivity;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -65,9 +66,7 @@ public class UserDrawerFragment extends NucleusFragment<UserDrawerPresenter> {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_fragment_drawer, container, false);
         ButterKnife.inject(this, view);
-
-
-        imgFace.setImageURI(Uri.parse("http://img.hb.aicdn.com/83baf35e3d9f9069db3d6bbe87358b877664425532114-BzeCQd_fw658"));
+        imgFace.setOnClickListener(v -> getPresenter().startActivity(ModifyFaceActivity.class));
         viewMessage.setOnClickListener((View) -> getPresenter().startActivity(JobDetailManagerActivity.class));
         viewSetting.setOnClickListener((View) -> getPresenter().startActivity(SettingActivity.class));
         viewInformation.setOnClickListener(v -> getPresenter().startActivity(UserDetailActivity.class));
@@ -78,13 +77,15 @@ public class UserDrawerFragment extends NucleusFragment<UserDrawerPresenter> {
         return view;
     }
 
+
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.reset(this);
     }
 
-    public void setAccount(AccountInfo info) {
+    public void setAccount(AccountData info) {
         imgFace.setImageURI(Uri.parse(info.getFace()));
         tvName.setText(info.getName());
         tvSign.setText(info.getSign());

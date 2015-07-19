@@ -9,8 +9,8 @@ import android.widget.TextView;
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseRecyclerActivity;
 import com.ant.jobgod.jobgod.model.bean.Topic;
-import com.ant.jobgod.jobgod.util.BaseViewHolder;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 
 import nucleus.factory.RequiresPresenter;
 

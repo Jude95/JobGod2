@@ -12,6 +12,7 @@ import com.ant.jobgod.imagetool.imageprovider.ImageElement;
 import com.ant.jobgod.imagetool.imageprovider.ImageProvider;
 import com.ant.jobgod.imagetool.imageprovider.OnImageSelectListener;
 import com.ant.jobgod.jobgod.app.BasePresenter;
+import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.facebook.common.references.CloseableReference;
@@ -40,8 +41,12 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
         mProvider = new ImageProvider(getView());
-        Utils.Log("onCreate");
-        //getView().setImgFace(Uri.parse(AccountModel.getInstance().getAccount().getFace()));
+    }
+
+    @Override
+    protected void onCreateView(ModifyFaceActivity view) {
+        super.onCreateView(view);
+        getView().setImgFace(Uri.parse(AccountModel.getInstance().getAccount().getFace()));
     }
 
     public void getImageFromCamera(){

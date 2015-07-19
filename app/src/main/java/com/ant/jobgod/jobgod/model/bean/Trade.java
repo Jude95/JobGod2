@@ -33,4 +33,15 @@ public class Trade implements Serializable{
     public void setIcon(String icon) {
         this.icon = icon;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Trade))return false;
+        return getId() == ((Trade)o).getId();
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
 }

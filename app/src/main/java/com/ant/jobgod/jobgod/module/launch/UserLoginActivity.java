@@ -71,11 +71,11 @@ public class UserLoginActivity extends BaseActivity<UserLoginPresenter> {
     }
 
     public void setPasswordError() {
-        btnModifyPassword.setError("密码错误");
+        tilPassword.setError("密码错误");
     }
 
     public void setNumberError() {
-        btnModifyPassword.setError("手机号还没有注册");
+        tilNumber.setError("手机号还没有注册");
     }
 
     public void setNumberAndPassword(String number,String password){

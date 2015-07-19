@@ -15,9 +15,9 @@ import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.bean.Topic;
-import com.ant.jobgod.jobgod.util.RecyclerArrayAdapter;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -71,7 +71,7 @@ public class TopicDetailActivity extends BaseActivity<TopicDetailPresenter> {
     }
 
 
-    class TopicHeaderView implements RecyclerArrayAdapter.HeaderView {
+    class TopicHeaderView implements RecyclerArrayAdapter.ItemView {
 
         @Override
         public View onCreateView(ViewGroup parent) {

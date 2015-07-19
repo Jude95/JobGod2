@@ -23,7 +23,7 @@ public class SettingPresenter extends BasePresenter<SettingActivity> {
     private void initItems(){
         items = new SettingItem[]{
                 new SettingItem("账号设置"),
-                new SettingItem("重新登录","",(View v)->getView().startActivity(new Intent(getView(), UserLoginActivity.class))),
+                new SettingItem("注销账号","",(View v)->getView().startActivity(new Intent(getView(), UserLoginActivity.class))),
                 new SettingItem("应用设置"),
                 new SettingItem("意见反馈","",null),
 

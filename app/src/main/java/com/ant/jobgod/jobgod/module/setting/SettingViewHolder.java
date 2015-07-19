@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
-import com.ant.jobgod.jobgod.util.BaseViewHolder;
+import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 
 /**
  * Created by Mr.Jude on 2015/7/6.

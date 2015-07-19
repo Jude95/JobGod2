@@ -43,6 +43,7 @@ import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.net.URL;
 import java.net.URLConnection;
@@ -556,9 +557,17 @@ public class Utils {
 			e.printStackTrace();
 		}
 		md5.update(data);
-        byte[] m = md5.digest();//加密
-        return Base64.encodeToString(m, Base64.DEFAULT);
-    }
+        byte[] bArray = md5.digest();//加密
+		String sTemp;
+		StringBuffer sb = new StringBuffer(bArray.length);
+		for (int i = 0; i < bArray.length; i++) {
+			sTemp = Integer.toHexString(0xFF & bArray[i]);
+			if (sTemp.length() < 2)
+				sb.append(0);
+			sb.append(sTemp.toUpperCase());
+		}
+		return sb.toString();
+	}
 
 	public static String getStringFromAssets(Context ctx,String fileName){
 		try {

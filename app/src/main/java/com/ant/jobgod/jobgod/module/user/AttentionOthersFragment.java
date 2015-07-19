@@ -23,12 +23,12 @@ public class AttentionOthersFragment extends NucleusFragment<AttentionOthersPres
     @InjectView(R.id.recycler)
     RecyclerView recycler;
 
-    private UserCyclerAdapter adapter;
+    private UserAdapter adapter;
 
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        adapter=new UserCyclerAdapter(getActivity());
+        adapter=new UserAdapter(getActivity());
     }
 
     @Nullable

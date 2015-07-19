@@ -6,7 +6,6 @@ import android.support.multidex.MultiDex;
 
 import com.activeandroid.ActiveAndroid;
 import com.android.http.RequestManager;
-import com.android.volley.VolleyLog;
 import com.ant.jobgod.jobgod.BuildConfig;
 import com.ant.jobgod.jobgod.model.AbsModel;
 import com.ant.jobgod.jobgod.util.FileManager;
@@ -32,12 +31,10 @@ public class APP extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
         instance = this;
         Fresco.initialize(this);
         RequestManager.getInstance().init(this);
         RequestManager.getInstance().setDebugMode(BuildConfig.DEBUG, "GodNet");
-        VolleyLog.setTag("xxxxxx");
         RequestManager.getInstance().setDebugMode(true, "GodNet");
         RequestManager.getInstance().setCacheEnable(true);
         Utils.initialize(this, "GodLog", "5,28,0");

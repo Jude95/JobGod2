@@ -8,8 +8,6 @@ import android.text.TextUtils;
 import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
-import com.ant.jobgod.jobgod.module.main.UserMainActivity;
-import com.ant.jobgod.jobgod.module.main.UserMainPresenter;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.controller.UMServiceFactory;
@@ -43,11 +41,28 @@ public class UserLoginPresenter extends BasePresenter<UserLoginActivity> {
 
 
     public void login(String tel,String pass){
+        getView().showProgress("登录中");
         AccountModel.getInstance().userLogin(tel, pass, new StatusCallback() {
+
+            @Override
+            public void result(int status, String info) {
+                getView().dismissProgress();
+                switch (status){
+                    case 202:
+                        getView().setNumberError();
+                        break;
+                    case 203:
+                        getView().setPasswordError();
+                        break;
+                }
+            }
+
             @Override
             public void success(String info) {
                 getView().finish();
             }
+
+
         });
     }
 

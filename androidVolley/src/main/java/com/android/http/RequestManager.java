@@ -61,8 +61,6 @@ public class RequestManager {
 	public void setDebugMode(boolean isDebug,String DebugTag){
 		this.Debug = isDebug;
 		this.DebugTag = DebugTag;
-        //VolleyLog.setTag(DebugTag);
-        //VolleyLog.DEBUG = true;
 	}
 	
 	public void init(Context context) {
@@ -243,7 +241,7 @@ public class RequestManager {
 
 			@Override
 			public void onError(String errorMsg, String url) {
-				if(Debug)Log.i(DebugTag, errorMsg);
+				if(Debug)Log.i(DebugTag, curIndex+"次请求-错误："+errorMsg);
 				if(requestListener!=null)
 				requestListener.onError(errorMsg);
 			}

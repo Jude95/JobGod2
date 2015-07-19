@@ -1,9 +1,19 @@
 package com.ant.jobgod.jobgod.model.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by alien on 2015/7/10.
  */
-public class UserDetail {
+public class UserDetail implements Serializable{
+
+    public long getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(long birthday) {
+        this.birthday = birthday;
+    }
 
     /**
      * specialty : 编程
@@ -13,7 +23,6 @@ public class UserDetail {
      * like : 写代码
      * sign : 呵呵哒
      * certificate : 无
-     * realName : 林龙鑫
      * face : https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1501688796,3410507415&fm=111&gp=0.jpg
      * character : 脾气温和
      * award : 无
@@ -24,17 +33,14 @@ public class UserDetail {
      * id : 1
      * height : 170
      */
-    private String tel;
 
     private long birthday;
     private String specialty;
-    private String address;
     private String gender;
     private String eduLevel;
     private String like;
     private String sign;
     private String certificate;
-    private String realName;
     private String face;
     private String character;
     private String award;
@@ -44,15 +50,36 @@ public class UserDetail {
     private String name;
     private String id;
     private String height;
+    private int avgAbility;
+    private int avgAttitude;
+    private int avgCredit;
 
+    public int getAvgAbility() {
+        return avgAbility;
+    }
 
+    public void setAvgAbility(int avgAbility) {
+        this.avgAbility = avgAbility;
+    }
+
+    public int getAvgAttitude() {
+        return avgAttitude;
+    }
+
+    public void setAvgAttitude(int avgAttitude) {
+        this.avgAttitude = avgAttitude;
+    }
+
+    public int getAvgCredit() {
+        return avgCredit;
+    }
+
+    public void setAvgCredit(int avgCredit) {
+        this.avgCredit = avgCredit;
+    }
 
     public void setSpecialty(String specialty) {
         this.specialty = specialty;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public void setGender(String gender) {
@@ -73,10 +100,6 @@ public class UserDetail {
 
     public void setCertificate(String certificate) {
         this.certificate = certificate;
-    }
-
-    public void setRealName(String realName) {
-        this.realName = realName;
     }
 
     public void setFace(String face) {
@@ -119,10 +142,6 @@ public class UserDetail {
         return specialty;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
     public String getGender() {
         return gender;
     }
@@ -141,10 +160,6 @@ public class UserDetail {
 
     public String getCertificate() {
         return certificate;
-    }
-
-    public String getRealName() {
-        return realName;
     }
 
     public String getFace() {

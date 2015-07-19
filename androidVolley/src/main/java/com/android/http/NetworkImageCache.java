@@ -5,7 +5,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 import android.util.LruCache;
 
 import com.android.http.DiskLruCache.Editor;
@@ -39,7 +38,6 @@ public class NetworkImageCache extends LruCache<String, Bitmap> implements
 		    if (!cacheDir.exists()) {  
 		        cacheDir.mkdirs();  
 		    }
-            Log.i("netimg","Dir:"+cacheDir.getAbsoluteFile());
 		    mDiskLruCache = DiskLruCache.open(cacheDir, getAppVersion(ctx), 1, DiskCacheSize);
 		} catch (IOException e) {  
 		    e.printStackTrace();  

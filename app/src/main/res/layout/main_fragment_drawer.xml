@@ -50,15 +50,14 @@
                         android:id="@+id/tvName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Jude95"
                         android:textColor="@color/White"
+                        android:text="未登录"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tvSign"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="I won't be ignore"
                         android:textColor="@color/White" />
                 </LinearLayout>
 
@@ -242,7 +241,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="72dp"
                     android:gravity="center_vertical"
-                    android:text="个人资料"
+                    android:text="个人信息"
                     android:textColor="@color/secondary_text_default_material_light"
                     android:textSize="16sp"
                     android:textStyle="bold" />

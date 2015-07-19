@@ -6,6 +6,7 @@ package com.ant.jobgod.jobgod.model.bean;
 public class JobPage {
     private int totalCount;
     private int curPage;
+
     private JobBrief[] jobs;
 
     public int getTotalCount() {
