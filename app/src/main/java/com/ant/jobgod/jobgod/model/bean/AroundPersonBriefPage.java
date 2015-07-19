@@ -4,17 +4,17 @@ package com.ant.jobgod.jobgod.model.bean;
  * Created by Mr.Jude on 2015/7/19.
  */
 public class AroundPersonBriefPage {
-    private int totalCount;
+    private int total;
     private int curPage;
 
     private AroundPersonBrief[] people;
 
-    public int getTotalCount() {
-        return totalCount;
+    public int getTotal() {
+        return total;
     }
 
-    public void setTotalCount(int totalCount) {
-        this.totalCount = totalCount;
+    public void setTotal(int total) {
+        this.total = total;
     }
 
     public int getCurPage() {
