@@ -74,6 +74,9 @@ public class JobViewHolder extends BaseViewHolder<JobBrief> {
             case 4:
                 tvMoneyIntro.setText("兼职结束");
                 break;
+            default:
+                tvMoneyIntro.setText(data.getMoneyIntro());
+                break;
         }
 
     }
