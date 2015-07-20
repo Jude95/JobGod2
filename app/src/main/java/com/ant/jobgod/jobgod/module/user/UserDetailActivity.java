@@ -68,7 +68,7 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_activity_persondetail);
+        setContentView(R.layout.user_activity_detail);
         ButterKnife.inject(this);
         floatingActionButton.setOnClickListener(v->getPresenter().attention());
     }
@@ -80,7 +80,7 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
     }
 
     public void setUserDetail(UserDetail detail) {
-        setIsAttention(detail.isAttention());
+        setIsAttention(detail.isFocus());
         imgFace.setImageURI(Uri.parse(detail.getFace()));
         collapsingToolbar.setTitle(detail.getName());
         signature.setText(detail.getSign());

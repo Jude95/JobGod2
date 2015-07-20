@@ -6,7 +6,7 @@ package com.ant.jobgod.jobgod.model.bean;
 public class JobBrief {
     private String id;
     private String bizName;
-    private int status;
+    private int status = 1;
     private String title;
     private String img;
     private String moneyIntro;

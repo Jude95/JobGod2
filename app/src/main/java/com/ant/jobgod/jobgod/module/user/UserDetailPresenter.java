@@ -16,8 +16,7 @@ public class UserDetailPresenter extends BasePresenter<UserDetailActivity> {
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
-        //id = getView().getIntent().getStringExtra("id");
-        id = "3";
+        id = getView().getIntent().getStringExtra("id");
         UserModel.getInstance().getUserDetail(id, new DataCallback<UserDetail>() {
             @Override
             public void success(String info, UserDetail data) {
@@ -34,11 +33,11 @@ public class UserDetailPresenter extends BasePresenter<UserDetailActivity> {
     }
 
     public void attention(){
-        getView().setIsAttention(!userDetail.isAttention());
-        if (userDetail.isAttention())
+        getView().setIsAttention(!userDetail.isFocus());
+        if (userDetail.isFocus())
             UserModel.getInstance().unAttention(id, null);
         else
             UserModel.getInstance().attention(id, null);
-        userDetail.setIsAttention(!userDetail.isAttention());
+        userDetail.setIsAttention(!userDetail.isFocus());
     }
 }

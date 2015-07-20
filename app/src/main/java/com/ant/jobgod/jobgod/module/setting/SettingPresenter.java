@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.JobModel;
-import com.ant.jobgod.jobgod.model.bean.Job;
+import com.ant.jobgod.jobgod.model.bean.JobDetail;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.module.launch.UserLoginActivity;
 import com.ant.jobgod.jobgod.util.Utils;
@@ -55,9 +55,9 @@ public class SettingPresenter extends BasePresenter<SettingActivity> {
 
 
                 new SettingItem("调试按钮","",(View v)->{
-                    JobModel.getInstance().getJobDetail("1", new DataCallback<Job>() {
+                    JobModel.getInstance().getJobDetail("1", new DataCallback<JobDetail>() {
                         @Override
-                        public void success(String info, Job data) {
+                        public void success(String info, JobDetail data) {
                             Utils.Log(data.getTitle());
                         }
                     });

@@ -105,7 +105,7 @@ public class FiltratePresenter extends BasePresenter<FiltrateActivity> {
 
     public void saveAndExit(){
         if (changed){
-            JobModel.getInstance().savaFiltrateSort(mSort);
+            JobModel.getInstance().saveFiltrateSort(mSort);
             JobModel.getInstance().saveFiltrateRegion(mRegion.toArray(new Region[0]));
             JobModel.getInstance().saveFiltrateTrade(mTrades.toArray(new Trade[0]));
             getView().setResult(Activity.RESULT_OK);

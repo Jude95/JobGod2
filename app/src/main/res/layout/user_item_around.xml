@@ -41,7 +41,7 @@
             android:singleLine="true"
             android:gravity="center_vertical"
             android:textSize="12sp"
-            android:text="12小时前"
+            android:text=""
             android:textColor="@android:color/darker_gray"
             android:layout_alignParentRight="true"
             android:layout_alignTop="@+id/tvName"
@@ -54,7 +54,6 @@
             android:layout_below="@+id/tvName"
             android:layout_toRightOf="@+id/imgFace"
             android:layout_toLeftOf="@+id/tvDistance"
-            android:layout_marginTop="8dp"
             android:textSize="@dimen/abc_text_size_body_1_material"
             android:singleLine="true"/>
 

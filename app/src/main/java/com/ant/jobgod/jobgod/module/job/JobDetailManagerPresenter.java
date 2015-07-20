@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.JobModel;
-import com.ant.jobgod.jobgod.model.bean.Job;
+import com.ant.jobgod.jobgod.model.bean.JobDetail;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 
 /**
@@ -12,18 +12,27 @@ import com.ant.jobgod.jobgod.model.callback.DataCallback;
  */
 public class JobDetailManagerPresenter extends BasePresenter<JobDetailManagerActivity> {
     private String id;
-    private Job mJob;
+    private JobDetail mJob;
 
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
         id = getView().getIntent().getStringExtra("id");
-        JobModel.getInstance().getJobDetail(id, new DataCallback<Job>() {
+        JobModel.getInstance().getJobDetail(id, new DataCallback<JobDetail>() {
             @Override
-            public void success(String info, Job data) {
+            public void success(String info, JobDetail data) {
                 getView().setData(mJob=data);
             }
         });
+    }
+
+    public void collect(){
+        getView().setIsCollected(!mJob.isCollected());
+        if (mJob.isCollected())
+            JobModel.getInstance().unCollect(id, null);
+        else
+            JobModel.getInstance().collect(id, null);
+        mJob.setCollected(!mJob.isCollected());
     }
 
     @Override

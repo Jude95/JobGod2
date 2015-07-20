@@ -29,7 +29,7 @@ public class API {
         public static final String GetAroundFriends = BaseUrl + "home/user/getNearbyUser";
 
         public static final String GetCollections = BaseUrl + "home/user/collectList";
-        public static final String GetJoin = BaseUrl + "home/user/getPersonDetail";
+        public static final String GetJoin = BaseUrl + "home/user/applyList";
 
         public static final String Attention = BaseUrl + "home/index/focusUser";
         public static final String UnAttention = BaseUrl + "home/index/unFocusUser";
@@ -45,8 +45,8 @@ public class API {
         public static final String GetJobList = BaseUrl + "home/job/getJobList";
         public static final String GetTrades = BaseUrl + "home/index/getTrades";
         public static final String GetJobDetail = BaseUrl + "home/job/jobDetail";
-
-
+        public static final String Collect = BaseUrl + "home/user/collect";
+        public static final String UnCollect = BaseUrl + "home/user/unColect";
 
 
     }

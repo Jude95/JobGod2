@@ -141,6 +141,11 @@
             android:label="兼职详情"/>
         <activity android:name=".module.user.AroundFriendsActivity"
             android:label="附近朋友"/>
+        <activity android:name=".module.user.JoinActivity"
+            android:label="我的工作"/>
+
+
+
 
 
         <!--ImageTool-->
