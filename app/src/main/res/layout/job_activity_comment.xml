@@ -28,22 +28,17 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:layout_marginLeft="16dp"
-            android:text="fucker"/>
+            android:text=""/>
 
         <TextView android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginRight="16dp"
             android:gravity="center"
-            android:text="2015-07-20" />
+            android:text="" />
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.4dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:background="@android:color/darker_gray"/>
+
 
     <TextView android:id="@+id/content"
         android:layout_width="match_parent"
@@ -51,7 +46,6 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
-        android:text="是否截取指定区域用空白代替。单独设置无效果，需要与scrollY一起使用，效果如下，实现代码见代码部分"/>
-
+        />
 
 </LinearLayout>

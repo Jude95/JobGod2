@@ -46,9 +46,10 @@ public class API {
         public static final String GetTrades = BaseUrl + "home/index/getTrades";
         public static final String GetJobDetail = BaseUrl + "home/job/jobDetail";
         public static final String Collect = BaseUrl + "home/user/collect";
-        public static final String UnCollect = BaseUrl + "home/user/unColect";
+        public static final String UnCollect = BaseUrl + "home/user/unCollect";
 
-
+        public static final String GetComment = BaseUrl + "home/job/commentList";
+        public static final String Comment = BaseUrl + "home/user/comment";
     }
 
     public static class KEY{

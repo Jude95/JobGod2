@@ -26,6 +26,15 @@ public class JobDetail {
     private String personCountIntro;
     private boolean posted;
     private boolean collected;
+    private int commentCount;
+
+    public int getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
+    }
 
     public void setPhone(String phone) {
         this.phone = phone;

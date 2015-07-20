@@ -7,7 +7,6 @@ import com.ant.jobgod.jobgod.model.UserModel;
 import com.ant.jobgod.jobgod.model.bean.AroundPersonBrief;
 import com.ant.jobgod.jobgod.model.bean.AroundPersonBriefPage;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
-import com.ant.jobgod.jobgod.util.Utils;
 import com.facebook.common.internal.Lists;
 
 import java.util.ArrayList;
@@ -27,12 +26,10 @@ public class AroundFriendsPresenter extends BasePresenter<AroundFriendsActivity>
         UserModel.getInstance().getAroundUsers(0, PAGE_COUNT, new DataCallback<AroundPersonBriefPage>() {
             @Override
             public void success(String info, AroundPersonBriefPage data) {
-                if (data.getTotal()==1){
+                if (data.getTotalCount()==1){
                     getView().stopLoadMore();
-                    Utils.Log("-----tatalcount--:" + data.getTotal());
                 }
-                getView().addData(data.getPeople());
-//                getView().addDataWithRefresh(data.getPeople());
+                getView().addDataWithRefresh(data.getPeople());
                 arr.addAll(Lists.newArrayList(data.getPeople()));
             }
         });
@@ -41,7 +38,7 @@ public class AroundFriendsPresenter extends BasePresenter<AroundFriendsActivity>
     @Override
     protected void onCreateView(AroundFriendsActivity view) {
         super.onCreateView(view);
-        if (arr!=null)getView().addData(arr.toArray(new AroundPersonBrief[0]));
+        if (arr.size()>0)getView().addData(arr.toArray(new AroundPersonBrief[0]));
     }
 
     public void refresh(){
@@ -52,7 +49,7 @@ public class AroundFriendsPresenter extends BasePresenter<AroundFriendsActivity>
                 getView().addDataWithRefresh(data.getPeople());
                 arr.addAll(Lists.newArrayList(data.getPeople()));
                 page = 0;
-                if (data.getTotal()==1) {
+                if (data.getTotalCount()==1) {
                     getView().stopLoadMore();
                 }
             }
@@ -66,8 +63,7 @@ public class AroundFriendsPresenter extends BasePresenter<AroundFriendsActivity>
                 if (data.getCurPage() == page + 1) {
                     getView().addData(data.getPeople());
                     arr.addAll(Lists.newArrayList(data.getPeople()));
-                    if ((data.getTotal() - 1) / PAGE_COUNT <= page) {
-                        Utils.Log("---STOP----");
+                    if ((data.getTotalCount() - 1) / PAGE_COUNT <= page) {
                         getView().stopLoadMore();
                     }
                     page++;
