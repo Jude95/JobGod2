@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         fresco:actualImageScaleType="focusCrop"
-        fresco:failureImage="@mipmap/error"
-        fresco:progressBarImage="@mipmap/progress_bar"/>
+        fresco:failureImage="@drawable/ic_error"
+        fresco:progressBarImage="@drawable/ic_progressbar"/>
 
 </LinearLayout>

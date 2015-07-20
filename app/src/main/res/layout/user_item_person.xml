@@ -21,9 +21,9 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:layout_marginRight="16dp"
-        fresco:failureImage="@mipmap/error"
+        fresco:failureImage="@drawable/ic_error"
         fresco:roundAsCircle="true"
-        fresco:progressBarImage="@mipmap/progress_bar"/>
+        fresco:progressBarImage="@drawable/ic_progressbar"/>
 
     <TextView android:id="@+id/tvName"
         android:layout_width="match_parent"

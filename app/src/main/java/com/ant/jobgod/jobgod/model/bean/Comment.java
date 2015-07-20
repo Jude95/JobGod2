@@ -5,6 +5,7 @@ package com.ant.jobgod.jobgod.model.bean;
  */
 public class Comment {
     private String id;
+    private String face;
     private String name;
     private String sign;
     private String content;
@@ -17,7 +18,9 @@ public class Comment {
     public void setId(String id) {
         this.id = id;
     }
-
+    public String getFace() {
+        return face;
+    }
     public String getName() {
         return name;
     }

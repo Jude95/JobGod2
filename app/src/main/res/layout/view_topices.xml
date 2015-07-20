@@ -49,9 +49,9 @@
                 android:layout_height="0dp"
                 android:layout_weight="2"
                 fresco:actualImageScaleType="centerCrop"
-                fresco:failureImage="@mipmap/error"
+                fresco:failureImage="@drawable/ic_error"
                 fresco:failureImageScaleType="centerInside"
-                fresco:progressBarImage="@mipmap/progress_bar"
+                fresco:progressBarImage="@drawable/ic_progressbar"
                 fresco:progressBarImageScaleType="centerInside"/>
     </LinearLayout>
     </com.balysv.materialripple.MaterialRippleLayout>
@@ -114,8 +114,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     fresco:actualImageScaleType="centerCrop"
-                    fresco:failureImage="@mipmap/error"
-                    fresco:progressBarImage="@mipmap/progress_bar"
+                    fresco:failureImage="@drawable/ic_error"
+                    fresco:progressBarImage="@drawable/ic_progressbar"
                     />
             </LinearLayout>
         </com.balysv.materialripple.MaterialRippleLayout>
@@ -172,9 +172,9 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                fresco:failureImage="@mipmap/error"
+                fresco:failureImage="@drawable/ic_error"
                 fresco:failureImageScaleType="centerCrop"
-                fresco:progressBarImage="@mipmap/progress_bar"
+                fresco:progressBarImage="@drawable/ic_progressbar"
                 fresco:progressBarImageScaleType="centerInside"
                 fresco:actualImageScaleType="centerInside"/>
         </LinearLayout>

@@ -16,8 +16,8 @@ import nucleus.factory.RequiresPresenter;
 /**
  * Created by alien on 2015/7/12.
  */
-@RequiresPresenter(ModifyFacePresenter.class)
-public class TextWriteActivity extends BaseActivity<ModifyFacePresenter> {
+@RequiresPresenter(TextWritePresenter.class)
+public class TextWriteActivity extends BaseActivity<TextWritePresenter> {
 
     @InjectView(R.id.data)
     TextInputLayout data;

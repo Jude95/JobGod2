@@ -1,5 +1,6 @@
 package com.ant.jobgod.jobgod.module.job;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.ant.jobgod.jobgod.app.BasePresenter;
@@ -42,5 +43,12 @@ public class JobDetailManagerPresenter extends BasePresenter<JobDetailManagerAct
             getView().setData(mJob);
         }
     }
+
+    public void toCommentActivity(){
+        Intent intent=new Intent(getView(),CommentActivity.class);
+        intent.putExtra("id",id);
+        getView().startActivity(intent);
+    }
+
 
 }
