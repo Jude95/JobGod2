@@ -7,6 +7,8 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -15,6 +17,7 @@ import com.ant.jobgod.jobgod.app.BaseActivity;
 import com.ant.jobgod.jobgod.model.bean.Job;
 import com.ant.jobgod.jobgod.util.RecentDateFormater;
 import com.ant.jobgod.jobgod.util.TimeTransform;
+import com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import butterknife.ButterKnife;
@@ -65,6 +68,20 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
     TextView jobBeginTime;
     @InjectView(R.id.jobEndTime)
     TextView jobEndTime;
+    @InjectView(R.id.shareQQ)
+    ImageView shareQQ;
+    @InjectView(R.id.shareQQSpace)
+    ImageView shareQQSpace;
+    @InjectView(R.id.shareSina)
+    ImageView shareSina;
+    @InjectView(R.id.shareWeChat)
+    ImageView shareWeChat;
+    @InjectView(R.id.relateJob)
+    LinearWrapContentRecyclerView relateJob;
+    @InjectView(R.id.viewAd)
+    LinearLayout viewAd;
+    @InjectView(R.id.btnApply)
+    android.support.v7.widget.AppCompatButton btnApply;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
