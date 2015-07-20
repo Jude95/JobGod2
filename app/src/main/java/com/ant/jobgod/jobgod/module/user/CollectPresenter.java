@@ -19,10 +19,10 @@ public class CollectPresenter extends BasePresenter<CollectActivity> {
         UserModel.getInstance().getCollection(new DataCallback<JobBrief[]>() {
             @Override
             public void success(String info, JobBrief[] data) {
-                getView().addDataWithRefresh(jobBriefs = data);
+                if (data.length == 0)getView().setNull();
+                else getView().addDataWithRefresh(jobBriefs = data);
             }
         });
-
     }
 
     @Override

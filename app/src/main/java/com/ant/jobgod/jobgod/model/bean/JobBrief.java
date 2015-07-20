@@ -6,17 +6,21 @@ package com.ant.jobgod.jobgod.model.bean;
 public class JobBrief {
     private String id;
     private String bizName;
-    private int bizAvgFeel;
     private int status;
     private String title;
     private String img;
     private String moneyIntro;
     private long applyBeginTime;
-    private int syle;
+    private int style;
 
-    public int getSyle() {
-        return syle;
+    public int getStyle() {
+        return style;
     }
+
+    public void setStyle(int style) {
+        this.style = style;
+    }
+
 
     public int getCityCode() {
         return cityCode;
@@ -43,14 +47,6 @@ public class JobBrief {
 
     public void setBizName(String bizName) {
         this.bizName = bizName;
-    }
-
-    public int getBizAvgFeel() {
-        return bizAvgFeel;
-    }
-
-    public void setBizAvgFeel(int bizAvgFeel) {
-        this.bizAvgFeel = bizAvgFeel;
     }
 
     public int getStatus() {

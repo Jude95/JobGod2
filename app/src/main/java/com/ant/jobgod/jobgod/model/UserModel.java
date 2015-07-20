@@ -85,5 +85,10 @@ public class UserModel  extends AbsModel{
         RequestManager.getInstance().post(API.URL.GetAroundFriends,params,callback);
     }
 
-
+    public void attention(String id,StatusCallback callback){
+        RequestManager.getInstance().post(API.URL.Attention,new RequestMap("id",id),callback);
+    }
+    public void unAttention(String id,StatusCallback callback){
+        RequestManager.getInstance().post(API.URL.UnAttention,new RequestMap("id",id),callback);
+    }
 }

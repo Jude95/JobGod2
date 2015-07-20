@@ -32,4 +32,13 @@ public class UserDetailPresenter extends BasePresenter<UserDetailActivity> {
         if (userDetail!=null)
         getView().setUserDetail(userDetail);
     }
+
+    public void attention(){
+        getView().setIsAttention(!userDetail.isAttention());
+        if (userDetail.isAttention())
+            UserModel.getInstance().unAttention(id, null);
+        else
+            UserModel.getInstance().attention(id, null);
+        userDetail.setIsAttention(!userDetail.isAttention());
+    }
 }

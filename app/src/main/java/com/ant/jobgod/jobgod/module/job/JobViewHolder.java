@@ -41,7 +41,7 @@ public class JobViewHolder extends BaseViewHolder<JobBrief> {
         ripple.setOnClickListener(v -> {
             Intent intent = new Intent();
             intent.putExtra("id", data.getId());
-            switch (data.getSyle()) {
+            switch (data.getStyle()) {
                 case 0:
                     intent.setClass(ripple.getContext(), JobDetailReleaseActivity.class);
                     ripple.getContext().startActivity(intent);

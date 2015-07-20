@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
@@ -61,15 +62,25 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
     CollapsingToolbarLayout collapsingToolbar;
     @InjectView(R.id.appBar)
     AppBarLayout appBar;
+    @InjectView(R.id.floating_action_button)
+    FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity_persondetail);
         ButterKnife.inject(this);
+        floatingActionButton.setOnClickListener(v->getPresenter().attention());
+    }
+
+    public void setIsAttention(boolean isAttention){
+        floatingActionButton.setImageResource(isAttention?
+                R.drawable.ic_star_focus:
+                R.drawable.ic_star_unfocus);
     }
 
     public void setUserDetail(UserDetail detail) {
+        setIsAttention(detail.isAttention());
         imgFace.setImageURI(Uri.parse(detail.getFace()));
         collapsingToolbar.setTitle(detail.getName());
         signature.setText(detail.getSign());

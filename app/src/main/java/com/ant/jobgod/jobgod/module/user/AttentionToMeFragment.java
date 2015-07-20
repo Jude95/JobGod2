@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.PersonBrief;
+import com.ant.jobgod.jobgod.widget.TextItemView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -47,5 +48,10 @@ public class AttentionToMeFragment extends NucleusFragment<AttentionToMePresente
     public void setUsersData(PersonBrief[] data){
         adapter.clear();
         adapter.addAll(data);
+    }
+
+    public void setNull(){
+        adapter.addFooter(new TextItemView("还没有人关注可怜的你~"));
+        adapter.notifyDataSetChanged();
     }
 }
