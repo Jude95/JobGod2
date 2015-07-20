@@ -41,6 +41,10 @@ class PersonBriefViewHolder extends BaseViewHolder<PersonBrief> {
         imgFace.setImageURI(Uri.parse(data.getFace()));
         tvName.setText(data.getName());
         tvSignature.setText(data.getSign());
-        ripple.setOnClickListener(v -> itemView.getContext().startActivity(new Intent(itemView.getContext(), UserDetailActivity.class)));
+        ripple.setOnClickListener(v -> {
+            Intent i = new Intent(itemView.getContext(), UserDetailActivity.class);
+            i.putExtra("id",data.getUID());
+            itemView.getContext().startActivity(i);
+        });
     }
 }

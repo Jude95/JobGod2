@@ -5,13 +5,14 @@ import android.content.Context;
 import com.android.http.RequestManager;
 import com.android.http.RequestMap;
 import com.ant.jobgod.jobgod.config.API;
-import com.ant.jobgod.jobgod.model.bean.Job;
+import com.ant.jobgod.jobgod.model.bean.JobDetail;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.bean.JobBriefPage;
 import com.ant.jobgod.jobgod.model.bean.Region;
 import com.ant.jobgod.jobgod.model.bean.Topic;
 import com.ant.jobgod.jobgod.model.bean.Trade;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
+import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
 
@@ -56,13 +57,13 @@ public class JobModel extends AbsModel{
         return Utils.getPreference().getInt(FILTRATE_SORT_SP,0);
     }
 
-    public void savaFiltrateSort(int sort){
+    public void saveFiltrateSort(int sort){
         Utils.getPreference().edit().putInt(FILTRATE_SORT_SP,sort).commit();
     }
 
     //保存行业分类的偏好项
     public void saveFiltrateTrade(Trade[] trades){
-        Utils.writeObjectToFile(trades,FileManager.getInstance().getChild(FileManager.Dir.Object, FILTRATE_TRADE_FILE));
+        Utils.writeObjectToFile(trades, FileManager.getInstance().getChild(FileManager.Dir.Object, FILTRATE_TRADE_FILE));
     }
 
     //保存行业分类的偏好项
@@ -74,7 +75,7 @@ public class JobModel extends AbsModel{
         RequestManager.getInstance().post(API.URL.GetTrades, null, new DataCallback<Trade[]>() {
             @Override
             public void success(String info, Trade[] data) {
-                Utils.writeObjectToFile(data,FileManager.getInstance().getChild(FileManager.Dir.Object, TRADE_FILE));
+                Utils.writeObjectToFile(data, FileManager.getInstance().getChild(FileManager.Dir.Object, TRADE_FILE));
             }
         });
     }
@@ -88,11 +89,11 @@ public class JobModel extends AbsModel{
     }
 
     public void getTopicJobList(String topicId,DataCallback<JobBrief[]> callback){
-        RequestManager.getInstance().post(API.URL.GetTopicJobList, new RequestMap("topicId",topicId), callback);
+        RequestManager.getInstance().post(API.URL.GetTopicJobList, new RequestMap("id",topicId), callback);
     }
 
-    public void getJobDetail(String jobId,DataCallback<Job> callback){
-        RequestManager.getInstance().post(API.URL.GetJobDetail,new RequestMap("jobId",jobId),callback);
+    public void getJobDetail(String jobId,DataCallback<JobDetail> callback){
+        RequestManager.getInstance().post(API.URL.GetJobDetail,new RequestMap("id",jobId),callback);
     }
 
     public void getJobList(int page,int count,DataCallback<JobBriefPage> callback){
@@ -107,5 +108,13 @@ public class JobModel extends AbsModel{
         }
         params.put("sort",getFiltrateSort()+"");
         RequestManager.getInstance().post(API.URL.GetJobList, params, callback);
+    }
+
+    public void collect(String id,StatusCallback callback){
+        RequestManager.getInstance().post(API.URL.Collect,new RequestMap("id",id),callback);
+    }
+
+    public void unCollect(String id,StatusCallback callback){
+        RequestManager.getInstance().post(API.URL.UnCollect,new RequestMap("id",id),callback);
     }
 }

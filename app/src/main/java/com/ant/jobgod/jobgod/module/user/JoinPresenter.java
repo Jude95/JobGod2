@@ -8,15 +8,14 @@ import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 
 /**
- * Created by alien on 2015/7/13.
+ * Created by Mr.Jude on 2015/7/20.
  */
-public class CollectPresenter extends BasePresenter<CollectActivity> {
-
+public class JoinPresenter extends BasePresenter<JoinActivity> {
     private JobBrief[] jobBriefs;
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
-        UserModel.getInstance().getCollection(new DataCallback<JobBrief[]>() {
+        UserModel.getInstance().getJoin(new DataCallback<JobBrief[]>() {
             @Override
             public void success(String info, JobBrief[] data) {
                 if (data.length == 0)getView().setNull();
@@ -26,13 +25,10 @@ public class CollectPresenter extends BasePresenter<CollectActivity> {
     }
 
     @Override
-    protected void onCreateView(CollectActivity view) {
+    protected void onCreateView(JoinActivity view) {
         super.onCreateView(view);
         if(jobBriefs!=null){
             getView().addDataWithRefresh(jobBriefs);
         }
     }
-
-
-
 }

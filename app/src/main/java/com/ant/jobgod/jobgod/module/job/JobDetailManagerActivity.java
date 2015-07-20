@@ -9,7 +9,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -17,11 +16,14 @@ import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
-import com.ant.jobgod.jobgod.model.bean.Job;
+import com.ant.jobgod.jobgod.model.bean.JobDetail;
 import com.ant.jobgod.jobgod.util.RecentDateFormater;
 import com.ant.jobgod.jobgod.util.TimeTransform;
 import com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView;
 import com.facebook.drawee.view.SimpleDraweeView;
+
+import net.youmi.android.banner.AdSize;
+import net.youmi.android.banner.AdView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -83,12 +85,8 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
     LinearWrapContentRecyclerView relateJob;
     @InjectView(R.id.viewAd)
     LinearLayout viewAd;
-    @InjectView(R.id.applyCount)
-    TextView applyCount;
-    @InjectView(R.id.immediatelyApply)
-    TextView immediatelyApply;
-    @InjectView(R.id.tvApplyed)
-    TextView tvApplyed;
+    @InjectView(R.id.btnApply)
+    android.support.v7.widget.AppCompatButton btnApply;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,14 +94,18 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
         setContentView(R.layout.job_activity_detailmanager);
         ButterKnife.inject(this);
         jobImg.getHierarchy().setActualImageFocusPoint(new PointF(0.5f, 0));
-        immediatelyApply.setOnClickListener(v -> {
-            applyCount.setVisibility(View.GONE);
-            immediatelyApply.setVisibility(View.GONE);
-            tvApplyed.setVisibility(View.VISIBLE);
-        });
+        floatingActionButton.setOnClickListener(v -> getPresenter().collect());
+        viewAd.addView(new AdView(this, AdSize.SIZE_468x60));
     }
 
-    public void setData(Job data) {
+    public void setIsCollected(boolean isCollected){
+        floatingActionButton.setImageResource(isCollected ?
+                R.drawable.ic_star_focus :
+                R.drawable.ic_star_unfocus);
+    }
+
+    public void setData(JobDetail data) {
+        setIsCollected(data.isCollected());
         collapsingToolbar.setTitle(data.getTitle());
         timeIntro.setText(data.getTimeIntro());
         jobImg.setImageURI(Uri.parse(data.getImg()));
@@ -118,19 +120,17 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
         jobWage.setText(data.getMoneyIntro());
         jobBeginTime.setText(new TimeTransform(data.getJobBeginTime()).toString(new RecentDateFormater()));
         jobEndTime.setText(new TimeTransform(data.getJobEndTime()).toString(new RecentDateFormater()));
-
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_job_comment, menu);
+        getMenuInflater().inflate(R.menu.menu_job_comment,menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.discuss) {
+        if(item.getItemId()==R.id.discuss){
             getPresenter().toCommentActivity();
         }
         return super.onOptionsItemSelected(item);

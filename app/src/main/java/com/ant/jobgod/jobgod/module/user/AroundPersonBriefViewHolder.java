@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.AroundPersonBrief;
+import com.ant.jobgod.jobgod.util.RecentShortDateFormater;
+import com.ant.jobgod.jobgod.util.TimeTransform;
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
@@ -26,6 +28,10 @@ public class AroundPersonBriefViewHolder extends BaseViewHolder<AroundPersonBrie
     TextView tvSignature;
     @InjectView(R.id.ripple)
     MaterialRippleLayout ripple;
+    @InjectView(R.id.tvDate)
+    TextView tvDate;
+    @InjectView(R.id.tvDistance)
+    TextView tvDistance;
 
     /**
      * 重载构造方法
@@ -33,15 +39,26 @@ public class AroundPersonBriefViewHolder extends BaseViewHolder<AroundPersonBrie
      * @param parent
      */
     public AroundPersonBriefViewHolder(ViewGroup parent) {
-        super(parent, R.layout.user_item_person);
+        super(parent, R.layout.user_item_around);
         ButterKnife.inject(this, itemView);
     }
 
     @Override
     public void setData(AroundPersonBrief data) {
+        tvDate.setText(new TimeTransform(data.getAddSyncDate()).toString(new RecentShortDateFormater()));
+        if(data.getDistance() /1000<1){
+            tvDistance.setText(data.getDistance() + "m");
+        }else{
+            tvDistance.setText(String.format("%.1f", (float) data.getDistance() / 1000) + "km");
+        }
         imgFace.setImageURI(Uri.parse(data.getFace()));
         tvName.setText(data.getName());
         tvSignature.setText(data.getSign());
-        ripple.setOnClickListener(v -> itemView.getContext().startActivity(new Intent(itemView.getContext(), UserDetailActivity.class)));
+        ripple.setOnClickListener(v -> {
+            Intent i = new Intent(itemView.getContext(), UserDetailActivity.class);
+            i.putExtra("id",data.getId());
+            itemView.getContext().startActivity(i);
+
+        });
     }
 }

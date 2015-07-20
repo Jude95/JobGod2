@@ -21,7 +21,8 @@ public class AttentionToMePresenter extends Presenter<AttentionToMeFragment> {
         UserModel.getInstance().getAttentionToMe(new DataCallback<PersonBrief[]>() {
             @Override
             public void success(String info, PersonBrief[] data) {
-                getView().setUsersData(personBriefs = data);
+                if (data.length == 0 )getView().setNull();
+                else getView().setUsersData(personBriefs = data);
             }
         });
     }

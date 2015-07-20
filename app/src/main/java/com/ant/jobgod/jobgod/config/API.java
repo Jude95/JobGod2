@@ -23,13 +23,16 @@ public class API {
         public static final String GetUserDetail = BaseUrl + "home/user/getUserDetail";
         public static final String UpdateUserDetail = BaseUrl + "home/user/updateDetail";
 
-        public static final String GetAttentionFromMe = BaseUrl + "home/user/getUserDetail";
-        public static final String GetAttentionToMe = BaseUrl + "home/user/getPersonDetail";
+        public static final String GetAttentionFromMe = BaseUrl + "home/Index/getAttFromMe";
+        public static final String GetAttentionToMe = BaseUrl + "home/Index/getAttToMe";
 
         public static final String GetAroundFriends = BaseUrl + "home/user/getNearbyUser";
 
-        public static final String GetCollections = BaseUrl + "home/user/getPersonDetail";
-        public static final String GetJoin = BaseUrl + "home/user/getPersonDetail";
+        public static final String GetCollections = BaseUrl + "home/user/collectList";
+        public static final String GetJoin = BaseUrl + "home/user/applyList";
+
+        public static final String Attention = BaseUrl + "home/index/focusUser";
+        public static final String UnAttention = BaseUrl + "home/index/unFocusUser";
 
         //LBS
         public static final String SyncLocation = BaseUrl+"home/index/syncAddress";
@@ -41,9 +44,9 @@ public class API {
         public static final String GetRecommendList = BaseUrl + "home/job/getHotJobList";
         public static final String GetJobList = BaseUrl + "home/job/getJobList";
         public static final String GetTrades = BaseUrl + "home/index/getTrades";
-        public static final String GetJobDetail = "https://apiview.com/test/327/Public/getJobDetail";
-
-
+        public static final String GetJobDetail = BaseUrl + "home/job/jobDetail";
+        public static final String Collect = BaseUrl + "home/user/collect";
+        public static final String UnCollect = BaseUrl + "home/user/unColect";
 
 
     }

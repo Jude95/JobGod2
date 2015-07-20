@@ -3,7 +3,7 @@ package com.ant.jobgod.jobgod.model.bean;
 /**
  * Created by Mr.Jude on 2015/7/7.
  */
-public class Job  {
+public class JobDetail {
     private String id;
     private String bizId;
     private String title;
@@ -24,6 +24,32 @@ public class Job  {
     private int applyCount;
     private String phone;
     private String personCountIntro;
+    private boolean posted;
+    private boolean collected;
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setPersonCountIntro(String personCountIntro) {
+        this.personCountIntro = personCountIntro;
+    }
+
+    public boolean isPosted() {
+        return posted;
+    }
+
+    public void setPosted(boolean posted) {
+        this.posted = posted;
+    }
+
+    public boolean isCollected() {
+        return collected;
+    }
+
+    public void setCollected(boolean collected) {
+        this.collected = collected;
+    }
 
     public String getPersonCountIntro() {
         return personCountIntro;

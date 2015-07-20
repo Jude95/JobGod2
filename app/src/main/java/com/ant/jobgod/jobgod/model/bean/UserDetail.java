@@ -53,6 +53,15 @@ public class UserDetail implements Serializable{
     private int avgAbility;
     private int avgAttitude;
     private int avgCredit;
+    private boolean focus;
+
+    public boolean isFocus() {
+        return focus;
+    }
+
+    public void setIsAttention(boolean isAttention) {
+        this.focus = isAttention;
+    }
 
     public int getAvgAbility() {
         return avgAbility;

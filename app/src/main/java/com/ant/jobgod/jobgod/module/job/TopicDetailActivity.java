@@ -1,6 +1,5 @@
 package com.ant.jobgod.jobgod.module.job;
 
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -36,12 +35,7 @@ public class TopicDetailActivity extends BaseActivity<TopicDetailPresenter> {
 
 
     private TopicHeaderView headerView;
-
     private JobBriefAdapter jobBriefAdapter;
-
-    private Intent intent;
-
-    private Topic topic;
 
 
     @Override
@@ -49,17 +43,17 @@ public class TopicDetailActivity extends BaseActivity<TopicDetailPresenter> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.job_activity_topic);
         ButterKnife.inject(this);
-        intent = getIntent();
-        topic = (Topic) intent.getSerializableExtra("topic");
-        init();
-
     }
 
-    public void init() {
-        headerView = new TopicHeaderView();
+    public void setTopic(Topic topic) {
         recyclerJobBrief.setLayoutManager(new LinearLayoutManager(this));
         jobBriefAdapter = new JobBriefAdapter(this);
+
+
+        jobBriefAdapter.removeHeader(headerView);
+        headerView = new TopicHeaderView(topic);
         jobBriefAdapter.addHeader(headerView);
+
         recyclerJobBrief.setAdapter(jobBriefAdapter);
         imgTopic.setImageURI(Uri.parse(topic.getImg()));
         collapsingToolbar.setTitle(topic.getTitle());
@@ -72,6 +66,10 @@ public class TopicDetailActivity extends BaseActivity<TopicDetailPresenter> {
 
 
     class TopicHeaderView implements RecyclerArrayAdapter.ItemView {
+        private Topic topic;
+        public TopicHeaderView(Topic topic){
+            this.topic = topic;
+        }
 
         @Override
         public View onCreateView(ViewGroup parent) {
@@ -79,6 +77,7 @@ public class TopicDetailActivity extends BaseActivity<TopicDetailPresenter> {
             textView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             textView.setPadding(Utils.dip2px(16), Utils.dip2px(16), Utils.dip2px(16), Utils.dip2px(16));
             textView.setId(R.id.text);
+            textView.setText(topic.getIntro());
             View divider = new View(TopicDetailActivity.this);
             divider.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Utils.dip2px(1)));
             divider.setBackgroundColor(getResources().getColor(R.color.md_divider_white));
@@ -92,8 +91,6 @@ public class TopicDetailActivity extends BaseActivity<TopicDetailPresenter> {
 
         @Override
         public void onBindView(View headerView) {
-            TextView textView = (TextView) headerView.findViewById(R.id.text);
-            textView.setText(topic.getIntro());
         }
     }
 

@@ -275,7 +275,7 @@
             </FrameLayout>
 
             <FrameLayout
-                android:id="@+id/viewExperience"
+                android:id="@+id/viewJoin"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="@drawable/main_drawer_selector"

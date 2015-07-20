@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.balysv.materialripple.MaterialRippleLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    android:id="@+id/ripple"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:mrl_rippleColor="@color/Grey">
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_height="72dp">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/imgFace"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"
+            fresco:failureImage="@mipmap/error"
+            fresco:roundAsCircle="true"
+            fresco:progressBarImage="@mipmap/progress_bar"/>
+
+        <TextView android:id="@+id/tvName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/imgFace"
+            android:layout_toLeftOf="@+id/tvDate"
+            android:layout_marginTop="16dp"
+            android:textSize="@dimen/abc_text_size_medium_material"
+            android:singleLine="true"/>
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:gravity="center_vertical"
+            android:textSize="12sp"
+            android:text=""
+            android:textColor="@android:color/darker_gray"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/tvName"
+            />
+
+
+        <TextView android:id="@+id/tvSignature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvName"
+            android:layout_toRightOf="@+id/imgFace"
+            android:layout_toLeftOf="@+id/tvDistance"
+            android:textSize="@dimen/abc_text_size_body_1_material"
+            android:singleLine="true"/>
+
+        <TextView
+            android:id="@+id/tvDistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:gravity="center_vertical"
+            android:textSize="15sp"
+            android:text="1.6km"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/tvSignature"
+            />
+
+        <View android:layout_width="match_parent"
+            android:layout_height="@dimen/md_divider_height"
+            android:background="@color/md_divider_white"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+</com.balysv.materialripple.MaterialRippleLayout>

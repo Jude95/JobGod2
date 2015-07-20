@@ -1,5 +1,6 @@
 package com.ant.jobgod.jobgod.module.job;
 
+import android.graphics.PointF;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -15,11 +16,14 @@ import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
-import com.ant.jobgod.jobgod.model.bean.Job;
+import com.ant.jobgod.jobgod.model.bean.JobDetail;
 import com.ant.jobgod.jobgod.util.RecentDateFormater;
 import com.ant.jobgod.jobgod.util.TimeTransform;
 import com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView;
 import com.facebook.drawee.view.SimpleDraweeView;
+
+import net.youmi.android.banner.AdSize;
+import net.youmi.android.banner.AdView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -86,9 +90,19 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
         super.onCreate(savedInstanceState);
         setContentView(R.layout.job_activity_detailrelease);
         ButterKnife.inject(this);
+        jobImg.getHierarchy().setActualImageFocusPoint(new PointF(0.5f, 0));
+        floatingActionButton.setOnClickListener(v -> getPresenter().collect());
+        viewAd.addView(new AdView(this, AdSize.SIZE_468x60));
     }
 
-    public void setData(Job data) {
+    public void setIsCollected(boolean isCollected){
+        floatingActionButton.setImageResource(isCollected ?
+                R.drawable.ic_star_focus :
+                R.drawable.ic_star_unfocus);
+    }
+
+    public void setData(JobDetail data) {
+        setIsCollected(data.isCollected());
         collapsingToolbar.setTitle(data.getTitle());
         timeIntro.setText(data.getTimeIntro());
         jobImg.setImageURI(Uri.parse(data.getImg()));
@@ -102,8 +116,6 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
         jobAsk.setText(data.getAsk());
         jobWage.setText(data.getMoneyIntro());
         personCountIntro.setText(data.getPersonCountIntro());
-
-//        tvApply.setText();
     }
 
 

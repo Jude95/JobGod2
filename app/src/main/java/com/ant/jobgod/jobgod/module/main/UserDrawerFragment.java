@@ -17,8 +17,8 @@ import com.ant.jobgod.jobgod.module.setting.SettingActivity;
 import com.ant.jobgod.jobgod.module.user.AroundFriendsActivity;
 import com.ant.jobgod.jobgod.module.user.AttentionActivity;
 import com.ant.jobgod.jobgod.module.user.CollectActivity;
+import com.ant.jobgod.jobgod.module.user.JoinActivity;
 import com.ant.jobgod.jobgod.module.user.ModifyFaceActivity;
-import com.ant.jobgod.jobgod.module.user.UserDetailActivity;
 import com.ant.jobgod.jobgod.module.user.UserDataActivity;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -58,8 +58,8 @@ public class UserDrawerFragment extends NucleusFragment<UserDrawerPresenter> {
     FrameLayout viewInformation;
     @InjectView(R.id.viewCollection)
     FrameLayout viewCollection;
-    @InjectView(R.id.viewExperience)
-    FrameLayout viewExperience;
+    @InjectView(R.id.viewJoin)
+    FrameLayout viewJoin;
     @InjectView(R.id.viewSetting)
     FrameLayout viewSetting;
 
@@ -74,7 +74,7 @@ public class UserDrawerFragment extends NucleusFragment<UserDrawerPresenter> {
         viewInformation.setOnClickListener(v -> getPresenter().startActivity(UserDataActivity.class));
         viewNearby.setOnClickListener(v->getPresenter().startActivity(AroundFriendsActivity.class));
         viewAttention.setOnClickListener(v -> getPresenter().startActivity(AttentionActivity.class));
-        viewExperience.setOnClickListener(v -> getPresenter().startActivity(UserDetailActivity.class));
+        viewJoin.setOnClickListener(v -> getPresenter().startActivity(JoinActivity.class));
         viewCollection.setOnClickListener(v -> getPresenter().startActivity(CollectActivity.class));
         return view;
     }

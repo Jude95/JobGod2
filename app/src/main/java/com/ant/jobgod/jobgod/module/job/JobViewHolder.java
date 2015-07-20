@@ -41,7 +41,7 @@ public class JobViewHolder extends BaseViewHolder<JobBrief> {
         ripple.setOnClickListener(v -> {
             Intent intent = new Intent();
             intent.putExtra("id", data.getId());
-            switch (data.getSyle()) {
+            switch (data.getStyle()) {
                 case 0:
                     intent.setClass(ripple.getContext(), JobDetailReleaseActivity.class);
                     ripple.getContext().startActivity(intent);
@@ -59,10 +59,10 @@ public class JobViewHolder extends BaseViewHolder<JobBrief> {
         });
 
         switch (data.getStatus()){
-            case 0:
+            case 1:
                 tvMoneyIntro.setText(data.getMoneyIntro());
                 break;
-            case 1:
+            case 0:
                 tvMoneyIntro.setText("待审核");
                 break;
             case 2:
