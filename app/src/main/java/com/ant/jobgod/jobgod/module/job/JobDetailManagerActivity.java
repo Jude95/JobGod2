@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -82,8 +83,12 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
     LinearWrapContentRecyclerView relateJob;
     @InjectView(R.id.viewAd)
     LinearLayout viewAd;
-    @InjectView(R.id.btnApply)
-    android.support.v7.widget.AppCompatButton btnApply;
+    @InjectView(R.id.applyCount)
+    TextView applyCount;
+    @InjectView(R.id.immediatelyApply)
+    TextView immediatelyApply;
+    @InjectView(R.id.tvApplyed)
+    TextView tvApplyed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +96,11 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
         setContentView(R.layout.job_activity_detailmanager);
         ButterKnife.inject(this);
         jobImg.getHierarchy().setActualImageFocusPoint(new PointF(0.5f, 0));
+        immediatelyApply.setOnClickListener(v -> {
+            applyCount.setVisibility(View.GONE);
+            immediatelyApply.setVisibility(View.GONE);
+            tvApplyed.setVisibility(View.VISIBLE);
+        });
     }
 
     public void setData(Job data) {
@@ -108,17 +118,19 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
         jobWage.setText(data.getMoneyIntro());
         jobBeginTime.setText(new TimeTransform(data.getJobBeginTime()).toString(new RecentDateFormater()));
         jobEndTime.setText(new TimeTransform(data.getJobEndTime()).toString(new RecentDateFormater()));
+
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_job_comment,menu);
+        getMenuInflater().inflate(R.menu.menu_job_comment, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==R.id.discuss){
+        if (item.getItemId() == R.id.discuss) {
             getPresenter().toCommentActivity();
         }
         return super.onOptionsItemSelected(item);

@@ -292,17 +292,12 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:paddingTop="8dp"
-                android:layout_marginBottom="48dp"
+                android:layout_marginBottom="16dp"
                 android:textColor="@color/secondary_text_default_material_light"
                 android:lineSpacingExtra="8dp"
                 android:textIsSelectable="true"
                 android:textScaleX="1"
                 android:text=""/>
-
-
-
-
-
 
         <View
             android:layout_width="match_parent"
@@ -310,14 +305,55 @@
             android:layout_marginTop="16dp"
             android:background="@android:color/darker_gray"/>
 
-        <android.support.v7.widget.AppCompatButton android:id="@+id/btnApply"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="报名"
-            android:textSize="18sp"
-            android:textColor="?colorAccent"
-            android:gravity="center"
-            android:layout_margin="8dp"/>
+
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp">
+
+                <LinearLayout android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView android:id="@+id/applyCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:gravity="center"
+                        android:textSize="18sp"
+                        android:textColor="?colorPrimary"
+                        android:text="已报12人"
+                        android:background="@drawable/job_applyborder"/>
+
+                    <TextView android:id="@+id/immediatelyApply"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="立即报名"
+                        android:padding="8dp"
+                        android:gravity="center"
+                        android:textSize="18sp"
+                        android:background="?colorPrimary"
+                        android:textColor="@color/White"/>
+                </LinearLayout>
+
+                <TextView android:id="@+id/tvApplyed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/White"
+                    android:background="?colorPrimary"
+                    android:visibility="gone"
+                    android:text="已报名"/>
+
+            </FrameLayout>
+
+
+
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -455,31 +491,37 @@
 
             </LinearLayout>
 
+        </android.support.v7.widget.CardView>
 
 
 
 
-                </android.support.v7.widget.CardView>
 
-                <View
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp">
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="0.4dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:background="@android:color/darker_gray"/>
+                    android:layout_height="wrap_content">
 
-                <com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView
-                    android:id="@+id/relateJob"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="相关推荐"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"/>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.4dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:background="@android:color/darker_gray"/>
+                    <com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView
+                        android:id="@+id/relateJob"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"/>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
