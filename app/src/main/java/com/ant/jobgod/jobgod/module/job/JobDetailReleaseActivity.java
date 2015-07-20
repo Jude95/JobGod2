@@ -2,8 +2,12 @@ package com.ant.jobgod.jobgod.module.job;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.widget.Toolbar;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -12,6 +16,7 @@ import com.ant.jobgod.jobgod.app.BaseActivity;
 import com.ant.jobgod.jobgod.model.bean.Job;
 import com.ant.jobgod.jobgod.util.RecentDateFormater;
 import com.ant.jobgod.jobgod.util.TimeTransform;
+import com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import butterknife.ButterKnife;
@@ -57,6 +62,22 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
     TextView personCountIntro;
     @InjectView(R.id.tvApply)
     TextView tvApply;
+    @InjectView(R.id.shareQQ)
+    ImageView shareQQ;
+    @InjectView(R.id.shareQQSpace)
+    ImageView shareQQSpace;
+    @InjectView(R.id.shareSina)
+    ImageView shareSina;
+    @InjectView(R.id.shareWeChat)
+    ImageView shareWeChat;
+    @InjectView(R.id.relateJob)
+    LinearWrapContentRecyclerView relateJob;
+    @InjectView(R.id.viewAd)
+    LinearLayout viewAd;
+    @InjectView(R.id.toolbar)
+    Toolbar toolbar;
+    @InjectView(R.id.appBar)
+    AppBarLayout appBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
