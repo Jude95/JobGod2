@@ -22,7 +22,7 @@ public abstract class BaseRecyclerActivity<T extends Presenter,E> extends BaseAc
     protected EasyRecyclerView recyclerView;
     protected DataAdapter adapter;
     private RecyclerArrayAdapter.ItemView mEmptyFooter;
-
+    private boolean isMoreAble = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,12 +42,7 @@ public abstract class BaseRecyclerActivity<T extends Presenter,E> extends BaseAc
     }
 
     public void setLoadMoreAble(){
-        adapter.setMore(R.layout.view_more, new RecyclerArrayAdapter.OnLoadMoreListener() {
-            @Override
-            public void onLoadMore() {
-                BaseRecyclerActivity.this.onLoadMore();
-            }
-        });
+        isMoreAble = true;
     }
 
     public DataAdapter getAdapter(){
@@ -68,7 +63,7 @@ public abstract class BaseRecyclerActivity<T extends Presenter,E> extends BaseAc
     public void addDataWithRefresh(E[] data){
         adapter.clear();
         adapter.addAll(data);
-        adapter.setMore(R.layout.view_more, () -> onLoadMore());
+        if (isMoreAble)adapter.setMore(R.layout.view_more, () -> onLoadMore());
     }
 
     //当最后一页，手动调用
