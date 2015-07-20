@@ -20,8 +20,8 @@
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         fresco:actualImageScaleType="focusCrop"
-        fresco:failureImage="@mipmap/error"
-        fresco:progressBarImage="@mipmap/progress_bar"/>
+        fresco:failureImage="@drawable/ic_error"
+        fresco:progressBarImage="@drawable/ic_progressbar"/>
 
             <TextView android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"

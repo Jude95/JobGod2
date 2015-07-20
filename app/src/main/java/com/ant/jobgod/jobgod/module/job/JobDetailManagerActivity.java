@@ -1,6 +1,5 @@
 package com.ant.jobgod.jobgod.module.job;
 
-import android.content.Intent;
 import android.graphics.PointF;
 import android.net.Uri;
 import android.os.Bundle;
@@ -113,14 +112,14 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_job_discuss,menu);
+        getMenuInflater().inflate(R.menu.menu_job_comment,menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId()==R.id.discuss){
-            startActivity(new Intent(this,));
+            getPresenter().toCommentActivity();
         }
         return super.onOptionsItemSelected(item);
     }

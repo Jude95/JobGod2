@@ -4,7 +4,7 @@
 
     <item android:id="@+id/discuss"
         android:title="评论"
-        android:icon="@drawable/job_discuss"
-        app:showAsAction="always"/>
+        android:icon="@drawable/job_comment"
+        app:showAsAction="always" />
 
 </menu>
