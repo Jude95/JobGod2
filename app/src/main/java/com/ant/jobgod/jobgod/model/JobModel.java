@@ -5,6 +5,7 @@ import android.content.Context;
 import com.android.http.RequestManager;
 import com.android.http.RequestMap;
 import com.ant.jobgod.jobgod.config.API;
+import com.ant.jobgod.jobgod.model.bean.CommentPage;
 import com.ant.jobgod.jobgod.model.bean.JobDetail;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.bean.JobBriefPage;
@@ -116,5 +117,16 @@ public class JobModel extends AbsModel{
 
     public void unCollect(String id,StatusCallback callback){
         RequestManager.getInstance().post(API.URL.UnCollect,new RequestMap("id",id),callback);
+    }
+
+    public void getCommentList(String id,int page,int count,DataCallback<CommentPage> callback){
+        RequestMap params = new RequestMap("id",id);
+        params.put("page",page+"");
+        params.put("count",count+"");
+        RequestManager.getInstance().post(API.URL.GetComment,params,callback);
+    }
+
+    public void Comment(String id,StatusCallback callback){
+        RequestManager.getInstance().post(API.URL.Comment,new RequestMap("id",id),callback);
     }
 }

@@ -87,7 +87,7 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
     LinearLayout viewAd;
     @InjectView(R.id.btnApply)
     android.support.v7.widget.AppCompatButton btnApply;
-
+    private MenuItem mCommentMenuItem;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,19 +120,25 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
         jobWage.setText(data.getMoneyIntro());
         jobBeginTime.setText(new TimeTransform(data.getJobBeginTime()).toString(new RecentDateFormater()));
         jobEndTime.setText(new TimeTransform(data.getJobEndTime()).toString(new RecentDateFormater()));
+        setCommentCount(data.getCommentCount());
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_job_detail,menu);
+        getMenuInflater().inflate(R.menu.menu_job_detail, menu);
+        mCommentMenuItem = menu.findItem(R.id.comment);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==R.id.discuss){
+        if(item.getItemId()==R.id.comment){
             getPresenter().toCommentActivity();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void setCommentCount(int count){
+        mCommentMenuItem.setTitle(count+"条评论");
     }
 }
