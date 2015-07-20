@@ -121,7 +121,7 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_job_comment, menu);
+        getMenuInflater().inflate(R.menu.menu_job_detail, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
