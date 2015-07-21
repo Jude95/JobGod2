@@ -24,10 +24,12 @@ public class UserModel  extends AbsModel{
     @Override
     protected void onAppCreate(Context ctx) {
         super.onAppCreate(ctx);
-    }
-
-    public void getUserDetail(DataCallback<UserDetail> callback){
-        
+        getJoin(new DataCallback<JobBrief[]>() {
+            @Override
+            public void success(String info, JobBrief[] data) {
+                //Do nothing.because I can't write null for the callback.
+            }
+        });
     }
 
     public void modifyName(String name,StatusCallback callback){
@@ -54,7 +56,12 @@ public class UserModel  extends AbsModel{
     }
 
     public void getJoin(DataCallback<JobBrief[]> callback){
-        RequestManager.getInstance().post(API.URL.GetJoin,null,callback);
+        RequestManager.getInstance().post(API.URL.GetJoin,null,callback.add(new DataCallback<JobBrief[]>() {
+            @Override
+            public void success(String info, JobBrief[] data) {
+                RongYunModel.getInstance().syncGroups(data);
+            }
+        }));
     }
 
     public void getUserDetail(String id,DataCallback<UserDetail> callback){

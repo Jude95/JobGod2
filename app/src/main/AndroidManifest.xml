@@ -143,12 +143,30 @@
             android:label="附近朋友"/>
         <activity android:name=".module.user.JoinActivity"
             android:label="我的工作"/>
-
-
-
         <activity android:name=".module.job.CommentActivity"
             android:label="评论"/>
-
+        <activity android:name=".module.user.ChatListActivity"
+            android:label="消息列表">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:host="com.ant.jobgod.jobgod"
+                    android:pathPrefix="/conversationlist"
+                    android:scheme="rong" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".module.user.ChatActivity"
+            android:label="聊天">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:host="com.ant.jobgod.jobgod"
+                     android:pathPrefix="/conversation/"
+                    android:scheme="rong" />
+            </intent-filter>
+        </activity>
 
 
         <!--ImageTool-->
