@@ -79,4 +79,5 @@ dependencies {
     compile project(':imagetool')
     compile 'cn.bingoogolapple:bga-flowlayout:1.0.0@aar'
     compile 'com.android.support:multidex:1.0.0'
+    compile 'com.qiniu:qiniu-android-sdk:7.0.7'
 }

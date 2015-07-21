@@ -1,5 +1,6 @@
 package com.ant.jobgod.jobgod.module.user;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.ant.jobgod.jobgod.app.BasePresenter;
@@ -39,5 +40,11 @@ public class UserDetailPresenter extends BasePresenter<UserDetailActivity> {
         else
             UserModel.getInstance().attention(id, null);
         userDetail.setIsAttention(!userDetail.isFocus());
+    }
+
+    public void chat(){
+        Intent i = new Intent(getView(),ChatActivity.class);
+        i.putExtra("id",id);
+        getView().startActivity(i);
     }
 }

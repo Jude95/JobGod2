@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.ant.jobgod.jobgod.model.AccountModel;
+import com.ant.jobgod.jobgod.model.RongYunModel;
 import com.ant.jobgod.jobgod.model.bean.AccountData;
 import com.ant.jobgod.jobgod.module.launch.UserLoginActivity;
 import com.ant.jobgod.jobgod.util.Utils;
@@ -19,16 +20,19 @@ public class UserDrawerPresenter extends Presenter<UserDrawerFragment> {
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
         AccountModel.getInstance().registerEvent(this);
+        RongYunModel.getInstance().registerEvent(this);
         AccountData info = AccountModel.getInstance().getAccount();
         if (info != null){
             getView().setAccount(info);
         }
+
+    }
+    public void onEvent(Integer i){
+        getView().setMessageCount(i);
     }
 
     public void onEvent(AccountData info){
-        if (info != null){
-            getView().setAccount(info);
-        }
+        if (info != null) getView().setAccount(info);
     }
 
 

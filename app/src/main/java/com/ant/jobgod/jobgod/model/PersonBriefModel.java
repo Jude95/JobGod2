@@ -33,7 +33,9 @@ public class PersonBriefModel extends AbsModel {
     protected void onAppCreate(Context ctx) {
         syncPersonBriefs();
     }
-
+    public interface PersonBriefCallback{
+        void onCallback(PersonBrief personBrief);
+    }
     public PersonBrief getPersonBriefOnBlock(String id){
         if (id == null) return null;
         PersonBrief person = new Select().from(PersonBrief.class).where("userId = ?", id).executeSingle();
@@ -46,9 +48,27 @@ public class PersonBriefModel extends AbsModel {
         return person;
     }
 
+    public void getPersonBrief(String id,PersonBriefCallback callback){
+        if (id == null) {
+            callback.onCallback(null);
+            return;
+        }
+        PersonBrief person = new Select().from(PersonBrief.class).where("userId = ?", id).executeSingle();
+        if (person!=null){
+            callback.onCallback(person);
+        }else{
+            RequestManager.getInstance().post(API.URL.GetPersonBrief, new RequestMap("id", id), new DataCallback<PersonBrief>() {
+                @Override
+                public void success(String info, PersonBrief data) {
+                    callback.onCallback(data);
+                }
+            });
+        }
+    }
+
     private PersonBrief getPersonFromServerDirect(final String id){
         PersonBrief person = null;
-        String response = Utils.sendPost(API.URL.GetPersonBrief,"userId="+id);
+        String response = Utils.sendPost(API.URL.GetPersonBrief,"id="+id);
 
         JSONObject jsonObject = null;
         try {

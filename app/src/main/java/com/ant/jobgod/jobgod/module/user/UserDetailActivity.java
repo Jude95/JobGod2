@@ -6,6 +6,8 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -96,5 +98,17 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
         like.setText(detail.getLike());
         specialty.setText(detail.getSpecialty());
         intro.setText(detail.getIntro());
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.chat)getPresenter().chat();
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+            getMenuInflater().inflate(R.menu.menu_user_detail,menu);
+        return true;
     }
 }
