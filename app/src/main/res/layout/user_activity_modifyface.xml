@@ -6,12 +6,12 @@
     <include layout="@layout/include_toolbar"/>
 
 
-    <ImageView android:id="@+id/img_face"
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/img_face"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:scaleType="centerCrop"
-        android:layout_centerInParent="true"
-        android:src="@mipmap/ic_placeholder"/>
+        android:layout_centerInParent="true"/>
 
     <LinearLayout android:orientation="horizontal"
         android:layout_width="match_parent"

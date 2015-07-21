@@ -33,13 +33,24 @@ public class UserModel  extends AbsModel{
     }
 
     public void modifyName(String name,StatusCallback callback){
-        RequestManager.getInstance().post(API.URL.ModifyName,new RequestMap("name",name),callback);
+        RequestManager.getInstance().post(API.URL.ModifyName, new RequestMap("name", name), callback);
     }
     public void modifySign(String sign,StatusCallback callback){
         RequestManager.getInstance().post(API.URL.ModifySign,new RequestMap("sign",sign),callback);
     }
-    public void modifyFace(String face,StatusCallback callback){
-        RequestManager.getInstance().post(API.URL.ModifyFace,new RequestMap("face",face),callback);
+    public void modifyFace(String small,String large,StatusCallback callback){
+        RequestMap params = new RequestMap();
+        params.put("small",small);
+        params.put("large",large);
+        RequestManager.getInstance().post(API.URL.ModifyFace,params,callback);
+    }
+
+    public void authentication(String name,String idNumber,String path,StatusCallback callback){
+        RequestMap params = new RequestMap();
+        params.put("name",name);
+        params.put("idNumber",idNumber);
+        params.put("path",path);
+        RequestManager.getInstance().post(API.URL.Authentication,params,callback);
     }
 
 

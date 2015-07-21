@@ -13,6 +13,9 @@ import com.ant.jobgod.imagetool.imageprovider.ImageProvider;
 import com.ant.jobgod.imagetool.imageprovider.OnImageSelectListener;
 import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.AccountModel;
+import com.ant.jobgod.jobgod.model.RemoteFileModel;
+import com.ant.jobgod.jobgod.model.UserModel;
+import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.facebook.common.references.CloseableReference;
@@ -46,6 +49,7 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
     @Override
     protected void onCreateView(ModifyFaceActivity view) {
         super.onCreateView(view);
+        Utils.Log(AccountModel.getInstance().getAccount().getFace());
         getView().setImgFace(Uri.parse(AccountModel.getInstance().getAccount().getFace()));
     }
 
@@ -53,7 +57,6 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
         mProvider.getImageFromCamera(new OnImageSelectListener<ImageElement>() {
             @Override
             public void onImageSelect(ImageElement imageElement) {
-                Utils.Log("uri----:"+imageElement.getLargeImage());
                 startCrop(imageElement.getLargeImage());
             }
         });
@@ -79,7 +82,7 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
                 DataSubscriber dataSubscriber = new BaseBitmapDataSubscriber() {
                     @Override
                     protected void onNewResultImpl(Bitmap bitmap) {
-                        File temp = FileManager.getInstance().getChild(FileManager.Dir.Image,TEMP_IMG);
+                        File temp = FileManager.getInstance().getChild(FileManager.Dir.Image, TEMP_IMG);
                         Utils.BitmapSave(bitmap, temp.getPath());
                         getView().dismissProgress();
                         startCrop(Uri.fromFile(temp));
@@ -108,12 +111,39 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
         getView().startActivityForResult(cropImage.getIntent(getView()), REQUEST_CROP_PICTURE);
     }
 
+    public void upload(){
+        getView().showProgress("上传中");
+        RemoteFileModel.getInstance().putImage(FileManager.getInstance().getChild(FileManager.Dir.Image, mFinalImg), new RemoteFileModel.UploadImageListener() {
+            @Override
+            public void onComplete(RemoteFileModel.SizeImage path) {
+                UserModel.getInstance().modifyFace(path.getSmallImage(), path.getLargeImage(), new StatusCallback() {
+                    @Override
+                    public void success(String info) {
+                        Utils.Toast("上传成功");
+                        AccountModel.getInstance().updateAccountData();
+                        getView().finish();
+                    }
+
+                    @Override
+                    public void result(int status, String info) {
+                        getView().dismissProgress();
+                    }
+                });
+            }
+
+            @Override
+            public void onError() {
+                Utils.Toast("上传失败");
+                getView().dismissProgress();
+            }
+        });
+    }
+
     @Override
     protected void onResult(int requestCode, int resultCode, Intent data) {
         super.onResult(requestCode, resultCode, data);
         mProvider.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CROP_PICTURE && resultCode == Activity.RESULT_OK){
-            Utils.Log("uri:"+FileManager.getInstance().getChild(FileManager.Dir.Image, mFinalImg));
             getView().setImgFace(Uri.fromFile(FileManager.getInstance().getChild(FileManager.Dir.Image, mFinalImg)));
             //裁剪成功，删除临时文件
             FileManager.getInstance().deletChild(FileManager.Dir.Image, TEMP_IMG);

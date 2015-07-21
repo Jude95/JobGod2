@@ -19,7 +19,7 @@ public class API {
         public static final String ModifyName = BaseUrl +"Home/index/modName";
         public static final String ModifySign = BaseUrl +"Home/index/modSign";
         public static final String ModifyFace = BaseUrl +"Home/index/modFace";
-        public static final String GetUserData = BaseUrl +"home/user/getMyData";
+        public static final String GetUserData = BaseUrl +"home/user/refreshMyData";
         public static final String GetUserDetail = BaseUrl + "home/user/getUserDetail";
         public static final String UpdateUserDetail = BaseUrl + "home/user/updateDetail";
 
@@ -33,6 +33,9 @@ public class API {
 
         public static final String Attention = BaseUrl + "home/index/focusUser";
         public static final String UnAttention = BaseUrl + "home/index/unFocusUser";
+
+        public static final String Authentication = BaseUrl + "home/user/authentication";
+        public static final String QiNiuToken = BaseUrl + "home/index/qiniuToken";
 
         //LBS
         public static final String SyncLocation = BaseUrl+"home/index/syncAddress";

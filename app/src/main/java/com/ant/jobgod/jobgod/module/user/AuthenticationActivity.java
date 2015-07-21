@@ -4,11 +4,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.AppCompatButton;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.ImageView;
 
-import com.android.http.RequestMap;
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
 
@@ -37,31 +34,27 @@ public class AuthenticationActivity extends BaseActivity<AuthenticationPresenter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_activity_authentication);
         ButterKnife.inject(this);
-
         imgID.setOnClickListener(v -> getPresenter().getImageFromCamera());
-
+        sendCode.setOnClickListener(v-> checkToUpload());
     }
 
     public void setImg(Uri uri){
         imgID.setImageURI(uri);
     }
 
-
-    public RequestMap setParam() {
-        RequestMap param = new RequestMap();
-//        param.put("name", name.getEditText().getText().toString());
-        return param;
+    public void checkToUpload(){
+        String name = realName.getEditText().getText().toString();
+        String idNumber = ID.getEditText().getText().toString();
+        if (name.trim().isEmpty()){
+            realName.setError("姓名不能为空");
+            return;
+        }
+        if (idNumber.trim().length() != 18){
+            ID.setError("身份证格式错误");
+            return;
+        }
+        getPresenter().upload(name,idNumber);
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_user_authentication, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
-    }
 }

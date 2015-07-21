@@ -28,6 +28,16 @@ public class JobDetail {
     private boolean collected;
     private int commentCount;
 
+    public JobBrief[] getRelative() {
+        return relative;
+    }
+
+    public void setRelative(JobBrief[] relative) {
+        this.relative = relative;
+    }
+
+    private JobBrief[] relative;
+
     public int getCommentCount() {
         return commentCount;
     }

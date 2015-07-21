@@ -16,4 +16,5 @@ public class CommonModel extends AbsModel {
     public void getBanner(DataCallback<Banner[]> callback){
         RequestManager.getInstance().post(API.URL.GetBanner, null, callback);
     }
+
 }

@@ -16,11 +16,13 @@ import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
+import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.bean.JobDetail;
 import com.ant.jobgod.jobgod.util.RecentDateFormater;
 import com.ant.jobgod.jobgod.util.TimeTransform;
 import com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 
 import net.youmi.android.banner.AdSize;
 import net.youmi.android.banner.AdView;
@@ -87,7 +89,9 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
     LinearLayout viewAd;
     @InjectView(R.id.btnApply)
     android.support.v7.widget.AppCompatButton btnApply;
+
     private MenuItem mCommentMenuItem;
+    private RecyclerArrayAdapter<JobBrief> mRelativeJobsAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,7 +125,15 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
         jobBeginTime.setText(new TimeTransform(data.getJobBeginTime()).toString(new RecentDateFormater()));
         jobEndTime.setText(new TimeTransform(data.getJobEndTime()).toString(new RecentDateFormater()));
         setCommentCount(data.getCommentCount());
+        setRelative(data.getRelative());
     }
+
+
+    public void setRelative(JobBrief[] jobs){
+        relateJob.setAdapter(mRelativeJobsAdapter = new JobBriefAdapter(this));
+        mRelativeJobsAdapter.addAll(jobs);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

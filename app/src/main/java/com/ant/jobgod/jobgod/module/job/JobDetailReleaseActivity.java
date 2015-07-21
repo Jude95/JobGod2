@@ -85,6 +85,8 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
     @InjectView(R.id.appBar)
     AppBarLayout appBar;
     private MenuItem mCommentMenuItem;
+    private int commentCount;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,11 +121,11 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
         setCommentCount(data.getCommentCount());
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_job_detail, menu);
         mCommentMenuItem = menu.findItem(R.id.comment);
+        mCommentMenuItem.setTitle(mCommentMenuItem+"条评论");
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -135,7 +137,9 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
         return super.onOptionsItemSelected(item);
     }
 
+
     public void setCommentCount(int count){
-        mCommentMenuItem.setTitle(count+"条评论");
+        commentCount = count;
+        if (mCommentMenuItem!=null)mCommentMenuItem.setTitle(count+"条评论");
     }
 }
