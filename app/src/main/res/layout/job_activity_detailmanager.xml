@@ -300,13 +300,46 @@
                 android:text=""/>
 
 
-            <android.support.v7.widget.AppCompatButton android:id="@+id/btnApply"
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="报名"
-                android:textSize="18sp"
-                android:gravity="center"
-                android:paddingLeft="16dp"/>
+                android:layout_margin="8dp">
+
+                <LinearLayout android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView android:id="@+id/applayCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="已报12人"
+                        android:textSize="16sp"
+                        android:background="@drawable/job_applyborder"
+                        android:textColor="?colorPrimary"/>
+
+                    <TextView android:id="@+id/immediatelyApply"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="立即报名"
+                        android:textSize="16sp"
+                        android:background="?colorPrimary"
+                        android:textColor="@color/White"/>
+
+                </LinearLayout>
+
+                <TextView android:id="@+id/applyed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:textSize="16sp"
+                    android:background="?colorPrimary"
+                    android:textColor="@color/White"
+                    android:visibility="gone"
+                    android:text="已报名"/>
+
+            </FrameLayout>
 
             <include layout="@layout/include_share"/>
 

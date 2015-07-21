@@ -7,152 +7,55 @@ import java.io.Serializable;
  */
 public class UserDetail implements Serializable{
 
-    public long getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(long birthday) {
-        this.birthday = birthday;
-    }
-
-    /**
-     * specialty : 编程
-     * address : 重庆邮电大学
-     * gender : 1
-     * eduLevel : 本科
-     * like : 写代码
-     * sign : 呵呵哒
-     * certificate : 无
-     * face : https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1501688796,3410507415&fm=111&gp=0.jpg
-     * character : 脾气温和
-     * award : 无
-     * major : 计算机
-     * school : 重庆邮电大学
-     * intro : 记录良好
-     * name : alien
-     * id : 1
-     * height : 170
-     */
-
     private long birthday;
+    private int gender;
+    private String name;
+    private String sign;
+    private String face;
     private String specialty;
-    private String gender;
     private String eduLevel;
     private String like;
-    private String sign;
     private String certificate;
-    private String face;
     private String character;
     private String award;
     private String major;
     private String school;
     private String intro;
-    private String name;
-    private String id;
-    private String height;
+    private String address;
+    private int id;
+    private int height;
     private int avgAbility;
     private int avgAttitude;
     private int avgCredit;
     private boolean focus;
 
-    public boolean isFocus() {
-        return focus;
+
+    public String getName() {
+        return name;
     }
 
-    public void setIsAttention(boolean isAttention) {
-        this.focus = isAttention;
+    public String getSign() {
+        return sign;
     }
 
-    public int getAvgAbility() {
-        return avgAbility;
+    public String getFace() {
+        return face;
     }
 
-    public void setAvgAbility(int avgAbility) {
-        this.avgAbility = avgAbility;
+    public String getAddress() {
+        return address;
     }
 
-    public int getAvgAttitude() {
-        return avgAttitude;
+    public long getBirthday() {
+        return birthday;
     }
 
-    public void setAvgAttitude(int avgAttitude) {
-        this.avgAttitude = avgAttitude;
-    }
-
-    public int getAvgCredit() {
-        return avgCredit;
-    }
-
-    public void setAvgCredit(int avgCredit) {
-        this.avgCredit = avgCredit;
-    }
-
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public void setEduLevel(String eduLevel) {
-        this.eduLevel = eduLevel;
-    }
-
-    public void setLike(String like) {
-        this.like = like;
-    }
-
-    public void setSign(String sign) {
-        this.sign = sign;
-    }
-
-    public void setCertificate(String certificate) {
-        this.certificate = certificate;
-    }
-
-    public void setFace(String face) {
-        this.face = face;
-    }
-
-    public void setCharacter(String character) {
-        this.character = character;
-    }
-
-    public void setAward(String award) {
-        this.award = award;
-    }
-
-    public void setMajor(String major) {
-        this.major = major;
-    }
-
-    public void setSchool(String school) {
-        this.school = school;
-    }
-
-    public void setIntro(String intro) {
-        this.intro = intro;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setHeight(String height) {
-        this.height = height;
+    public int getGender() {
+        return gender;
     }
 
     public String getSpecialty() {
         return specialty;
-    }
-
-    public String getGender() {
-        return gender;
     }
 
     public String getEduLevel() {
@@ -163,16 +66,8 @@ public class UserDetail implements Serializable{
         return like;
     }
 
-    public String getSign() {
-        return sign;
-    }
-
     public String getCertificate() {
         return certificate;
-    }
-
-    public String getFace() {
-        return face;
     }
 
     public String getCharacter() {
@@ -195,15 +90,119 @@ public class UserDetail implements Serializable{
         return intro;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public String getHeight() {
+    public int getHeight() {
         return height;
     }
+
+    public int getAvgAbility() {
+        return avgAbility;
+    }
+
+    public int getAvgAttitude() {
+        return avgAttitude;
+    }
+
+    public int getAvgCredit() {
+        return avgCredit;
+    }
+
+    public boolean isFocus() {
+        return focus;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setBirthday(long birthday) {
+        this.birthday = birthday;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
+
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
+    }
+
+    public void setEduLevel(String eduLevel) {
+        this.eduLevel = eduLevel;
+    }
+
+    public void setLike(String like) {
+        this.like = like;
+    }
+
+    public void setCertificate(String certificate) {
+        this.certificate = certificate;
+    }
+
+    public void setCharacter(String character) {
+        this.character = character;
+    }
+
+    public void setAward(String award) {
+        this.award = award;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSign(String sign) {
+        this.sign = sign;
+    }
+
+    public void setFace(String face) {
+        this.face = face;
+    }
+
+    public void setAvgAbility(int avgAbility) {
+        this.avgAbility = avgAbility;
+    }
+
+    public void setAvgAttitude(int avgAttitude) {
+        this.avgAttitude = avgAttitude;
+    }
+
+    public void setAvgCredit(int avgCredit) {
+        this.avgCredit = avgCredit;
+    }
+
+    public void setFocus(boolean focus) {
+        this.focus = focus;
+    }
+
+
+
+    public void setIsAttention(boolean isAttention){
+
+    }
+
+
 }

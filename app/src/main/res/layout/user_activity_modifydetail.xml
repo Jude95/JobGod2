@@ -48,66 +48,6 @@
 
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        
-                        android:layout_marginLeft="16dp"
-                        android:textSize="@dimen/abc_text_size_subhead_material"
-                        android:text="姓名"/>
-
-                    <TextView android:id="@+id/name"
-                        android:layout_width="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:layout_marginLeft="16dp"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_body_1_material"
-                        android:textColor="@color/Grey"
-                        android:text="林龙鑫"/>
-
-                </LinearLayout>
-
-                <View android:layout_width="match_parent"
-                    android:layout_height="@dimen/md_divider_height"
-                    android:background="@color/md_divider_black"/>
-
-                <LinearLayout android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:gravity="center_vertical">
-
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        
-                        android:layout_marginLeft="16dp"
-                        android:textSize="@dimen/abc_text_size_subhead_material"
-                        android:text="签名"/>
-
-                    <TextView android:id="@+id/signature"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_body_1_material"
-                        android:textColor="@color/Grey"
-                        android:text="呵呵哒"/>
-
-                </LinearLayout>
-
-
-                <View android:layout_width="match_parent"
-                    android:layout_height="@dimen/md_divider_height"
-                    android:background="@color/md_divider_black"/>
-
-                <LinearLayout android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:gravity="center_vertical">
-
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:textSize="@dimen/abc_text_size_subhead_material"
                         android:text="性别"/>
@@ -154,6 +94,36 @@
                         android:text="170cm"/>
 
                 </LinearLayout>
+
+
+                <View android:layout_width="match_parent"
+                    android:layout_height="@dimen/md_divider_height"
+                    android:background="@color/md_divider_black"/>
+
+                <LinearLayout android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical">
+
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:textSize="@dimen/abc_text_size_subhead_material"
+                        android:text="生日"/>
+
+                    <TextView android:id="@+id/birthday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:textSize="@dimen/abc_text_size_body_1_material"
+                        android:textColor="@color/Grey"
+                        android:text="1995-01-01"/>
+
+                </LinearLayout>
+
 
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/md_divider_height"

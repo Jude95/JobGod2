@@ -13,11 +13,13 @@ import com.ant.jobgod.jobgod.app.BasePresenter;
 public class ModifyDetailPresenter extends BasePresenter<ModifyDetailActivity> {
 
     private final int REQUEST_CODE = 1;
-    private final int RESULT_CODE = 0;
+
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
+        intent=new Intent(getView(), TextWriteActivity.class);
     }
 
     @Override
@@ -32,10 +34,45 @@ public class ModifyDetailPresenter extends BasePresenter<ModifyDetailActivity> {
          */
     }
 
-    public void toModifyDataActivityForResult(ModifyDetailActivity.InfoFlag flag, TextView view) {
-        Intent intent = new Intent(getView(), TextWriteActivity.class);
+    public void awardToModifyDataActivityForResult(ModifyDetailActivity.InfoFlag flag, TextView view) {
         intent.putExtra(ModifyDetailActivity.KEY_FLAG, flag);
         intent.putExtra("data", view.getText().toString());
+        getView().getUserData().setAward(view.getText().toString());
+        getView().startActivityForResult(intent, REQUEST_CODE);
+    }
+
+    public void certificateToModifyDataActivityForResult(ModifyDetailActivity.InfoFlag flag, TextView view) {
+        intent.putExtra(ModifyDetailActivity.KEY_FLAG, flag);
+        intent.putExtra("data", view.getText().toString());
+        getView().getUserData().setCertificate(view.getText().toString());
+        getView().startActivityForResult(intent, REQUEST_CODE);
+    }
+
+    public void characterToModifyDataActivityForResult(ModifyDetailActivity.InfoFlag flag, TextView view) {
+        intent.putExtra(ModifyDetailActivity.KEY_FLAG, flag);
+        intent.putExtra("data", view.getText().toString());
+        getView().getUserData().setCharacter(view.getText().toString());
+        getView().startActivityForResult(intent, REQUEST_CODE);
+    }
+
+    public void introToModifyDataActivityForResult(ModifyDetailActivity.InfoFlag flag, TextView view) {
+        intent.putExtra(ModifyDetailActivity.KEY_FLAG, flag);
+        intent.putExtra("data", view.getText().toString());
+        getView().getUserData().setIntro(view.getText().toString());
+        getView().startActivityForResult(intent, REQUEST_CODE);
+    }
+
+    public void likeToModifyDataActivityForResult(ModifyDetailActivity.InfoFlag flag, TextView view) {
+        intent.putExtra(ModifyDetailActivity.KEY_FLAG, flag);
+        intent.putExtra("data", view.getText().toString());
+        getView().getUserData().setLike(view.getText().toString());
+        getView().startActivityForResult(intent, REQUEST_CODE);
+    }
+
+    public void specialtyToModifyDataActivityForResult(ModifyDetailActivity.InfoFlag flag, TextView view) {
+        intent.putExtra(ModifyDetailActivity.KEY_FLAG, flag);
+        intent.putExtra("data", view.getText().toString());
+        getView().getUserData().setSpecialty(view.getText().toString());
         getView().startActivityForResult(intent, REQUEST_CODE);
     }
 
