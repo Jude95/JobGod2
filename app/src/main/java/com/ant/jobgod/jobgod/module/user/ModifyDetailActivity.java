@@ -232,7 +232,7 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter>{
                                                         public void onDateSet(DatePickerDialog datePickerDialog, int i, int i1, int i2) {
                                                             birth.set(i, i1, i2);
                                                             if(birth.getTimeInMillis()>=System.currentTimeMillis()){
-                                                                Utils.Log("输入有误");
+                                                                Utils.Toast("选择有误,重新选择");
                                                                 return;
                                                             }
                                                             ((TextView) v).setText(new TimeTransform(i,i1,i2).toString(new RecentDateFormater()));
