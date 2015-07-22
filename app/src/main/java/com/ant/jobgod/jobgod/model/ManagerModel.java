@@ -10,7 +10,7 @@ import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 /**
  * Created by alien on 2015/7/22.
  */
-public class ManagerModel {
+public class ManagerModel extends AbsModel{
 
     /**
      * 获取管理后台信息
