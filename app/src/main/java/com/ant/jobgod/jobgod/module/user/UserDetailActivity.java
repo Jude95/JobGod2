@@ -86,8 +86,7 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
         imgFace.setImageURI(Uri.parse(detail.getFace()));
         collapsingToolbar.setTitle(detail.getName());
         signature.setText(detail.getSign());
-        gender.setText(detail.getGender());
-        height.setText(detail.getHeight());
+        height.setText(detail.getHeight()+"cm");
         birthday.setText(new TimeTransform(detail.getBirthday()).toString("yyyy年MM月dd日"));
         eduLevel.setText(detail.getEduLevel());
         school.setText(detail.getSchool());
@@ -98,6 +97,14 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
         like.setText(detail.getLike());
         specialty.setText(detail.getSpecialty());
         intro.setText(detail.getIntro());
+
+        if(detail.getGender()==0){
+            gender.setText("女");
+        }
+        else
+            gender.setText("男");
+
+
     }
 
     @Override

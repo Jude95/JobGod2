@@ -4,7 +4,7 @@ package com.ant.jobgod.jobgod.model.bean;
  * Created by Mr.Jude on 2015/7/7.
  */
 public class JobBrief {
-    private String id;
+    private int id;
     private String bizName;
     private int status = 1;
     private String title;
@@ -33,11 +33,11 @@ public class JobBrief {
     private int cityCode;
 
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

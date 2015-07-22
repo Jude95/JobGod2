@@ -13,13 +13,13 @@ import com.ant.jobgod.jobgod.model.callback.DataCallback;
  */
 public class JobDetailReleasePresenter extends BasePresenter<JobDetailReleaseActivity> {
 
-    private String id;
+    private int id;
     private JobDetail mJob;
 
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
-        id = getView().getIntent().getStringExtra("id");
+        id = getView().getIntent().getIntExtra("id",0);
         JobModel.getInstance().getJobDetail(id, new DataCallback<JobDetail>() {
             @Override
             public void success(String info, JobDetail data) {

@@ -1,5 +1,6 @@
 package com.ant.jobgod.jobgod.module.job;
 
+import android.content.Intent;
 import android.graphics.PointF;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,7 +10,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -34,6 +34,8 @@ import nucleus.factory.RequiresPresenter;
 public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPresenter> {
 
 
+    @InjectView(R.id.bizFace)
+    SimpleDraweeView bizFace;
     @InjectView(R.id.bizName)
     TextView bizName;
     @InjectView(R.id.bizAvgFeel)
@@ -50,6 +52,10 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
     TextView applyBeginTime;
     @InjectView(R.id.applyEndTime)
     TextView applyEndTime;
+    @InjectView(R.id.jobBeginTime)
+    TextView jobBeginTime;
+    @InjectView(R.id.jobEndTime)
+    TextView jobEndTime;
     @InjectView(R.id.timeIntro)
     TextView timeIntro;
     @InjectView(R.id.jobPostedcount)
@@ -58,22 +64,8 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
     TextView jobIntro;
     @InjectView(R.id.jobAsk)
     TextView jobAsk;
-    @InjectView(R.id.jobImg)
-    SimpleDraweeView jobImg;
-    @InjectView(R.id.toolbar)
-    Toolbar toolbar;
-    @InjectView(R.id.collapsingToolbar)
-    CollapsingToolbarLayout collapsingToolbar;
-    @InjectView(R.id.appBar)
-    AppBarLayout appBar;
-    @InjectView(R.id.floating_action_button)
-    FloatingActionButton floatingActionButton;
-    @InjectView(R.id.bizFace)
-    SimpleDraweeView bizFace;
-    @InjectView(R.id.jobBeginTime)
-    TextView jobBeginTime;
-    @InjectView(R.id.jobEndTime)
-    TextView jobEndTime;
+    @InjectView(R.id.posted)
+    TextView posted;
     @InjectView(R.id.shareQQ)
     ImageView shareQQ;
     @InjectView(R.id.shareQQSpace)
@@ -86,12 +78,16 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
     LinearWrapContentRecyclerView relateJob;
     @InjectView(R.id.viewAd)
     LinearLayout viewAd;
-    @InjectView(R.id.applayCount)
-    TextView applayCount;
-    @InjectView(R.id.immediatelyApply)
-    TextView immediatelyApply;
-    @InjectView(R.id.applyed)
-    TextView applyed;
+    @InjectView(R.id.jobImg)
+    SimpleDraweeView jobImg;
+    @InjectView(R.id.toolbar)
+    Toolbar toolbar;
+    @InjectView(R.id.collapsingToolbar)
+    CollapsingToolbarLayout collapsingToolbar;
+    @InjectView(R.id.appBar)
+    AppBarLayout appBar;
+    @InjectView(R.id.floating_action_button)
+    FloatingActionButton floatingActionButton;
     private MenuItem mCommentMenuItem;
 
     @Override
@@ -103,11 +99,6 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
         floatingActionButton.setOnClickListener(v -> getPresenter().collect());
         viewAd.addView(new AdView(this, AdSize.SIZE_468x60));
 
-        immediatelyApply.setOnClickListener(v -> {
-            immediatelyApply.setVisibility(View.GONE);
-            applayCount.setVisibility(View.GONE);
-            applyed.setVisibility(View.VISIBLE);
-        });
     }
 
     public void setIsCollected(boolean isCollected) {
@@ -133,7 +124,25 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
         jobBeginTime.setText(new TimeTransform(data.getJobBeginTime()).toString(new RecentDateFormater()));
         jobEndTime.setText(new TimeTransform(data.getJobEndTime()).toString(new RecentDateFormater()));
         setCommentCount(data.getCommentCount());
+        toManagerBackedge();
     }
+
+    /**
+     * 报名兼职
+     */
+    public void applyJob(){
+        posted.setOnClickListener(v -> getPresenter().applyJob());
+    }
+
+    /**
+     * 进入管理后台
+     */
+    public void toManagerBackedge() {
+        posted.setText("管理后台");
+        posted.setOnClickListener(v -> startActivity(new Intent(JobDetailManagerActivity.this,ManagerBackedgeActivity.class)));
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

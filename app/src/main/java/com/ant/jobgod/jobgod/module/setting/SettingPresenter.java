@@ -55,7 +55,7 @@ public class SettingPresenter extends BasePresenter<SettingActivity> {
 
 
                 new SettingItem("调试按钮","",(View v)->{
-                    JobModel.getInstance().getJobDetail("1", new DataCallback<JobDetail>() {
+                    JobModel.getInstance().getJobDetail(1, new DataCallback<JobDetail>() {
                         @Override
                         public void success(String info, JobDetail data) {
                             Utils.Log(data.getTitle());

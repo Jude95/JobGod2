@@ -78,7 +78,7 @@ public class RongYunModel extends AbsModel {
     public void syncGroups(JobBrief[] data){
         List<Group> list = new ArrayList<>();
         for (JobBrief jobBrief : data) {
-            list.add(new Group(jobBrief.getId(),jobBrief.getTitle(),Uri.parse(jobBrief.getImg())));
+            list.add(new Group(jobBrief.getId()+"",jobBrief.getTitle(),Uri.parse(jobBrief.getImg())));
         }
         RongIM.getInstance().getRongIMClient().syncGroup(list, new RongIMClient.OperationCallback() {
             @Override

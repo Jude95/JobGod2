@@ -17,26 +17,15 @@ import java.util.List;
  */
 public class CommentPresenter extends BasePresenter<CommentActivity> {
     private static final int PAGE_COUNT = 20;
-    private String id;
+    private int id;
     private static int page = 0;
     private List<Comment> arr=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
-        id = getView().getIntent().getStringExtra("id");
-        JobModel.getInstance().getCommentList(id, 0, PAGE_COUNT, new DataCallback<CommentPage>() {
-            @Override
-            public void success(String info, CommentPage data) {
-                arr.clear();
-                if (data.getTotalCount() == 1) {
-                    getView().stopLoadMore();
-                }
-                page = 0;
-                getView().refresh(data.getComments());
-                arr.addAll(Lists.newArrayList(data.getComments()));
-            }
-        });
+        id = getView().getIntent().getIntExtra("id",0);
+        refresh();
     }
 
     @Override
@@ -48,13 +37,12 @@ public class CommentPresenter extends BasePresenter<CommentActivity> {
     }
 
     public void refresh(){
-        getView().showProgress();
         JobModel.getInstance().getCommentList(id, 0, PAGE_COUNT, new DataCallback<CommentPage>() {
             @Override
             public void success(String info, CommentPage data) {
                 arr.clear();
                 if (data.getTotalCount() == 1) {
-                    getView().stopLoadMore();
+                    getView().stopMore();
                 }
                 page = 0;
                 getView().refresh(data.getComments());
@@ -71,7 +59,7 @@ public class CommentPresenter extends BasePresenter<CommentActivity> {
                     getView().setData(data.getComments());
                     arr.addAll(Lists.newArrayList(data.getComments()));
                     if ((data.getTotalCount() - 1) / PAGE_COUNT <= page) {
-                        getView().stopLoadMore();
+                        getView().stopMore();
                     }
                     page++;
                 } else {

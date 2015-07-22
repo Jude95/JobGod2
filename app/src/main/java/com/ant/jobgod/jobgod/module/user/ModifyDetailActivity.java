@@ -26,9 +26,8 @@ import butterknife.InjectView;
 import nucleus.factory.RequiresPresenter;
 
 
-
 @RequiresPresenter(ModifyDetailPresenter.class)
-public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter>{
+public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
 
 
     private final int REQUEST_CODE = 1;
@@ -90,13 +89,9 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter>{
         init();
     }
 
-    public UserDetail getUserData(){
-        return userData;
-    }
-
     public void init() {
 
-        userData=new UserDetail();
+        userData = new UserDetail();
 
         gender.setOnClickListener(v -> new MaterialDialog.Builder(ModifyDetailActivity.this)
                 .title("请选择")
@@ -106,10 +101,10 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter>{
                         Utils.Toast("请重新选择");
                         return false;
                     }
-                    if(text.toString().equals("男")){
+                    if (text.toString().equals("男")) {
                         userData.setGender(1);
                     }
-                    if (text.toString().equals("女")){
+                    if (text.toString().equals("女")) {
                         userData.setGender(0);
                     }
                     gender.setText(text.toString());
@@ -222,33 +217,31 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter>{
         });
 
         birthday.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
 
-                                            final Calendar birth = Calendar.getInstance();
-                                            DatePickerDialog dpd = DatePickerDialog.newInstance(
-                                                    new DatePickerDialog.OnDateSetListener() {
-                                                        @Override
-                                                        public void onDateSet(DatePickerDialog datePickerDialog, int i, int i1, int i2) {
-                                                            birth.set(i, i1, i2);
-                                                            if(birth.getTimeInMillis()>=System.currentTimeMillis()){
-                                                                Utils.Toast("选择有误,重新选择");
-                                                                return;
-                                                            }
-                                                            ((TextView) v).setText(new TimeTransform(i,i1,i2).toString(new RecentDateFormater()));
-                                                            userData.setBirthday(birth.getTimeInMillis());
-                                                        }
-                                                    },
-                                                    birth.get(Calendar.YEAR),
-                                                    birth.get(Calendar.MONTH),
-                                                    birth.get(Calendar.DAY_OF_MONTH)
+                final Calendar birth = Calendar.getInstance();
+                DatePickerDialog dpd = DatePickerDialog.newInstance(
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePickerDialog datePickerDialog, int i, int i1, int i2) {
+                                birth.set(i, i1, i2);
+                                if (birth.getTimeInMillis() >= System.currentTimeMillis()) {
+                                    Utils.Toast("选择有误,重新选择");
+                                    return;
+                                }
+                                ((TextView) v).setText(new TimeTransform(i, i1, i2).toString(new RecentDateFormater()));
+                                userData.setBirthday(birth.getTimeInMillis());
+                            }
+                        },
+                        birth.get(Calendar.YEAR),
+                        birth.get(Calendar.MONTH),
+                        birth.get(Calendar.DAY_OF_MONTH)
 
-                                            );
-                                            dpd.show(getFragmentManager(), "请选择日期");
-                                        }
-                                    });
-
-
+                );
+                dpd.show(getFragmentManager(), "请选择日期");
+            }
+        });
 
         viewAward.setOnClickListener(v -> getPresenter().awardToModifyDataActivityForResult(InfoFlag.AWARD, award));
         viewCertificate.setOnClickListener(v -> getPresenter().certificateToModifyDataActivityForResult(InfoFlag.CERTIFICATE, certificate));
@@ -261,22 +254,22 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter>{
     /**
      * 网络请求参数
      */
-    public void submitInfo() {
+    public UserDetail getUserDetail() {
         RequestMap param = new RequestMap();
-        param.put("gender", gender.getText().toString());
-        param.put("height", height.getText().toString());
-        param.put("address", address.getText().toString());
-        param.put("edulevel", eduLevel.getText().toString());
-        param.put("school", school.getText().toString());
-        param.put("major", major.getText().toString());
-        param.put("award", award.getText().toString());
-        param.put("certificate", certificate.getText().toString());
-        param.put("character", character.getText().toString());
-        param.put("like", like.getText().toString());
-        param.put("specialty", specialty.getText().toString());
-        param.put("intro", intro.getText().toString());
+        param.put("gender", userData.getGender() + "");
+        param.put("height", userData.getHeight() + "");
+        param.put("address", userData.getAddress());
+        param.put("edulevel", userData.getEduLevel());
+        param.put("school", userData.getSchool());
+        param.put("major", userData.getMajor());
+        param.put("award", userData.getAward());
+        param.put("certificate", userData.getCertificate());
+        param.put("character", userData.getCharacter());
+        param.put("like", userData.getLike());
+        param.put("specialty", userData.getSpecialty());
+        param.put("intro", userData.getIntro());
 
-        getPresenter().submitInfo(param);
+        return userData;
     }
 
     @Override
@@ -364,7 +357,7 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter>{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.submit:
-                submitInfo();
+                getPresenter().updateUserDetail();
                 break;
         }
         return super.onOptionsItemSelected(item);
