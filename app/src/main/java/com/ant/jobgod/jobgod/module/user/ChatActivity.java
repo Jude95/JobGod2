@@ -32,7 +32,7 @@ public class ChatActivity extends BaseActivity<ChatPresenter> {
                 getSupportActionBar().setTitle(personBrief.getName());
                 Uri uri = Uri.parse("rong://" + getApplicationInfo().packageName).buildUpon()
                         .appendPath("conversation").appendPath(io.rong.imlib.model.Conversation.ConversationType.PRIVATE.getName().toLowerCase())
-                        .appendQueryParameter("targetId", personBrief.getUID()).appendQueryParameter("title", personBrief.getName()).build();
+                        .appendQueryParameter("targetId", personBrief.getUID()+"").appendQueryParameter("title", personBrief.getName()).build();
                 fragment.setUri(uri);
             }
         });

@@ -10,9 +10,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.android.http.RequestMap;
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
+import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.bean.UserDetail;
 import com.ant.jobgod.jobgod.util.RecentDateFormater;
 import com.ant.jobgod.jobgod.util.TimeTransform;
@@ -35,8 +35,6 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
 
     public final static String KEY_FLAG = "flag";
     public final static String DATA = "data";
-
-    private UserDetail userData;
 
     @InjectView(R.id.gender)
     TextView gender;
@@ -77,6 +75,9 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
     @InjectView(R.id.viewIntro)
     LinearLayout viewIntro;
 
+    private UserDetail userData;
+
+
     public enum InfoFlag {
         AWARD, CERTIFICATE, CHARACTER, LIKE, SPECIALTY, INTRO
     }
@@ -89,13 +90,47 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
         init();
     }
 
-    public void setData(UserDetail data){
+    public void setData(UserDetail data) {
+        Utils.Log("data---" + data.getGender());
+        if (data.getGender() == 0) {
+            gender.setText("女");
+        } else
+            gender.setText("男");
 
+        switch (data.getEduLevel()) {
+            case 0:
+                eduLevel.setText("初中");
+                break;
+            case 1:
+                eduLevel.setText("高中");
+                break;
+            case 2:
+                eduLevel.setText("本科");
+                break;
+            case 3:
+                eduLevel.setText("硕士");
+                break;
+            case 4:
+                eduLevel.setText("博士");
+                break;
+        }
+        height.setText(data.getHeight() + "cm");
+        birthday.setText(new TimeTransform(data.getBirthday()).toString(new RecentDateFormater()));
+        address.setText(data.getAddress());
+        school.setText(data.getSchool());
+        major.setText(data.getMajor());
+        certificate.setText(data.getCertificate());
+        award.setText(data.getAward());
+        character.setText(data.getCharacter());
+        specialty.setText(data.getSpecialty());
+        like.setText(data.getLike());
+        intro.setText(data.getIntro());
     }
 
     public void init() {
 
         userData = new UserDetail();
+        userData= AccountModel.getInstance().getUserAccount().getDetail();
 
         gender.setOnClickListener(v -> new MaterialDialog.Builder(ModifyDetailActivity.this)
                 .title("请选择")
@@ -148,7 +183,23 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
                                 Utils.Toast("请重新选择");
                                 return false;
                             }
-                            userData.setEduLevel(text.toString());
+                            switch (text.toString()) {
+                                case "初中":
+                                    userData.setEduLevel(0);
+                                    break;
+                                case "高中":
+                                    userData.setEduLevel(1);
+                                    break;
+                                case "本科":
+                                    userData.setEduLevel(2);
+                                    break;
+                                case "硕士":
+                                    userData.setEduLevel(3);
+                                    break;
+                                case "博士":
+                                    userData.setEduLevel(4);
+                                    break;
+                            }
                             eduLevel.setText(text.toString());
                             return true;
                         })
@@ -259,20 +310,6 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
      * 网络请求参数
      */
     public UserDetail getUserDetail() {
-        RequestMap param = new RequestMap();
-        param.put("gender", userData.getGender() + "");
-        param.put("height", userData.getHeight() + "");
-        param.put("address", userData.getAddress());
-        param.put("edulevel", userData.getEduLevel());
-        param.put("school", userData.getSchool());
-        param.put("major", userData.getMajor());
-        param.put("award", userData.getAward());
-        param.put("certificate", userData.getCertificate());
-        param.put("character", userData.getCharacter());
-        param.put("like", userData.getLike());
-        param.put("specialty", userData.getSpecialty());
-        param.put("intro", userData.getIntro());
-
         return userData;
     }
 
@@ -284,21 +321,27 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
             switch (flag) {
                 case AWARD:
                     award.setText(data.getStringExtra(DATA));
+                    userData.setAward(data.getStringExtra(DATA));
                     break;
                 case CERTIFICATE:
                     certificate.setText(data.getStringExtra(DATA));
+                    userData.setCertificate(data.getStringExtra(DATA));
                     break;
                 case CHARACTER:
                     character.setText(data.getStringExtra(DATA));
+                    userData.setCharacter(data.getStringExtra(DATA));
                     break;
                 case LIKE:
                     like.setText(data.getStringExtra(DATA));
+                    userData.setLike(data.getStringExtra(DATA));
                     break;
                 case SPECIALTY:
                     specialty.setText(data.getStringExtra(DATA));
+                    userData.setSpecialty(data.getStringExtra(DATA));
                     break;
                 case INTRO:
                     intro.setText(data.getStringExtra(DATA));
+                    userData.setIntro(data.getStringExtra(DATA));
                     break;
             }
         }
@@ -361,7 +404,7 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.submit:
-                getPresenter().updateUserDetail();
+                getPresenter().updateMyDetail();
                 break;
         }
         return super.onOptionsItemSelected(item);

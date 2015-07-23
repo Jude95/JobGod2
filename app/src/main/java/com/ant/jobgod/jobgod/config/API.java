@@ -20,8 +20,8 @@ public class API {
         public static final String ModifySign = BaseUrl + "Home/index/modSign";
         public static final String ModifyFace = BaseUrl + "Home/index/modFace";
         public static final String GetUserData = BaseUrl + "home/user/refreshMyData";
-        public static final String GetUserDetail = BaseUrl + "home/user/getUserDetail";
         public static final String UpdateUserDetail = BaseUrl + "home/user/updateDetail";
+        public static final String GetUserDetail = BaseUrl + "home/user/getUserDetail";
 
         public static final String GetAttentionFromMe = BaseUrl + "home/Index/getAttFromMe";
         public static final String GetAttentionToMe = BaseUrl + "home/Index/getAttToMe";

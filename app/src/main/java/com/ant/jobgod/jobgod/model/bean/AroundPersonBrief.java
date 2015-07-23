@@ -4,16 +4,16 @@ package com.ant.jobgod.jobgod.model.bean;
  * Created by Mr.Jude on 2015/7/19.
  */
 public class AroundPersonBrief{
-    private String id;
+    private int id;
     private String name;
     private String face;
     private String sign;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -7,6 +7,8 @@ import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.UserModel;
 import com.ant.jobgod.jobgod.model.bean.UserDetail;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
+import com.ant.jobgod.jobgod.model.callback.StatusCallback;
+import com.ant.jobgod.jobgod.util.Utils;
 
 /**
  * Created by alien on 2015/7/13.
@@ -18,10 +20,18 @@ public class UserDetailPresenter extends BasePresenter<UserDetailActivity> {
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
         id = getView().getIntent().getIntExtra("id",0);
+        setData();
+
+    }
+
+    /**
+     * 设置用户个人信息数据
+     */
+    public void setData(){
         UserModel.getInstance().getUserDetail(id, new DataCallback<UserDetail>() {
             @Override
             public void success(String info, UserDetail data) {
-                getView().setUserDetail(userDetail = data);
+                getView().setUserDetail(userDetail=data);
             }
         });
     }
@@ -33,12 +43,25 @@ public class UserDetailPresenter extends BasePresenter<UserDetailActivity> {
         getView().setUserDetail(userDetail);
     }
 
+    /**
+     * 关注按钮的点击事件
+     */
     public void attention(){
         getView().setIsAttention(!userDetail.isFocus());
         if (userDetail.isFocus())
-            UserModel.getInstance().unAttention(id, null);
+            UserModel.getInstance().unAttention(id, new StatusCallback() {
+                @Override
+                public void success(String info) {
+                    Utils.Toast("取消关注");
+                }
+            });
         else
-            UserModel.getInstance().attention(id, null);
+            UserModel.getInstance().attention(id, new StatusCallback() {
+                @Override
+                public void success(String info) {
+                    Utils.Toast("关注成功");
+                }
+            });
         userDetail.setIsAttention(!userDetail.isFocus());
     }
 

@@ -64,7 +64,7 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
     CollapsingToolbarLayout collapsingToolbar;
     @InjectView(R.id.appBar)
     AppBarLayout appBar;
-    @InjectView(R.id.floating_action_button)
+    @InjectView(R.id.floatingActionButton)
     FloatingActionButton floatingActionButton;
 
     @Override
@@ -72,7 +72,7 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_activity_detail);
         ButterKnife.inject(this);
-        floatingActionButton.setOnClickListener(v->getPresenter().attention());
+
     }
 
     public void setIsAttention(boolean isAttention){
@@ -83,12 +83,37 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
 
     public void setUserDetail(UserDetail detail) {
         setIsAttention(detail.isFocus());
+
+        if(detail.getGender()==0){
+            gender.setText("女");
+        }
+        else
+            gender.setText("男");
+
+        switch (detail.getEduLevel()){
+            case 0:
+                eduLevel.setText("初中");
+                break;
+            case 1:
+                eduLevel.setText("高中");
+                break;
+            case 2:
+                eduLevel.setText("本科");
+                break;
+            case 3:
+                eduLevel.setText("硕士");
+                break;
+            case 4:
+                eduLevel.setText("博士");
+                break;
+        }
+
+        floatingActionButton.setOnClickListener(v->getPresenter().attention());
         imgFace.setImageURI(Uri.parse(detail.getFace()));
         collapsingToolbar.setTitle(detail.getName());
         signature.setText(detail.getSign());
         height.setText(detail.getHeight()+"cm");
         birthday.setText(new TimeTransform(detail.getBirthday()).toString("yyyy年MM月dd日"));
-        eduLevel.setText(detail.getEduLevel());
         school.setText(detail.getSchool());
         major.setText(detail.getMajor());
         award.setText(detail.getAward());
@@ -98,14 +123,10 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
         specialty.setText(detail.getSpecialty());
         intro.setText(detail.getIntro());
 
-        if(detail.getGender()==0){
-            gender.setText("女");
-        }
-        else
-            gender.setText("男");
-
 
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

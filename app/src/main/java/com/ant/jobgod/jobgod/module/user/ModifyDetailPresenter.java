@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.app.BasePresenter;
+import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.UserModel;
 import com.ant.jobgod.jobgod.model.bean.UserDetail;
-import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.Utils;
 
@@ -19,46 +19,47 @@ public class ModifyDetailPresenter extends BasePresenter<ModifyDetailActivity> {
     private final int REQUEST_CODE = 1;
 
     private Intent intent;
-    private int id;
     private UserDetail userDetail;
 
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
+
         intent = new Intent(getView(), TextWriteActivity.class);
-        id = getView().getIntent().getIntExtra("id", 0);
-        getUserData();
+
     }
 
     @Override
     protected void onCreateView(ModifyDetailActivity view) {
         super.onCreateView(view);
-        if (userDetail != null) {
-            getView().setData(userDetail);
-        }
+        getMyData();
     }
 
     /**
      * 获取个人信息
      */
-    public void getUserData() {
-        UserModel.getInstance().getUserDetail(id, new DataCallback<UserDetail>() {
-            @Override
-            public void success(String info, UserDetail data) {
-                getView().setData(userDetail = data);
-            }
-        });
+    public void getMyData() {
+        userDetail=AccountModel.getInstance().getUserAccount().getDetail();
+        getView().setData(userDetail);
     }
 
     /**
      * 更新个人信息
      */
-    public void updateUserDetail() {
-        UserModel.updateUserDetail(getView().getUserDetail(), new StatusCallback() {
+    public void updateMyDetail() {
+        UserModel.getInstance().updateMyDetail(getView().getUserDetail(), new StatusCallback() {
             @Override
             public void success(String info) {
-                if (info.equals("success")) {
-                    Utils.Toast("保存成功");
+                AccountModel.getInstance().updateAccountData();
+            }
+
+            @Override
+            public void result(int status, String info) {
+                super.result(status, info);
+                switch (status) {
+                    case 200:
+                        Utils.Toast("保存成功");
+                        break;
                 }
             }
         });

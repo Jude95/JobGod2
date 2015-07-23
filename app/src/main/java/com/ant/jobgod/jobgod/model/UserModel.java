@@ -66,13 +66,23 @@ public class UserModel extends AbsModel {
         }));
     }
 
-    public void getUserDetail(int id, DataCallback<UserDetail> callback) {
-        RequestManager.getInstance().post(API.URL.GetUserDetail, new RequestMap("id", id+""), callback);
+    /**
+     * 获取用户的信息
+     */
+    public void getUserDetail(int id,DataCallback<UserDetail> callback){
+        RequestMap param=new RequestMap("id",id+"");
+        RequestManager.getInstance().post(API.URL.GetUserDetail,param,callback);
     }
 
-    public static void updateUserDetail(UserDetail userDetail, StatusCallback callback) {
+    /**
+     * 更新个人信息
+     * @param userDetail
+     * @param callback
+     */
+    public void updateMyDetail(UserDetail userDetail, StatusCallback callback) {
         RequestMap params = new RequestMap();
-        params.put("eduLevel", userDetail.getEduLevel());
+
+        params.put("eduLevel", userDetail.getEduLevel()+"");
         params.put("major", userDetail.getMajor());
         params.put("school", userDetail.getSchool());
         params.put("birthday", userDetail.getBirthday() + "");
@@ -84,6 +94,7 @@ public class UserModel extends AbsModel {
         params.put("like", userDetail.getLike());
         params.put("specialty", userDetail.getSpecialty());
         params.put("intro", userDetail.getIntro());
+        params.put("address",userDetail.getAddress());
         RequestManager.getInstance().post(API.URL.UpdateUserDetail, params, callback);
     }
 

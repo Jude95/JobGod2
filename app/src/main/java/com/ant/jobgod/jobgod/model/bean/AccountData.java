@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by Mr.Jude on 2015/6/13.
  */
 public class AccountData implements Serializable{
-    private String id;
+    private int id;
     private String tokenApp;
     private String name;
     private String face;
@@ -23,11 +23,11 @@ public class AccountData implements Serializable{
         this.type = type;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

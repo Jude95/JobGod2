@@ -122,6 +122,17 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
                 R.drawable.ic_star_unfocus);
     }
 
+//    /**
+//     * 打开页面初期，没有数据时设置
+//     */
+//    public void setEmpty(){
+//        setContentView(R.layout.view_progress);
+//    }
+
+    /**
+     * 给view设置对应的数据显示
+     * @param data
+     */
     public void setData(JobDetail data) {
         setIsCollected(data.isCollected());
 
@@ -147,7 +158,6 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
         intent=new Intent(JobDetailManagerActivity.this,ManagerBackedgeActivity.class);
         intent.putExtra("id",data.getId());
     }
-
 
 
     /**

@@ -6,6 +6,7 @@ import java.io.Serializable;
  * Created by Mr.Jude on 2015/7/19.
  */
 public class UserAccountData extends AccountData implements Serializable{
+
     private String tel;
     private String realname;
     private UserDetail detail;

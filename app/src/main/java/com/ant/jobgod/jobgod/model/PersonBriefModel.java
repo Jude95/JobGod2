@@ -43,7 +43,7 @@ public class PersonBriefModel extends AbsModel {
             person = getPersonFromServerDirect(id);
         }
         if (person == null){
-            person = new PersonBrief("0","未知","","");
+            person = new PersonBrief(0,"未知","","");
         }
         return person;
     }
@@ -93,7 +93,7 @@ public class PersonBriefModel extends AbsModel {
         List<PersonBrief> list = new Select().from(PersonBrief.class).execute();
         RequestMap params = new RequestMap();
         for (PersonBrief p:list) {
-            params.put("userId[]",p.getUID());
+            params.put("userId[]",p.getUID()+"");
         }
         params.put("time", Utils.getPreference().getString(SP.PersonSyncTime,"0"));
         RequestManager.getInstance().post(API.URL.SyncPersonBriefs, params, new DataCallback<PersonBrief[]>() {
