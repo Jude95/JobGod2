@@ -89,6 +89,10 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
         init();
     }
 
+    public void setData(UserDetail data){
+
+    }
+
     public void init() {
 
         userData = new UserDetail();

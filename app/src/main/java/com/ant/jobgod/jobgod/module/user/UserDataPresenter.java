@@ -37,6 +37,7 @@ public class UserDataPresenter extends BasePresenter<UserDataActivity> {
     public void startActivity(Class<?> ctx){
         intent=new Intent();
         intent.setClass(getView(),ctx);
+        intent.putExtra("id",readStandVar("id",0));
         getView().startActivity(intent);
     }
 

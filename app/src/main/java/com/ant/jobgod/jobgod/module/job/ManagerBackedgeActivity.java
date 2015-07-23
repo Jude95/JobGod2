@@ -50,16 +50,16 @@ public class ManagerBackedgeActivity extends BaseActivity<ManagerBackedgePresent
         jobName.setText(data.getJobName());
         switch (data.getStatus()) {
             case 0:
-                jobStatus.setText("等待审核");
+                jobStatus.setText("已报名,等待审核");
                 btnOperate.setText("取消报名");
                 btnOperate.setOnClickListener(v -> getPresenter().cancelApply());
                 break;
             case 1:
-                jobStatus.setText("被商家拒绝了");
+                jobStatus.setText("报名未通过,被商家拒绝了");
                 btnOperate.setVisibility(View.GONE);
                 break;
             case 2:
-                jobStatus.setText("通过报名,等待工作开始");
+                jobStatus.setText("通过审核,等待工作开始");
                 btnOperate.setText("已报名");
                 btnOperate.setEnabled(false);
                 btnOperate.setBackgroundColor(Color.GRAY);
@@ -99,9 +99,11 @@ public class ManagerBackedgeActivity extends BaseActivity<ManagerBackedgePresent
 
     }
 
-    public void setBtnStatus(boolean isClick) {
-        jobStatus.setText("已取消");
-        jobStatus.setEnabled(isClick);
+    public void setBtnStatus(boolean isClickAble) {
+        jobStatus.setText("谢谢光临");
+        btnOperate.setText("已取消报名");
+        btnOperate.setBackgroundColor(Color.GRAY);
+        btnOperate.setEnabled(isClickAble);
     }
 
     public void setContent(String content) {

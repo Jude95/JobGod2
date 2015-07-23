@@ -66,8 +66,8 @@ public class UserModel extends AbsModel {
         }));
     }
 
-    public void getUserDetail(String id, DataCallback<UserDetail> callback) {
-        RequestManager.getInstance().post(API.URL.GetUserDetail, new RequestMap("id", id), callback);
+    public void getUserDetail(int id, DataCallback<UserDetail> callback) {
+        RequestManager.getInstance().post(API.URL.GetUserDetail, new RequestMap("id", id+""), callback);
     }
 
     public static void updateUserDetail(UserDetail userDetail, StatusCallback callback) {
@@ -94,11 +94,11 @@ public class UserModel extends AbsModel {
         RequestManager.getInstance().post(API.URL.GetAroundFriends, params, callback);
     }
 
-    public void attention(String id, StatusCallback callback) {
-        RequestManager.getInstance().post(API.URL.Attention, new RequestMap("id", id), callback);
+    public void attention(int id, StatusCallback callback) {
+        RequestManager.getInstance().post(API.URL.Attention, new RequestMap("id", id+""), callback);
     }
 
-    public void unAttention(String id, StatusCallback callback) {
-        RequestManager.getInstance().post(API.URL.UnAttention, new RequestMap("id", id), callback);
+    public void unAttention(int id, StatusCallback callback) {
+        RequestManager.getInstance().post(API.URL.UnAttention, new RequestMap("id", id+""), callback);
     }
 }

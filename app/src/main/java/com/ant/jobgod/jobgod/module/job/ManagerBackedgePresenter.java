@@ -9,6 +9,8 @@ import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.Utils;
 
+import de.greenrobot.event.EventBus;
+
 /**
  * Created by alien on 2015/7/22.
  */
@@ -35,8 +37,8 @@ public class ManagerBackedgePresenter extends BasePresenter<ManagerBackedgeActiv
      * 获取合同详细
      */
     public void getContractData() {
-        jobId = getView().getIntent().getIntExtra("bobId", 0);
-        ManagerModel.getMangerData(jobId, new DataCallback<Manager>() {
+        jobId = getView().getIntent().getIntExtra("id",0);
+        ManagerModel.getInstance().getMangerData(jobId, new DataCallback<Manager>() {
             @Override
             public void success(String info, Manager data) {
                 getView().setData(mData = data);
@@ -48,14 +50,19 @@ public class ManagerBackedgePresenter extends BasePresenter<ManagerBackedgeActiv
      * 取消报名
      */
     public void cancelApply() {
-        Utils.Log("------cancelApply-----");
-        ManagerModel.cancelApply(mData.getId(), new StatusCallback() {
+        ManagerModel.getInstance().cancelApply(mData.getId(), new StatusCallback() {
             @Override
             public void success(String info) {
-                switch (info) {
-                    case "success":
+            }
+
+            @Override
+            public void result(int status, String info) {
+                super.result(status, info);
+                switch (status){
+                    case 200:
                         Utils.Toast("取消成功!");
                         getView().setBtnStatus(false);
+                        EventBus.getDefault().post("update");
                         break;
                 }
             }
@@ -66,7 +73,7 @@ public class ManagerBackedgePresenter extends BasePresenter<ManagerBackedgeActiv
      * 评价商家
      */
     public void evaluateBiz() {
-        ManagerModel.jodgeBiz(mData.getId(), 5, getView().getContent(), new StatusCallback() {
+        ManagerModel.getInstance().jodgeBiz(mData.getId(), 5, getView().getContent(), new StatusCallback() {
             @Override
             public void success(String info) {
                 if (info.equals("success")) {

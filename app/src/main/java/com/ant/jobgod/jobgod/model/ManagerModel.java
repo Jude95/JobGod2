@@ -13,12 +13,20 @@ import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 public class ManagerModel extends AbsModel{
 
     /**
+     * 重载getinstance这个方法,单例模式
+     * @return
+     */
+    public static ManagerModel getInstance(){
+        return getInstance(ManagerModel.class);
+    }
+    /**
      * 获取管理后台信息
      * @param jobId
      * @param callback
      */
-    public static void getMangerData(int jobId,DataCallback<Manager> callback){
-        RequestMap param=new RequestMap("jobId",jobId+"");
+    public void getMangerData(int jobId,DataCallback<Manager> callback){
+        RequestMap param=new RequestMap();
+        param.put("jobId",jobId+"");
         RequestManager.getInstance().post(API.URL.GetContract,param,callback);
     }
 
@@ -27,7 +35,7 @@ public class ManagerModel extends AbsModel{
      * @param id  合同的id
      * @param callback
      */
-    public static void cancelApply(int id,StatusCallback callback){
+    public void cancelApply(int id,StatusCallback callback){
         RequestMap param=new RequestMap("id",id+"");
         RequestManager.getInstance().post(API.URL.CancelApply,param,callback);
     }
@@ -39,7 +47,7 @@ public class ManagerModel extends AbsModel{
      * @param content
      * @param callback
      */
-    public static void jodgeBiz(int id,int feel,String content,StatusCallback callback){
+    public void jodgeBiz(int id,int feel,String content,StatusCallback callback){
         RequestMap param=new RequestMap();
         param.put("id",id+"");
         param.put("feek",feel+"");

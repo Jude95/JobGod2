@@ -19,7 +19,7 @@ public class API {
         public static final String ModifyName = BaseUrl + "Home/index/modName";
         public static final String ModifySign = BaseUrl + "Home/index/modSign";
         public static final String ModifyFace = BaseUrl + "Home/index/modFace";
-        public static final String GetUserData = BaseUrl + "home/user/getMyData";
+        public static final String GetUserData = BaseUrl + "home/user/refreshMyData";
         public static final String GetUserDetail = BaseUrl + "home/user/getUserDetail";
         public static final String UpdateUserDetail = BaseUrl + "home/user/updateDetail";
 
@@ -34,12 +34,12 @@ public class API {
         public static final String Attention = BaseUrl + "home/index/focusUser";
         public static final String UnAttention = BaseUrl + "home/index/unFocusUser";
 
-        public static final String Apply = BaseUrl + "home/index/apply";
+        public static final String Apply = BaseUrl + "home/user/apply";
 
         //manager
-        public static final String GetContract = BaseUrl + "home/index/getContract";
-        public static final String CancelApply = BaseUrl + "home/index/cancelApply";
-        public static final String JodgeBiz = BaseUrl + "home/user/jodgeBiz";
+        public static final String GetContract = BaseUrl + "Home/index/getContract";
+        public static final String CancelApply = BaseUrl + "home/user/cancelApply";
+        public static final String JodgeBiz = BaseUrl + "home/index/judge";
 
 
         //LBS

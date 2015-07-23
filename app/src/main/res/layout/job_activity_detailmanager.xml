@@ -292,7 +292,6 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:paddingTop="8dp"
-                android:layout_marginBottom="48dp"
                 android:textColor="@color/secondary_text_default_material_light"
                 android:lineSpacingExtra="8dp"
                 android:textIsSelectable="true"
@@ -300,46 +299,24 @@
                 android:text=""/>
 
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp">
-
                 <LinearLayout android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:gravity="center">
 
-                    <TextView android:id="@+id/applayCount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp"
-                        android:text="已报12人"
-                        android:textSize="16sp"
-                        android:background="@drawable/job_applyborder"
-                        android:textColor="?colorPrimary"/>
-
-                    <TextView android:id="@+id/immediatelyApply"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp"
-                        android:text="立即报名"
-                        android:textSize="16sp"
-                        android:background="?colorPrimary"
-                        android:textColor="@color/White"/>
+                        <TextView android:id="@+id/posted"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:padding="8dp"
+                            android:text="立即报名"
+                            android:textSize="16sp"
+                            android:background="?colorPrimary"
+                            android:textColor="@color/White"/>
 
                 </LinearLayout>
 
-                <TextView android:id="@+id/applyed"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:textSize="16sp"
-                    android:background="?colorPrimary"
-                    android:textColor="@color/White"
-                    android:visibility="gone"
-                    android:text="已报名"/>
-
-            </FrameLayout>
 
             <include layout="@layout/include_share"/>
 
@@ -354,9 +331,14 @@
                     android:gravity="center_vertical"
                     android:text="相关推荐"/>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.4dp"
+                    android:background="@color/md_divider_black"/>
+
                 <com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView
                     android:id="@+id/relateJob"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="33dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 

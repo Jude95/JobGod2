@@ -20,64 +20,108 @@ public class JobDetailManagerPresenter extends BasePresenter<JobDetailManagerAct
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
-        id = getView().getIntent().getIntExtra("id",0);
-        JobModel.getInstance().getJobDetail(id, new DataCallback<JobDetail>() {
-            @Override
-            public void success(String info, JobDetail data) {
-                getView().setData(mJob = data);
-//                if(data.isPosted()){
-//                    getView().toManagerBackedge();
-//                }
-//                else
-//                    getView().applyJob();
-            }
-        });
+        setData();
     }
 
     @Override
     protected void onCreateView(JobDetailManagerActivity view) {
         super.onCreateView(view);
-        if (mJob!=null) {
+        if (mJob != null) {
             getView().setData(mJob);
         }
     }
 
-    public void collect(){
+    public void setData() {
+        id = getView().getIntent().getIntExtra("id", 0);
+        JobModel.getInstance().getJobDetail(id, new DataCallback<JobDetail>() {
+            @Override
+            public void success(String info, JobDetail data) {
+                getView().setData(mJob = data);
+                getView().setRelateJobData(data.getRelative());
+
+                if (data.isPosted()) {
+                    getView().toManagerBackedge();
+                } else
+                    getView().applyJob();
+            }
+        });
+    }
+
+    /**
+     * 收藏兼职
+     */
+    public void collect() {
         getView().setIsCollected(!mJob.isCollected());
         if (mJob.isCollected())
-            JobModel.getInstance().unCollect(id, null);
+            JobModel.getInstance().unCollect(id, new StatusCallback() {
+                @Override
+                public void success(String info) {
+                }
+
+                @Override
+                public void result(int status, String info) {
+                    super.result(status, info);
+                    switch (status){
+                        case 200:
+                            Utils.Toast("取消收藏");
+                            break;
+                    }
+                }
+            });
         else
-            JobModel.getInstance().collect(id, null);
+            JobModel.getInstance().collect(id, new StatusCallback() {
+                @Override
+                public void success(String info) {
+                }
+
+                @Override
+                public void result(int status, String info) {
+                    super.result(status, info);
+                    switch (status){
+                        case 200:
+                            Utils.Toast("收藏成功");
+                            break;
+                    }
+                }
+            });
         mJob.setCollected(!mJob.isCollected());
     }
 
-    public void applyJob(){
-        JobModel.applyJob(id, new StatusCallback() {
+    /**
+     * 报名兼职
+     */
+    public void applyJob() {
+        JobModel.getInstance().applyJob(id, new StatusCallback() {
             @Override
             public void success(String info) {
-                if (info.equals("success")){
-                    Utils.Toast("报名成功");
-                }
+
             }
 
             @Override
             public void result(int status, String info) {
                 super.result(status, info);
-                switch (status){
+                switch (status) {
+                    case 200:
+                        Utils.Toast("报名成功");
+                        Intent intent=new Intent(getView(), ManagerBackedgeActivity.class);
+                        intent.putExtra("id",id);
+                        getView().startActivity(intent);
+                        setData();
+                        break;
                     case 201:
                         Utils.Toast("未实名认证");
-                    break;
-                   case 202:
+                        break;
+                    case 202:
                         Utils.Toast("未绑定手机");
-                    break;
+                        break;
                 }
             }
         });
     }
 
-    public void toCommentActivity(){
-        Intent intent=new Intent(getView(),CommentActivity.class);
-        intent.putExtra("id",id);
+    public void toCommentActivity() {
+        Intent intent = new Intent(getView(), CommentActivity.class);
+        intent.putExtra("id", id);
         getView().startActivity(intent);
     }
 

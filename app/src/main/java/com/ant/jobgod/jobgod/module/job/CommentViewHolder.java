@@ -11,35 +11,31 @@ import com.ant.jobgod.jobgod.util.TimeTransform;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-
 /**
  * Created by alien on 2015/7/20.
  */
 public class CommentViewHolder extends BaseViewHolder<Comment> {
 
-
-    @InjectView(R.id.face)
-    SimpleDraweeView face;
-    @InjectView(R.id.name)
-    TextView name;
-    @InjectView(R.id.date)
-    TextView date;
-    @InjectView(R.id.content)
-    TextView content;
+    private SimpleDraweeView face;
+    private TextView name;
+    private TextView date;
+    private TextView content;
 
     public CommentViewHolder(ViewGroup parent) {
         super(parent, R.layout.job_item_comment);
-        ButterKnife.inject(this.itemView);
+        face = (SimpleDraweeView) itemView.findViewById(R.id.face);
+        name = (TextView) itemView.findViewById(R.id.name);
+        date = (TextView) itemView.findViewById(R.id.date);
+        content = (TextView) itemView.findViewById(R.id.content);
     }
 
     @Override
     public void setData(Comment data) {
         super.setData(data);
+
         face.setImageURI(Uri.parse(data.getFace()));
         name.setText(data.getName());
-        date.setText(new TimeTransform(data.getDate()).toString(new RecentDateFormater()));
+        date.setText(new TimeTransform(data.getTime()).toString(new RecentDateFormater()));
         content.setText(data.getContent());
     }
 }

@@ -12,12 +12,12 @@ import com.ant.jobgod.jobgod.model.callback.DataCallback;
  * Created by alien on 2015/7/13.
  */
 public class UserDetailPresenter extends BasePresenter<UserDetailActivity> {
-    private String id;
+    private int id;
     private UserDetail userDetail;
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
-        id = getView().getIntent().getStringExtra("id");
+        id = getView().getIntent().getIntExtra("id",0);
         UserModel.getInstance().getUserDetail(id, new DataCallback<UserDetail>() {
             @Override
             public void success(String info, UserDetail data) {

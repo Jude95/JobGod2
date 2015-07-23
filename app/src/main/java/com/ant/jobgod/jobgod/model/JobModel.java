@@ -127,11 +127,14 @@ public class JobModel extends AbsModel {
         RequestManager.getInstance().post(API.URL.GetComment, params, callback);
     }
 
-    public static void Comment(int id, StatusCallback callback) {
-        RequestManager.getInstance().post(API.URL.Comment, new RequestMap("id", id + ""), callback);
+    public void comment(int id, String content,StatusCallback callback) {
+        RequestMap param=new RequestMap();
+        param.put("jobId",id+"");
+        param.put("content",content);
+        RequestManager.getInstance().post(API.URL.Comment, param, callback);
     }
 
-    public static void applyJob(int jobId, StatusCallback callback) {
+    public void applyJob(int jobId, StatusCallback callback) {
         RequestMap param = new RequestMap("id", jobId + "");
         RequestManager.getInstance().post(API.URL.Apply, param, callback);
     }

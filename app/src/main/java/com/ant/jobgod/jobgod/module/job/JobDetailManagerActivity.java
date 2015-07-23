@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
+import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.bean.JobDetail;
 import com.ant.jobgod.jobgod.util.RecentDateFormater;
 import com.ant.jobgod.jobgod.util.TimeTransform;
@@ -28,6 +29,7 @@ import net.youmi.android.banner.AdView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import de.greenrobot.event.EventBus;
 import nucleus.factory.RequiresPresenter;
 
 @RequiresPresenter(JobDetailManagerPresenter.class)
@@ -88,7 +90,12 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
     AppBarLayout appBar;
     @InjectView(R.id.floating_action_button)
     FloatingActionButton floatingActionButton;
+
     private MenuItem mCommentMenuItem;
+
+    private Intent intent;
+
+    private JobBriefAdapter relateAdapter=new JobBriefAdapter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +106,14 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
         floatingActionButton.setOnClickListener(v -> getPresenter().collect());
         viewAd.addView(new AdView(this, AdSize.SIZE_468x60));
 
+        EventBus.getDefault().register(this);
+
+    }
+
+    public void onEvent(String event) {
+        if(event.equals("update")){
+            applyJob();
+        }
     }
 
     public void setIsCollected(boolean isCollected) {
@@ -109,6 +124,7 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
 
     public void setData(JobDetail data) {
         setIsCollected(data.isCollected());
+
         collapsingToolbar.setTitle(data.getTitle());
         timeIntro.setText(data.getTimeIntro());
         jobImg.setImageURI(Uri.parse(data.getImg()));
@@ -123,14 +139,22 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
         jobWage.setText(data.getMoneyIntro());
         jobBeginTime.setText(new TimeTransform(data.getJobBeginTime()).toString(new RecentDateFormater()));
         jobEndTime.setText(new TimeTransform(data.getJobEndTime()).toString(new RecentDateFormater()));
+
+        relateJob.setAdapter(relateAdapter);
+
         setCommentCount(data.getCommentCount());
-        toManagerBackedge();
+
+        intent=new Intent(JobDetailManagerActivity.this,ManagerBackedgeActivity.class);
+        intent.putExtra("id",data.getId());
     }
+
+
 
     /**
      * 报名兼职
      */
     public void applyJob(){
+        posted.setText("立即报名");
         posted.setOnClickListener(v -> getPresenter().applyJob());
     }
 
@@ -139,9 +163,17 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
      */
     public void toManagerBackedge() {
         posted.setText("管理后台");
-        posted.setOnClickListener(v -> startActivity(new Intent(JobDetailManagerActivity.this,ManagerBackedgeActivity.class)));
+        posted.setOnClickListener(v -> startActivity(intent));
     }
 
+    /**
+     * 设置相关推荐数据
+     * @param jobData
+     */
+    public void setRelateJobData(JobBrief[] jobData){
+        relateAdapter.clear();
+        relateAdapter.addAll(jobData);
+    }
 
 
     @Override

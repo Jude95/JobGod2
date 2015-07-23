@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
+import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.bean.JobDetail;
 import com.ant.jobgod.jobgod.util.RecentDateFormater;
 import com.ant.jobgod.jobgod.util.TimeTransform;
@@ -84,7 +85,11 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
     Toolbar toolbar;
     @InjectView(R.id.appBar)
     AppBarLayout appBar;
+
     private MenuItem mCommentMenuItem;
+
+    private JobBriefAdapter relateAdapter=new JobBriefAdapter(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,9 +121,20 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
         jobAsk.setText(data.getAsk());
         jobWage.setText(data.getMoneyIntro());
         personCountIntro.setText(data.getPersonCountIntro());
+
+        relateJob.setAdapter(relateAdapter);
+
         setCommentCount(data.getCommentCount());
     }
 
+    /**
+     * 相关兼职推荐
+     * @param jobData
+     */
+    public void setRelateJobData(JobBrief[] jobData){
+        relateAdapter.clear();
+        relateAdapter.addAll(jobData);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
