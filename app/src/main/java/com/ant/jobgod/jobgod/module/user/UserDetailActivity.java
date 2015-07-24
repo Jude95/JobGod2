@@ -64,7 +64,7 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
     CollapsingToolbarLayout collapsingToolbar;
     @InjectView(R.id.appBar)
     AppBarLayout appBar;
-    @InjectView(R.id.floatingActionButton)
+    @InjectView(R.id.floating_action_button)
     FloatingActionButton floatingActionButton;
 
     @Override
@@ -72,7 +72,7 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_activity_detail);
         ButterKnife.inject(this);
-
+        floatingActionButton.setOnClickListener(v -> getPresenter().attention());
     }
 
     public void setIsAttention(boolean isAttention){
@@ -83,7 +83,23 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
 
     public void setUserDetail(UserDetail detail) {
         setIsAttention(detail.isFocus());
-
+        imgFace.setImageURI(Uri.parse(detail.getFace()));
+        collapsingToolbar.setTitle(detail.getName());
+        signature.setText(detail.getSign());
+        switch (detail.getGender()){
+            case 0:
+                gender.setText("不详");
+                break;
+            case 1:
+                gender.setText("男");
+                break;
+            case 2:
+                gender.setText("女");
+                break;
+        }
+        height.setText(detail.getHeight()+"cm");
+        if (detail.getBirthday() == 0)birthday.setText("不详");
+        else birthday.setText(new TimeTransform(detail.getBirthday()).toString("yyyy年MM月dd日"));
         if(detail.getGender()==0){
             gender.setText("女");
         }
@@ -108,12 +124,6 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
                 break;
         }
 
-        floatingActionButton.setOnClickListener(v->getPresenter().attention());
-        imgFace.setImageURI(Uri.parse(detail.getFace()));
-        collapsingToolbar.setTitle(detail.getName());
-        signature.setText(detail.getSign());
-        height.setText(detail.getHeight()+"cm");
-        birthday.setText(new TimeTransform(detail.getBirthday()).toString("yyyy年MM月dd日"));
         school.setText(detail.getSchool());
         major.setText(detail.getMajor());
         award.setText(detail.getAward());
@@ -122,11 +132,7 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
         like.setText(detail.getLike());
         specialty.setText(detail.getSpecialty());
         intro.setText(detail.getIntro());
-
-
     }
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

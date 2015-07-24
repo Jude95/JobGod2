@@ -24,12 +24,6 @@ public class UserModel extends AbsModel {
     @Override
     protected void onAppCreate(Context ctx) {
         super.onAppCreate(ctx);
-        getJoin(new DataCallback<JobBrief[]>() {
-            @Override
-            public void success(String info, JobBrief[] data) {
-                //Do nothing.because I can't write null for the callback.
-            }
-        });
     }
 
     public void modifyName(String name, StatusCallback callback) {
@@ -48,9 +42,9 @@ public class UserModel extends AbsModel {
 
     public void authentication(String name,String idNumber,String path,StatusCallback callback){
         RequestMap params = new RequestMap();
-        params.put("name",name);
-        params.put("idNumber",idNumber);
-        params.put("path",path);
+        params.put("real_name",name);
+        params.put("id_card",idNumber);
+        params.put("img",path);
         RequestManager.getInstance().post(API.URL.Authentication,params,callback);
     }
 
@@ -68,12 +62,7 @@ public class UserModel extends AbsModel {
     }
 
     public void getJoin(DataCallback<JobBrief[]> callback){
-        RequestManager.getInstance().post(API.URL.GetJoin,null,callback.add(new DataCallback<JobBrief[]>() {
-            @Override
-            public void success(String info, JobBrief[] data) {
-                RongYunModel.getInstance().syncGroups(data);
-            }
-        }));
+        RequestManager.getInstance().post(API.URL.GetJoin,null,callback);
     }
 
     public void getUserDetail(String id,DataCallback<UserDetail> callback){

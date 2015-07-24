@@ -5,6 +5,7 @@ import android.content.Context;
 import com.android.http.RequestManager;
 import com.ant.jobgod.jobgod.config.API;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
+import com.ant.jobgod.jobgod.util.Utils;
 import com.qiniu.android.http.ResponseInfo;
 import com.qiniu.android.storage.UpCompletionHandler;
 import com.qiniu.android.storage.UploadManager;
@@ -55,15 +56,17 @@ public class RemoteFileModel extends AbsModel {
     public SizeImage putImage(final File file,final UploadImageListener listener){
         String realName = "u"+AccountModel.getInstance().getAccount().getId()+System.currentTimeMillis()+".jpg";
         String path = ADDRESS+realName;
-        final SizeImage img = new SizeImage(path+"imageView2/0/w/360",path+"imageView2/0/w/1024",path);
+        final SizeImage img = new SizeImage(path+"?imageView2/0/w/360",path+"?imageView2/0/w/1024",path);
         updateToken(new DataCallback<Token>() {
             @Override
             public void failure(String info) {
+                Utils.Log(info);
                 listener.onError();
             }
 
             @Override
             public void error(String errorInfo) {
+                Utils.Log(errorInfo);
                 listener.onError();
             }
 

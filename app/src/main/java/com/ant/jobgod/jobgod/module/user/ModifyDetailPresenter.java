@@ -47,7 +47,7 @@ public class ModifyDetailPresenter extends BasePresenter<ModifyDetailActivity> {
      * 更新个人信息
      */
     public void updateMyDetail() {
-        UserModel.getInstance().updateMyDetail(getView().getUserDetail(), new StatusCallback() {
+        UserModel.getInstance().updateUserDetail(getView().getUserDetail(), new StatusCallback() {
             @Override
             public void success(String info) {
                 AccountModel.getInstance().updateAccountData();

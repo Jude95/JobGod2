@@ -11,11 +11,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
+import com.ant.jobgod.jobgod.model.RongYunModel;
 import com.ant.jobgod.jobgod.model.bean.AccountData;
 import com.ant.jobgod.jobgod.module.setting.SettingActivity;
 import com.ant.jobgod.jobgod.module.user.AroundFriendsActivity;
 import com.ant.jobgod.jobgod.module.user.AttentionActivity;
-import com.ant.jobgod.jobgod.module.user.ChatListActivity;
 import com.ant.jobgod.jobgod.module.user.CollectActivity;
 import com.ant.jobgod.jobgod.module.user.JoinActivity;
 import com.ant.jobgod.jobgod.module.user.ModifyFaceActivity;
@@ -69,7 +69,7 @@ public class UserDrawerFragment extends NucleusFragment<UserDrawerPresenter> {
         View view = inflater.inflate(R.layout.main_fragment_drawer, container, false);
         ButterKnife.inject(this, view);
         imgFace.setOnClickListener(v -> getPresenter().startActivity(ModifyFaceActivity.class));
-        viewMessage.setOnClickListener((View) -> getPresenter().startActivity(ChatListActivity.class));
+        viewMessage.setOnClickListener((View) -> RongYunModel.getInstance().chatList(getActivity()));
         viewSetting.setOnClickListener((View) -> getPresenter().startActivity(SettingActivity.class));
         viewInformation.setOnClickListener(v -> getPresenter().startActivity(UserDataActivity.class));
         viewNearby.setOnClickListener(v->getPresenter().startActivity(AroundFriendsActivity.class));

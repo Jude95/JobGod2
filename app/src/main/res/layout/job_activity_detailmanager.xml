@@ -336,7 +336,6 @@
                     android:visibility="gone"
                     android:text="已报名"/>
 
-            </FrameLayout>
 
             <include layout="@layout/include_share"/>
 

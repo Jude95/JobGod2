@@ -27,7 +27,6 @@ public class JobDetail {
     private boolean posted;
     private boolean collected;
     private int commentCount;
-    private JobBrief[] relative;
 
     public JobBrief[] getRelative() {
         return relative;
@@ -83,16 +82,10 @@ public class JobDetail {
         return id;
     }
 
-    public JobBrief[] getRelative() {
-        return relative;
-    }
+
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public void setRelative(JobBrief[] relative) {
-        this.relative = relative;
     }
 
     public String getBizFace() {

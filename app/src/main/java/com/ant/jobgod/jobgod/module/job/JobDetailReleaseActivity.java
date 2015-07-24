@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
+import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.bean.JobDetail;
 import com.ant.jobgod.jobgod.util.RecentDateFormater;
 import com.ant.jobgod.jobgod.util.TimeTransform;
@@ -141,7 +142,7 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_job_detail, menu);
         mCommentMenuItem = menu.findItem(R.id.comment);
-        mCommentMenuItem.setTitle(mCommentMenuItem+"条评论");
+        mCommentMenuItem.setTitle(commentCount+"条评论");
         return super.onCreateOptionsMenu(menu);
     }
 

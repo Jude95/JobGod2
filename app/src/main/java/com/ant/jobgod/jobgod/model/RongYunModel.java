@@ -1,11 +1,14 @@
 package com.ant.jobgod.jobgod.model;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 
-import com.ant.jobgod.jobgod.model.bean.AccountData;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.bean.PersonBrief;
+import com.ant.jobgod.jobgod.model.callback.DataCallback;
+import com.ant.jobgod.jobgod.module.user.ChatActivity;
+import com.ant.jobgod.jobgod.module.user.ChatListActivity;
 import com.ant.jobgod.jobgod.util.Utils;
 
 import java.util.ArrayList;
@@ -29,35 +32,33 @@ public class RongYunModel extends AbsModel {
     @Override
     protected void onAppCreate(Context ctx) {
         RongIM.init(ctx);
-        AccountModel.getInstance().registerEvent(this);
     }
 
-    public void onEvent(AccountData data){
-        setRongYun(data.getRongToken());
+    public void connectRongYun(String token){
+        RongIM.connect(token, new RongIMClient.ConnectCallback() {
+            @Override
+            public void onTokenIncorrect() {
+                Utils.Log("融云Token失效");
+            }
+
+            @Override
+            public void onSuccess(String s) {
+                Utils.Log("融云连接成功");
+                setRongYun();
+            }
+
+            @Override
+            public void onError(RongIMClient.ErrorCode errorCode) {
+                Utils.Log("融云连接失败：" + errorCode.getValue() + ":" + errorCode.getMessage());
+            }
+        });
     }
 
-    public void setRongYun(String token){
+    public void setRongYun(){
         try {
-            RongIM.connect(token, new RongIMClient.ConnectCallback() {
-                @Override
-                public void onTokenIncorrect() {
-                    Utils.Log("融云Token失效");
-                }
-
-                @Override
-                public void onSuccess(String s) {
-                    Utils.Log("融云连接成功");
-                }
-
-                @Override
-                public void onError(RongIMClient.ErrorCode errorCode) {
-                    Utils.Log("融云连接失败：" + errorCode.getValue() + ":" + errorCode.getMessage());
-                }
-            });
-
             RongIM.setUserInfoProvider(userId -> {
                 PersonBrief p = PersonBriefModel.getInstance().getPersonBriefOnBlock(userId);
-                return new UserInfo(p.getUID()+"",p.getName(), Uri.parse(p.getFace()));
+                return new UserInfo(p.getUID()+"", p.getName(), Uri.parse(p.getFace()));
             }, true);
 
             RongIM.getInstance().setGroupInfoProvider(new RongIM.GroupInfoProvider() {
@@ -69,39 +70,61 @@ public class RongYunModel extends AbsModel {
                 }
             }, true);
 
+            UserModel.getInstance().getJoin(new DataCallback<JobBrief[]>() {
+                @Override
+                public void success(String info, JobBrief[] data) {
+                    List<Group> list = new ArrayList<>();
+                    for (JobBrief jobBrief : data) {
+                        list.add(new Group(jobBrief.getId()+"", jobBrief.getTitle(), Uri.parse(jobBrief.getImg())));
+                    }
+                    RongIM.getInstance().getRongIMClient().syncGroup(list, new RongIMClient.OperationCallback() {
+                        @Override
+                        public void onSuccess() {
+
+                        }
+
+                        @Override
+                        public void onError(RongIMClient.ErrorCode errorCode) {
+
+                        }
+                    });
+
+                    RongIM.getInstance().setOnReceiveUnreadCountChangedListener(new RongIM.OnReceiveUnreadCountChangedListener() {
+                        @Override
+                        public void onMessageIncreased(int i) {
+                            publicEvent(i);
+                        }
+                    }, Conversation.ConversationType.PRIVATE);
+                }
+            });
         } catch (Exception e) {
             Utils.Log("融云出错");
         }
 
     }
 
-    public void syncGroups(JobBrief[] data){
-        List<Group> list = new ArrayList<>();
-        for (JobBrief jobBrief : data) {
-            list.add(new Group(jobBrief.getId()+"",jobBrief.getTitle(),Uri.parse(jobBrief.getImg())));
-        }
-        RongIM.getInstance().getRongIMClient().syncGroup(list, new RongIMClient.OperationCallback() {
-            @Override
-            public void onSuccess() {
-
-            }
-
-            @Override
-            public void onError(RongIMClient.ErrorCode errorCode) {
-
-            }
-        });
-
-        RongIM.getInstance().setOnReceiveUnreadCountChangedListener(new RongIM.OnReceiveUnreadCountChangedListener() {
-            @Override
-            public void onMessageIncreased(int i) {
-                publicEvent(i);
-            }
-        }, Conversation.ConversationType.PRIVATE);
-    }
 
     public void updateRongYunPersonBrief(PersonBrief p){
         RongIM.getInstance().refreshUserInfoCache(new UserInfo(p.getUID()+"",p.getName(), Uri.parse(p.getFace())));
     }
 
+    public void chatPerson(Context ctx,String id,String title){
+        Intent i = new Intent(ctx, ChatActivity.class);
+        i.putExtra("id",id);
+        i.putExtra("title",title);
+        i.putExtra("type", Conversation.ConversationType.PRIVATE.getName().toLowerCase());
+        ctx.startActivity(i);
+    }
+
+    public void chatGroup(Context ctx,String id,String title){
+        Intent i = new Intent(ctx, ChatActivity.class);
+        i.putExtra("id",id);
+        i.putExtra("title",title);
+        i.putExtra("type", Conversation.ConversationType.GROUP.getName().toLowerCase());
+        ctx.startActivity(i);
+    }
+
+    public void chatList(Context ctx){
+        ctx.startActivity(new Intent(ctx, ChatListActivity.class));
+    }
 }

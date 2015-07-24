@@ -1,9 +1,9 @@
 package com.ant.jobgod.jobgod.module.user;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.ant.jobgod.jobgod.app.BasePresenter;
+import com.ant.jobgod.jobgod.model.RongYunModel;
 import com.ant.jobgod.jobgod.model.UserModel;
 import com.ant.jobgod.jobgod.model.bean.UserDetail;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
@@ -28,7 +28,7 @@ public class UserDetailPresenter extends BasePresenter<UserDetailActivity> {
      * 设置用户个人信息数据
      */
     public void setData(){
-        UserModel.getInstance().getUserDetail(id, new DataCallback<UserDetail>() {
+        UserModel.getInstance().getUserDetail(id+"", new DataCallback<UserDetail>() {
             @Override
             public void success(String info, UserDetail data) {
                 getView().setUserDetail(userDetail=data);
@@ -66,8 +66,6 @@ public class UserDetailPresenter extends BasePresenter<UserDetailActivity> {
     }
 
     public void chat(){
-        Intent i = new Intent(getView(),ChatActivity.class);
-        i.putExtra("id",id);
-        getView().startActivity(i);
+        RongYunModel.getInstance().chatPerson(getView(),userDetail.getId()+"",userDetail.getName());
     }
 }

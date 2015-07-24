@@ -1,5 +1,6 @@
 package com.ant.jobgod.jobgod.module.job;
 
+import android.content.Intent;
 import android.graphics.PointF;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,7 +10,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -30,7 +30,6 @@ import net.youmi.android.banner.AdView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import de.greenrobot.event.EventBus;
 import nucleus.factory.RequiresPresenter;
 
 @RequiresPresenter(JobDetailManagerPresenter.class)
@@ -93,6 +92,8 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
     FloatingActionButton floatingActionButton;
 
     private MenuItem mCommentMenuItem;
+    private int commentCount;
+    private RecyclerArrayAdapter<JobBrief> mRelativeJobsAdapter;
 
     private Intent intent;
 
@@ -106,12 +107,6 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
         jobImg.getHierarchy().setActualImageFocusPoint(new PointF(0.5f, 0));
         floatingActionButton.setOnClickListener(v -> getPresenter().collect());
         viewAd.addView(new AdView(this, AdSize.SIZE_468x60));
-
-        immediatelyApply.setOnClickListener(v -> {
-            immediatelyApply.setVisibility(View.GONE);
-            applayCount.setVisibility(View.GONE);
-            applyed.setVisibility(View.VISIBLE);
-        });
     }
 
     public void setIsCollected(boolean isCollected) {
@@ -184,6 +179,7 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_job_detail, menu);
         mCommentMenuItem = menu.findItem(R.id.comment);
+        mCommentMenuItem.setTitle(commentCount+"条评论");
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -196,6 +192,7 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
     }
 
     public void setCommentCount(int count) {
-        mCommentMenuItem.setTitle(count + "条评论");
+        commentCount = count;
+        if (mCommentMenuItem!=null)mCommentMenuItem.setTitle(count + "条评论");
     }
 }

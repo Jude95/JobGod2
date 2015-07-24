@@ -18,28 +18,25 @@ import nucleus.factory.RequiresPresenter;
 @RequiresPresenter(ChatPresenter.class)
 public class ChatActivity extends BaseActivity<ChatPresenter> {
     String id;
+    String title;
+    String type;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_activity_chat);
         id = getIntent().getStringExtra("id");
-        Utils.Log("id"+id);
+        title = getIntent().getStringExtra("title");
+        type = getIntent().getStringExtra("type");
         ConversationFragment fragment =  (ConversationFragment)getSupportFragmentManager().findFragmentById(R.id.conversation);
-        PersonBriefModel.getInstance().getPersonBrief(id, new PersonBriefModel.PersonBriefCallback() {
-            @Override
-            public void onCallback(PersonBrief personBrief) {
-                Utils.Log(personBrief.getName());
-                getSupportActionBar().setTitle(personBrief.getName());
-                Uri uri = Uri.parse("rong://" + getApplicationInfo().packageName).buildUpon()
-                        .appendPath("conversation").appendPath(io.rong.imlib.model.Conversation.ConversationType.PRIVATE.getName().toLowerCase())
-                        .appendQueryParameter("targetId", personBrief.getUID()).appendQueryParameter("title", personBrief.getName()).build();
-                if (fragment !=null) fragment.setUri(uri);
-                else{
-                    Utils.Toast("Token错误");
-                    finish();
-                }
-            }
-        });
-
+        getSupportActionBar().setTitle(title);
+        Uri uri = Uri.parse("rong://" + getApplicationInfo().packageName).buildUpon()
+                .appendPath("conversation")
+                .appendPath(type)
+                .appendQueryParameter("targetId", id).appendQueryParameter("title", title).build();
+        if (fragment !=null) fragment.setUri(uri);
+        else{
+            Utils.Toast("Token错误");
+            finish();
+        }
     }
 }
