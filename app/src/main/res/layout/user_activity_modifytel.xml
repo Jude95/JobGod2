@@ -42,6 +42,7 @@
                 android:layout_marginTop="16dp">
                 <EditText android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:password="true"
                     android:hint="密码"
                     android:maxLength="8"/>
             </android.support.design.widget.TextInputLayout>

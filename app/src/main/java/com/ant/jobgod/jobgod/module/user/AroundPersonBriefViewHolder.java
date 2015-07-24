@@ -2,6 +2,7 @@ package com.ant.jobgod.jobgod.module.user;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -54,11 +55,13 @@ public class AroundPersonBriefViewHolder extends BaseViewHolder<AroundPersonBrie
         imgFace.setImageURI(Uri.parse(data.getFace()));
         tvName.setText(data.getName());
         tvSignature.setText(data.getSign());
-        ripple.setOnClickListener(v -> {
-            Intent i = new Intent(itemView.getContext(), UserDetailActivity.class);
-            i.putExtra("id",data.getId());
-            itemView.getContext().startActivity(i);
-
+        ripple.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(itemView.getContext(), UserDetailActivity.class);
+                i.putExtra("id",data.getId());
+                itemView.getContext().startActivity(i);
+            }
         });
     }
 }

@@ -47,12 +47,13 @@ public class UserDetailPresenter extends BasePresenter<UserDetailActivity> {
      * 关注按钮的点击事件
      */
     public void attention(){
-        getView().setIsAttention(!userDetail.isFocus());
         if (userDetail.isFocus())
             UserModel.getInstance().unAttention(id, new StatusCallback() {
                 @Override
                 public void success(String info) {
-                    Utils.Toast("取消关注");
+                    Utils.Toast("已取消关注");
+                    userDetail.setFocus(false);
+                    getView().setIsAttention(userDetail.isFocus());
                 }
             });
         else
@@ -60,9 +61,11 @@ public class UserDetailPresenter extends BasePresenter<UserDetailActivity> {
                 @Override
                 public void success(String info) {
                     Utils.Toast("关注成功");
-                }
+                    userDetail.setFocus(true);
+                    getView().setIsAttention(userDetail.isFocus());
+               }
             });
-        userDetail.setIsAttention(!userDetail.isFocus());
+
     }
 
     public void chat(){

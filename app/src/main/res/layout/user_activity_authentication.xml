@@ -63,7 +63,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.v7.widget.AppCompatButton
-                android:id="@+id/sendCode"
+                android:id="@+id/submit"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -77,8 +77,8 @@
 
     <TextView android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:gravity="center_horizontal"
+        android:layout_margin="16dp"
         android:text="上传一张带有身份证的全身照,请您放心，我们不会泄露你的身份。"
         android:textSize="@dimen/abc_text_size_menu_material"/>
 

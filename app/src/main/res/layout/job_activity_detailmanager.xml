@@ -429,8 +429,6 @@
                 android:layout_height="match_parent"
                 app:layout_collapseMode="parallax"
                 app:actualImageScaleType="focusCrop"
-                app:placeholderImage="@drawable/holder"
-                app:failureImage="@drawable/holder"
                 app:progressBarImage="@drawable/ic_progressbar"
                 />
             <View
