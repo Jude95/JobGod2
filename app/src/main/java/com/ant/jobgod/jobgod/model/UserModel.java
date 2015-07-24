@@ -11,6 +11,9 @@ import com.ant.jobgod.jobgod.model.bean.PersonBrief;
 import com.ant.jobgod.jobgod.model.bean.UserDetail;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
+import com.ant.jobgod.jobgod.util.Utils;
+import com.qiniu.android.storage.UpCompletionHandler;
+import com.qiniu.android.storage.UploadManager;
 
 /**
  * Created by Mr.Jude on 2015/6/6.
@@ -98,6 +101,12 @@ public class UserModel extends AbsModel {
         RequestManager.getInstance().post(API.URL.UpdateUserDetail, params, callback);
     }
 
+    /**
+     * 获取附近的人
+     * @param page
+     * @param count
+     * @param callback
+     */
     public void getAroundUsers(int page, int count, DataCallback<AroundPersonBriefPage> callback) {
         RequestMap params = new RequestMap();
         params.put("page", page + "");
@@ -105,11 +114,71 @@ public class UserModel extends AbsModel {
         RequestManager.getInstance().post(API.URL.GetAroundFriends, params, callback);
     }
 
+    /**
+     *关注他人
+     * @param id
+     * @param callback
+     */
     public void attention(int id, StatusCallback callback) {
         RequestManager.getInstance().post(API.URL.Attention, new RequestMap("id", id+""), callback);
     }
 
+    /**
+     * 取消关注他人
+     * @param id
+     * @param callback
+     */
     public void unAttention(int id, StatusCallback callback) {
         RequestManager.getInstance().post(API.URL.UnAttention, new RequestMap("id", id+""), callback);
+    }
+
+    /**
+     * 提交身份验证信息
+     */
+    public void certificate(String idCard,String realName,String img,StatusCallback callback){
+        RequestMap param=new RequestMap();
+        param.put("id_card",idCard);
+        param.put("real_name",realName);
+        param.put("img",img);
+        RequestManager.getInstance().post(API.URL.Certificate,param,callback);
+    }
+
+    /**
+     * 获取七牛的token
+     */
+    public void getQiniuToken(DataCallback<String> callback){
+        RequestManager.getInstance().get(API.URL.QiniuToken, callback);
+    }
+
+    /**
+     * 上传图片到七牛
+     * @param path
+     * @param handler
+     */
+    public void uploadToQiniu(String path,UpCompletionHandler handler){
+        getQiniuToken(new DataCallback<String>() {
+            @Override
+            public void success(String ifo, String data) {
+                Utils.Log("token:" + data);
+                UploadManager uploadManager = new UploadManager();
+                /**
+                 * 参数null要改动
+                 */
+                uploadManager.put(path, path, data, handler, null);
+            }
+        });
+    }
+
+    /**
+     * 上传图片地址到业务服务器
+     * @param smallImg
+     * @param largeImg
+     * @param callback
+     */
+    public void uploadToServer(String smallImg,String largeImg,StatusCallback callback){
+        RequestMap param=new RequestMap();
+        param.put("small",smallImg);
+        param.put("large",largeImg);
+        RequestManager.getInstance().post(API.URL.ModFace,param,callback);
     }
 }

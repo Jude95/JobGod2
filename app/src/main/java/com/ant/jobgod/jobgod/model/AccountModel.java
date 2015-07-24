@@ -107,7 +107,7 @@ public class AccountModel extends AbsModel{
         params.put("tel",tel);
         params.put("pass",Utils.MD5(password.getBytes()));
         params.put("code", verify);
-        RequestManager.getInstance().post(API.URL.Register,params,callback);
+        RequestManager.getInstance().post(API.URL.Register, params, callback);
     }
 
     public void isRegistered(String tel,StatusCallback callback){
@@ -133,12 +133,33 @@ public class AccountModel extends AbsModel{
         }));
     }
 
+    /**
+     * 修改密码
+     * @param tel
+     * @param password
+     * @param verify
+     * @param callback
+     */
     public void modifyPassword(String tel,String password,String verify,StatusCallback callback){
         RequestMap params = new RequestMap();
         params.put("tel",tel);
         params.put("newP",Utils.MD5(password.getBytes()));
         params.put("code",verify);
         RequestManager.getInstance().post(API.URL.ModifyPassword, params, callback);
+    }
+
+    /**
+     * 绑定手机
+     * @param tel
+     * @param password
+     * @param code
+     */
+    public void boundTel(String tel,String password,String code,StatusCallback callback){
+        RequestMap params = new RequestMap();
+        params.put("tel",tel);
+        params.put("password",Utils.MD5(password.getBytes()));
+        params.put("code",code);
+        RequestManager.getInstance().post(API.URL.BoundTel,params,callback);
     }
 
 

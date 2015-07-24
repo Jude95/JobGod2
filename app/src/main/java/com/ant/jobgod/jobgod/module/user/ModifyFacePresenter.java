@@ -13,6 +13,9 @@ import com.ant.jobgod.imagetool.imageprovider.ImageProvider;
 import com.ant.jobgod.imagetool.imageprovider.OnImageSelectListener;
 import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.AccountModel;
+import com.ant.jobgod.jobgod.model.RemoteFileModel;
+import com.ant.jobgod.jobgod.model.UserModel;
+import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.facebook.common.references.CloseableReference;
@@ -37,6 +40,8 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
     private String mFinalImg;
     private ImageProvider mProvider;
 
+    private String qiniuToken;
+
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
@@ -53,7 +58,7 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
         mProvider.getImageFromCamera(new OnImageSelectListener<ImageElement>() {
             @Override
             public void onImageSelect(ImageElement imageElement) {
-                Utils.Log("uri----:"+imageElement.getLargeImage());
+                Utils.Log("uri----:" + imageElement.getLargeImage());
                 startCrop(imageElement.getLargeImage());
             }
         });
@@ -79,7 +84,7 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
                 DataSubscriber dataSubscriber = new BaseBitmapDataSubscriber() {
                     @Override
                     protected void onNewResultImpl(Bitmap bitmap) {
-                        File temp = FileManager.getInstance().getChild(FileManager.Dir.Image,TEMP_IMG);
+                        File temp = FileManager.getInstance().getChild(FileManager.Dir.Image, TEMP_IMG);
                         Utils.BitmapSave(bitmap, temp.getPath());
                         getView().dismissProgress();
                         startCrop(Uri.fromFile(temp));
@@ -119,4 +124,23 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
             FileManager.getInstance().deletChild(FileManager.Dir.Image, TEMP_IMG);
         }
     }
+
+    /**
+     * 上传头像
+     */
+    public void modFace(){
+        RemoteFileModel.getInstance().put(new File(mFinalImg), new RemoteFileModel.UploadListener() {
+            @Override
+            public void onComplete(String path) {
+                UserModel.getInstance().uploadToServer(path + "-imageView2/1/w/600/h/450/q/75", path + "-imageView2/1/w/1000/h/750/q/75", new StatusCallback() {
+                    @Override
+                    public void success(String info) {
+                        Utils.Toast("上传成功");
+                    }
+                });
+            }
+        });
+    }
+
+
 }

@@ -4,11 +4,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.AppCompatButton;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 
-import com.android.http.RequestMap;
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
 
@@ -29,8 +27,9 @@ public class AuthenticationActivity extends BaseActivity<AuthenticationPresenter
     TextInputLayout ID;
     @InjectView(R.id.realName)
     TextInputLayout realName;
-    @InjectView(R.id.sendCode)
-    AppCompatButton sendCode;
+    @InjectView(R.id.submit)
+    AppCompatButton submit;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,28 +39,23 @@ public class AuthenticationActivity extends BaseActivity<AuthenticationPresenter
 
         imgID.setOnClickListener(v -> getPresenter().getImageFromCamera());
 
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String id = ID.getEditText().getText().toString();
+                String name = realName.getEditText().getText().toString();
+                /**
+                 * 差一个参数img
+                 */
+                String img = "";
+                getPresenter().authentication(id, name, img);
+            }
+        });
+
     }
 
-    public void setImg(Uri uri){
+    public void setImg(Uri uri) {
         imgID.setImageURI(uri);
     }
 
-
-    public RequestMap setParam() {
-        RequestMap param = new RequestMap();
-//        param.put("name", name.getEditText().getText().toString());
-        return param;
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_user_authentication, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
-    }
 }

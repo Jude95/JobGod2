@@ -41,7 +41,7 @@
             android:padding="8dp"
             android:textSize="18sp"
             android:textColor="@color/White"
-            android:text=""
+            android:text="取消报名"
             android:background="?colorPrimary"/>
     </LinearLayout>
 

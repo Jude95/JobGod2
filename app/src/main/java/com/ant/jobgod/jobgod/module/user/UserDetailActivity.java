@@ -67,6 +67,7 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
     @InjectView(R.id.floatingActionButton)
     FloatingActionButton floatingActionButton;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,22 +76,21 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
 
     }
 
-    public void setIsAttention(boolean isAttention){
-        floatingActionButton.setImageResource(isAttention?
-                R.drawable.ic_star_focus:
+    public void setIsAttention(boolean isAttention) {
+        floatingActionButton.setImageResource(isAttention ?
+                R.drawable.ic_star_focus :
                 R.drawable.ic_star_unfocus);
     }
 
     public void setUserDetail(UserDetail detail) {
         setIsAttention(detail.isFocus());
 
-        if(detail.getGender()==0){
+        if (detail.getGender() == 0) {
             gender.setText("女");
-        }
-        else
+        } else
             gender.setText("男");
 
-        switch (detail.getEduLevel()){
+        switch (detail.getEduLevel()) {
             case 0:
                 eduLevel.setText("初中");
                 break;
@@ -108,11 +108,12 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
                 break;
         }
 
-        floatingActionButton.setOnClickListener(v->getPresenter().attention());
+        floatingActionButton.setOnClickListener(v -> getPresenter().attention());
+
         imgFace.setImageURI(Uri.parse(detail.getFace()));
         collapsingToolbar.setTitle(detail.getName());
         signature.setText(detail.getSign());
-        height.setText(detail.getHeight()+"cm");
+        height.setText(detail.getHeight() + "cm");
         birthday.setText(new TimeTransform(detail.getBirthday()).toString("yyyy年MM月dd日"));
         school.setText(detail.getSchool());
         major.setText(detail.getMajor());
@@ -127,16 +128,15 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
     }
 
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.chat)getPresenter().chat();
+        if (item.getItemId() == R.id.chat) getPresenter().chat();
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-            getMenuInflater().inflate(R.menu.menu_user_detail,menu);
+        getMenuInflater().inflate(R.menu.menu_user_detail, menu);
         return true;
     }
 }

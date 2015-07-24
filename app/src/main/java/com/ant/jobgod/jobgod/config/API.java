@@ -12,6 +12,8 @@ public class API {
         public static final String Register = BaseUrl + "home/user/register";
         public static final String Login = BaseUrl + "Home/User/login";
         public static final String ModifyPassword = BaseUrl + "Home/user/modPass";
+        public static final String Certificate = BaseUrl + "home/user/certificate";
+        public static final String BoundTel = BaseUrl + "home/user/boundTel";
 
         //Person
         public static final String GetPersonBrief = BaseUrl + "home/user/getPersonBrief";
@@ -35,6 +37,9 @@ public class API {
         public static final String UnAttention = BaseUrl + "home/index/unFocusUser";
 
         public static final String Apply = BaseUrl + "home/user/apply";
+
+        public static final String QiniuToken = BaseUrl + "home/index/qiniuToken";
+        public static final String ModFace = BaseUrl + "Home/index/modFace";
 
         //manager
         public static final String GetContract = BaseUrl + "Home/index/getContract";

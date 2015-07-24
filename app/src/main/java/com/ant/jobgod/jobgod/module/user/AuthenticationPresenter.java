@@ -10,7 +10,10 @@ import com.ant.jobgod.imagetool.imageprovider.ImageElement;
 import com.ant.jobgod.imagetool.imageprovider.ImageProvider;
 import com.ant.jobgod.imagetool.imageprovider.OnImageSelectListener;
 import com.ant.jobgod.jobgod.app.BasePresenter;
+import com.ant.jobgod.jobgod.model.UserModel;
+import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.FileManager;
+import com.ant.jobgod.jobgod.util.Utils;
 
 /**
  * Created by alien on 2015/7/11.
@@ -32,12 +35,22 @@ public class AuthenticationPresenter extends BasePresenter<AuthenticationActivit
         super.onCreateView(view);
     }
 
+
     /**
-     * 网络请求，响应getview的点击事件
+     * 响应getview的点击事件
      */
-    public void authentication(){
+    public void authentication(String idCard,String name,String img){
+        UserModel.getInstance().certificate(idCard, name, img, new StatusCallback() {
+            @Override
+            public void success(String info) {
+                Utils.Toast("提交成功，等待审核");
+            }
+        });
     }
 
+    /**
+     * 打开相机拍照
+     */
     public void getImageFromCamera(){
         mProvider.getImageFromCamera(new OnImageSelectListener<ImageElement>() {
             @Override

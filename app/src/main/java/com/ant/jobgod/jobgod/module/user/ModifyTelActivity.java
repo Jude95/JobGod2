@@ -60,7 +60,7 @@ public class ModifyTelActivity extends BaseActivity<ModifyTelPresenter> {
             phone.setError("");
         }
         showCodeCard();
-//        getPresenter().checkIsRegister(mNumber);
+        getPresenter().checkIsRegister(mNumber);
     }
 
 
@@ -72,12 +72,13 @@ public class ModifyTelActivity extends BaseActivity<ModifyTelPresenter> {
 
     public void setNumberNoExist() {
         phone.setError("手机号已注册");
+        phone.setEnabled(true);
     }
 
 
     public void showCodeCard() {
         cardMessage.setVisibility(View.VISIBLE);
-//        enableInfoEdit(false);
+        enableInfoEdit(false);
     }
 
     private void sendModify(){
@@ -90,10 +91,15 @@ public class ModifyTelActivity extends BaseActivity<ModifyTelPresenter> {
         } else {
             tilCode.setError("");
         }
-        getPresenter().sendModify(mNumber, mPassword, mCode);
+        getPresenter().boundTel(mNumber, mPassword, mCode);
     }
 
     public void setRetryTime(int time) {
         btnRetry.setText(time + "秒后重新获取");
+    }
+
+    public void setRetryEnable(boolean enable){
+        btnRetry.setEnabled(enable);
+        if (enable)btnRetry.setText("重新获取");
     }
 }
