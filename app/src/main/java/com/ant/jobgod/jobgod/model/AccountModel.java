@@ -74,6 +74,7 @@ public class AccountModel extends AbsModel{
         saveAccount();
         applyToken(userAccountData.getTokenApp());
         publicEvent(userAccountData);
+        RongYunModel.getInstance().connectRongYun(userAccountData.getRongToken());
     }
 
     public void saveAccount(){

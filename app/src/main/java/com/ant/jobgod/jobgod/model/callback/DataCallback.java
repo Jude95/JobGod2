@@ -37,6 +37,7 @@ public abstract class DataCallback<T> extends LinkCallback {
                 data = gson.fromJson(jsonObject.getString(API.KEY.DATA), ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0]);
             }
         } catch (Exception e) {
+            Utils.Log(e.getLocalizedMessage());
             error("数据解析错误");
             return ;
         }

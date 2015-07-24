@@ -87,6 +87,8 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
     AppBarLayout appBar;
 
     private MenuItem mCommentMenuItem;
+    private int commentCount;
+
 
     private JobBriefAdapter relateAdapter=new JobBriefAdapter(this);
 
@@ -140,6 +142,7 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_job_detail, menu);
         mCommentMenuItem = menu.findItem(R.id.comment);
+        mCommentMenuItem.setTitle(commentCount+"条评论");
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -151,7 +154,9 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
         return super.onOptionsItemSelected(item);
     }
 
+
     public void setCommentCount(int count){
-        mCommentMenuItem.setTitle(count+"条评论");
+        commentCount = count;
+        if (mCommentMenuItem!=null)mCommentMenuItem.setTitle(count+"条评论");
     }
 }

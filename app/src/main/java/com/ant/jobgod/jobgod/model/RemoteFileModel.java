@@ -2,6 +2,10 @@ package com.ant.jobgod.jobgod.model;
 
 import android.content.Context;
 
+import com.android.http.RequestManager;
+import com.ant.jobgod.jobgod.config.API;
+import com.ant.jobgod.jobgod.model.callback.DataCallback;
+import com.ant.jobgod.jobgod.util.Utils;
 import com.qiniu.android.http.ResponseInfo;
 import com.qiniu.android.storage.UpCompletionHandler;
 import com.qiniu.android.storage.UploadManager;
@@ -17,17 +21,31 @@ public class RemoteFileModel extends AbsModel {
     public static RemoteFileModel getInstance() {
         return getInstance(RemoteFileModel.class);
     }
-    public static final String ADDRESS = "";
-    private String token;
+    public static final String ADDRESS = "http://7xjdz6.com2.z0.glb.qiniucdn.com/";
+
     private UploadManager mUploadManager;
-    public interface UploadListener{
-        void onComplete(String path);
+    public interface UploadImageListener{
+        void onComplete(SizeImage path);
+        void onError();
     }
+
+    public class Token{
+        private String token;
+
+        public String getToken() {
+            return token;
+        }
+
+        public void setToken(String token) {
+            this.token = token;
+        }
+    }
+
 
     @Override
     protected void onAppCreate(Context ctx) {
         super.onAppCreate(ctx);
-
+        mUploadManager = new UploadManager();
     }
 
     /**
@@ -35,16 +53,74 @@ public class RemoteFileModel extends AbsModel {
      * @param file 需上传文件
      * @return 上传文件访问地址
      */
-    public String put(File file,UploadListener listener){
-        String name = "u"+AccountModel.getInstance().getAccount().getId()+System.currentTimeMillis();
-        String path = ADDRESS+name;
-        mUploadManager.put(file, name, token, new UpCompletionHandler() {
+    public SizeImage putImage(final File file,final UploadImageListener listener){
+        String realName = "u"+AccountModel.getInstance().getAccount().getId()+System.currentTimeMillis()+".jpg";
+        String path = ADDRESS+realName;
+        final SizeImage img = new SizeImage(path+"?imageView2/0/w/360",path+"?imageView2/0/w/1024",path);
+        updateToken(new DataCallback<Token>() {
             @Override
-            public void complete(String key, ResponseInfo info, JSONObject response) {
-                listener.onComplete(path);
+            public void failure(String info) {
+                Utils.Log(info);
+                listener.onError();
             }
-        },null);
-        return name;
+
+            @Override
+            public void error(String errorInfo) {
+                Utils.Log(errorInfo);
+                listener.onError();
+            }
+
+            @Override
+            public void success(String info, Token data) {
+                mUploadManager.put(file, realName, data.getToken(), new UpCompletionHandler() {
+                    @Override
+                    public void complete(String key, ResponseInfo info, JSONObject response) {
+                        listener.onComplete(img);
+                    }
+                }, null);
+            }
+        });
+        return img;
+    }
+
+    public void updateToken(DataCallback<Token> callback){
+        RequestManager.getInstance().post(API.URL.QiNiuToken, null, callback);
+    }
+
+    public class SizeImage{
+        private String smallImage;
+        private String largeImage;
+        private String originalImage;
+
+        public String getOriginalImage() {
+            return originalImage;
+        }
+
+        public void setOriginalImage(String originalImage) {
+            this.originalImage = originalImage;
+        }
+
+        public String getSmallImage() {
+            return smallImage;
+        }
+
+        public void setSmallImage(String smallImage) {
+            this.smallImage = smallImage;
+        }
+
+        public String getLargeImage() {
+            return largeImage;
+        }
+
+        public void setLargeImage(String largeImage) {
+            this.largeImage = largeImage;
+        }
+
+        public SizeImage(String smallImage, String largeImage, String originalImage) {
+            this.smallImage = smallImage;
+            this.largeImage = largeImage;
+            this.originalImage = originalImage;
+        }
     }
 
 }

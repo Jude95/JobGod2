@@ -12,10 +12,12 @@ import de.greenrobot.event.EventBus;
 public abstract class AbsModel {
     private final static Class<?>[] MODELS = {
             RemoteFileModel.class,
-            UserModel.class,
-            AccountModel.class,
             LocationModel.class,
             PersonBriefModel.class,
+
+            AccountModel.class,
+            UserModel.class,
+
             CommonModel.class,
             RegionModel.class,
             JobModel.class,

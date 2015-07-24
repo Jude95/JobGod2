@@ -16,6 +16,7 @@ public class API {
         public static final String BoundTel = BaseUrl + "home/user/boundTel";
 
         //Person
+
         public static final String GetPersonBrief = BaseUrl + "home/user/getPersonBrief";
         public static final String SyncPersonBriefs = BaseUrl + "home/user/syncPeopleBrief";
         public static final String ModifyName = BaseUrl + "Home/index/modName";
@@ -35,6 +36,9 @@ public class API {
 
         public static final String Attention = BaseUrl + "home/index/focusUser";
         public static final String UnAttention = BaseUrl + "home/index/unFocusUser";
+
+        public static final String Authentication = BaseUrl + "home/user/certificate";
+        public static final String QiNiuToken = BaseUrl + "home/index/qiniuToken";
 
         public static final String Apply = BaseUrl + "home/user/apply";
 

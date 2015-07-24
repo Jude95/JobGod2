@@ -315,7 +315,26 @@
                             android:background="?colorPrimary"
                             android:textColor="@color/White"/>
 
+                    <TextView android:id="@+id/immediatelyApply"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="立即报名"
+                        android:textSize="16sp"
+                        android:background="?colorPrimary"
+                        android:textColor="@color/White"/>
+
                 </LinearLayout>
+
+                <TextView android:id="@+id/applyed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:textSize="16sp"
+                    android:background="?colorPrimary"
+                    android:textColor="@color/White"
+                    android:visibility="gone"
+                    android:text="已报名"/>
 
 
             <include layout="@layout/include_share"/>
@@ -327,18 +346,22 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
+                    android:layout_marginBottom="4dp"
                     android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
                     android:gravity="center_vertical"
-                    android:text="相关推荐"/>
-
+                    android:text="相关推荐"
+                    android:textStyle="bold"/>
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.4dp"
-                    android:background="@color/md_divider_black"/>
+                    android:layout_height="@dimen/md_divider_height"
+                    android:layout_marginTop="40dp"
+                    android:background="@color/md_divider_black" />
 
                 <com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView
                     android:id="@+id/relateJob"
-                    android:layout_marginTop="33dp"
+                    android:layout_marginTop="40dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -352,13 +375,21 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
+                    android:layout_marginBottom="4dp"
                     android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
                     android:gravity="center_vertical"
+                    android:textStyle="bold"
                     android:text="推广"/>
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/md_divider_height"
+                    android:layout_marginTop="40dp"
+                    android:background="@color/md_divider_black" />
                 <LinearLayout
                     android:id="@+id/viewAd"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="40dp"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:padding="8dp"

@@ -64,33 +64,49 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
     CollapsingToolbarLayout collapsingToolbar;
     @InjectView(R.id.appBar)
     AppBarLayout appBar;
-    @InjectView(R.id.floatingActionButton)
+    @InjectView(R.id.floating_action_button)
     FloatingActionButton floatingActionButton;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_activity_detail);
         ButterKnife.inject(this);
-
+        floatingActionButton.setOnClickListener(v -> getPresenter().attention());
     }
 
-    public void setIsAttention(boolean isAttention) {
-        floatingActionButton.setImageResource(isAttention ?
-                R.drawable.ic_star_focus :
+    public void setIsAttention(boolean isAttention){
+        floatingActionButton.setImageResource(isAttention?
+                R.drawable.ic_star_focus:
                 R.drawable.ic_star_unfocus);
     }
 
     public void setUserDetail(UserDetail detail) {
         setIsAttention(detail.isFocus());
-
-        if (detail.getGender() == 0) {
+        imgFace.setImageURI(Uri.parse(detail.getFace()));
+        collapsingToolbar.setTitle(detail.getName());
+        signature.setText(detail.getSign());
+        switch (detail.getGender()){
+            case 0:
+                gender.setText("不详");
+                break;
+            case 1:
+                gender.setText("男");
+                break;
+            case 2:
+                gender.setText("女");
+                break;
+        }
+        height.setText(detail.getHeight()+"cm");
+        if (detail.getBirthday() == 0)birthday.setText("不详");
+        else birthday.setText(new TimeTransform(detail.getBirthday()).toString("yyyy年MM月dd日"));
+        if(detail.getGender()==0){
             gender.setText("女");
-        } else
+        }
+        else
             gender.setText("男");
 
-        switch (detail.getEduLevel()) {
+        switch (detail.getEduLevel()){
             case 0:
                 eduLevel.setText("初中");
                 break;
@@ -108,13 +124,6 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
                 break;
         }
 
-        floatingActionButton.setOnClickListener(v -> getPresenter().attention());
-
-        imgFace.setImageURI(Uri.parse(detail.getFace()));
-        collapsingToolbar.setTitle(detail.getName());
-        signature.setText(detail.getSign());
-        height.setText(detail.getHeight() + "cm");
-        birthday.setText(new TimeTransform(detail.getBirthday()).toString("yyyy年MM月dd日"));
         school.setText(detail.getSchool());
         major.setText(detail.getMajor());
         award.setText(detail.getAward());
@@ -123,20 +132,17 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
         like.setText(detail.getLike());
         specialty.setText(detail.getSpecialty());
         intro.setText(detail.getIntro());
-
-
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.chat) getPresenter().chat();
+        if (item.getItemId() == R.id.chat)getPresenter().chat();
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_user_detail, menu);
+            getMenuInflater().inflate(R.menu.menu_user_detail,menu);
         return true;
     }
 }

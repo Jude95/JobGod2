@@ -8,6 +8,7 @@ import com.ant.jobgod.jobgod.model.JobModel;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.bean.JobBriefPage;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
+import com.ant.jobgod.jobgod.util.Utils;
 import com.facebook.common.internal.Lists;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import nucleus.manager.Presenter;
  */
 public class JobListPresenter extends Presenter<JobListFragment> {
     private static final int FILTRATE_FLAG = 1568;
-    private static final int PAGE_COUNT = 20;
+    private static final int PAGE_COUNT = 10;
     private ArrayList<JobBrief> jobs = new ArrayList<>();
     private int page = 0;
 
@@ -66,6 +67,7 @@ public class JobListPresenter extends Presenter<JobListFragment> {
             public void success(String info, JobBriefPage data) {
                 if (data.getCurPage()==page+1){
                     getView().addJob(data.getJobs());
+                    Utils.Log("Length:"+data.getJobs().length);
                     jobs.addAll(Lists.newArrayList(data.getJobs()));
                     if ((data.getTotalCount()-1)/PAGE_COUNT<= page){
                         getView().stopLoadMore();

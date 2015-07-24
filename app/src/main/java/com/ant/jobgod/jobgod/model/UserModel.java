@@ -27,12 +27,6 @@ public class UserModel extends AbsModel {
     @Override
     protected void onAppCreate(Context ctx) {
         super.onAppCreate(ctx);
-        getJoin(new DataCallback<JobBrief[]>() {
-            @Override
-            public void success(String info, JobBrief[] data) {
-                //Do nothing.because I can't write null for the callback.
-            }
-        });
     }
 
     public void modifyName(String name, StatusCallback callback) {
@@ -42,47 +36,43 @@ public class UserModel extends AbsModel {
     public void modifySign(String sign, StatusCallback callback) {
         RequestManager.getInstance().post(API.URL.ModifySign, new RequestMap("sign", sign), callback);
     }
+    public void modifyFace(String small,String large,StatusCallback callback){
+        RequestMap params = new RequestMap();
+        params.put("small",small);
+        params.put("large",large);
+        RequestManager.getInstance().post(API.URL.ModifyFace,params,callback);
+    }
 
-    public void modifyFace(String face, StatusCallback callback) {
-        RequestManager.getInstance().post(API.URL.ModifyFace, new RequestMap("face", face), callback);
+    public void authentication(String name,String idNumber,String path,StatusCallback callback){
+        RequestMap params = new RequestMap();
+        params.put("real_name",name);
+        params.put("id_card",idNumber);
+        params.put("img",path);
+        RequestManager.getInstance().post(API.URL.Authentication,params,callback);
     }
 
 
-    public void getCollection(DataCallback<JobBrief[]> callback) {
-        RequestManager.getInstance().post(API.URL.GetCollections, null, callback);
+    public void getCollection(DataCallback<JobBrief[]> callback){
+        RequestManager.getInstance().post(API.URL.GetCollections,null,callback);
     }
 
-    public void getAttentionFromMe(DataCallback<PersonBrief[]> callback) {
-        RequestManager.getInstance().post(API.URL.GetAttentionFromMe, null, callback);
+    public void getAttentionFromMe(DataCallback<PersonBrief[]> callback){
+        RequestManager.getInstance().post(API.URL.GetAttentionFromMe,null,callback);
     }
 
-    public void getAttentionToMe(DataCallback<PersonBrief[]> callback) {
-        RequestManager.getInstance().post(API.URL.GetAttentionToMe, null, callback);
+    public void getAttentionToMe(DataCallback<PersonBrief[]> callback){
+        RequestManager.getInstance().post(API.URL.GetAttentionToMe,null,callback);
     }
 
-    public void getJoin(DataCallback<JobBrief[]> callback) {
-        RequestManager.getInstance().post(API.URL.GetJoin, null, callback.add(new DataCallback<JobBrief[]>() {
-            @Override
-            public void success(String info, JobBrief[] data) {
-                RongYunModel.getInstance().syncGroups(data);
-            }
-        }));
+    public void getJoin(DataCallback<JobBrief[]> callback){
+        RequestManager.getInstance().post(API.URL.GetJoin,null,callback);
     }
 
-    /**
-     * 获取用户的信息
-     */
-    public void getUserDetail(int id,DataCallback<UserDetail> callback){
-        RequestMap param=new RequestMap("id",id+"");
-        RequestManager.getInstance().post(API.URL.GetUserDetail,param,callback);
+    public void getUserDetail(String id,DataCallback<UserDetail> callback){
+        RequestManager.getInstance().post(API.URL.GetUserDetail,new RequestMap("id",id),callback);
     }
 
-    /**
-     * 更新个人信息
-     * @param userDetail
-     * @param callback
-     */
-    public void updateMyDetail(UserDetail userDetail, StatusCallback callback) {
+    public void updateUserDetail(UserDetail userDetail,StatusCallback callback){
         RequestMap params = new RequestMap();
 
         params.put("eduLevel", userDetail.getEduLevel()+"");

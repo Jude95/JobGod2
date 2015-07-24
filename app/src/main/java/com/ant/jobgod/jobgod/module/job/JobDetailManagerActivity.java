@@ -23,13 +23,13 @@ import com.ant.jobgod.jobgod.util.RecentDateFormater;
 import com.ant.jobgod.jobgod.util.TimeTransform;
 import com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 
 import net.youmi.android.banner.AdSize;
 import net.youmi.android.banner.AdView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import de.greenrobot.event.EventBus;
 import nucleus.factory.RequiresPresenter;
 
 @RequiresPresenter(JobDetailManagerPresenter.class)
@@ -92,6 +92,8 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
     FloatingActionButton floatingActionButton;
 
     private MenuItem mCommentMenuItem;
+    private int commentCount;
+    private RecyclerArrayAdapter<JobBrief> mRelativeJobsAdapter;
 
     private Intent intent;
 
@@ -105,15 +107,6 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
         jobImg.getHierarchy().setActualImageFocusPoint(new PointF(0.5f, 0));
         floatingActionButton.setOnClickListener(v -> getPresenter().collect());
         viewAd.addView(new AdView(this, AdSize.SIZE_468x60));
-
-        EventBus.getDefault().register(this);
-
-    }
-
-    public void onEvent(String event) {
-        if(event.equals("update")){
-            applyJob();
-        }
     }
 
     public void setIsCollected(boolean isCollected) {
@@ -122,20 +115,8 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
                 R.drawable.ic_star_unfocus);
     }
 
-//    /**
-//     * 打开页面初期，没有数据时设置
-//     */
-//    public void setEmpty(){
-//        setContentView(R.layout.view_progress);
-//    }
-
-    /**
-     * 给view设置对应的数据显示
-     * @param data
-     */
     public void setData(JobDetail data) {
         setIsCollected(data.isCollected());
-
         collapsingToolbar.setTitle(data.getTitle());
         timeIntro.setText(data.getTimeIntro());
         jobImg.setImageURI(Uri.parse(data.getImg()));
@@ -154,10 +135,18 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
         relateJob.setAdapter(relateAdapter);
 
         setCommentCount(data.getCommentCount());
+        setRelative(data.getRelative());
 
         intent=new Intent(JobDetailManagerActivity.this,ManagerBackedgeActivity.class);
         intent.putExtra("id",data.getId());
     }
+
+
+    public void setRelative(JobBrief[] jobs){
+        relateJob.setAdapter(mRelativeJobsAdapter = new JobBriefAdapter(this));
+        mRelativeJobsAdapter.addAll(jobs);
+    }
+
 
 
     /**
@@ -190,6 +179,7 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_job_detail, menu);
         mCommentMenuItem = menu.findItem(R.id.comment);
+        mCommentMenuItem.setTitle(commentCount+"条评论");
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -202,6 +192,7 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
     }
 
     public void setCommentCount(int count) {
-        mCommentMenuItem.setTitle(count + "条评论");
+        commentCount = count;
+        if (mCommentMenuItem!=null)mCommentMenuItem.setTitle(count + "条评论");
     }
 }

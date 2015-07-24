@@ -45,7 +45,8 @@
                 <EditText android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="身份证号"
-                    android:maxLength="8"/>
+                    android:inputType="number"
+                    android:maxLength="18"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout

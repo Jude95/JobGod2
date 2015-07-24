@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
+import com.ant.jobgod.jobgod.util.Utils;
 
 import io.rong.imkit.fragment.ConversationListFragment;
 import io.rong.imlib.model.Conversation;
@@ -29,7 +30,10 @@ public class ChatListActivity extends BaseActivity<ChatListPresenter> {
                 .appendQueryParameter(Conversation.ConversationType.DISCUSSION.getName(), "false")
                 .appendQueryParameter(Conversation.ConversationType.SYSTEM.getName(), "true")
                 .build();
-
-        fragment.setUri(uri);
+        if (fragment !=null) fragment.setUri(uri);
+        else{
+            Utils.Toast("Token错误");
+            finish();
+        }
     }
 }

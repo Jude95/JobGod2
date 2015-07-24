@@ -6,11 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.PersonBrief;
 import com.ant.jobgod.jobgod.widget.TextItemView;
-
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import nucleus.factory.RequiresPresenter;
@@ -32,7 +30,7 @@ public class AttentionToMeFragment extends NucleusFragment<AttentionToMePresente
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.user_fragment_attention_tome, container,false);
+        View view = inflater.inflate(R.layout.user_fragment_attention, container,false);
         ButterKnife.inject(this, view);
         recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
         recycler.setAdapter(adapter);
