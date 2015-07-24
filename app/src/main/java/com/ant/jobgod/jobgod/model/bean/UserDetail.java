@@ -7,13 +7,20 @@ import java.io.Serializable;
  */
 public class UserDetail implements Serializable{
 
+    private int id;
+    private int height;
+    private int avgAbility;
+    private int avgAttitude;
+    private int avgCredit;
+    private boolean focus;
     private long birthday;
     private int gender;
+    private int eduLevel;
+    private int jobCount;
     private String name;
     private String sign;
     private String face;
     private String specialty;
-    private String eduLevel;
     private String like;
     private String certificate;
     private String character;
@@ -22,12 +29,6 @@ public class UserDetail implements Serializable{
     private String school;
     private String intro;
     private String address;
-    private int id;
-    private int height;
-    private int avgAbility;
-    private int avgAttitude;
-    private int avgCredit;
-    private boolean focus;
 
 
     public String getName() {
@@ -58,9 +59,10 @@ public class UserDetail implements Serializable{
         return specialty;
     }
 
-    public String getEduLevel() {
+    public int getEduLevel() {
         return eduLevel;
     }
+
 
     public String getLike() {
         return like;
@@ -130,7 +132,7 @@ public class UserDetail implements Serializable{
         this.specialty = specialty;
     }
 
-    public void setEduLevel(String eduLevel) {
+    public void setEduLevel(int eduLevel) {
         this.eduLevel = eduLevel;
     }
 

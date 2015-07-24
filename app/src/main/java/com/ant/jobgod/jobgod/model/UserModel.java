@@ -16,7 +16,7 @@ import com.ant.jobgod.jobgod.model.callback.StatusCallback;
  * Created by Mr.Jude on 2015/6/6.
  * 关于用户数据的处理。
  */
-public class UserModel  extends AbsModel{
+public class UserModel extends AbsModel {
     public static UserModel getInstance() {
         return getInstance(UserModel.class);
     }
@@ -32,11 +32,12 @@ public class UserModel  extends AbsModel{
         });
     }
 
-    public void modifyName(String name,StatusCallback callback){
+    public void modifyName(String name, StatusCallback callback) {
         RequestManager.getInstance().post(API.URL.ModifyName, new RequestMap("name", name), callback);
     }
-    public void modifySign(String sign,StatusCallback callback){
-        RequestManager.getInstance().post(API.URL.ModifySign,new RequestMap("sign",sign),callback);
+
+    public void modifySign(String sign, StatusCallback callback) {
+        RequestManager.getInstance().post(API.URL.ModifySign, new RequestMap("sign", sign), callback);
     }
     public void modifyFace(String small,String large,StatusCallback callback){
         RequestMap params = new RequestMap();
@@ -81,32 +82,35 @@ public class UserModel  extends AbsModel{
 
     public void updateUserDetail(UserDetail userDetail,StatusCallback callback){
         RequestMap params = new RequestMap();
-        params.put("eduLevel",userDetail.getEduLevel());
-        params.put("major",userDetail.getMajor());
-        params.put("school",userDetail.getSchool());
-        params.put("birthday",userDetail.getBirthday()+"");
-        params.put("gender",userDetail.getGender()+"");
-        params.put("height",userDetail.getHeight()+"");
-        params.put("award",userDetail.getAward());
-        params.put("certificate",userDetail.getCertificate());
-        params.put("character",userDetail.getCharacter());
-        params.put("like",userDetail.getLike());
-        params.put("specialty",userDetail.getSpecialty());
-        params.put("intro",userDetail.getIntro());
-        RequestManager.getInstance().post(API.URL.UpdateUserDetail,params,callback);
+
+        params.put("eduLevel", userDetail.getEduLevel()+"");
+        params.put("major", userDetail.getMajor());
+        params.put("school", userDetail.getSchool());
+        params.put("birthday", userDetail.getBirthday() + "");
+        params.put("gender", userDetail.getGender() + "");
+        params.put("height", userDetail.getHeight() + "");
+        params.put("award", userDetail.getAward());
+        params.put("certificate", userDetail.getCertificate());
+        params.put("character", userDetail.getCharacter());
+        params.put("like", userDetail.getLike());
+        params.put("specialty", userDetail.getSpecialty());
+        params.put("intro", userDetail.getIntro());
+        params.put("address",userDetail.getAddress());
+        RequestManager.getInstance().post(API.URL.UpdateUserDetail, params, callback);
     }
 
-    public void getAroundUsers(int page,int count,DataCallback<AroundPersonBriefPage> callback){
+    public void getAroundUsers(int page, int count, DataCallback<AroundPersonBriefPage> callback) {
         RequestMap params = new RequestMap();
-        params.put("page",page+"");
-        params.put("count",count+"");
-        RequestManager.getInstance().post(API.URL.GetAroundFriends,params,callback);
+        params.put("page", page + "");
+        params.put("count", count + "");
+        RequestManager.getInstance().post(API.URL.GetAroundFriends, params, callback);
     }
 
-    public void attention(String id,StatusCallback callback){
-        RequestManager.getInstance().post(API.URL.Attention,new RequestMap("id",id),callback);
+    public void attention(int id, StatusCallback callback) {
+        RequestManager.getInstance().post(API.URL.Attention, new RequestMap("id", id+""), callback);
     }
-    public void unAttention(String id,StatusCallback callback){
-        RequestManager.getInstance().post(API.URL.UnAttention,new RequestMap("id",id),callback);
+
+    public void unAttention(int id, StatusCallback callback) {
+        RequestManager.getInstance().post(API.URL.UnAttention, new RequestMap("id", id+""), callback);
     }
 }

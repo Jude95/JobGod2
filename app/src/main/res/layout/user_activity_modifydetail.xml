@@ -1,479 +1,558 @@
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context="com.ant.jobgod.jobgod.module.user.ModifyDetailActivity"
-        android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ant.jobgod.jobgod.module.user.ModifyDetailActivity">
+
+    <include layout="@layout/include_toolbar" />
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include layout="@layout/include_toolbar"/>
-
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            >
-    <LinearLayout android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+            android:orientation="vertical">
 
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="?actionBarSize"
-            android:layout_margin="8dp"
-            android:background="@color/White"
-            app:cardCornerRadius="2dp">
-
-            <LinearLayout android:layout_width="match_parent"
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_margin="8dp"
+                android:layout_marginTop="?actionBarSize"
+                android:background="@color/White"
+                app:cardCornerRadius="2dp">
 
-                <TextView android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:text="基本信息"
-                    android:layout_marginLeft="16dp"
-                    android:textColor="@color/Grange"
-                    android:textSize="@dimen/abc_text_size_subhead_material"
-                    android:gravity="center_vertical"/>
-
-                <View android:layout_width="match_parent"
-                    android:layout_height="@dimen/md_divider_height"
-                    android:background="@color/md_divider_black"/>
-
-                <LinearLayout android:orientation="horizontal"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:gravity="center_vertical">
+                    android:layout_height="wrap_content"
+                    android:background="@color/White"
+                    android:orientation="vertical">
 
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
                         android:layout_marginLeft="16dp"
-                        android:textSize="@dimen/abc_text_size_subhead_material"
-                        android:text="性别"/>
+                        android:gravity="center_vertical"
+                        android:text="基本信息"
+                        android:textColor="@color/Grange"
+                        android:textSize="@dimen/abc_text_size_subhead_material" />
 
-                    <TextView android:id="@+id/gender"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_body_1_material"
-                        android:textColor="@color/Grey"
-                        android:text="男"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/md_divider_height"
+                        android:background="@color/md_divider_black" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@color/White"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:text="性别"
+                            android:textSize="@dimen/abc_text_size_subhead_material" />
+
+                        <TextView
+                            android:id="@+id/gender"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="男"
+                            android:textColor="@color/Grey"
+                            android:textSize="@dimen/abc_text_size_body_1_material" />
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/md_divider_height"
+                        android:background="@color/md_divider_black" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@color/White"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="16dp"
+                            android:text="身高"
+                            android:textSize="@dimen/abc_text_size_subhead_material" />
+
+                        <TextView
+                            android:id="@+id/height"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="170cm"
+                            android:textColor="@color/Grey"
+                            android:textSize="@dimen/abc_text_size_body_1_material" />
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/md_divider_height"
+                        android:background="@color/md_divider_black" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@color/White"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:text="生日"
+                            android:textSize="@dimen/abc_text_size_subhead_material" />
+
+                        <TextView
+                            android:id="@+id/birthday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="1995-01-01"
+                            android:textColor="@color/Grey"
+                            android:textSize="@dimen/abc_text_size_body_1_material" />
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/md_divider_height"
+                        android:background="@color/md_divider_black" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@color/White"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:text="地址"
+                            android:textSize="@dimen/abc_text_size_subhead_material" />
+
+                        <TextView
+                            android:id="@+id/address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="重庆邮电大学15栋"
+                            android:textColor="@color/Grey"
+                            android:textSize="@dimen/abc_text_size_body_1_material" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/md_divider_height"
+                        android:background="@color/md_divider_black" />
 
                 </LinearLayout>
 
 
-                <View android:layout_width="match_parent"
-                    android:layout_height="@dimen/md_divider_height"
-                    android:background="@color/md_divider_black"/>
-
-                <LinearLayout android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:gravity="center_vertical">
-
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        
-                        android:layout_marginLeft="16dp"
-                        android:textSize="@dimen/abc_text_size_subhead_material"
-                        android:text="身高"/>
-
-                    <TextView android:id="@+id/height"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_body_1_material"
-                        android:textColor="@color/Grey"
-                        android:text="170cm"/>
-
-                </LinearLayout>
+            </android.support.v7.widget.CardView>
 
 
-                <View android:layout_width="match_parent"
-                    android:layout_height="@dimen/md_divider_height"
-                    android:background="@color/md_divider_black"/>
-
-                <LinearLayout android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:gravity="center_vertical">
-
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:textSize="@dimen/abc_text_size_subhead_material"
-                        android:text="生日"/>
-
-                    <TextView android:id="@+id/birthday"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_body_1_material"
-                        android:textColor="@color/Grey"
-                        android:text="1995-01-01"/>
-
-                </LinearLayout>
-
-
-                <View android:layout_width="match_parent"
-                    android:layout_height="@dimen/md_divider_height"
-                    android:background="@color/md_divider_black"/>
-
-                <LinearLayout android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:gravity="center_vertical">
-
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:textSize="@dimen/abc_text_size_subhead_material"
-                        android:text="地址"/>
-
-                    <TextView android:id="@+id/address"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_body_1_material"
-                        android:textColor="@color/Grey"
-                        android:text="重庆邮电大学15栋"/>
-
-                </LinearLayout>
-
-                <View android:layout_width="match_parent"
-                    android:layout_height="@dimen/md_divider_height"
-                    android:background="@color/md_divider_black"/>
-
-            </LinearLayout>
-
-
-        </android.support.v7.widget.CardView>
-
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="?actionBarSize"
-            android:layout_margin="8dp"
-            android:background="@color/White"
-            app:cardCornerRadius="2dp">
-
-            <LinearLayout android:layout_width="match_parent"
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_margin="8dp"
+                android:layout_marginTop="?actionBarSize"
+                android:background="@color/White"
+                app:cardCornerRadius="2dp">
 
-                <TextView android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:text="学历专业"
-                    android:textColor="@color/Grange"
-                    android:textSize="@dimen/abc_text_size_subhead_material"
-                    android:gravity="center_vertical"
-                    android:layout_marginLeft="16dp"/>
-
-                <View android:layout_width="match_parent"
-                    android:layout_height="@dimen/md_divider_height"
-                    android:background="@color/md_divider_black"/>
-
-                <LinearLayout android:orientation="horizontal"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:gravity="center_vertical">
-
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:textSize="@dimen/abc_text_size_subhead_material"
-                        android:text="学历"/>
-
-                    <TextView android:id="@+id/eduLevel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_body_1_material"
-                        android:textColor="@color/Grey"
-                        android:text="本科"/>
-
-                </LinearLayout>
-
-                <View android:layout_width="match_parent"
-                    android:layout_height="@dimen/md_divider_height"
-                    android:background="@color/md_divider_black"/>
-
-                <LinearLayout android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:gravity="center_vertical">
-
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        
-                        android:layout_marginLeft="16dp"
-                        android:textSize="@dimen/abc_text_size_subhead_material"
-                        android:text="学校"/>
-
-                    <TextView android:id="@+id/school"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_body_1_material"
-                        android:textColor="@color/Grey"
-                        android:text="重庆邮电大学"/>
-
-                </LinearLayout>
-
-                <View android:layout_width="match_parent"
-                    android:layout_height="@dimen/md_divider_height"
-                    android:background="@color/md_divider_black"/>
-
-                <LinearLayout android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:gravity="center_vertical">
-
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:textSize="@dimen/abc_text_size_subhead_material"
-                        android:text="专业"/>
-
-                    <TextView android:id="@+id/major"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:textSize="@dimen/abc_text_size_body_1_material"
-                        android:textColor="@color/Grey"
-                        android:text="计算机科学与技术"/>
-
-                </LinearLayout>
-
-
-
-                <View android:layout_width="match_parent"
-                    android:layout_height="@dimen/md_divider_height"
-                    android:background="@color/md_divider_black"/>
-
-                <LinearLayout android:id="@+id/viewAward"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="16dp"
-                        android:textSize="@dimen/abc_text_size_subhead_material"
-                        android:text="奖项"/>
-
-                    <TextView android:id="@+id/award"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/main_drawer_selector"
-                        android:maxLines="3"
-                        android:layout_margin="16dp"
-                        android:textSize="@dimen/abc_text_size_body_1_material"
-                        android:textColor="@color/Grey"
-                        android:text="无"/>
-
-                </LinearLayout>
-
-                <View android:layout_width="match_parent"
-                    android:layout_height="@dimen/md_divider_height"
-                    android:background="@color/md_divider_black"/>
-
-                <LinearLayout android:id="@+id/viewCertificate"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    android:textSize="@dimen/abc_text_size_subhead_material"
-                    android:text="证书"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@color/White"
+                        android:layout_marginLeft="16dp"
+                        android:gravity="center_vertical"
+                        android:text="学历专业"
+                        android:textColor="@color/Grange"
+                        android:textSize="@dimen/abc_text_size_subhead_material" />
 
-                <TextView android:id="@+id/certificate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/main_drawer_selector"
-                    android:maxLines="3"
-                    android:layout_margin="16dp"
-                    android:textSize="@dimen/abc_text_size_body_1_material"
-                    android:textColor="@color/Grey"
-                    android:text="无"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/md_divider_height"
+                        android:background="@color/md_divider_black" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@color/White"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:text="学历"
+                            android:textSize="@dimen/abc_text_size_subhead_material" />
+
+                        <TextView
+                            android:id="@+id/eduLevel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="本科"
+                            android:textColor="@color/Grey"
+                            android:textSize="@dimen/abc_text_size_body_1_material" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/md_divider_height"
+                        android:background="@color/md_divider_black" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@color/White"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="16dp"
+                            android:text="学校"
+                            android:textSize="@dimen/abc_text_size_subhead_material" />
+
+                        <TextView
+                            android:id="@+id/school"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="重庆邮电大学"
+                            android:textColor="@color/Grey"
+                            android:textSize="@dimen/abc_text_size_body_1_material" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/md_divider_height"
+                        android:background="@color/md_divider_black" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@color/White"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:text="专业"
+                            android:textSize="@dimen/abc_text_size_subhead_material" />
+
+                        <TextView
+                            android:id="@+id/major"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="计算机科学与技术"
+                            android:textColor="@color/Grey"
+                            android:textSize="@dimen/abc_text_size_body_1_material" />
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/md_divider_height"
+                        android:background="@color/md_divider_black" />
+
+                    <LinearLayout
+                        android:id="@+id/viewAward"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/White"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="16dp"
+                            android:text="奖项"
+                            android:textSize="@dimen/abc_text_size_subhead_material" />
+
+                        <TextView
+                            android:id="@+id/award"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:background="@drawable/main_drawer_selector"
+                            android:maxLines="3"
+                            android:text="无"
+                            android:textColor="@color/Grey"
+                            android:textSize="@dimen/abc_text_size_body_1_material" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/md_divider_height"
+                        android:background="@color/md_divider_black" />
+
+                    <LinearLayout
+                        android:id="@+id/viewCertificate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/White"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="16dp"
+                            android:text="证书"
+                            android:textSize="@dimen/abc_text_size_subhead_material" />
+
+                        <TextView
+                            android:id="@+id/certificate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:background="@drawable/main_drawer_selector"
+                            android:maxLines="3"
+                            android:text="无"
+                            android:textColor="@color/Grey"
+                            android:textSize="@dimen/abc_text_size_body_1_material" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/md_divider_height"
+                        android:background="@color/md_divider_black" />
+
                 </LinearLayout>
 
-                <View android:layout_width="match_parent"
-                    android:layout_height="@dimen/md_divider_height"
-                    android:background="@color/md_divider_black"/>
 
-            </LinearLayout>
+            </android.support.v7.widget.CardView>
 
 
-        </android.support.v7.widget.CardView>
-
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="?actionBarSize"
-            android:layout_margin="8dp"
-            android:background="@color/White"
-            app:cardCornerRadius="2dp">
-
-            <LinearLayout android:layout_width="match_parent"
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_margin="8dp"
+                android:layout_marginTop="?actionBarSize"
+                android:background="@color/White"
+                app:cardCornerRadius="2dp">
 
-                <TextView android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginLeft="16dp"
-                    android:text="爱好个性"
-                    android:textColor="@color/Grange"
-                    android:textSize="@dimen/abc_text_size_subhead_material"
-                    android:gravity="center_vertical"/>
-
-                <View android:layout_width="match_parent"
-                    android:layout_height="@dimen/md_divider_height"
-                    android:background="@color/md_divider_black"/>
-
-
-                <LinearLayout android:orientation="vertical"
-                    android:id="@+id/viewCharacter"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_subhead_material"
-                    android:text="性格"/>
+                    android:background="@color/White"
+                    android:orientation="vertical">
 
-                <TextView android:id="@+id/character"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/main_drawer_selector"
-                    android:maxLines="3"
-                    android:layout_margin="16dp"
-                    android:textSize="@dimen/abc_text_size_body_1_material"
-                    android:textColor="@color/Grey"
-                    android:text="脾气温和"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="16dp"
+                        android:gravity="center_vertical"
+                        android:text="爱好个性"
+                        android:textColor="@color/Grange"
+                        android:textSize="@dimen/abc_text_size_subhead_material" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/md_divider_height"
+                        android:background="@color/md_divider_black" />
+
+                    <LinearLayout
+                        android:id="@+id/viewCharacter"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/White"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="16dp"
+                            android:text="性格"
+                            android:textSize="@dimen/abc_text_size_subhead_material" />
+
+                        <TextView
+                            android:id="@+id/character"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:maxLines="3"
+                            android:background="@drawable/main_drawer_selector"
+                            android:text="脾气温和"
+                            android:textColor="@color/Grey"
+                            android:textSize="@dimen/abc_text_size_body_1_material" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/md_divider_height"
+                        android:background="@color/md_divider_black" />
+
+                    <LinearLayout
+                        android:id="@+id/viewLike"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/White"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="16dp"
+                            android:text="爱好"
+                            android:textSize="@dimen/abc_text_size_subhead_material" />
+
+                        <TextView
+                            android:id="@+id/like"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:maxLines="3"
+                            android:background="@drawable/main_drawer_selector"
+                            android:text="写代码"
+                            android:textColor="@color/Grey"
+                            android:textSize="@dimen/abc_text_size_body_1_material" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/md_divider_height"
+                        android:background="@color/md_divider_black" />
+
+                    <LinearLayout
+                        android:id="@+id/viewSpecialty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/White"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="16dp"
+                            android:text="擅长"
+                            android:textSize="@dimen/abc_text_size_subhead_material" />
+
+                        <TextView
+                            android:id="@+id/specialty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:maxLines="3"
+                            android:background="@drawable/main_drawer_selector"
+                            android:text="编程"
+                            android:textColor="@color/Grey"
+                            android:textSize="@dimen/abc_text_size_body_1_material" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/md_divider_height"
+                        android:background="@color/md_divider_black" />
+
+                    <LinearLayout
+                        android:id="@+id/viewIntro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/White"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="16dp"
+                            android:background="@drawable/main_drawer_selector"
+                            android:text="简介"
+                            android:textSize="@dimen/abc_text_size_subhead_material" />
+
+                        <TextView
+                            android:id="@+id/intro"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:maxLines="3"
+                            android:text="校级三好学生"
+                            android:textColor="@color/Grey"
+                            android:textSize="@dimen/abc_text_size_body_1_material" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/md_divider_height"
+                        android:background="@color/md_divider_black" />
+
                 </LinearLayout>
 
-                <View android:layout_width="match_parent"
-                    android:layout_height="@dimen/md_divider_height"
-                    android:background="@color/md_divider_black"/>
-
-                <LinearLayout android:orientation="vertical"
-                    android:id="@+id/viewLike"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                <TextView android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_subhead_material"
-                    android:text="爱好"/>
-
-                <TextView android:id="@+id/like"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/main_drawer_selector"
-                    android:maxLines="3"
-                    android:layout_margin="16dp"
-                    android:textSize="@dimen/abc_text_size_body_1_material"
-                    android:textColor="@color/Grey"
-                    android:text="写代码"/>
-
-                </LinearLayout>
-                <View android:layout_width="match_parent"
-                    android:layout_height="@dimen/md_divider_height"
-                    android:background="@color/md_divider_black"/>
-
-                <LinearLayout android:orientation="vertical"
-                    android:id="@+id/viewSpecialty"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                <TextView android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_subhead_material"
-                    android:text="擅长"/>
-
-                <TextView android:id="@+id/specialty"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/main_drawer_selector"
-                    android:maxLines="3"
-                    android:layout_margin="16dp"
-                    android:textSize="@dimen/abc_text_size_body_1_material"
-                    android:textColor="@color/Grey"
-                    android:text="编程"/>
-                </LinearLayout>
-
-                <View android:layout_width="match_parent"
-                    android:layout_height="@dimen/md_divider_height"
-                    android:background="@color/md_divider_black"/>
-
-                <LinearLayout android:id="@+id/viewIntro"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                <TextView android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:textSize="@dimen/abc_text_size_subhead_material"
-                    android:text="简介"/>
-
-                <TextView android:id="@+id/intro"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/main_drawer_selector"
-                    android:maxLines="3"
-                    android:layout_margin="16dp"
-                    android:textSize="@dimen/abc_text_size_body_1_material"
-                    android:textColor="@color/Grey"
-                    android:text="校级三好学生"/>
-                </LinearLayout>
-
-                <View android:layout_width="match_parent"
-                    android:layout_height="@dimen/md_divider_height"
-                    android:background="@color/md_divider_black"/>
-
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
+            </android.support.v7.widget.CardView>
 
 
-    </LinearLayout>
-        </ScrollView>
+        </LinearLayout>
+    </ScrollView>
 
-    </LinearLayout>
+</LinearLayout>
 
 

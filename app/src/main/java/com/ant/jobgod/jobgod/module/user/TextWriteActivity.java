@@ -43,27 +43,21 @@ public class TextWriteActivity extends BaseActivity<TextWritePresenter> {
         switch (flag) {
             case AWARD:
                 setTitle("修改奖项");
-                data.setHint("奖项");
                 break;
             case CERTIFICATE:
                 setTitle("修改证书");
-                data.setHint("证书");
                 break;
             case CHARACTER:
                 setTitle("修改性格");
-                data.setHint("性格");
                 break;
             case LIKE:
                 setTitle("修改爱好");
-                data.setHint("爱好");
                 break;
             case SPECIALTY:
                 setTitle("修改特长");
-                data.setHint("特长");
                 break;
             case INTRO:
                 setTitle("修改简介");
-                data.setHint("简介");
                 break;
         }
         data.getEditText().setText(content);

@@ -23,10 +23,12 @@ public class ChatActivity extends BaseActivity<ChatPresenter> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_activity_chat);
         id = getIntent().getStringExtra("id");
+        Utils.Log("id"+id);
         ConversationFragment fragment =  (ConversationFragment)getSupportFragmentManager().findFragmentById(R.id.conversation);
         PersonBriefModel.getInstance().getPersonBrief(id, new PersonBriefModel.PersonBriefCallback() {
             @Override
             public void onCallback(PersonBrief personBrief) {
+                Utils.Log(personBrief.getName());
                 getSupportActionBar().setTitle(personBrief.getName());
                 Uri uri = Uri.parse("rong://" + getApplicationInfo().packageName).buildUpon()
                         .appendPath("conversation").appendPath(io.rong.imlib.model.Conversation.ConversationType.PRIVATE.getName().toLowerCase())

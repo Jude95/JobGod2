@@ -57,7 +57,7 @@ public class RongYunModel extends AbsModel {
 
             RongIM.setUserInfoProvider(userId -> {
                 PersonBrief p = PersonBriefModel.getInstance().getPersonBriefOnBlock(userId);
-                return new UserInfo(p.getUID(),p.getName(), Uri.parse(p.getFace()));
+                return new UserInfo(p.getUID()+"",p.getName(), Uri.parse(p.getFace()));
             }, true);
 
             RongIM.getInstance().setGroupInfoProvider(new RongIM.GroupInfoProvider() {
@@ -78,7 +78,7 @@ public class RongYunModel extends AbsModel {
     public void syncGroups(JobBrief[] data){
         List<Group> list = new ArrayList<>();
         for (JobBrief jobBrief : data) {
-            list.add(new Group(jobBrief.getId(),jobBrief.getTitle(),Uri.parse(jobBrief.getImg())));
+            list.add(new Group(jobBrief.getId()+"",jobBrief.getTitle(),Uri.parse(jobBrief.getImg())));
         }
         RongIM.getInstance().getRongIMClient().syncGroup(list, new RongIMClient.OperationCallback() {
             @Override
@@ -101,7 +101,7 @@ public class RongYunModel extends AbsModel {
     }
 
     public void updateRongYunPersonBrief(PersonBrief p){
-        RongIM.getInstance().refreshUserInfoCache(new UserInfo(p.getUID(),p.getName(), Uri.parse(p.getFace())));
+        RongIM.getInstance().refreshUserInfoCache(new UserInfo(p.getUID()+"",p.getName(), Uri.parse(p.getFace())));
     }
 
 }

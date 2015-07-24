@@ -20,46 +20,49 @@ import nucleus.factory.RequiresPresenter;
 @RequiresPresenter(CommentPresenter.class)
 public class CommentActivity extends BaseActivity<CommentPresenter> {
 
-    @InjectView(R.id.recyclerView)
-    EasyRecyclerView recyclerView;
+
     @InjectView(R.id.content)
     EditText content;
     @InjectView(R.id.btnSubmit)
     TextView btnSubmit;
-    private CommentAdapter adapter;
+    @InjectView(R.id.recyclerview)
+    EasyRecyclerView recyclerview;
+
+    private CommentAdapter adapter = new CommentAdapter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.job_activity_comment);
         ButterKnife.inject(this);
-        adapter = new CommentAdapter(this);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
+        recyclerview.setLayoutManager(new LinearLayoutManager(this));
+        recyclerview.setRefreshListener(() -> getPresenter().refresh());
+        adapter.setMore(R.layout.view_more, () -> {
+            getPresenter().loadMore();
+        });
 
-        recyclerView.setRefreshListener(() -> getPresenter().refresh());
-//        adapter.setLoadMore(() -> getPresenter().loadMore());
+        recyclerview.setAdapter(adapter);
+
+        btnSubmit.setOnClickListener(v -> getPresenter().submitComment(content.getText().toString()));
     }
 
 
-    public void setData(Comment[] data){
+    public void setData(Comment[] data) {
         adapter.addAll(data);
     }
 
-    public void refresh(Comment[] data){
+    public void refresh(Comment[] data) {
         adapter.clear();
         adapter.addAll(data);
     }
 
-    public void stopLoadMore(){
-        adapter.setFooter();
+    public void stopMore() {
+        adapter.stopMore();
     }
 
-    public void showProgress(){
-        recyclerView.showProgress();
-        recyclerView.showRecycler();
+    public void setCommentEmpty(){
+        content.setText("");
     }
-
 
 }

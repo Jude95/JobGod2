@@ -84,8 +84,12 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
     Toolbar toolbar;
     @InjectView(R.id.appBar)
     AppBarLayout appBar;
+
     private MenuItem mCommentMenuItem;
     private int commentCount;
+
+
+    private JobBriefAdapter relateAdapter=new JobBriefAdapter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,7 +122,19 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
         jobAsk.setText(data.getAsk());
         jobWage.setText(data.getMoneyIntro());
         personCountIntro.setText(data.getPersonCountIntro());
+
+        relateJob.setAdapter(relateAdapter);
+
         setCommentCount(data.getCommentCount());
+    }
+
+    /**
+     * 相关兼职推荐
+     * @param jobData
+     */
+    public void setRelateJobData(JobBrief[] jobData){
+        relateAdapter.clear();
+        relateAdapter.addAll(jobData);
     }
 
     @Override

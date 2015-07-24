@@ -78,6 +78,7 @@
             android:textColor="?attr/colorPrimary"
             android:gravity="center_vertical"
             android:singleLine="true"
+            android:maxLength="6"
             android:text="暂无数据"/>
 
     <View android:layout_width="match_parent"

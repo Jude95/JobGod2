@@ -13,7 +13,7 @@ import com.ant.jobgod.jobgod.model.RongYunModel;
 @Table(name = "person")
 public class PersonBrief extends Model {
     @Column(name = "userId",index = true)
-    private String id;
+    private int id;
 
     @Column(name = "userName")
     private String name;
@@ -24,7 +24,7 @@ public class PersonBrief extends Model {
     @Column(name = "userSign")
     private String sign;
 
-    public PersonBrief(String userId, String userName, String userFace, String userSign) {
+    public PersonBrief(int userId, String userName, String userFace, String userSign) {
         this.id = userId;
         this.name = userName;
         this.face = userFace;
@@ -41,7 +41,7 @@ public class PersonBrief extends Model {
     public PersonBrief() {
     }
 
-    public String getUID() {
+    public int getUID() {
         return id;
     }
 

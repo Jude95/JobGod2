@@ -33,7 +33,9 @@ public class JobViewHolder extends BaseViewHolder<JobBrief> {
 
     @Override
     public void setData(JobBrief data) {
-        sdvHotJobImg.setImageURI(Uri.parse(data.getImg()));
+        if(data.getImg()!=null){
+            sdvHotJobImg.setImageURI(Uri.parse(data.getImg()));
+        }
         tvTitle.setText(data.getTitle());
         tvDate.setText(new TimeTransform(data.getApplyBeginTime()).toString(new RecentShortDateFormater()));
 

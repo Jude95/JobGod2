@@ -6,14 +6,11 @@
 
     <include layout="@layout/include_toolbar"/>
 
-    <com.jude.easyrecyclerview.EasyRecyclerView
+    <include layout="@layout/include_recyclerview"
         android:layout_below="@+id/toolbar"
-        android:id="@+id/recyclerView"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_empty="@layout/view_empty"
-        app:layout_progress="@layout/view_progress"
-        app:scrollbarStyle="insideInset"/>
+        android:layout_marginBottom="48dp"/>
 
     <LinearLayout android:orientation="vertical"
         android:layout_alignParentBottom="true"
@@ -26,28 +23,32 @@
             android:layout_height="2dp"
             android:background="@drawable/top_shadow"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:orientation="horizontal"
+            android:background="@color/White">
 
-        <EditText android:id="@+id/content"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginLeft="8dp"
-            android:hint="评论"/>
+            <EditText android:id="@+id/content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="48dp"
+                android:layout_marginLeft="8dp"
+                android:hint="评论"/>
 
-        <TextView android:id="@+id/btnSubmit"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:paddingRight="16dp"
-            android:paddingLeft="16dp"
-            android:text="发送"
-            />
+            <TextView android:id="@+id/btnSubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                android:text="发送"
+                />
 
-    </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
 

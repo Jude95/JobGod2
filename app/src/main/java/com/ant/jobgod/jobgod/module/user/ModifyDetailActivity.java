@@ -10,9 +10,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.android.http.RequestMap;
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
+import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.bean.UserDetail;
 import com.ant.jobgod.jobgod.util.RecentDateFormater;
 import com.ant.jobgod.jobgod.util.TimeTransform;
@@ -26,9 +26,8 @@ import butterknife.InjectView;
 import nucleus.factory.RequiresPresenter;
 
 
-
 @RequiresPresenter(ModifyDetailPresenter.class)
-public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter>{
+public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
 
 
     private final int REQUEST_CODE = 1;
@@ -36,8 +35,6 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter>{
 
     public final static String KEY_FLAG = "flag";
     public final static String DATA = "data";
-
-    private UserDetail userData;
 
     @InjectView(R.id.gender)
     TextView gender;
@@ -78,6 +75,9 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter>{
     @InjectView(R.id.viewIntro)
     LinearLayout viewIntro;
 
+    private UserDetail userData;
+
+
     public enum InfoFlag {
         AWARD, CERTIFICATE, CHARACTER, LIKE, SPECIALTY, INTRO
     }
@@ -90,13 +90,47 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter>{
         init();
     }
 
-    public UserDetail getUserData(){
-        return userData;
+    public void setData(UserDetail data) {
+        Utils.Log("data---" + data.getGender());
+        if (data.getGender() == 0) {
+            gender.setText("女");
+        } else
+            gender.setText("男");
+
+        switch (data.getEduLevel()) {
+            case 0:
+                eduLevel.setText("初中");
+                break;
+            case 1:
+                eduLevel.setText("高中");
+                break;
+            case 2:
+                eduLevel.setText("本科");
+                break;
+            case 3:
+                eduLevel.setText("硕士");
+                break;
+            case 4:
+                eduLevel.setText("博士");
+                break;
+        }
+        height.setText(data.getHeight() + "cm");
+        birthday.setText(new TimeTransform(data.getBirthday()).toString(new RecentDateFormater()));
+        address.setText(data.getAddress());
+        school.setText(data.getSchool());
+        major.setText(data.getMajor());
+        certificate.setText(data.getCertificate());
+        award.setText(data.getAward());
+        character.setText(data.getCharacter());
+        specialty.setText(data.getSpecialty());
+        like.setText(data.getLike());
+        intro.setText(data.getIntro());
     }
 
     public void init() {
 
-        userData=new UserDetail();
+        userData = new UserDetail();
+        userData= AccountModel.getInstance().getUserAccount().getDetail();
 
         gender.setOnClickListener(v -> new MaterialDialog.Builder(ModifyDetailActivity.this)
                 .title("请选择")
@@ -106,10 +140,10 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter>{
                         Utils.Toast("请重新选择");
                         return false;
                     }
-                    if(text.toString().equals("男")){
+                    if (text.toString().equals("男")) {
                         userData.setGender(1);
                     }
-                    if (text.toString().equals("女")){
+                    if (text.toString().equals("女")) {
                         userData.setGender(0);
                     }
                     gender.setText(text.toString());
@@ -149,7 +183,23 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter>{
                                 Utils.Toast("请重新选择");
                                 return false;
                             }
-                            userData.setEduLevel(text.toString());
+                            switch (text.toString()) {
+                                case "初中":
+                                    userData.setEduLevel(0);
+                                    break;
+                                case "高中":
+                                    userData.setEduLevel(1);
+                                    break;
+                                case "本科":
+                                    userData.setEduLevel(2);
+                                    break;
+                                case "硕士":
+                                    userData.setEduLevel(3);
+                                    break;
+                                case "博士":
+                                    userData.setEduLevel(4);
+                                    break;
+                            }
                             eduLevel.setText(text.toString());
                             return true;
                         })
@@ -222,33 +272,31 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter>{
         });
 
         birthday.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
 
-                                            final Calendar birth = Calendar.getInstance();
-                                            DatePickerDialog dpd = DatePickerDialog.newInstance(
-                                                    new DatePickerDialog.OnDateSetListener() {
-                                                        @Override
-                                                        public void onDateSet(DatePickerDialog datePickerDialog, int i, int i1, int i2) {
-                                                            birth.set(i, i1, i2);
-                                                            if(birth.getTimeInMillis()>=System.currentTimeMillis()){
-                                                                Utils.Toast("选择有误,重新选择");
-                                                                return;
-                                                            }
-                                                            ((TextView) v).setText(new TimeTransform(i,i1,i2).toString(new RecentDateFormater()));
-                                                            userData.setBirthday(birth.getTimeInMillis());
-                                                        }
-                                                    },
-                                                    birth.get(Calendar.YEAR),
-                                                    birth.get(Calendar.MONTH),
-                                                    birth.get(Calendar.DAY_OF_MONTH)
+                final Calendar birth = Calendar.getInstance();
+                DatePickerDialog dpd = DatePickerDialog.newInstance(
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePickerDialog datePickerDialog, int i, int i1, int i2) {
+                                birth.set(i, i1, i2);
+                                if (birth.getTimeInMillis() >= System.currentTimeMillis()) {
+                                    Utils.Toast("选择有误,重新选择");
+                                    return;
+                                }
+                                ((TextView) v).setText(new TimeTransform(i, i1, i2).toString(new RecentDateFormater()));
+                                userData.setBirthday(birth.getTimeInMillis());
+                            }
+                        },
+                        birth.get(Calendar.YEAR),
+                        birth.get(Calendar.MONTH),
+                        birth.get(Calendar.DAY_OF_MONTH)
 
-                                            );
-                                            dpd.show(getFragmentManager(), "请选择日期");
-                                        }
-                                    });
-
-
+                );
+                dpd.show(getFragmentManager(), "请选择日期");
+            }
+        });
 
         viewAward.setOnClickListener(v -> getPresenter().awardToModifyDataActivityForResult(InfoFlag.AWARD, award));
         viewCertificate.setOnClickListener(v -> getPresenter().certificateToModifyDataActivityForResult(InfoFlag.CERTIFICATE, certificate));
@@ -261,22 +309,8 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter>{
     /**
      * 网络请求参数
      */
-    public void submitInfo() {
-        RequestMap param = new RequestMap();
-        param.put("gender", gender.getText().toString());
-        param.put("height", height.getText().toString());
-        param.put("address", address.getText().toString());
-        param.put("edulevel", eduLevel.getText().toString());
-        param.put("school", school.getText().toString());
-        param.put("major", major.getText().toString());
-        param.put("award", award.getText().toString());
-        param.put("certificate", certificate.getText().toString());
-        param.put("character", character.getText().toString());
-        param.put("like", like.getText().toString());
-        param.put("specialty", specialty.getText().toString());
-        param.put("intro", intro.getText().toString());
-
-        getPresenter().submitInfo(param);
+    public UserDetail getUserDetail() {
+        return userData;
     }
 
     @Override
@@ -287,21 +321,27 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter>{
             switch (flag) {
                 case AWARD:
                     award.setText(data.getStringExtra(DATA));
+                    userData.setAward(data.getStringExtra(DATA));
                     break;
                 case CERTIFICATE:
                     certificate.setText(data.getStringExtra(DATA));
+                    userData.setCertificate(data.getStringExtra(DATA));
                     break;
                 case CHARACTER:
                     character.setText(data.getStringExtra(DATA));
+                    userData.setCharacter(data.getStringExtra(DATA));
                     break;
                 case LIKE:
                     like.setText(data.getStringExtra(DATA));
+                    userData.setLike(data.getStringExtra(DATA));
                     break;
                 case SPECIALTY:
                     specialty.setText(data.getStringExtra(DATA));
+                    userData.setSpecialty(data.getStringExtra(DATA));
                     break;
                 case INTRO:
                     intro.setText(data.getStringExtra(DATA));
+                    userData.setIntro(data.getStringExtra(DATA));
                     break;
             }
         }
@@ -364,7 +404,7 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter>{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.submit:
-                submitInfo();
+                getPresenter().updateMyDetail();
                 break;
         }
         return super.onOptionsItemSelected(item);

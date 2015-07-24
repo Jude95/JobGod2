@@ -30,12 +30,15 @@ import net.youmi.android.banner.AdView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import de.greenrobot.event.EventBus;
 import nucleus.factory.RequiresPresenter;
 
 @RequiresPresenter(JobDetailManagerPresenter.class)
 public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPresenter> {
 
 
+    @InjectView(R.id.bizFace)
+    SimpleDraweeView bizFace;
     @InjectView(R.id.bizName)
     TextView bizName;
     @InjectView(R.id.bizAvgFeel)
@@ -52,6 +55,10 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
     TextView applyBeginTime;
     @InjectView(R.id.applyEndTime)
     TextView applyEndTime;
+    @InjectView(R.id.jobBeginTime)
+    TextView jobBeginTime;
+    @InjectView(R.id.jobEndTime)
+    TextView jobEndTime;
     @InjectView(R.id.timeIntro)
     TextView timeIntro;
     @InjectView(R.id.jobPostedcount)
@@ -60,22 +67,8 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
     TextView jobIntro;
     @InjectView(R.id.jobAsk)
     TextView jobAsk;
-    @InjectView(R.id.jobImg)
-    SimpleDraweeView jobImg;
-    @InjectView(R.id.toolbar)
-    Toolbar toolbar;
-    @InjectView(R.id.collapsingToolbar)
-    CollapsingToolbarLayout collapsingToolbar;
-    @InjectView(R.id.appBar)
-    AppBarLayout appBar;
-    @InjectView(R.id.floating_action_button)
-    FloatingActionButton floatingActionButton;
-    @InjectView(R.id.bizFace)
-    SimpleDraweeView bizFace;
-    @InjectView(R.id.jobBeginTime)
-    TextView jobBeginTime;
-    @InjectView(R.id.jobEndTime)
-    TextView jobEndTime;
+    @InjectView(R.id.posted)
+    TextView posted;
     @InjectView(R.id.shareQQ)
     ImageView shareQQ;
     @InjectView(R.id.shareQQSpace)
@@ -88,17 +81,22 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
     LinearWrapContentRecyclerView relateJob;
     @InjectView(R.id.viewAd)
     LinearLayout viewAd;
-    @InjectView(R.id.btnApply)
-    android.support.v7.widget.AppCompatButton btnApply;
+    @InjectView(R.id.jobImg)
+    SimpleDraweeView jobImg;
+    @InjectView(R.id.toolbar)
+    Toolbar toolbar;
+    @InjectView(R.id.collapsingToolbar)
+    CollapsingToolbarLayout collapsingToolbar;
+    @InjectView(R.id.appBar)
+    AppBarLayout appBar;
+    @InjectView(R.id.floating_action_button)
+    FloatingActionButton floatingActionButton;
 
-    @InjectView(R.id.applayCount)
-    TextView applayCount;
-    @InjectView(R.id.immediatelyApply)
-    TextView immediatelyApply;
-    @InjectView(R.id.applyed)
-    TextView applyed;
     private MenuItem mCommentMenuItem;
-    private RecyclerArrayAdapter<JobBrief> mRelativeJobsAdapter;
+
+    private Intent intent;
+
+    private JobBriefAdapter relateAdapter=new JobBriefAdapter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,14 +136,47 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
         jobWage.setText(data.getMoneyIntro());
         jobBeginTime.setText(new TimeTransform(data.getJobBeginTime()).toString(new RecentDateFormater()));
         jobEndTime.setText(new TimeTransform(data.getJobEndTime()).toString(new RecentDateFormater()));
+
+        relateJob.setAdapter(relateAdapter);
+
         setCommentCount(data.getCommentCount());
         setRelative(data.getRelative());
+
+        intent=new Intent(JobDetailManagerActivity.this,ManagerBackedgeActivity.class);
+        intent.putExtra("id",data.getId());
     }
 
 
     public void setRelative(JobBrief[] jobs){
         relateJob.setAdapter(mRelativeJobsAdapter = new JobBriefAdapter(this));
         mRelativeJobsAdapter.addAll(jobs);
+    }
+
+
+
+    /**
+     * 报名兼职
+     */
+    public void applyJob(){
+        posted.setText("立即报名");
+        posted.setOnClickListener(v -> getPresenter().applyJob());
+    }
+
+    /**
+     * 进入管理后台
+     */
+    public void toManagerBackedge() {
+        posted.setText("管理后台");
+        posted.setOnClickListener(v -> startActivity(intent));
+    }
+
+    /**
+     * 设置相关推荐数据
+     * @param jobData
+     */
+    public void setRelateJobData(JobBrief[] jobData){
+        relateAdapter.clear();
+        relateAdapter.addAll(jobData);
     }
 
 

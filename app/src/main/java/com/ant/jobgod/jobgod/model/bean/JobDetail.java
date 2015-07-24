@@ -4,7 +4,7 @@ package com.ant.jobgod.jobgod.model.bean;
  * Created by Mr.Jude on 2015/7/7.
  */
 public class JobDetail {
-    private String id;
+    private int id;
     private String bizId;
     private String title;
     private String intro;
@@ -27,6 +27,7 @@ public class JobDetail {
     private boolean posted;
     private boolean collected;
     private int commentCount;
+    private JobBrief[] relative;
 
     public JobBrief[] getRelative() {
         return relative;
@@ -78,13 +79,22 @@ public class JobDetail {
         return phone;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public JobBrief[] getRelative() {
+        return relative;
+    }
+
+    public void setId(int id) {
         this.id = id;
     }
+
+    public void setRelative(JobBrief[] relative) {
+        this.relative = relative;
+    }
+
     public String getBizFace() {
         return bizFace;
     }
