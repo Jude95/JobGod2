@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -12,26 +13,38 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.http.RequestMap;
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
+import com.ant.jobgod.jobgod.model.bean.UserDetail;
+import com.ant.jobgod.jobgod.util.RecentDateFormater;
+import com.ant.jobgod.jobgod.util.TimeTransform;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+
+import java.util.Calendar;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import nucleus.factory.RequiresPresenter;
 
+
+
 @RequiresPresenter(ModifyDetailPresenter.class)
-public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
+public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter>{
 
 
     private final int REQUEST_CODE = 1;
     private final int RESULT_CODE = 0;
-    @InjectView(R.id.name)
-    TextView name;
-    @InjectView(R.id.signature)
-    TextView signature;
+
+    public final static String KEY_FLAG = "flag";
+    public final static String DATA = "data";
+
+    private UserDetail userData;
+
     @InjectView(R.id.gender)
     TextView gender;
     @InjectView(R.id.height)
     TextView height;
+    @InjectView(R.id.birthday)
+    TextView birthday;
     @InjectView(R.id.address)
     TextView address;
     @InjectView(R.id.eduLevel)
@@ -65,11 +78,8 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
     @InjectView(R.id.viewIntro)
     LinearLayout viewIntro;
 
-    public final static String KEY_FLAG="flag";
-    public final static String DATA="data";
-
-    public enum InfoFlag{
-        AWARD,CERTIFICATE,CHARACTER,LIKE,SPECIALTY,INTRO
+    public enum InfoFlag {
+        AWARD, CERTIFICATE, CHARACTER, LIKE, SPECIALTY, INTRO
     }
 
     @Override
@@ -80,21 +90,172 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
         init();
     }
 
+    public UserDetail getUserData(){
+        return userData;
+    }
+
     public void init() {
-        gender.setOnClickListener(v -> createSingleChoiceDialog("请选择", R.array.gender, gender));
-        height.setOnClickListener(v -> createEditDialog("输入", 8, "最多8字", height));
-        address.setOnClickListener(v -> createEditDialog("输入", 32, "最多32字", address));
 
-        eduLevel.setOnClickListener(v -> createSingleChoiceDialog("请选择", R.array.eduLevel, eduLevel));
-        school.setOnClickListener(v -> createEditDialog("输入", 32, "最多32字", school));
-        major.setOnClickListener(v -> createEditDialog("输入", 16, "最多16字", major));
+        userData=new UserDetail();
 
-        viewAward.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult(InfoFlag.AWARD, award));
-        viewCertificate.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult(InfoFlag.CERTIFICATE, certificate));
-        viewCharacter.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult(InfoFlag.CHARACTER, character));
-        viewIntro.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult(InfoFlag.INTRO, intro));
-        viewLike.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult(InfoFlag.LIKE, like));
-        viewSpecialty.setOnClickListener(v -> getPresenter().toModifyDataActivityForResult(InfoFlag.SPECIALTY, specialty));
+        gender.setOnClickListener(v -> new MaterialDialog.Builder(ModifyDetailActivity.this)
+                .title("请选择")
+                .items(R.array.gender)
+                .itemsCallbackSingleChoice(-1, (dialog, view, which, text) -> {
+                    if (text == null) {
+                        Utils.Toast("请重新选择");
+                        return false;
+                    }
+                    if(text.toString().equals("男")){
+                        userData.setGender(1);
+                    }
+                    if (text.toString().equals("女")){
+                        userData.setGender(0);
+                    }
+                    gender.setText(text.toString());
+                    return true;
+                })
+                .positiveText("确定")
+                .show());
+
+        height.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new MaterialDialog.Builder(ModifyDetailActivity.this)
+                        .title("输入身高(数字)")
+                        .inputType(InputType.TYPE_CLASS_NUMBER)
+                        .inputMaxLength(3)
+                        .input("", "", new MaterialDialog.InputCallback() {
+                            @Override
+                            public void onInput(MaterialDialog dialog, CharSequence input) {
+                                if (input.toString().trim().isEmpty()) {
+                                    Utils.Toast("不能为空");
+                                    return;
+                                }
+                                userData.setHeight(Integer.parseInt(input.toString()));
+                                height.setText(input + "cm");
+                            }
+                        }).show();
+            }
+        });
+
+        eduLevel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new MaterialDialog.Builder(ModifyDetailActivity.this).title("请选择")
+                        .items(R.array.eduLevel)
+                        .itemsCallbackSingleChoice(-1, (dialog, view, which, text) -> {
+                            if (text == null) {
+                                Utils.Toast("请重新选择");
+                                return false;
+                            }
+                            userData.setEduLevel(text.toString());
+                            eduLevel.setText(text.toString());
+                            return true;
+                        })
+                        .positiveText("确定")
+                        .show();
+            }
+        });
+
+        address.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new MaterialDialog.Builder(ModifyDetailActivity.this)
+                        .title("输入地址")
+                        .inputType(InputType.TYPE_CLASS_TEXT)
+                        .inputMaxLength(32)
+                        .input("", "", new MaterialDialog.InputCallback() {
+                            @Override
+                            public void onInput(MaterialDialog dialog, CharSequence input) {
+                                if (input.toString().trim().isEmpty()) {
+                                    Utils.Toast("不能为空");
+                                    return;
+                                }
+                                userData.setAddress(input.toString());
+                                address.setText(input.toString());
+                            }
+                        }).show();
+            }
+        });
+
+        school.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new MaterialDialog.Builder(ModifyDetailActivity.this)
+                        .title("输入学校")
+                        .inputType(InputType.TYPE_CLASS_TEXT)
+                        .inputMaxLength(32)
+                        .input("", "", new MaterialDialog.InputCallback() {
+                            @Override
+                            public void onInput(MaterialDialog dialog, CharSequence input) {
+                                if (input.toString().trim().isEmpty()) {
+                                    Utils.Toast("不能为空");
+                                    return;
+                                }
+                                userData.setSchool(input.toString());
+                                school.setText(input.toString());
+                            }
+                        }).show();
+            }
+        });
+
+        major.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new MaterialDialog.Builder(ModifyDetailActivity.this)
+                        .title("输入专业")
+                        .inputType(InputType.TYPE_CLASS_TEXT)
+                        .inputMaxLength(32)
+                        .input("", "", new MaterialDialog.InputCallback() {
+                            @Override
+                            public void onInput(MaterialDialog dialog, CharSequence input) {
+                                if (input.toString().trim().isEmpty()) {
+                                    Utils.Toast("不能为空");
+                                    return;
+                                }
+                                userData.setMajor(input.toString());
+                                major.setText(input.toString());
+                            }
+                        }).show();
+            }
+        });
+
+        birthday.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+
+                                            final Calendar birth = Calendar.getInstance();
+                                            DatePickerDialog dpd = DatePickerDialog.newInstance(
+                                                    new DatePickerDialog.OnDateSetListener() {
+                                                        @Override
+                                                        public void onDateSet(DatePickerDialog datePickerDialog, int i, int i1, int i2) {
+                                                            birth.set(i, i1, i2);
+                                                            if(birth.getTimeInMillis()>=System.currentTimeMillis()){
+                                                                Utils.Toast("选择有误,重新选择");
+                                                                return;
+                                                            }
+                                                            ((TextView) v).setText(new TimeTransform(i,i1,i2).toString(new RecentDateFormater()));
+                                                            userData.setBirthday(birth.getTimeInMillis());
+                                                        }
+                                                    },
+                                                    birth.get(Calendar.YEAR),
+                                                    birth.get(Calendar.MONTH),
+                                                    birth.get(Calendar.DAY_OF_MONTH)
+
+                                            );
+                                            dpd.show(getFragmentManager(), "请选择日期");
+                                        }
+                                    });
+
+
+
+        viewAward.setOnClickListener(v -> getPresenter().awardToModifyDataActivityForResult(InfoFlag.AWARD, award));
+        viewCertificate.setOnClickListener(v -> getPresenter().certificateToModifyDataActivityForResult(InfoFlag.CERTIFICATE, certificate));
+        viewCharacter.setOnClickListener(v -> getPresenter().characterToModifyDataActivityForResult(InfoFlag.CHARACTER, character));
+        viewIntro.setOnClickListener(v -> getPresenter().introToModifyDataActivityForResult(InfoFlag.INTRO, intro));
+        viewLike.setOnClickListener(v -> getPresenter().likeToModifyDataActivityForResult(InfoFlag.LIKE, like));
+        viewSpecialty.setOnClickListener(v -> getPresenter().specialtyToModifyDataActivityForResult(InfoFlag.SPECIALTY, specialty));
     }
 
     /**
@@ -102,8 +263,6 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
      */
     public void submitInfo() {
         RequestMap param = new RequestMap();
-        param.put("name", name.getText().toString());
-        param.put("sign", signature.getText().toString());
         param.put("gender", gender.getText().toString());
         param.put("height", height.getText().toString());
         param.put("address", address.getText().toString());
@@ -124,7 +283,7 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE && resultCode == RESULT_CODE && data != null) {
-            InfoFlag flag= (InfoFlag) data.getSerializableExtra(KEY_FLAG);
+            InfoFlag flag = (InfoFlag) data.getSerializableExtra(KEY_FLAG);
             switch (flag) {
                 case AWARD:
                     award.setText(data.getStringExtra(DATA));
@@ -184,10 +343,6 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
                 .title(title)
                 .items(strArray)
                 .itemsCallbackSingleChoice(-1, (dialog, view, which, text) -> {
-                    /**
-                     * If you use alwaysCallSingleChoiceCallback(), which is discussed below,
-                     * returning false here won't allow the newly selected radio button to actually be selected.
-                     **/
                     if (text == null) {
                         Utils.Toast("请重新选择");
                         return false;
@@ -198,7 +353,6 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
                 .positiveText("确定")
                 .show();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

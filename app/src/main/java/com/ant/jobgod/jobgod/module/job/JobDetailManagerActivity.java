@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -90,8 +91,15 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
     @InjectView(R.id.btnApply)
     android.support.v7.widget.AppCompatButton btnApply;
 
+    @InjectView(R.id.applayCount)
+    TextView applayCount;
+    @InjectView(R.id.immediatelyApply)
+    TextView immediatelyApply;
+    @InjectView(R.id.applyed)
+    TextView applyed;
     private MenuItem mCommentMenuItem;
     private RecyclerArrayAdapter<JobBrief> mRelativeJobsAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,9 +108,15 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
         jobImg.getHierarchy().setActualImageFocusPoint(new PointF(0.5f, 0));
         floatingActionButton.setOnClickListener(v -> getPresenter().collect());
         viewAd.addView(new AdView(this, AdSize.SIZE_468x60));
+
+        immediatelyApply.setOnClickListener(v -> {
+            immediatelyApply.setVisibility(View.GONE);
+            applayCount.setVisibility(View.GONE);
+            applyed.setVisibility(View.VISIBLE);
+        });
     }
 
-    public void setIsCollected(boolean isCollected){
+    public void setIsCollected(boolean isCollected) {
         floatingActionButton.setImageResource(isCollected ?
                 R.drawable.ic_star_focus :
                 R.drawable.ic_star_unfocus);
@@ -144,13 +158,13 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==R.id.comment){
+        if (item.getItemId() == R.id.comment) {
             getPresenter().toCommentActivity();
         }
         return super.onOptionsItemSelected(item);
     }
 
-    public void setCommentCount(int count){
-        mCommentMenuItem.setTitle(count+"条评论");
+    public void setCommentCount(int count) {
+        mCommentMenuItem.setTitle(count + "条评论");
     }
 }
