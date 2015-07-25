@@ -91,6 +91,9 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
     @InjectView(R.id.floating_action_button)
     FloatingActionButton floatingActionButton;
 
+    public final int MANAGER_QUEST_CODE=100;
+    public final int MANAGER_RESULT_CODE=101;
+
     private MenuItem mCommentMenuItem;
     private int commentCount;
     private RecyclerArrayAdapter<JobBrief> mRelativeJobsAdapter;
@@ -142,12 +145,22 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
     }
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==MANAGER_QUEST_CODE&&resultCode==MANAGER_RESULT_CODE){
+            applyJob();
+        }
+    }
+
+    /**
+     * 设置相关推荐的数据
+     * @param jobs
+     */
     public void setRelative(JobBrief[] jobs){
         relateJob.setAdapter(mRelativeJobsAdapter = new JobBriefAdapter(this));
         mRelativeJobsAdapter.addAll(jobs);
     }
-
-
 
     /**
      * 报名兼职
@@ -162,7 +175,7 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
      */
     public void toManagerBackedge() {
         posted.setText("管理后台");
-        posted.setOnClickListener(v -> startActivity(intent));
+        posted.setOnClickListener(v -> startActivityForResult(intent,MANAGER_QUEST_CODE));
     }
 
     /**

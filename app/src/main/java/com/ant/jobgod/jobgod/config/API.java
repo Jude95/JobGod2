@@ -42,8 +42,6 @@ public class API {
 
         public static final String Apply = BaseUrl + "home/user/apply";
 
-        public static final String QiniuToken = BaseUrl + "home/index/qiniuToken";
-        public static final String ModFace = BaseUrl + "Home/index/modFace";
 
         //manager
         public static final String GetContract = BaseUrl + "Home/index/getContract";
