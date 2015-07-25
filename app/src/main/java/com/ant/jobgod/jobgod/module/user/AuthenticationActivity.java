@@ -26,8 +26,8 @@ public class AuthenticationActivity extends BaseActivity<AuthenticationPresenter
     TextInputLayout ID;
     @InjectView(R.id.realName)
     TextInputLayout realName;
-    @InjectView(R.id.sendCode)
-    AppCompatButton sendCode;
+    @InjectView(R.id.submit)
+    AppCompatButton submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,25 +35,25 @@ public class AuthenticationActivity extends BaseActivity<AuthenticationPresenter
         setContentView(R.layout.user_activity_authentication);
         ButterKnife.inject(this);
         imgID.setOnClickListener(v -> getPresenter().getImageFromCamera());
-        sendCode.setOnClickListener(v-> checkToUpload());
+        submit.setOnClickListener(v -> checkToUpload());
     }
 
-    public void setImg(Uri uri){
+    public void setImg(Uri uri) {
         imgID.setImageURI(uri);
     }
 
-    public void checkToUpload(){
+    public void checkToUpload() {
         String name = realName.getEditText().getText().toString();
         String idNumber = ID.getEditText().getText().toString();
-        if (name.trim().isEmpty()){
+        if (name.trim().isEmpty()) {
             realName.setError("姓名不能为空");
             return;
         }
-        if (idNumber.trim().length() != 18){
+        if (idNumber.trim().length() != 18) {
             ID.setError("身份证格式错误");
             return;
         }
-        getPresenter().upload(name,idNumber);
+        getPresenter().upload(name, idNumber);
     }
 
 
