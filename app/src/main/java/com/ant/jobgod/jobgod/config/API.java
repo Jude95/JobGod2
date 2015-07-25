@@ -13,7 +13,7 @@ public class API {
         public static final String Login = BaseUrl + "Home/User/login";
         public static final String ModifyPassword = BaseUrl + "Home/user/modPass";
         public static final String Certificate = BaseUrl + "home/user/certificate";
-        public static final String BoundTel = BaseUrl + "home/user/boundTel";
+        public static final String BindTel = BaseUrl + "home/user/bindTel";
 
         //Person
 

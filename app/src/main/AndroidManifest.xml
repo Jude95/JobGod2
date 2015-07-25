@@ -111,6 +111,7 @@
         </activity>
         <activity
             android:name=".module.user.ModifyFaceActivity"
+            android:hardwareAccelerated="false"
             android:label="@string/title_activity_modify_face_acitivity" >
         </activity>
         <activity
@@ -118,6 +119,7 @@
             android:label="@string/title_activity_modify_phone_acitvity" >
         </activity>
         <activity android:name=".module.user.AuthenticationActivity"
+            android:hardwareAccelerated="false"
             android:label="实名认证"/>
 
         <activity android:name=".module.main.joblist.FiltrateActivity"
