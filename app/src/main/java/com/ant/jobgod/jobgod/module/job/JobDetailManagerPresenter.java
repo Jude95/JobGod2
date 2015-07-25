@@ -31,6 +31,9 @@ public class JobDetailManagerPresenter extends BasePresenter<JobDetailManagerAct
         }
     }
 
+    /**
+     * 获取数据
+     */
     public void setData() {
         id = getView().getIntent().getIntExtra("id", 0);
         JobModel.getInstance().getJobDetail(id, new DataCallback<JobDetail>() {
@@ -105,7 +108,7 @@ public class JobDetailManagerPresenter extends BasePresenter<JobDetailManagerAct
                         Utils.Toast("报名成功");
                         Intent intent=new Intent(getView(), ManagerBackedgeActivity.class);
                         intent.putExtra("id",id);
-                        getView().startActivity(intent);
+                        getView().startActivityForResult(intent,getView().MANAGER_QUEST_CODE);
                         setData();
                         break;
                     case 201:

@@ -91,7 +91,6 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
     }
 
     public void setData(UserDetail data) {
-        Utils.Log("data---" + data.getGender());
         if (data.getGender() == 0) {
             gender.setText("女");
         } else
@@ -286,7 +285,7 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
                                     return;
                                 }
                                 ((TextView) v).setText(new TimeTransform(i, i1, i2).toString(new RecentDateFormater()));
-                                userData.setBirthday(birth.getTimeInMillis());
+                                userData.setBirthday(birth.getTimeInMillis()/1000);
                             }
                         },
                         birth.get(Calendar.YEAR),

@@ -16,11 +16,11 @@
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/imgFace"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
         fresco:failureImage="@drawable/ic_error"
         fresco:roundAsCircle="true"
         fresco:progressBarImage="@drawable/ic_progressbar"/>
@@ -45,7 +45,7 @@
         android:singleLine="true"/>
 
     <View android:layout_width="match_parent"
-        android:layout_height="@dimen/md_divider_height"
+        android:layout_height="0.4dp"
         android:background="@color/md_divider_white"
         android:layout_alignParentBottom="true"/>
 

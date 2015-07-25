@@ -9,8 +9,6 @@ import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.Utils;
 
-import de.greenrobot.event.EventBus;
-
 /**
  * Created by alien on 2015/7/22.
  */
@@ -18,6 +16,9 @@ public class ManagerBackedgePresenter extends BasePresenter<ManagerBackedgeActiv
 
     private int jobId;
     private Manager mData;
+
+    public final int MANAGER_QUEST_CODE=100;
+    public final int MANAGER_RESULT_CODE=101;
 
     @Override
     protected void onCreate(Bundle savedState) {
@@ -62,7 +63,7 @@ public class ManagerBackedgePresenter extends BasePresenter<ManagerBackedgeActiv
                     case 200:
                         Utils.Toast("取消成功!");
                         getView().setBtnStatus(false);
-                        EventBus.getDefault().post("update");
+                        getView().setResult(MANAGER_RESULT_CODE);
                         break;
                 }
             }
