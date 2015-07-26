@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
+import com.ant.jobgod.jobgod.model.AccountModel;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -16,10 +17,15 @@ import nucleus.factory.RequiresPresenter;
 @RequiresPresenter(ModifyTelPresenter.class)
 public class ModifyTelActivity extends BaseActivity<ModifyTelPresenter> {
 
-    @InjectView(R.id.phone)
-    TextInputLayout phone;
-    @InjectView(R.id.password)
-    TextInputLayout password;
+
+    @InjectView(R.id.oldTel)
+    TextInputLayout oldTel;
+    @InjectView(R.id.newTel)
+    TextInputLayout newTel;
+    @InjectView(R.id.oldPassword)
+    TextInputLayout oldPassword;
+    @InjectView(R.id.newPassword)
+    TextInputLayout newPassword;
     @InjectView(R.id.sendCode)
     AppCompatButton sendCode;
     @InjectView(R.id.tilCode)
@@ -31,48 +37,57 @@ public class ModifyTelActivity extends BaseActivity<ModifyTelPresenter> {
     @InjectView(R.id.cardMessage)
     CardView cardMessage;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_activity_modifytel);
         ButterKnife.inject(this);
 
+        if (AccountModel.getInstance().getUserAccount().getTel() == null) {
+            oldTel.setVisibility(View.GONE);
+            oldPassword.setVisibility(View.GONE);
+            newTel.getEditText().setHint("手机号");
+            newPassword.getEditText().setHint("密码");
+            btnSend.setOnClickListener(v -> sendModifyWithoutTel());
+        } else
+            btnSend.setOnClickListener(v -> sendModify());
+
         sendCode.setOnClickListener(v -> checkIsLogin());
-        btnSend.setOnClickListener(v -> sendModify());
-        btnRetry.setOnClickListener((View v)->getPresenter().retry());
+
+        btnRetry.setOnClickListener((View v) -> getPresenter().retry());
 
     }
 
     private void checkIsLogin() {
-        String mNumber = phone.getEditText().getText().toString();
-        String mPassword = password.getEditText().getText().toString();
-        if (mNumber.length() != 11) {
-            phone.setError("手机号格式错误");
-            return;
+        String oldNumber = oldTel.getEditText().getText().toString();
+        String newNumber = newTel.getEditText().getText().toString();
+        String oPassword=oldPassword.getEditText().getText().toString();
+        String nPassword = newPassword.getEditText().getText().toString();
+        if (oldNumber.length() != 11) {
+            oldTel.setError("手机号格式错误");
         } else {
-            phone.setError("");
+            oldTel.setError("");
         }
-        if (mPassword.length() < 6 || mPassword.length() > 12) {
-            phone.setError("密码应为6-12位");
+        if (newNumber.length() != 11) {
+            newTel.setError("手机号格式错误");
+            return;
+        } else
+            newTel.setError("");
+
+        if (nPassword.length() < 6 || nPassword.length() > 12) {
+            oldTel.setError("密码应为6-12位");
             return;
         } else {
-            phone.setError("");
+            oldTel.setError("");
         }
         showCodeCard();
-        getPresenter().checkIsRegister(mNumber);
+        getPresenter().sendCode(newNumber);
     }
 
 
     public void enableInfoEdit(boolean enable) {
         tilCode.getEditText().requestFocus();
-        phone.getEditText().setEnabled(enable);
-        password.setEnabled(enable);
-    }
-
-    public void setNumberNoExist() {
-        phone.setError("手机号已注册");
-        phone.setEnabled(true);
+        newTel.getEditText().setEnabled(enable);
     }
 
 
@@ -81,9 +96,12 @@ public class ModifyTelActivity extends BaseActivity<ModifyTelPresenter> {
         enableInfoEdit(false);
     }
 
-    private void sendModify(){
-        String mNumber = phone.getEditText().getText().toString();
-        String mPassword = password.getEditText().getText().toString();
+    private void sendModify() {
+
+        String oldNumber = oldTel.getEditText().getText().toString();
+        String newNumber = newTel.getEditText().getText().toString();
+        String oPassword = oldPassword.getEditText().getText().toString();
+        String nPassword = newPassword.getEditText().getText().toString();
         String mCode = tilCode.getEditText().getText().toString();
         if (mCode.trim().isEmpty()) {
             tilCode.setError("请填写验证码");
@@ -91,15 +109,31 @@ public class ModifyTelActivity extends BaseActivity<ModifyTelPresenter> {
         } else {
             tilCode.setError("");
         }
-        getPresenter().boundTel(mNumber, mPassword, mCode);
+
+        getPresenter().boundTel(oldNumber, newNumber,oPassword, nPassword, mCode);
+
+    }
+
+    public void sendModifyWithoutTel() {
+        String newNumber = newTel.getEditText().getText().toString();
+        String mPassword = newPassword.getEditText().getText().toString();
+        String mCode = tilCode.getEditText().getText().toString();
+        if (mCode.trim().isEmpty()) {
+            tilCode.setError("请填写验证码");
+            return;
+        } else {
+            tilCode.setError("");
+        }
+
+        getPresenter().boundTel("", newNumber,"",mPassword, mCode);
     }
 
     public void setRetryTime(int time) {
         btnRetry.setText(time + "秒后重新获取");
     }
 
-    public void setRetryEnable(boolean enable){
+    public void setRetryEnable(boolean enable) {
         btnRetry.setEnabled(enable);
-        if (enable)btnRetry.setText("重新获取");
+        if (enable) btnRetry.setText("重新获取");
     }
 }

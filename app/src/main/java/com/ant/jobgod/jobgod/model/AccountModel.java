@@ -207,16 +207,17 @@ public class AccountModel extends AbsModel{
 
     /**
      * 绑定手机
-     * @param tel
-     * @param password
+     * @param
      * @param code
      */
-    public void boundTel(String tel,String password,String code,StatusCallback callback){
+    public void boundTel(String oldTel,String newTel,String oldPassword,String newPassword,String code,StatusCallback callback){
         RequestMap params = new RequestMap();
-        params.put("tel",tel);
-        params.put("password",Utils.MD5(password.getBytes()));
+        params.put("oldTel",oldTel);
+        params.put("newTel",newTel);
+        params.put("oldPassword",Utils.MD5(oldPassword.getBytes()));
+        params.put("newPassword",Utils.MD5(newPassword.getBytes()));
         params.put("code",code);
-        RequestManager.getInstance().post(API.URL.BoundTel,params,callback);
+        RequestManager.getInstance().post(API.URL.BindTel,params,callback);
     }
 
 

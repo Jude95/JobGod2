@@ -113,7 +113,9 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
         collapsingToolbar.setTitle(data.getTitle());
         timeIntro.setText(data.getTimeIntro());
         jobImg.setImageURI(Uri.parse(data.getImg()));
-        bizFace.setImageURI(Uri.parse(data.getBizFace()));
+        if(data.getBizFace()!=null){
+            bizFace.setImageURI(Uri.parse(data.getBizFace()));
+        }
         bizName.setText(data.getBizName());
         jobAddress.setText(data.getAddress());
         jobCount.setText(data.getApplyCount() + "人");

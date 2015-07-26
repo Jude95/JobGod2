@@ -21,30 +21,17 @@ public class ModifyTelPresenter extends BasePresenter<ModifyTelActivity> impleme
         SMSManager.getInstance().registerTimeListenre(this);
     }
 
-    public void checkIsRegister(String number){
+    public void sendCode(String number){
         this.number = number;
         getView().showProgress("提交中");
-        AccountModel.getInstance().isRegistered(number, new StatusCallback() {
-            @Override
-            public void result(int status, String info) {
-                getView().dismissProgress();
-                if (status == 201) {
-                    getView().showCodeCard();
-                    Utils.Toast("已发送短信，请查收");
-                    SMSManager.getInstance().sendMessage(getView(), number);
-                } else if (status == 200) getView().setNumberNoExist();
-            }
-
-            @Override
-            public void success(String info) {
-
-            }
-        });
+        Utils.Toast("已发送短信，请查收");
+        SMSManager.getInstance().sendMessage(getView(), number);
+        getView().dismissProgress();
     }
 
 
-    public void boundTel(String number,String password,String code) {
-        AccountModel.getInstance().boundTel(number, password, code, new StatusCallback() {
+    public void boundTel(String oldPhone,String newPhone,String oPassword,String nPassword,String code) {
+        AccountModel.getInstance().boundTel(oldPhone,newPhone, oPassword,nPassword, code, new StatusCallback() {
             @Override
             public void success(String info) {
                 Utils.Toast("绑定成功");
