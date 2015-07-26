@@ -110,7 +110,7 @@ public class ModifyTelActivity extends BaseActivity<ModifyTelPresenter> {
             tilCode.setError("");
         }
 
-        getPresenter().boundTel(oldNumber, newNumber, nPassword, mCode);
+        getPresenter().boundTel(oldNumber, newNumber,oPassword, nPassword, mCode);
 
     }
 
@@ -125,7 +125,7 @@ public class ModifyTelActivity extends BaseActivity<ModifyTelPresenter> {
             tilCode.setError("");
         }
 
-        getPresenter().boundTel("", newNumber, mPassword, mCode);
+        getPresenter().boundTel("", newNumber,"",mPassword, mCode);
     }
 
     public void setRetryTime(int time) {

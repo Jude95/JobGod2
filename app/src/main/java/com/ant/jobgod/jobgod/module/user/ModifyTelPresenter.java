@@ -30,8 +30,8 @@ public class ModifyTelPresenter extends BasePresenter<ModifyTelActivity> impleme
     }
 
 
-    public void boundTel(String oldPhone,String newPhone,String password,String code) {
-        AccountModel.getInstance().boundTel(oldPhone,newPhone, password, code, new StatusCallback() {
+    public void boundTel(String oldPhone,String newPhone,String oPassword,String nPassword,String code) {
+        AccountModel.getInstance().boundTel(oldPhone,newPhone, oPassword,nPassword, code, new StatusCallback() {
             @Override
             public void success(String info) {
                 Utils.Toast("绑定成功");
