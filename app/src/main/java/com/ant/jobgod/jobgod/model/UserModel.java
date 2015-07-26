@@ -119,15 +119,4 @@ public class UserModel extends AbsModel {
         RequestManager.getInstance().post(API.URL.UnAttention, new RequestMap("id", id+""), callback);
     }
 
-    /**
-     * 提交身份验证信息
-     */
-    public void certificate(String idCard,String realName,String img,StatusCallback callback){
-        RequestMap param=new RequestMap();
-        param.put("id_card",idCard);
-        param.put("real_name",realName);
-        param.put("img",img);
-        RequestManager.getInstance().post(API.URL.Certificate,param,callback);
-    }
-
 }

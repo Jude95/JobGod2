@@ -41,7 +41,7 @@ public class API {
         public static final String QiNiuToken = BaseUrl + "home/index/qiniuToken";
 
         public static final String Apply = BaseUrl + "home/user/apply";
-
+        public static final String ThirdLogin = BaseUrl + "home/user/thirdLogin";
 
         //manager
         public static final String GetContract = BaseUrl + "Home/index/getContract";

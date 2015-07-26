@@ -134,6 +134,62 @@ public class AccountModel extends AbsModel{
         }));
     }
 
+    public void userLoginThroughQQ(String openId,String face,String name,StatusCallback callback){
+        RequestMap params = new RequestMap();
+        params.put("type", "0");
+        params.put("openId", openId);
+        params.put("face", face);
+        params.put("name", name);
+        RequestManager.getInstance().post(API.URL.ThirdLogin, params, callback.add(new DataCallback<UserAccountData>() {
+            @Override
+            public void success(String info, UserAccountData data) {
+                setUserAccountData(data);
+            }
+
+            @Override
+            public void error(String errorInfo) {
+
+            }
+        }));
+    }
+
+    public void userLoginThroughSina(String openId,String face,String name,StatusCallback callback){
+        RequestMap params = new RequestMap();
+        params.put("type", "1");
+        params.put("openId", openId);
+        params.put("face", face);
+        params.put("name", name);
+        RequestManager.getInstance().post(API.URL.ThirdLogin, params, callback.add(new DataCallback<UserAccountData>() {
+            @Override
+            public void success(String info, UserAccountData data) {
+                setUserAccountData(data);
+            }
+
+            @Override
+            public void error(String errorInfo) {
+
+            }
+        }));
+    }
+
+    public void userLoginThroughWeChat(String openId,String face,String name,StatusCallback callback){
+        RequestMap params = new RequestMap();
+        params.put("type", "2");
+        params.put("openId", openId);
+        params.put("face", face);
+        params.put("name", name);
+        RequestManager.getInstance().post(API.URL.ThirdLogin, params, callback.add(new DataCallback<UserAccountData>() {
+            @Override
+            public void success(String info, UserAccountData data) {
+                setUserAccountData(data);
+            }
+
+            @Override
+            public void error(String errorInfo) {
+
+            }
+        }));
+    }
     /**
      * 修改密码
      * @param tel
