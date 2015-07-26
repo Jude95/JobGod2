@@ -18,6 +18,9 @@ import com.umeng.socialize.sso.SinaSsoHandler;
 import com.umeng.socialize.sso.UMQQSsoHandler;
 import com.umeng.socialize.sso.UMSsoHandler;
 
+import java.util.Map;
+import java.util.Set;
+
 /**
  * Created by Mr.Jude on 2015/6/6.
  */
@@ -75,11 +78,26 @@ public class UserLoginPresenter extends BasePresenter<UserLoginActivity> {
             }
             @Override
             public void onComplete(Bundle value, SHARE_MEDIA platform) {
-                if (value != null && !TextUtils.isEmpty(value.getString("uid"))) {
-                    Utils.Toast("授权成功:"+value.getString("uid"));
-                } else {
-                    Utils.Toast("授权失败");
-                }
+                mController.getPlatformInfo(getView(), SHARE_MEDIA.QQ, new SocializeListeners.UMDataListener() {
+                    @Override
+                    public void onStart() {
+                        getView().showProgress("登录中");
+                    }
+
+                    @Override
+                    public void onComplete(int status, Map<String, Object> info) {
+                        if(status == 200 && info != null){
+                            StringBuilder sb = new StringBuilder();
+                            Set<String> keys = info.keySet();
+                            for(String key : keys){
+                                sb.append(key+"="+info.get(key).toString()+"\r\n");
+                            }
+                            Utils.Log(sb.toString());
+                        }else{
+                            Utils.Log("发生错误：" + status);
+                        }
+                    }
+                });
             }
             @Override
             public void onCancel(SHARE_MEDIA platform) {

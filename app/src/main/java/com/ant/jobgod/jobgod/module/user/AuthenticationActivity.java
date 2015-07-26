@@ -29,7 +29,6 @@ public class AuthenticationActivity extends BaseActivity<AuthenticationPresenter
     @InjectView(R.id.submit)
     AppCompatButton submit;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
