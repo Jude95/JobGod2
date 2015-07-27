@@ -1,11 +1,11 @@
 package com.ant.jobgod.jobgod.model;
 
-import com.android.http.RequestManager;
-import com.android.http.RequestMap;
 import com.ant.jobgod.jobgod.config.API;
 import com.ant.jobgod.jobgod.model.bean.Manager;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
+import com.jude.http.RequestManager;
+import com.jude.http.RequestMap;
 
 /**
  * Created by alien on 2015/7/22.

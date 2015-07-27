@@ -21,7 +21,6 @@ import android.widget.GridView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
-import com.android.http.RequestManager;
 import com.ant.jobgod.imagetool.R;
 import com.ant.jobgod.imagetool.imageprovider.ImageProvider;
 import com.ant.jobgod.imagetool.imageprovider.Utils;
@@ -31,6 +30,8 @@ import com.ant.jobgod.imagetool.imageprovider.net.searchers.SosoSearcher;
 import com.facebook.drawee.generic.GenericDraweeHierarchy;
 import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.jude.http.RequestListener;
+import com.jude.http.RequestManager;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -120,7 +121,7 @@ public class NetImageSearchActivity extends AppCompatActivity {
     }
 
     private void getImageList(String word, final int page){
-        RequestManager.getInstance().get(seacher.getUrl(word,page),seacher.getHeader(), new RequestManager.RequestListener() {
+        RequestManager.getInstance().get(seacher.getUrl(word,page),seacher.getHeader(), new RequestListener() {
 
             @Override
             public void onSuccess(String response) {

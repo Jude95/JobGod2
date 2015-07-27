@@ -2,10 +2,10 @@ package com.ant.jobgod.jobgod.model;
 
 import android.content.Context;
 
-import com.android.http.RequestManager;
 import com.ant.jobgod.jobgod.config.API;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.jude.http.RequestManager;
 import com.qiniu.android.http.ResponseInfo;
 import com.qiniu.android.storage.UpCompletionHandler;
 import com.qiniu.android.storage.UploadManager;

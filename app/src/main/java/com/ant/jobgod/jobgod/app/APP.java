@@ -5,7 +5,7 @@ import android.content.Context;
 import android.support.multidex.MultiDex;
 
 import com.activeandroid.ActiveAndroid;
-import com.android.http.RequestManager;
+import com.jude.http.RequestManager;
 import com.ant.jobgod.jobgod.BuildConfig;
 import com.ant.jobgod.jobgod.model.AbsModel;
 import com.ant.jobgod.jobgod.util.FileManager;
@@ -35,7 +35,6 @@ public class APP extends Application {
         Fresco.initialize(this);
         RequestManager.getInstance().init(this);
         RequestManager.getInstance().setDebugMode(BuildConfig.DEBUG, "GodNet");
-        RequestManager.getInstance().setDebugMode(true, "GodNet");
         RequestManager.getInstance().setCacheEnable(true);
         Utils.initialize(this, "GodLog", "5,28,0");
         AdManager.getInstance(this).init("5aa51ecd2360f2e1", "d4c8d06a735d82d0", true);

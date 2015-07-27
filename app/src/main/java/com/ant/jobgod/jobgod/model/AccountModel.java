@@ -2,8 +2,6 @@ package com.ant.jobgod.jobgod.model;
 
 import android.content.Context;
 
-import com.android.http.RequestManager;
-import com.android.http.RequestMap;
 import com.ant.jobgod.jobgod.config.API;
 import com.ant.jobgod.jobgod.model.bean.AccountData;
 import com.ant.jobgod.jobgod.model.bean.UserAccountData;
@@ -11,6 +9,8 @@ import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.jude.http.RequestManager;
+import com.jude.http.RequestMap;
 
 import org.json.JSONException;
 import org.json.JSONObject;

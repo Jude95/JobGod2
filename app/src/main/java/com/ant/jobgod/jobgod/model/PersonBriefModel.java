@@ -4,8 +4,6 @@ import android.content.Context;
 
 import com.activeandroid.Model;
 import com.activeandroid.query.Select;
-import com.android.http.RequestManager;
-import com.android.http.RequestMap;
 import com.ant.jobgod.jobgod.config.API;
 import com.ant.jobgod.jobgod.config.SP;
 import com.ant.jobgod.jobgod.model.bean.PersonBrief;
@@ -14,6 +12,8 @@ import com.ant.jobgod.jobgod.util.SpecificClassExclusionStrategy;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.jude.http.RequestManager;
+import com.jude.http.RequestMap;
 
 import org.json.JSONException;
 import org.json.JSONObject;

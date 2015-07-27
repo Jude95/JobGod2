@@ -1,11 +1,12 @@
 package com.ant.jobgod.jobgod.model.callback;
 
-import com.android.http.RequestManager;
+
+import com.jude.http.RequestListener;
 
 /**
  * Created by Mr.Jude on 2015/6/13.
  */
-class LinkCallback implements RequestManager.RequestListener {
+class LinkCallback implements RequestListener {
     private LinkCallback link;
     public LinkCallback add(LinkCallback other){
         other.setLink(this);
