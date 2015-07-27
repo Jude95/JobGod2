@@ -39,6 +39,7 @@
                     android:background="@drawable/main_drawer_gradient" />
 
                 <LinearLayout
+                    android:id="@+id/viewAccount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
@@ -51,7 +52,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/White"
-                        android:text="未登录"
+                        android:text="未登录,点击登录"
                         android:textStyle="bold" />
 
                     <TextView

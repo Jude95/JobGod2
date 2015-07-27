@@ -77,6 +77,16 @@ public class AccountModel extends AbsModel{
         RongYunModel.getInstance().connectRongYun(userAccountData.getRongToken());
     }
 
+    public void UserLoginOut(){
+        this.userAccountData = null;
+        FileManager.getInstance().getChild(FileManager.Dir.Object, ACCOUNTFILE).delete();
+        applyToken("");
+        RongYunModel.getInstance().connectRongYun("");
+        publicEvent(new UserAccountData());
+    }
+
+
+
     public void saveAccount(){
         if (isUser){
             Utils.writeObjectToFile(userAccountData,FileManager.getInstance().getChild(FileManager.Dir.Object, ACCOUNTFILE));
@@ -100,6 +110,8 @@ public class AccountModel extends AbsModel{
         RequestManager.getInstance().setHeader(map);
         Utils.Log("setToken:" + json.toString());
     }
+
+
 
 
     public void userRegister(String name,String tel,String password,String verify,StatusCallback callback){
