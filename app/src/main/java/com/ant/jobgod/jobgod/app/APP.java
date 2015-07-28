@@ -5,13 +5,15 @@ import android.content.Context;
 import android.support.multidex.MultiDex;
 
 import com.activeandroid.ActiveAndroid;
-import com.jude.http.RequestManager;
 import com.ant.jobgod.jobgod.BuildConfig;
 import com.ant.jobgod.jobgod.model.AbsModel;
+import com.ant.jobgod.jobgod.module.launch.UserLoginPresenter;
 import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.jude.http.RequestManager;
 import com.umeng.analytics.MobclickAgent;
+import com.umeng.comm.core.sdkmanager.LoginSDKManager;
 
 import net.youmi.android.AdManager;
 
@@ -44,6 +46,9 @@ public class APP extends Application {
         FileManager.getInstance().init(this);
         AbsModel.init(this);
         MobclickAgent.updateOnlineConfig(this);
+
+
+        LoginSDKManager.getInstance().addAndUse(new UserLoginPresenter());
     }
 
 

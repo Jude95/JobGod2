@@ -17,7 +17,7 @@ import nucleus.factory.RequiresPresenter;
  * Created by Mr.Jude on 2015/6/6.
  */
 @RequiresPresenter(UserLoginPresenter.class)
-public class UserLoginActivity extends BaseActivity<UserLoginPresenter> {
+public class UserLoginActivity extends BaseActivity<UserLoginPresenter>{
 
     @InjectView(R.id.tilNumber)
     TextInputLayout tilNumber;
@@ -38,6 +38,9 @@ public class UserLoginActivity extends BaseActivity<UserLoginPresenter> {
     @InjectView(R.id.btnBiz)
     AppCompatButton btnBiz;
 
+    private String mNumber;
+    private String mPassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +56,8 @@ public class UserLoginActivity extends BaseActivity<UserLoginPresenter> {
     }
 
     private void checkLogin() {
-        String mNumber = tilNumber.getEditText().getText().toString();
-        String mPassword = tilPassword.getEditText().getText().toString();
+        mNumber = tilNumber.getEditText().getText().toString();
+        mPassword = tilPassword.getEditText().getText().toString();
         if (mNumber.length() != 11) {
             tilNumber.setError("手机号格式错误");
             return;
@@ -82,4 +85,13 @@ public class UserLoginActivity extends BaseActivity<UserLoginPresenter> {
         tilNumber.getEditText().setText(number);
         tilPassword.getEditText().setText(password);
     }
+
+
+    public String getNumber(){
+        return mNumber;
+    }
+    public String getPassword(){
+        return mPassword;
+    }
+
 }

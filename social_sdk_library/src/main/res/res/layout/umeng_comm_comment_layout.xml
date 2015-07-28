@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/umeng_comm_user_center_title_color"
+    android:clickable="true"
+    android:gravity="center" >
+
+    <include
+        android:id="@+id/umeng_comm_comment_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        layout="@layout/umeng_comm_divide_line" />
+
+    <Button
+        android:id="@+id/umeng_comm_comment_send_button"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/umeng_comm_comment_line"
+        android:layout_centerVertical="true"
+        android:layout_margin="3dp"
+        android:background="@drawable/umeng_comm_send_btn_style"
+        android:clickable="true"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:text="@string/umeng_comm_ok" />
+
+    <com.umeng.comm.ui.widgets.CommentEditText
+        android:id="@+id/umeng_comm_comment_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/umeng_comm_comment_line"
+        android:layout_centerVertical="true"
+        android:layout_margin="2dp"
+        android:layout_toLeftOf="@id/umeng_comm_comment_send_button"
+        android:focusable="true"
+        android:gravity="center|left"
+        android:inputType="text" />
+
+</RelativeLayout>

@@ -60,4 +60,6 @@ dependencies {
     compile files('libs/httpmime-4.1.3.jar')
     compile files('libs/umeng_social_sdk.jar')
     compile files('libs/umeng-update-v2.6.0.1.jar')
+    compile files('libs/umeng_community_sdk_core.jar')
+    compile files('libs/umeng_community_sdk_ui.jar')
 }

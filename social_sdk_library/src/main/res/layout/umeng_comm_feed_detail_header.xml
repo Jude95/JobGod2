@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:widgets="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/umeng_comm_content_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="false" >
+
+    <!-- Feed内容视图 -->
+
+    <com.umeng.comm.ui.widgets.FeedContentView
+        android:id="@+id/umeng_comm_feed_content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        widgets:detail_layout="true" />
+
+    <TextView
+        android:id="@+id/umeng_comm_like_count_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@id/umeng_comm_feed_content_layout"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/umeng_comm_like_white"
+        android:drawablePadding="4dp"
+        android:textColor="#66646d"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:text="40" />
+
+<!--     <ImageView
+        android:id="@+id/umeng_comm_more_btn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/umeng_comm_feed_content_layout"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/umeng_comm_like_more_user_pressed" /> -->
+
+    <com.umeng.comm.ui.widgets.LikeView
+        android:id="@+id/umeng_comm_like_users_layout"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/umeng_comm_feed_content_layout"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="0dp"
+        android:layout_toRightOf="@id/umeng_comm_like_count_tv"
+        android:orientation="horizontal" />
+
+    <TextView
+        android:id="@+id/umeng_comm_comment_count_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/umeng_comm_like_count_tv"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="评论(40)" />
+
+    <TextView
+        android:id="@+id/umeng_comm_forward_count_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/umeng_comm_like_count_tv"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#bbbbbb"
+        android:text="转发(12)" />
+
+    <include
+        android:id="@+id/umeng_comm_devide_line_layout"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/umeng_comm_forward_count_tv"
+        android:layout_marginTop="5dp"
+        layout="@layout/umeng_comm_divide_line" />
+
+</RelativeLayout>

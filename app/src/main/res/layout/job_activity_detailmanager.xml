@@ -65,14 +65,17 @@
                 android:layout_marginTop="16dp"
                 android:background="@android:color/darker_gray" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:gravity="center_vertical"
-                android:paddingLeft="16dp"
-                android:text="岗位信息"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="16dp"
+                    android:text="岗位信息"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -298,14 +301,48 @@
                 android:layout_marginTop="16dp"
                 android:background="@android:color/darker_gray" />
 
-            <TextView
+            <LinearLayout android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:gravity="center_vertical"
-                android:paddingLeft="16dp"
-                android:text="岗位要求"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="16dp"
+                    android:text="岗位要求"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/posted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:layout_marginRight="16dp"
+                    android:background="?colorPrimary"
+                    android:padding="8dp"
+                    android:text="立即报名"
+                    android:textColor="@color/White"
+                    android:textSize="16sp" />
+
+
+                <TextView
+                    android:id="@+id/applyed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:background="?colorPrimary"
+                    android:layout_marginRight="16dp"
+                    android:padding="8dp"
+                    android:text="管理后台"
+                    android:textColor="@color/White"
+                    android:textSize="16sp"
+                    android:visibility="gone" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/jobAsk"
@@ -320,28 +357,6 @@
                 android:textIsSelectable="true"
                 android:textScaleX="1" />
 
-            <TextView
-                android:id="@+id/posted"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:background="?colorPrimary"
-                android:padding="8dp"
-                android:text="立即报名"
-                android:textColor="@color/White"
-                android:textSize="16sp" />
-
-
-            <TextView
-                android:id="@+id/applyed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="?colorPrimary"
-                android:padding="8dp"
-                android:text="已报名"
-                android:textColor="@color/White"
-                android:textSize="16sp"
-                android:visibility="gone" />
 
 
             <include layout="@layout/include_share" />

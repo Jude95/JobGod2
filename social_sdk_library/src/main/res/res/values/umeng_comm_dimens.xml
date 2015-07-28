@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_big12_size">12sp</dimen>
+    <dimen name="text_big13_size">13sp</dimen>
+    <dimen name="text_big14_size">14sp</dimen>
+    <dimen name="text_big15_size">15sp</dimen>
+    <dimen name="text_big16_size">16sp</dimen>
+    <dimen name="text_big18_size">18sp</dimen>
+    
+    <dimen name="image_item_heght">150dp</dimen>
+    <dimen name="image_item_padding">3dp</dimen>
+    <dimen name="image_item_space">3dp</dimen>
+</resources>

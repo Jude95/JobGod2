@@ -1,6 +1,7 @@
 package com.ant.jobgod.jobgod.module.launch;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -9,6 +10,9 @@ import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.umeng.comm.core.beans.CommUser;
+import com.umeng.comm.core.login.LoginListener;
+import com.umeng.comm.core.login.Loginable;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
@@ -25,11 +29,12 @@ import java.util.Set;
 /**
  * Created by Mr.Jude on 2015/6/6.
  */
-public class UserLoginPresenter extends BasePresenter<UserLoginActivity> {
+public class UserLoginPresenter extends BasePresenter<UserLoginActivity> implements Loginable{
     private static final int REGISTER = 1243;
 
     UMSocialService mController;
 
+    private CommUser user;
 
     @Override
     protected void onCreate(Bundle savedState) {
@@ -47,14 +52,14 @@ public class UserLoginPresenter extends BasePresenter<UserLoginActivity> {
 
 
 
-    public void login(String tel,String pass){
+    public void login(String tel,String password){
         getView().showProgress("登录中");
-        AccountModel.getInstance().userLogin(tel, pass, new StatusCallback() {
+        AccountModel.getInstance().userLogin(tel, password, new StatusCallback() {
 
             @Override
             public void result(int status, String info) {
                 getView().dismissProgress();
-                switch (status){
+                switch (status) {
                     case 202:
                         getView().setNumberError();
                         break;
@@ -66,6 +71,17 @@ public class UserLoginPresenter extends BasePresenter<UserLoginActivity> {
 
             @Override
             public void success(String info) {
+                login(getView(), new LoginListener() {
+                    @Override
+                    public void onStart() {
+
+                    }
+
+                    @Override
+                    public void onComplete(int i, CommUser commUser) {
+
+                    }
+                });
                 getView().finish();
             }
 
@@ -76,10 +92,11 @@ public class UserLoginPresenter extends BasePresenter<UserLoginActivity> {
 
 
     public void loginByQQ(){
-        mController.doOauthVerify(getView(), SHARE_MEDIA.QQ,new SocializeListeners.UMAuthListener() {
+        mController.doOauthVerify(getView(), SHARE_MEDIA.QQ, new SocializeListeners.UMAuthListener() {
             @Override
             public void onError(SocializeException e, SHARE_MEDIA platform) {
             }
+
             @Override
             public void onComplete(Bundle value, SHARE_MEDIA platform) {
                 final String uid = value.getString("uid");
@@ -91,7 +108,7 @@ public class UserLoginPresenter extends BasePresenter<UserLoginActivity> {
 
                     @Override
                     public void onComplete(int status, Map<String, Object> info) {
-                        if(status == 200 && info != null){
+                        if (status == 200 && info != null) {
                             AccountModel.getInstance().userLoginThroughQQ(uid, (String) info.get("profile_image_url"), (String) info.get("screen_name"), new StatusCallback() {
                                 @Override
                                 public void success(String info) {
@@ -103,15 +120,17 @@ public class UserLoginPresenter extends BasePresenter<UserLoginActivity> {
                                     getView().dismissProgress();
                                 }
                             });
-                        }else{
+                        } else {
                             Utils.Toast("发生错误：" + status);
                         }
                     }
                 });
             }
+
             @Override
             public void onCancel(SHARE_MEDIA platform) {
             }
+
             @Override
             public void onStart(SHARE_MEDIA platform) {
             }
@@ -135,14 +154,14 @@ public class UserLoginPresenter extends BasePresenter<UserLoginActivity> {
 
                     @Override
                     public void onComplete(int status, Map<String, Object> info) {
-                        if(status == 200 && info != null){
+                        if (status == 200 && info != null) {
                             StringBuilder sb = new StringBuilder();
                             Set<String> keys = info.keySet();
-                            for(String key : keys){
-                                sb.append(key+"="+info.get(key).toString()+"\r\n");
+                            for (String key : keys) {
+                                sb.append(key + "=" + info.get(key).toString() + "\r\n");
                             }
-                            Utils.Log("TestData",sb.toString());
-                        }else{
+                            Utils.Log("TestData", sb.toString());
+                        } else {
                             Utils.Log("TestData", "发生错误：" + status);
                         }
 //
@@ -203,10 +222,10 @@ public class UserLoginPresenter extends BasePresenter<UserLoginActivity> {
     }
 
     public void register(){
-        getView().startActivityForResult(new Intent(getView(),UserRegisterActivity.class),REGISTER);
+        getView().startActivityForResult(new Intent(getView(), UserRegisterActivity.class), REGISTER);
     }
     public void modifyPassword(){
-        getView().startActivity(new Intent(getView(),ModifyPasswordActivity.class));
+        getView().startActivity(new Intent(getView(), ModifyPasswordActivity.class));
     }
 
     @Override
@@ -225,4 +244,29 @@ public class UserLoginPresenter extends BasePresenter<UserLoginActivity> {
         }
 
     }
+
+
+    @Override
+    public void login(Context context, LoginListener loginListener) {
+        user = new CommUser(AccountModel.getInstance().getUserAccount().getDetail().getId() + "");
+        user.name = AccountModel.getInstance().getUserAccount().getDetail().getName();
+        user.iconUrl = AccountModel.getInstance().getUserAccount().getDetail().getFace();
+        user.source = com.umeng.comm.core.beans.Source.SINA;
+        if (AccountModel.getInstance().getUserAccount().getDetail().getGender() == 0) {
+            user.gender = CommUser.Gender.FEMALE;
+        } else
+            user.gender = CommUser.Gender.MALE;
+        loginListener.onComplete(200, user);
+    }
+
+    @Override
+    public void logout(Context context, LoginListener loginListener) {
+
+    }
+
+    @Override
+    public boolean isLogined(Context context) {
+        return false;
+    }
+
 }
