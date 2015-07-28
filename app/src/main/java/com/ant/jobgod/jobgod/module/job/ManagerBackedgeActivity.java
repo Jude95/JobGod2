@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -30,12 +31,16 @@ public class ManagerBackedgeActivity extends BaseActivity<ManagerBackedgePresent
     TextView jobStatus;
     @InjectView(R.id.btnOperate)
     TextView btnOperate;
-    @InjectView(R.id.evaluate)
-    TextView evaluate;
+    @InjectView(R.id.userEva)
+    TextView userEva;
     @InjectView(R.id.btnSubmit)
     TextView btnSubmit;
+    @InjectView(R.id.bizEve)
+    TextView bizEve;
     @InjectView(R.id.viewJobChat)
     LinearLayout viewJobChat;
+    @InjectView(R.id.feel)
+    RatingBar feel;
 
     private String content;
 
@@ -73,30 +78,48 @@ public class ManagerBackedgeActivity extends BaseActivity<ManagerBackedgePresent
             case 4:
                 jobStatus.setText(data.getJobName() + "合同结束");
                 btnOperate.setText("评价兼职");
-                btnOperate.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        new MaterialDialog.Builder(ManagerBackedgeActivity.this)
-                                .title("评价")
-                                .inputType(InputType.TYPE_CLASS_TEXT)
-                                .inputMaxLength(100)
-                                .input("", "", new MaterialDialog.InputCallback() {
-                                    @Override
-                                    public void onInput(MaterialDialog dialog, CharSequence input) {
-                                        if (input.toString().trim().isEmpty()) {
-                                            Utils.Toast("不能为空");
-                                            return;
+                if (data.getUserEva() != null) {
+                    bizEve.setVisibility(View.VISIBLE);
+                    bizEve.setText("商家评价：" + data.getBizEva());
+                }
+                if (data.getBizEva() != null) {
+                    btnOperate.setBackgroundColor(Color.GRAY);
+                    btnOperate.setEnabled(false);
+                    userEva.setVisibility(View.VISIBLE);
+                    userEva.setText("我的评价：" + data.getBizEva());
+                    feel.setVisibility(View.VISIBLE);
+                    feel.setRating(data.getFeel());
+                } else {
+                    userEva.setVisibility(View.VISIBLE);
+                    btnSubmit.setVisibility(View.VISIBLE);
+                    feel.setVisibility(View.VISIBLE);
+                    feel.setEnabled(true);
+                    btnOperate.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            new MaterialDialog.Builder(ManagerBackedgeActivity.this)
+                                    .title("评价")
+                                    .inputType(InputType.TYPE_CLASS_TEXT)
+                                    .inputMaxLength(100)
+                                    .input("", "", new MaterialDialog.InputCallback() {
+                                        @Override
+                                        public void onInput(MaterialDialog dialog, CharSequence input) {
+                                            if (input.toString().trim().isEmpty()) {
+                                                Utils.Toast("不能为空");
+                                                return;
+                                            }
+                                            setContent(input.toString());
+                                            userEva.setText("用户评价：" + input.toString());
                                         }
-                                        setContent(input.toString());
-                                        evaluate.setText(input.toString());
-                                    }
-                                }).show();
-                    }
-                });
-                btnSubmit.setOnClickListener(v -> getPresenter().evaluateBiz());
+                                    }).show();
+                        }
+                    });
+                    btnSubmit.setOnClickListener(v -> getPresenter().evaluateBiz());
+                }
                 break;
         }
 
+        viewJobChat.setOnClickListener(v -> getPresenter().groupChat());
     }
 
     public void setBtnStatus(boolean isClickAble) {
@@ -112,5 +135,8 @@ public class ManagerBackedgeActivity extends BaseActivity<ManagerBackedgePresent
 
     public String getContent() {
         return content;
+    }
+    public int getFeel(){
+        return feel.getNumStars();
     }
 }

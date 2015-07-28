@@ -45,30 +45,57 @@
             android:background="?colorPrimary"/>
     </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
 
-        <TextView android:id="@+id/evaluate"
-            android:layout_width="wrap_content"
+        <TextView android:id="@+id/userEva"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:visibility="gone"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:text="用户评价:无"
             android:layout_alignBottom="@+id/btnSubmit"
             android:layout_alignTop="@+id/btnSubmit"/>
 
         <TextView android:id="@+id/btnSubmit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:layout_alignParentRight="true"
             android:layout_marginRight="16dp"
-            android:visibility="gone"
-            android:padding="8dp"
+            android:padding="4dp"
             android:textSize="18sp"
             android:textColor="@color/White"
             android:text="提交"
             android:background="?colorPrimary"/>
 
-    </RelativeLayout>
+    </LinearLayout>
+
+
+    <RatingBar android:id="@+id/feel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="8dp"
+        style="?android:attr/ratingBarStyleIndicator"
+        android:visibility="gone"
+        android:numStars="5"
+        />
+
+        <TextView android:id="@+id/bizEve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:text=""
+            android:hint="商家评价" />
+
 
 
     <View
@@ -92,7 +119,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            app:mrl_rippleColor="@color/ripple_material_dark">
+            app:mrl_rippleColor="@color/ripple_material_light">
 
 
         <LinearLayout android:id="@+id/viewJobChat"
@@ -128,7 +155,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            app:mrl_rippleColor="@color/ripple_material_dark">
+            app:mrl_rippleColor="@color/ripple_material_light">
 
         <LinearLayout android:orientation="vertical"
             android:layout_width="match_parent"
@@ -161,7 +188,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            app:mrl_rippleColor="@color/ripple_material_dark">
+            app:mrl_rippleColor="@color/ripple_material_light">
 
         <LinearLayout android:orientation="vertical"
             android:layout_width="match_parent"
