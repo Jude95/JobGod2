@@ -65,8 +65,6 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
     FloatingActionButton floatingActionButton;
     @InjectView(R.id.collapsingToolbar)
     CollapsingToolbarLayout collapsingToolbar;
-    @InjectView(R.id.personCountIntro)
-    TextView personCountIntro;
     @InjectView(R.id.tvApply)
     TextView tvApply;
     @InjectView(R.id.shareQQ)
@@ -118,13 +116,12 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
         }
         bizName.setText(data.getBizName());
         jobAddress.setText(data.getAddress());
-        jobCount.setText(data.getApplyCount() + "人");
+        jobCount.setText(data.getPersonCount() + "人");
         applyBeginTime.setText(new TimeTransform(data.getApplyBeginTime()).toString(new RecentDateFormater()));
         applyEndTime.setText(new TimeTransform(data.getApplyEndTime()).toString(new RecentDateFormater()));
         jobIntro.setText(data.getIntro());
         jobAsk.setText(data.getAsk());
         jobWage.setText(data.getMoneyIntro());
-        personCountIntro.setText(data.getPersonCountIntro());
 
         relateJob.setAdapter(relateAdapter);
 

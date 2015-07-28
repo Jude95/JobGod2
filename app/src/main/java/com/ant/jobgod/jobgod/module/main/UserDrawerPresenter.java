@@ -35,19 +35,21 @@ public class UserDrawerPresenter extends Presenter<UserDrawerFragment> {
     }
 
 
-    public void checkLogin(){
+    public boolean checkLogin(){
         if(AccountModel.getInstance().getAccount() == null){
             getView().startActivity(new Intent(getView().getActivity(), UserLoginActivity.class));
+            return false;
         }
+        return true;
     }
 
     public void startActivity(Class<?> clazz){
-        checkLogin();
+        if (checkLogin())
         getView().startActivity(new Intent(getView().getActivity(), clazz));
     }
 
     public void startChatList(){
-        checkLogin();
+        if (checkLogin())
         RongYunModel.getInstance().chatList(getView().getActivity());
     }
 }
