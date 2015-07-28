@@ -50,7 +50,7 @@ public class ManagerModel extends AbsModel{
     public void jodgeBiz(int id,int feel,String content,StatusCallback callback){
         RequestMap param=new RequestMap();
         param.put("id",id+"");
-        param.put("feek",feel+"");
+        param.put("feel",feel+"");
         param.put("content",content);
         RequestManager.getInstance().post(API.URL.JodgeBiz,param,callback);
     }

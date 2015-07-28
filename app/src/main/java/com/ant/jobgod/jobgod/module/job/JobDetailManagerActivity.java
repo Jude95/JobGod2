@@ -144,6 +144,7 @@ public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPrese
 
         intent=new Intent(JobDetailManagerActivity.this,ManagerBackedgeActivity.class);
         intent.putExtra("id",data.getId());
+        intent.putExtra("title",data.getTitle());
     }
 
 

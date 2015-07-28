@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.ManagerModel;
+import com.ant.jobgod.jobgod.model.RongYunModel;
 import com.ant.jobgod.jobgod.model.bean.Manager;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
@@ -15,6 +16,7 @@ import com.ant.jobgod.jobgod.util.Utils;
 public class ManagerBackedgePresenter extends BasePresenter<ManagerBackedgeActivity> {
 
     private int jobId;
+    private String title;
     private Manager mData;
 
     public final int MANAGER_QUEST_CODE=100;
@@ -59,7 +61,7 @@ public class ManagerBackedgePresenter extends BasePresenter<ManagerBackedgeActiv
             @Override
             public void result(int status, String info) {
                 super.result(status, info);
-                switch (status){
+                switch (status) {
                     case 200:
                         Utils.Toast("取消成功!");
                         getView().setBtnStatus(false);
@@ -74,11 +76,11 @@ public class ManagerBackedgePresenter extends BasePresenter<ManagerBackedgeActiv
      * 评价商家
      */
     public void evaluateBiz() {
-        ManagerModel.getInstance().jodgeBiz(mData.getId(), 5, getView().getContent(), new StatusCallback() {
+        ManagerModel.getInstance().jodgeBiz(mData.getId(), getView().getFeel(), getView().getContent(), new StatusCallback() {
             @Override
             public void success(String info) {
                 if (info.equals("success")) {
-                    Utils.Toast("评价提交成功!");
+                    Utils.Toast("评价成功!");
                 }
             }
 
@@ -90,6 +92,14 @@ public class ManagerBackedgePresenter extends BasePresenter<ManagerBackedgeActiv
                 }
             }
         });
+    }
+
+    /**
+     * 兼职群聊
+     */
+    public void groupChat(){
+        title=getView().getIntent().getStringExtra("title");
+        RongYunModel.getInstance().chatGroup(getView(),jobId+"",title);
     }
 
 }

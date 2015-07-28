@@ -487,8 +487,7 @@
                 android:layout_height="match_parent"
                 app:actualImageScaleType="focusCrop"
                 app:layout_collapseMode="parallax"
-                app:progressBarAutoRotateInterval="1000"
-                app:progressBarImage="@drawable/ic_progressbar"/>
+                app:progressBarAutoRotateInterval="1000" />
 
             <View
                 android:layout_width="match_parent"
