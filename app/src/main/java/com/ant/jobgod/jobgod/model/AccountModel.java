@@ -2,8 +2,6 @@ package com.ant.jobgod.jobgod.model;
 
 import android.content.Context;
 
-import com.android.http.RequestManager;
-import com.android.http.RequestMap;
 import com.ant.jobgod.jobgod.config.API;
 import com.ant.jobgod.jobgod.model.bean.AccountData;
 import com.ant.jobgod.jobgod.model.bean.UserAccountData;
@@ -11,6 +9,8 @@ import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.jude.http.RequestManager;
+import com.jude.http.RequestMap;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -77,6 +77,16 @@ public class AccountModel extends AbsModel{
         RongYunModel.getInstance().connectRongYun(userAccountData.getRongToken());
     }
 
+    public void UserLoginOut(){
+        this.userAccountData = null;
+        FileManager.getInstance().getChild(FileManager.Dir.Object, ACCOUNTFILE).delete();
+        applyToken("");
+        RongYunModel.getInstance().connectRongYun("");
+        publicEvent(new UserAccountData());
+    }
+
+
+
     public void saveAccount(){
         if (isUser){
             Utils.writeObjectToFile(userAccountData,FileManager.getInstance().getChild(FileManager.Dir.Object, ACCOUNTFILE));
@@ -100,6 +110,8 @@ public class AccountModel extends AbsModel{
         RequestManager.getInstance().setHeader(map);
         Utils.Log("setToken:" + json.toString());
     }
+
+
 
 
     public void userRegister(String name,String tel,String password,String verify,StatusCallback callback){
@@ -134,6 +146,62 @@ public class AccountModel extends AbsModel{
         }));
     }
 
+    public void userLoginThroughQQ(String openId,String face,String name,StatusCallback callback){
+        RequestMap params = new RequestMap();
+        params.put("type", "0");
+        params.put("openId", openId);
+        params.put("face", face);
+        params.put("name", name);
+        RequestManager.getInstance().post(API.URL.ThirdLogin, params, callback.add(new DataCallback<UserAccountData>() {
+            @Override
+            public void success(String info, UserAccountData data) {
+                setUserAccountData(data);
+            }
+
+            @Override
+            public void error(String errorInfo) {
+
+            }
+        }));
+    }
+
+    public void userLoginThroughSina(String openId,String face,String name,StatusCallback callback){
+        RequestMap params = new RequestMap();
+        params.put("type", "1");
+        params.put("openId", openId);
+        params.put("face", face);
+        params.put("name", name);
+        RequestManager.getInstance().post(API.URL.ThirdLogin, params, callback.add(new DataCallback<UserAccountData>() {
+            @Override
+            public void success(String info, UserAccountData data) {
+                setUserAccountData(data);
+            }
+
+            @Override
+            public void error(String errorInfo) {
+
+            }
+        }));
+    }
+
+    public void userLoginThroughWeChat(String openId,String face,String name,StatusCallback callback){
+        RequestMap params = new RequestMap();
+        params.put("type", "2");
+        params.put("openId", openId);
+        params.put("face", face);
+        params.put("name", name);
+        RequestManager.getInstance().post(API.URL.ThirdLogin, params, callback.add(new DataCallback<UserAccountData>() {
+            @Override
+            public void success(String info, UserAccountData data) {
+                setUserAccountData(data);
+            }
+
+            @Override
+            public void error(String errorInfo) {
+
+            }
+        }));
+    }
     /**
      * 修改密码
      * @param tel

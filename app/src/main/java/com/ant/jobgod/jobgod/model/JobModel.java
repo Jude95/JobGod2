@@ -2,8 +2,6 @@ package com.ant.jobgod.jobgod.model;
 
 import android.content.Context;
 
-import com.android.http.RequestManager;
-import com.android.http.RequestMap;
 import com.ant.jobgod.jobgod.config.API;
 import com.ant.jobgod.jobgod.model.bean.CommentPage;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
@@ -16,6 +14,8 @@ import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.jude.http.RequestManager;
+import com.jude.http.RequestMap;
 
 /**
  * Created by Mr.Jude on 2015/6/6.

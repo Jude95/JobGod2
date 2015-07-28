@@ -17,6 +17,7 @@ import com.umeng.socialize.exception.SocializeException;
 import com.umeng.socialize.sso.SinaSsoHandler;
 import com.umeng.socialize.sso.UMQQSsoHandler;
 import com.umeng.socialize.sso.UMSsoHandler;
+import com.umeng.socialize.weixin.controller.UMWXHandler;
 
 import java.util.Map;
 import java.util.Set;
@@ -38,6 +39,9 @@ public class UserLoginPresenter extends BasePresenter<UserLoginActivity> {
                 "PeKfWv4imECnmEGn");
         qqSsoHandler.addToSocialSDK();
         mController.getConfig().setSsoHandler(new SinaSsoHandler());
+
+        UMWXHandler wxHandler = new UMWXHandler(getView(),"appId","appSecret");
+        wxHandler.addToSocialSDK();
     }
 
 
@@ -78,6 +82,7 @@ public class UserLoginPresenter extends BasePresenter<UserLoginActivity> {
             }
             @Override
             public void onComplete(Bundle value, SHARE_MEDIA platform) {
+                final String uid = value.getString("uid");
                 mController.getPlatformInfo(getView(), SHARE_MEDIA.QQ, new SocializeListeners.UMDataListener() {
                     @Override
                     public void onStart() {
@@ -87,14 +92,19 @@ public class UserLoginPresenter extends BasePresenter<UserLoginActivity> {
                     @Override
                     public void onComplete(int status, Map<String, Object> info) {
                         if(status == 200 && info != null){
-                            StringBuilder sb = new StringBuilder();
-                            Set<String> keys = info.keySet();
-                            for(String key : keys){
-                                sb.append(key+"="+info.get(key).toString()+"\r\n");
-                            }
-                            Utils.Log(sb.toString());
+                            AccountModel.getInstance().userLoginThroughQQ(uid, (String) info.get("profile_image_url"), (String) info.get("screen_name"), new StatusCallback() {
+                                @Override
+                                public void success(String info) {
+                                    getView().finish();
+                                }
+
+                                @Override
+                                public void result(int status, String info) {
+                                    getView().dismissProgress();
+                                }
+                            });
                         }else{
-                            Utils.Log("发生错误：" + status);
+                            Utils.Toast("发生错误：" + status);
                         }
                     }
                 });
@@ -109,7 +119,60 @@ public class UserLoginPresenter extends BasePresenter<UserLoginActivity> {
     }
 
     public void loginByWeiChat(){
-        Utils.Toast("未集成");
+        mController.doOauthVerify(getView(), SHARE_MEDIA.WEIXIN, new SocializeListeners.UMAuthListener() {
+            @Override
+            public void onError(SocializeException e, SHARE_MEDIA platform) {
+            }
+
+            @Override
+            public void onComplete(Bundle value, SHARE_MEDIA platform) {
+                final String uid = value.getString("uid");
+                mController.getPlatformInfo(getView(), SHARE_MEDIA.QQ, new SocializeListeners.UMDataListener() {
+                    @Override
+                    public void onStart() {
+                        getView().showProgress("登录中");
+                    }
+
+                    @Override
+                    public void onComplete(int status, Map<String, Object> info) {
+                        if(status == 200 && info != null){
+                            StringBuilder sb = new StringBuilder();
+                            Set<String> keys = info.keySet();
+                            for(String key : keys){
+                                sb.append(key+"="+info.get(key).toString()+"\r\n");
+                            }
+                            Utils.Log("TestData",sb.toString());
+                        }else{
+                            Utils.Log("TestData", "发生错误：" + status);
+                        }
+//
+//                        if (status == 200 && info != null) {
+//                            AccountModel.getInstance().userLoginThroughQQ(uid, (String) info.get("profile_image_url"), (String) info.get("screen_name"), new StatusCallback() {
+//                                @Override
+//                                public void success(String info) {
+//                                    getView().finish();
+//                                }
+//
+//                                @Override
+//                                public void result(int status, String info) {
+//                                    getView().dismissProgress();
+//                                }
+//                            });
+//                        } else {
+//                            Utils.Toast("发生错误：" + status);
+//                        }
+                    }
+                });
+            }
+
+            @Override
+            public void onCancel(SHARE_MEDIA platform) {
+            }
+
+            @Override
+            public void onStart(SHARE_MEDIA platform) {
+            }
+        });
     }
     public void loginBySina(){
         mController.doOauthVerify(getView(), SHARE_MEDIA.SINA, new SocializeListeners.UMAuthListener() {

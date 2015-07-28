@@ -7,7 +7,6 @@ import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.RongYunModel;
 import com.ant.jobgod.jobgod.model.bean.AccountData;
 import com.ant.jobgod.jobgod.module.launch.UserLoginActivity;
-import com.ant.jobgod.jobgod.util.Utils;
 
 import nucleus.manager.Presenter;
 
@@ -32,15 +31,23 @@ public class UserDrawerPresenter extends Presenter<UserDrawerFragment> {
     }
 
     public void onEvent(AccountData info){
-        if (info != null) getView().setAccount(info);
+        getView().setAccount(info);
     }
 
 
-    public void startActivity(Class<?> clazz){
+    public void checkLogin(){
         if(AccountModel.getInstance().getAccount() == null){
-            Utils.Toast("请先登录再使用这些功能");
-            clazz = UserLoginActivity.class;
+            getView().startActivity(new Intent(getView().getActivity(), UserLoginActivity.class));
         }
+    }
+
+    public void startActivity(Class<?> clazz){
+        checkLogin();
         getView().startActivity(new Intent(getView().getActivity(), clazz));
+    }
+
+    public void startChatList(){
+        checkLogin();
+        RongYunModel.getInstance().chatList(getView().getActivity());
     }
 }

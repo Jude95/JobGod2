@@ -2,8 +2,6 @@ package com.ant.jobgod.jobgod.model;
 
 import android.content.Context;
 
-import com.android.http.RequestManager;
-import com.android.http.RequestMap;
 import com.ant.jobgod.jobgod.config.API;
 import com.ant.jobgod.jobgod.model.bean.AroundPersonBriefPage;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
@@ -11,6 +9,8 @@ import com.ant.jobgod.jobgod.model.bean.PersonBrief;
 import com.ant.jobgod.jobgod.model.bean.UserDetail;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
+import com.jude.http.RequestManager;
+import com.jude.http.RequestMap;
 
 /**
  * Created by Mr.Jude on 2015/6/6.
@@ -117,17 +117,6 @@ public class UserModel extends AbsModel {
      */
     public void unAttention(int id, StatusCallback callback) {
         RequestManager.getInstance().post(API.URL.UnAttention, new RequestMap("id", id+""), callback);
-    }
-
-    /**
-     * 提交身份验证信息
-     */
-    public void certificate(String idCard,String realName,String img,StatusCallback callback){
-        RequestMap param=new RequestMap();
-        param.put("id_card",idCard);
-        param.put("real_name",realName);
-        param.put("img",img);
-        RequestManager.getInstance().post(API.URL.Certificate,param,callback);
     }
 
 }

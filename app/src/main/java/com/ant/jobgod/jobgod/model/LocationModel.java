@@ -7,12 +7,12 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.location.LocationManagerProxy;
 import com.amap.api.location.LocationProviderProxy;
-import com.android.http.RequestManager;
-import com.android.http.RequestMap;
 import com.ant.jobgod.jobgod.config.API;
 import com.ant.jobgod.jobgod.model.bean.Location;
 import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.jude.http.RequestManager;
+import com.jude.http.RequestMap;
 
 import java.io.File;
 import java.io.Serializable;

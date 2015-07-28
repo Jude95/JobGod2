@@ -359,7 +359,37 @@
             <View android:layout_width="match_parent"
                 android:layout_height="6dp"
                 android:background="@drawable/bottom_shadow"/>
+            <View android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:background="@drawable/top_shadow"/>
 
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:mrl_rippleColor="@color/Grey">
+
+                <RelativeLayout
+                    android:id="@+id/viewLoginOut"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:clickable="true"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:textSize="16sp"
+                        android:text="注销登陆"/>
+
+
+                </RelativeLayout>
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+            <View android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:background="@drawable/bottom_shadow"/>
         </LinearLayout>
 
 

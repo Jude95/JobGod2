@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
+import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.bean.UserAccountData;
 import com.ant.jobgod.jobgod.module.launch.ModifyPasswordActivity;
 import com.balysv.materialripple.MaterialRippleLayout;
@@ -52,6 +53,8 @@ public class UserDataActivity extends BaseActivity<UserDataPresenter> {
     MaterialRippleLayout rippleName;
     @InjectView(R.id.rippleSignature)
     MaterialRippleLayout rippleSignature;
+    @InjectView(R.id.viewLoginOut)
+    RelativeLayout loginOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,24 +72,22 @@ public class UserDataActivity extends BaseActivity<UserDataPresenter> {
         phone.setText(data.getTel());
         authentication.setText(data.getRealname());
         percent.setText("完善度20%");
-        ability.setText(data.getDetail().getAvgAbility()+"/100");
-        attitude.setText(data.getDetail().getAvgAttitude()+"/100");
-        credit.setText(data.getDetail().getAvgCredit()+"/100");
+        ability.setText(data.getDetail().getAvgAbility() + "/100");
+        attitude.setText(data.getDetail().getAvgAttitude() + "/100");
+        credit.setText(data.getDetail().getAvgCredit() + "/100");
     }
-
 
 
     public void setAllListener() {
         viewFace.setOnClickListener(v -> getPresenter().startActivity(ModifyFaceActivity.class));
         viewData.setOnClickListener(v -> getPresenter().startActivity(ModifyDetailActivity.class));
-
+        loginOut.setOnClickListener(v -> AccountModel.getInstance().UserLoginOut());
         viewModifyPassword.setOnClickListener(v -> getPresenter().startActivity(ModifyPasswordActivity.class));
         viewPhone.setOnClickListener(v -> getPresenter().startActivity(ModifyTelActivity.class));
         viewAuthentication.setOnClickListener(v -> getPresenter().startActivity(AuthenticationActivity.class));
         rippleName.setOnClickListener(v -> getPresenter().editName());
         rippleSignature.setOnClickListener(v -> getPresenter().editSign());
     }
-
 
 
 }

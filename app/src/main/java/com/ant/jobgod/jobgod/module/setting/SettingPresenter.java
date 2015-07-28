@@ -1,6 +1,5 @@
 package com.ant.jobgod.jobgod.module.setting;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -8,7 +7,6 @@ import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.JobModel;
 import com.ant.jobgod.jobgod.model.bean.JobDetail;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
-import com.ant.jobgod.jobgod.module.launch.UserLoginActivity;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.update.UmengUpdateAgent;
@@ -22,8 +20,6 @@ public class SettingPresenter extends BasePresenter<SettingActivity> {
 
     private void initItems(){
         items = new SettingItem[]{
-                new SettingItem("账号设置"),
-                new SettingItem("注销账号","",(View v)->getView().startActivity(new Intent(getView(), UserLoginActivity.class))),
                 new SettingItem("应用设置"),
                 new SettingItem("意见反馈","",null),
 
