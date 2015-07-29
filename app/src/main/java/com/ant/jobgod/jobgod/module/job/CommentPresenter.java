@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.ant.jobgod.jobgod.app.BasePresenter;
+import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.JobModel;
 import com.ant.jobgod.jobgod.model.bean.Comment;
 import com.ant.jobgod.jobgod.model.bean.CommentPage;
@@ -80,23 +81,17 @@ public class CommentPresenter extends BasePresenter<CommentActivity> {
      * @param content
      */
     public void submitComment(String content){
+        if(AccountModel.getInstance().getUserAccount()==null){
+            Utils.Toast("请先登录");
+            getView().startActivity(new Intent(getView(), UserLoginActivity.class));
+            return;
+        }
         JobModel.getInstance().comment(id, content,new StatusCallback() {
             @Override
             public void success(String info) {
                 Utils.Toast("评论成功");
                 refresh();
                 getView().setCommentEmpty();
-            }
-
-            @Override
-            public void result(int status, String info) {
-                super.result(status, info);
-                switch (status){
-                    case 400:
-                        Utils.Toast("请先登录");
-                        getView().startActivity(new Intent(getView(), UserLoginActivity.class));
-                        break;
-                }
             }
         });
     }

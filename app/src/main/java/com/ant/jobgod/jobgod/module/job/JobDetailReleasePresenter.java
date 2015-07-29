@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.ant.jobgod.jobgod.app.BasePresenter;
+import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.JobModel;
 import com.ant.jobgod.jobgod.model.bean.JobDetail;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
@@ -36,7 +37,11 @@ public class JobDetailReleasePresenter extends BasePresenter<JobDetailReleaseAct
      * 收藏兼职
      */
     public void collect(){
-
+        if(AccountModel.getInstance().getUserAccount()==null){
+            Utils.Toast("请先登录");
+            getView().startActivity(new Intent(getView(), UserLoginActivity.class));
+            return;
+        }
         if (mJob.isCollected())
             JobModel.getInstance().unCollect(id, new StatusCallback() {
                 @Override
@@ -44,16 +49,6 @@ public class JobDetailReleasePresenter extends BasePresenter<JobDetailReleaseAct
                     Utils.Toast("取消收藏");
                     getView().setIsCollected(!mJob.isCollected());
                     }
-                @Override
-                public void result(int status, String info) {
-                    super.result(status, info);
-                    switch (status){
-                        case 400:
-                            Utils.Toast("请先登录");
-                            getView().startActivity(new Intent(getView(), UserLoginActivity.class));
-                            break;
-                    }
-                }
             });
         else
             JobModel.getInstance().collect(id, new StatusCallback() {
@@ -61,16 +56,6 @@ public class JobDetailReleasePresenter extends BasePresenter<JobDetailReleaseAct
                 public void success(String info) {
                     Utils.Toast("收藏成功");
                     mJob.setCollected(!mJob.isCollected());
-                }
-                @Override
-                public void result(int status, String info) {
-                    super.result(status, info);
-                    switch (status) {
-                        case 400:
-                            Utils.Toast("请先登录");
-                            getView().startActivity(new Intent(getView(), UserLoginActivity.class));
-                            break;
-                    }
                 }
             });
 
