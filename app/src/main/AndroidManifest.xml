@@ -59,7 +59,7 @@
 
         <activity
             android:name=".module.launch.LaunchActivity"
-            android:theme="@style/LaunchTheme" >
+            android:theme="@style/LaunchTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -82,7 +82,9 @@
         <activity
             android:name=".module.main.UserMainActivity"
             android:label="诚客兼职"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="stateHidden|adjustResize">
         </activity>
         <activity
             android:name=".module.setting.SettingActivity"
@@ -173,8 +175,6 @@
 
         <activity android:name=".module.job.ManagerBackedgeActivity"
             android:label="管理后台"/>
-
-
 
 
 

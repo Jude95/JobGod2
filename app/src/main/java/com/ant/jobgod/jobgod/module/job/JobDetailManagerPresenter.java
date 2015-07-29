@@ -8,6 +8,7 @@ import com.ant.jobgod.jobgod.model.JobModel;
 import com.ant.jobgod.jobgod.model.bean.JobDetail;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
+import com.ant.jobgod.jobgod.module.launch.UserLoginActivity;
 import com.ant.jobgod.jobgod.util.Utils;
 
 /**
@@ -54,19 +55,21 @@ public class JobDetailManagerPresenter extends BasePresenter<JobDetailManagerAct
      * 收藏兼职
      */
     public void collect() {
-        getView().setIsCollected(!mJob.isCollected());
         if (mJob.isCollected())
             JobModel.getInstance().unCollect(id, new StatusCallback() {
                 @Override
                 public void success(String info) {
+                    Utils.Toast("取消收藏");
+                    getView().setIsCollected(!mJob.isCollected());
                 }
 
                 @Override
                 public void result(int status, String info) {
                     super.result(status, info);
                     switch (status){
-                        case 200:
-                            Utils.Toast("取消收藏");
+                        case 400:
+                            Utils.Toast("请先登录");
+                            getView().startActivity(new Intent(getView(),UserLoginActivity.class));
                             break;
                     }
                 }
@@ -75,14 +78,17 @@ public class JobDetailManagerPresenter extends BasePresenter<JobDetailManagerAct
             JobModel.getInstance().collect(id, new StatusCallback() {
                 @Override
                 public void success(String info) {
+                    Utils.Toast("收藏成功");
+                    getView().setIsCollected(!mJob.isCollected());
                 }
 
                 @Override
                 public void result(int status, String info) {
                     super.result(status, info);
                     switch (status){
-                        case 200:
-                            Utils.Toast("收藏成功");
+                        case 400:
+                            Utils.Toast("请先登录");
+                            getView().startActivity(new Intent(getView(), UserLoginActivity.class));
                             break;
                     }
                 }
@@ -116,6 +122,10 @@ public class JobDetailManagerPresenter extends BasePresenter<JobDetailManagerAct
                         break;
                     case 202:
                         Utils.Toast("未绑定手机");
+                        break;
+                    case 400:
+                        getView().startActivity(new Intent(getView(), UserLoginActivity.class));
+                        Utils.Toast("请先登录");
                         break;
                 }
             }

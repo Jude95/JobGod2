@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
 import com.ant.jobgod.jobgod.model.bean.Comment;
+import com.ant.jobgod.jobgod.util.Utils;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 
 import butterknife.ButterKnife;
@@ -44,7 +45,13 @@ public class CommentActivity extends BaseActivity<CommentPresenter> {
 
         recyclerview.setAdapter(adapter);
 
-        btnSubmit.setOnClickListener(v -> getPresenter().submitComment(content.getText().toString()));
+        btnSubmit.setOnClickListener(v -> {
+            if(content.getText().toString().isEmpty()){
+                Utils.Toast("不能为空");
+                return;
+            }
+            getPresenter().submitComment(content.getText().toString());
+        });
     }
 
 

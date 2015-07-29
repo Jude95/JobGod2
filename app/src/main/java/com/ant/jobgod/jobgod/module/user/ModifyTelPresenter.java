@@ -30,6 +30,14 @@ public class ModifyTelPresenter extends BasePresenter<ModifyTelActivity> impleme
     }
 
 
+    /**
+     * 绑定手机号
+     * @param oldPhone
+     * @param newPhone
+     * @param oPassword
+     * @param nPassword
+     * @param code
+     */
     public void boundTel(String oldPhone,String newPhone,String oPassword,String nPassword,String code) {
         AccountModel.getInstance().boundTel(oldPhone,newPhone, oPassword,nPassword, code, new StatusCallback() {
             @Override

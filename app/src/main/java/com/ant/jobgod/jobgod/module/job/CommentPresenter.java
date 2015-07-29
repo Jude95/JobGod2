@@ -1,5 +1,6 @@
 package com.ant.jobgod.jobgod.module.job;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.ant.jobgod.jobgod.app.BasePresenter;
@@ -8,6 +9,7 @@ import com.ant.jobgod.jobgod.model.bean.Comment;
 import com.ant.jobgod.jobgod.model.bean.CommentPage;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
+import com.ant.jobgod.jobgod.module.launch.UserLoginActivity;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.facebook.common.internal.Lists;
 
@@ -81,17 +83,18 @@ public class CommentPresenter extends BasePresenter<CommentActivity> {
         JobModel.getInstance().comment(id, content,new StatusCallback() {
             @Override
             public void success(String info) {
-
+                Utils.Toast("评论成功");
+                refresh();
+                getView().setCommentEmpty();
             }
 
             @Override
             public void result(int status, String info) {
                 super.result(status, info);
                 switch (status){
-                    case 200:
-                        Utils.Toast("评论成功");
-                        refresh();
-                        getView().setCommentEmpty();
+                    case 400:
+                        Utils.Toast("请先登录");
+                        getView().startActivity(new Intent(getView(), UserLoginActivity.class));
                         break;
                 }
             }
