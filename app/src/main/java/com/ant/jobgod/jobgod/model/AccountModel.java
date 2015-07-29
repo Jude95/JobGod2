@@ -47,6 +47,10 @@ public class AccountModel extends AbsModel{
         return isUser;
     }
 
+    /**
+     *
+     * @return return null if not login
+     */
     public AccountData getAccount(){
         if (isUser)
             return userAccountData;
@@ -85,6 +89,10 @@ public class AccountModel extends AbsModel{
         publicEvent(new UserAccountData());
     }
 
+
+    public void LoginOut(){
+        if (isUser())UserLoginOut();
+    }
 
 
     public void saveAccount(){
