@@ -1,7 +1,6 @@
 package com.ant.jobgod.jobgod.module.launch;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,9 +9,6 @@ import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.Utils;
-import com.umeng.comm.core.beans.CommUser;
-import com.umeng.comm.core.login.LoginListener;
-import com.umeng.comm.core.login.Loginable;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
@@ -29,12 +25,11 @@ import java.util.Set;
 /**
  * Created by Mr.Jude on 2015/6/6.
  */
-public class UserLoginPresenter extends BasePresenter<UserLoginActivity> implements Loginable{
+public class UserLoginPresenter extends BasePresenter<UserLoginActivity>{
     private static final int REGISTER = 1243;
 
     UMSocialService mController;
 
-    private CommUser user;
 
     @Override
     protected void onCreate(Bundle savedState) {
@@ -71,17 +66,6 @@ public class UserLoginPresenter extends BasePresenter<UserLoginActivity> impleme
 
             @Override
             public void success(String info) {
-                login(getView(), new LoginListener() {
-                    @Override
-                    public void onStart() {
-
-                    }
-
-                    @Override
-                    public void onComplete(int i, CommUser commUser) {
-
-                    }
-                });
                 getView().finish();
             }
 
@@ -246,27 +230,5 @@ public class UserLoginPresenter extends BasePresenter<UserLoginActivity> impleme
     }
 
 
-    @Override
-    public void login(Context context, LoginListener loginListener) {
-        user = new CommUser(AccountModel.getInstance().getUserAccount().getDetail().getId() + "");
-        user.name = AccountModel.getInstance().getUserAccount().getDetail().getName();
-        user.iconUrl = AccountModel.getInstance().getUserAccount().getDetail().getFace();
-        user.source = com.umeng.comm.core.beans.Source.SINA;
-        if (AccountModel.getInstance().getUserAccount().getDetail().getGender() == 0) {
-            user.gender = CommUser.Gender.FEMALE;
-        } else
-            user.gender = CommUser.Gender.MALE;
-        loginListener.onComplete(200, user);
-    }
-
-    @Override
-    public void logout(Context context, LoginListener loginListener) {
-
-    }
-
-    @Override
-    public boolean isLogined(Context context) {
-        return false;
-    }
 
 }
