@@ -140,14 +140,14 @@ public class BBSDetailActivity extends BaseActivity<BBSDetailPresenter> {
                     SocietyModel.getInstance().like(feedItem.sourceFeedId, new Listeners.SimpleFetchListener<SimpleResponse>() {
                         @Override
                         public void onComplete(SimpleResponse simpleResponse) {
-                            int num = Integer.parseInt(like.getText().toString());
+                            like.setPressed(true);
                         }
                     });
                 } else
                     SocietyModel.getInstance().unLike(feedItem.sourceFeedId, new Listeners.SimpleFetchListener<SimpleResponse>() {
                         @Override
                         public void onComplete(SimpleResponse simpleResponse) {
-                            int num = Integer.parseInt(like.getText().toString());
+                            like.setPressed(false);
                         }
                     });
             }
