@@ -98,8 +98,8 @@ public class BBSDetailActivity extends BaseActivity<BBSDetailPresenter> {
 
 
     public void setImgs(FeedItem feed) {
-        View item = imgs.inflate();
-        WrapperGridView gridView = (WrapperGridView) item.findViewById(R.id.umeng_comm_msg_gridview);
+        imgs.inflate();
+        WrapperGridView gridView = (WrapperGridView) findViewById(R.id.umeng_comm_msg_gridview);
         ImgListAdapter adapter = new ImgListAdapter(this, R.layout.view_empty);
         adapter.addAll(feed.getImages());
         gridView.setAdapter(adapter);

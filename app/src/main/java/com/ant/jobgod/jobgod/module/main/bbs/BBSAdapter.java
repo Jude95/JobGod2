@@ -95,9 +95,6 @@ public class BBSAdapter extends RecyclerArrayAdapter<FeedItem> {
             name.setText(data.creator.name);
             sign.setText(PersonBriefModel.getInstance().getPersonBriefOnBlock(data.creator.id).getSign());
 
-            Utils.Log(PersonBriefModel.getInstance().getPersonBriefOnBlock(data.creator.id).getSign() + "");
-            Utils.Toast("creatorid:"+data.creator.id);
-
             if (data.sourceFeed != null) {
                 forardText.setText(data.sourceFeed.text);
             }
