@@ -17,9 +17,9 @@ import android.view.WindowManager;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
+import com.ant.jobgod.jobgod.module.main.bbs.BBSFragment;
 import com.ant.jobgod.jobgod.module.main.joblist.JobListFragment;
 import com.ant.jobgod.jobgod.module.main.recommend.RecommendFragment;
-import com.umeng.comm.ui.fragments.CommunityMainFragment;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -79,10 +79,7 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
                 case 1:
                     return new JobListFragment();
                 default:
-                    CommunityMainFragment mFeedsFragment = new CommunityMainFragment();
-                    //设置Feed流页面的返回按钮不可见
-                    mFeedsFragment.setBackButtonVisibility(View.INVISIBLE);
-                    return mFeedsFragment;
+                    return new BBSFragment();
             }
         }
 

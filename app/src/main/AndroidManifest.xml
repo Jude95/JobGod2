@@ -176,6 +176,17 @@
         <activity android:name=".module.job.ManagerBackedgeActivity"
             android:label="管理后台"/>
 
+        <activity android:name=".module.main.bbs.BBSDetailActivity"
+            android:label="详情"/>
+        <activity android:name=".module.main.bbs.ForwardActivity"
+            android:label="转发"/>
+        <activity android:name=".module.main.bbs.PublishFeedActivity"
+            android:label="发布动态"/>
+
+
+
+
+
 
 
         <!--ImageTool-->

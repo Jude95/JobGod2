@@ -46,8 +46,9 @@ public class JobDetailReleasePresenter extends BasePresenter<JobDetailReleaseAct
             JobModel.getInstance().unCollect(id, new StatusCallback() {
                 @Override
                 public void success(String info) {
-                    Utils.Toast("取消收藏");
-                    getView().setIsCollected(!mJob.isCollected());
+                    Utils.Toast("已取消收藏");
+                    mJob.setCollected(false);
+                    getView().setIsCollected(false);
                     }
             });
         else
@@ -55,7 +56,9 @@ public class JobDetailReleasePresenter extends BasePresenter<JobDetailReleaseAct
                 @Override
                 public void success(String info) {
                     Utils.Toast("收藏成功");
-                    mJob.setCollected(!mJob.isCollected());
+                    mJob.setCollected(true);
+                    getView().setIsCollected(true
+                    );
                 }
             });
 

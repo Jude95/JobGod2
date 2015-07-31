@@ -7,11 +7,17 @@ import android.content.Intent;
 import com.ant.jobgod.jobgod.model.bean.AccountData;
 import com.ant.jobgod.jobgod.module.launch.UserLoginActivity;
 import com.ant.jobgod.jobgod.util.ActivityManager;
+import com.umeng.comm.core.CommunitySDK;
 import com.umeng.comm.core.beans.CommUser;
+import com.umeng.comm.core.beans.FeedItem;
 import com.umeng.comm.core.beans.Source;
 import com.umeng.comm.core.impl.CommunityFactory;
+import com.umeng.comm.core.listeners.Listeners;
 import com.umeng.comm.core.login.LoginListener;
 import com.umeng.comm.core.login.Loginable;
+import com.umeng.comm.core.nets.responses.FeedItemResponse;
+import com.umeng.comm.core.nets.responses.FeedsResponse;
+import com.umeng.comm.core.nets.responses.SimpleResponse;
 import com.umeng.comm.core.sdkmanager.LoginSDKManager;
 
 /**
@@ -20,12 +26,18 @@ import com.umeng.comm.core.sdkmanager.LoginSDKManager;
 public class SocietyModel extends AbsModel  implements Loginable {
     private LoginListener loginListener;
 
+    private CommunitySDK communitySDK;
+
     @Override
     protected void onAppCreate(Context ctx) {
         super.onAppCreate(ctx);
-        CommunityFactory.getCommSDK(ctx);
+        communitySDK=CommunityFactory.getCommSDK(ctx);
         LoginSDKManager.getInstance().addAndUse(this);
         AccountModel.getInstance().registerEvent(this);
+    }
+
+    public static SocietyModel getInstance(){
+        return getInstance(SocietyModel.class);
     }
 
     public void onEvent(AccountData account){
@@ -74,4 +86,78 @@ public class SocietyModel extends AbsModel  implements Loginable {
     public boolean isLogined(Context context) {
         return AccountModel.getInstance().getAccount()==null;
     }
+
+    /**
+     * 获取最新的feed 列表
+     * @param listener
+     */
+    public void getFeeds(Listeners.FetchListener<FeedsResponse> listener){
+        communitySDK.fetchLastestFeeds(listener);
+    }
+
+    /**
+     * 获取下一页feed数据
+     * @param url
+     * @param clz
+     * @param listener
+     */
+    public void getMoreFeeds(String url, Class<FeedsResponse> clz, Listeners.FetchListener<FeedsResponse> listener){
+        communitySDK.fetchNextPageData(url, clz, listener);
+    }
+
+    /**
+     * 发布feed
+     * @param feed
+     * @param listener
+     */
+    public void publishFeed(FeedItem feed,Listeners.SimpleFetchListener<FeedItemResponse> listener){
+        communitySDK.postFeed(feed, listener);
+    }
+
+    /**
+     * 获取某条feed
+     * @param id
+     * @param listener
+     */
+    public void getFeedForId(String id,Listeners.FetchListener<FeedItemResponse> listener){
+        communitySDK.fetchFeedWithId(id, listener);
+    }
+
+    /**
+     * 点赞
+     * @param id
+     * @param listener
+     */
+    public void like(String id,Listeners.SimpleFetchListener<SimpleResponse> listener){
+        communitySDK.postLike(id, listener);
+    }
+
+    /**
+     * 取消赞
+     * @param id
+     * @param listener
+     */
+    public void unLike(String id,Listeners.SimpleFetchListener<SimpleResponse> listener){
+        communitySDK.postUnLike(id, listener);
+    }
+
+    /**
+     * 转发
+     * @param var1
+     * @param var2
+     */
+    public void forward(FeedItem var1, Listeners.SimpleFetchListener<FeedItemResponse> var2){
+        communitySDK.forward(var1, var2);
+    }
+
+    /**
+     * 发布评论
+     * @param var1
+     * @param var2
+     */
+    public void comment(com.umeng.comm.core.beans.Comment var1, Listeners.FetchListener<SimpleResponse> var2){
+        communitySDK.postComment(var1, var2);
+    }
+
+
 }
