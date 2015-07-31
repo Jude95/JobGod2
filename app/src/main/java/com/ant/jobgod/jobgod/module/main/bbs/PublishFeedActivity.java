@@ -78,6 +78,10 @@ public class PublishFeedActivity extends BaseActivity<PublishFeedPresenter> {
     }
 
     public void setImg(ImageItem item) {
+        if(adapter.getCount()>=9){
+            Utils.Toast("最多只能添加9张");
+            return;
+        }
         adapter.add(item);
         adapter.notifyDataSetChanged();
         listImg.add(item);
@@ -94,9 +98,11 @@ public class PublishFeedActivity extends BaseActivity<PublishFeedPresenter> {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.publish) {
+        if (item.getItemId() == R.id.submit) {
             feedItem.imageUrls = listImg;
             feedItem.text = content.getText().toString();
+            Utils.Log("feeditem:"+feedItem );
+
             getPresenter().publishFeed(feedItem, new Listeners.SimpleFetchListener<FeedItemResponse>() {
                 @Override
                 public void onComplete(FeedItemResponse feedItemResponse) {
