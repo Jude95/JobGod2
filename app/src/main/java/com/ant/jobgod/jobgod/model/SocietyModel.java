@@ -3,10 +3,13 @@ package com.ant.jobgod.jobgod.model;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.location.Location;
 
 import com.ant.jobgod.jobgod.model.bean.AccountData;
 import com.ant.jobgod.jobgod.module.launch.UserLoginActivity;
 import com.ant.jobgod.jobgod.util.ActivityManager;
+import com.ant.jobgod.jobgod.util.Utils;
 import com.umeng.comm.core.CommunitySDK;
 import com.umeng.comm.core.beans.CommUser;
 import com.umeng.comm.core.beans.FeedItem;
@@ -15,25 +18,53 @@ import com.umeng.comm.core.impl.CommunityFactory;
 import com.umeng.comm.core.listeners.Listeners;
 import com.umeng.comm.core.login.LoginListener;
 import com.umeng.comm.core.login.Loginable;
+import com.umeng.comm.core.nets.responses.CommentResponse;
 import com.umeng.comm.core.nets.responses.FeedItemResponse;
 import com.umeng.comm.core.nets.responses.FeedsResponse;
+import com.umeng.comm.core.nets.responses.LocationResponse;
+import com.umeng.comm.core.nets.responses.PortraitUploadResponse;
 import com.umeng.comm.core.nets.responses.SimpleResponse;
-import com.umeng.comm.core.sdkmanager.LoginSDKManager;
 
 /**
  * Created by Mr.Jude on 2015/7/29.
  */
 public class SocietyModel extends AbsModel  implements Loginable {
+
     private LoginListener loginListener;
 
     private CommunitySDK communitySDK;
 
+    private CommUser commUser;
+
     @Override
     protected void onAppCreate(Context ctx) {
         super.onAppCreate(ctx);
-        communitySDK=CommunityFactory.getCommSDK(ctx);
-        LoginSDKManager.getInstance().addAndUse(this);
         AccountModel.getInstance().registerEvent(this);
+        communitySDK= CommunityFactory.getCommSDK(ctx);
+        communitySDK.getConfig().getLoginSDKManager().addAndUse(this);
+    }
+
+    /**
+     * 检查用户是否登录
+     * @param ctx
+     * @return
+     */
+    public boolean checkLogin(Context ctx){
+            communitySDK.login(ctx, new LoginListener() {
+                @Override
+                public void onStart() {
+
+                }
+
+                @Override
+                public void onComplete(int i, CommUser commUser) {
+                    Utils.Log("onComplete");
+                    SocietyModel.this.commUser = commUser;
+                    communitySDK.getConfig().setCurrentUser(commUser);
+                    Utils.Log("当前登录用户信息:" + commUser);
+                }
+            });
+        return true;
     }
 
     public static SocietyModel getInstance(){
@@ -43,20 +74,17 @@ public class SocietyModel extends AbsModel  implements Loginable {
     public void onEvent(AccountData account){
         if (loginListener == null)return;
         CommUser user = new CommUser(account.getId()+"");
-        // 登录的来源.可使用值参考文档中SOURCE的取值说明
         user.source = Source.SELF_ACCOUNT;
-        user.name = account.getName();
-        // 如果没有头像地址，可不传递
+        String base64Name=Utils.string2Base64(account.getId()+"_"+account.getName());
+        user.name = base64Name;
         user.iconUrl = account.getFace();
-        // 性别
         user.gender = CommUser.Gender.FEMALE;
-        // 登录完成回调给社区SDK
         loginListener.onComplete(200, user);
     }
 
     @Override
     public void login(Context context, LoginListener loginListener) {
-        // 注意用户id、昵称、source是必填项
+        Utils.Log("userLogin");
         AccountData account = AccountModel.getInstance().getAccount();
         if (account == null){
             this.loginListener = loginListener;
@@ -64,17 +92,14 @@ public class SocietyModel extends AbsModel  implements Loginable {
             act.startActivity(new Intent(act, UserLoginActivity.class));
             return;
         }
-
         CommUser user = new CommUser(account.getId()+"");
-        // 登录的来源.可使用值参考文档中SOURCE的取值说明
+        String base64Name=Utils.string2Base64(account.getId()+"_"+account.getName());
+        user.name = base64Name;
         user.source = Source.SELF_ACCOUNT;
-        user.name = account.getName();
-        // 如果没有头像地址，可不传递
         user.iconUrl = account.getFace();
-        // 性别
         user.gender = CommUser.Gender.FEMALE;
-        // 登录完成回调给社区SDK
         loginListener.onComplete(200, user);
+        Utils.Log("userloginname:" + user.name);
     }
 
     @Override
@@ -84,7 +109,17 @@ public class SocietyModel extends AbsModel  implements Loginable {
 
     @Override
     public boolean isLogined(Context context) {
-        return AccountModel.getInstance().getAccount()==null;
+        return commUser ==null;
+    }
+
+    /**
+     * 更新个人信息，是在友盟社区的信息，传入commuser对象
+     * @param commUser
+     * @param listener
+     */
+    public void updateBBSInfo(CommUser commUser, Listeners.CommListener listener){
+        communitySDK.updateUserProfile(commUser,listener);
+        this.commUser=commUser;
     }
 
     /**
@@ -106,6 +141,15 @@ public class SocietyModel extends AbsModel  implements Loginable {
     }
 
     /**
+     * 获取feed的评论列表
+     * @param feedId
+     * @param listener
+     */
+    public void getComments(String feedId,Listeners.SimpleFetchListener<CommentResponse> listener){
+        communitySDK.fetchFeedComments(feedId, listener);
+    }
+
+    /**
      * 发布feed
      * @param feed
      * @param listener
@@ -115,18 +159,8 @@ public class SocietyModel extends AbsModel  implements Loginable {
     }
 
     /**
-     * 获取某条feed
-     * @param id
-     * @param listener
-     */
-    public void getFeedForId(String id,Listeners.FetchListener<FeedItemResponse> listener){
-        communitySDK.fetchFeedWithId(id, listener);
-    }
-
-    /**
      * 点赞
      * @param id
-     * @param listener
      */
     public void like(String id,Listeners.SimpleFetchListener<SimpleResponse> listener){
         communitySDK.postLike(id, listener);
@@ -135,29 +169,35 @@ public class SocietyModel extends AbsModel  implements Loginable {
     /**
      * 取消赞
      * @param id
-     * @param listener
      */
     public void unLike(String id,Listeners.SimpleFetchListener<SimpleResponse> listener){
         communitySDK.postUnLike(id, listener);
     }
 
     /**
-     * 转发
+     * 发布评论
      * @param var1
-     * @param var2
      */
-    public void forward(FeedItem var1, Listeners.SimpleFetchListener<FeedItemResponse> var2){
-        communitySDK.forward(var1, var2);
+    public void comment(com.umeng.comm.core.beans.Comment var1,Listeners.FetchListener<SimpleResponse> listener){
+        communitySDK.postComment(var1, listener);
     }
 
     /**
-     * 发布评论
+     * 更新社区的头像
+     * @param bitmap
+     * @param listener
+     */
+    public void updataBBSFace(Bitmap bitmap, Listeners.SimpleFetchListener<PortraitUploadResponse> listener){
+        communitySDK.updateUserProtrait(bitmap, listener);
+    }
+
+    /**
+     * 获取地理位置信息
      * @param var1
      * @param var2
      */
-    public void comment(com.umeng.comm.core.beans.Comment var1, Listeners.FetchListener<SimpleResponse> var2){
-        communitySDK.postComment(var1, var2);
+    public void getLocation(Location var1, Listeners.FetchListener<LocationResponse> var2){
+        communitySDK.getLocationAddr(var1,var2);
     }
-
 
 }

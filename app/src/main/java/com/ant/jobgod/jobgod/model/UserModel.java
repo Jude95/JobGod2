@@ -119,4 +119,5 @@ public class UserModel extends AbsModel {
         RequestManager.getInstance().post(API.URL.UnAttention, new RequestMap("id", id+""), callback);
     }
 
+
 }

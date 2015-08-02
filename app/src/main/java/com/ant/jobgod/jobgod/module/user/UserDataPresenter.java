@@ -7,10 +7,15 @@ import android.text.InputType;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.AccountModel;
+import com.ant.jobgod.jobgod.model.SocietyModel;
 import com.ant.jobgod.jobgod.model.UserModel;
 import com.ant.jobgod.jobgod.model.bean.UserAccountData;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.umeng.comm.core.beans.CommConfig;
+import com.umeng.comm.core.beans.CommUser;
+import com.umeng.comm.core.listeners.Listeners;
+import com.umeng.comm.core.nets.Response;
 
 /**
  * Created by alien on 2015/7/10.
@@ -56,6 +61,25 @@ public class UserDataPresenter extends BasePresenter<UserDataActivity> {
                             @Override
                             public void success(String info) {
                                 AccountModel.getInstance().updateAccountData();
+                                if (CommConfig.getConfig().loginedUser != null) {
+                                    CommConfig.getConfig().loginedUser.name = input.toString();
+                                }
+                                if (SocietyModel.getInstance().checkLogin(getView())) {
+                                    CommUser commUser = CommConfig.getConfig().loginedUser;
+                                    String name = AccountModel.getInstance().getAccount().getId() + "_" + commUser.name;
+                                    commUser.name = Utils.string2Base64(name);
+                                    SocietyModel.getInstance().updateBBSInfo(commUser, new Listeners.CommListener() {
+                                        @Override
+                                        public void onStart() {
+
+                                        }
+
+                                        @Override
+                                        public void onComplete(Response response) {
+                                            Utils.Log("BBSname:" + response.toString());
+                                        }
+                                    });
+                                }
                             }
 
                             @Override

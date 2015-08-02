@@ -3,6 +3,7 @@ package com.ant.jobgod.jobgod.module.user;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,6 +15,7 @@ import com.ant.jobgod.imagetool.imageprovider.OnImageSelectListener;
 import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.RemoteFileModel;
+import com.ant.jobgod.jobgod.model.SocietyModel;
 import com.ant.jobgod.jobgod.model.UserModel;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.FileManager;
@@ -26,6 +28,8 @@ import com.facebook.imagepipeline.core.ImagePipeline;
 import com.facebook.imagepipeline.datasource.BaseBitmapDataSubscriber;
 import com.facebook.imagepipeline.image.CloseableImage;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
+import com.umeng.comm.core.listeners.Listeners;
+import com.umeng.comm.core.nets.responses.PortraitUploadResponse;
 
 import java.io.File;
 
@@ -121,7 +125,14 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
                     public void success(String info) {
                         Utils.Toast("上传成功");
                         AccountModel.getInstance().updateAccountData();
-                        getView().finish();
+                        String filepath=FileManager.getInstance().getChild(FileManager.Dir.Image, mFinalImg).getAbsolutePath();
+                        if (SocietyModel.getInstance().checkLogin(getView()))
+                        SocietyModel.getInstance().updataBBSFace(BitmapFactory.decodeFile(filepath), new Listeners.SimpleFetchListener<PortraitUploadResponse>() {
+                            @Override
+                            public void onComplete(PortraitUploadResponse portraitUploadResponse) {
+                                getView().finish();
+                            }
+                        });
                     }
 
                     @Override

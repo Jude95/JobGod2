@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/publish"
-        android:title="发布"
-        android:icon="@drawable/ic_add_white"
+    <item android:id="@+id/delete"
+        android:title="删除"
         app:showAsAction="always"/>
+
 </menu>

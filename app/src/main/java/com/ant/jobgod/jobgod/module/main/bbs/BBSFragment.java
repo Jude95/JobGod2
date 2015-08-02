@@ -37,6 +37,7 @@ public class BBSFragment extends NucleusFragment<BBSPresenter> {
         super.onCreate(bundle);
         adapter=new BBSAdapter(getActivity());
         setHasOptionsMenu(true);
+        getPresenter().setData();
     }
 
     @Nullable
@@ -45,7 +46,7 @@ public class BBSFragment extends NucleusFragment<BBSPresenter> {
         View view = inflater.inflate(R.layout.bbs_frament,container,false);
         recyclerView= (EasyRecyclerView) view.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapterWithProgress(adapter);
         adapter.setMore(R.layout.view_more, new RecyclerArrayAdapter.OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
@@ -62,14 +63,19 @@ public class BBSFragment extends NucleusFragment<BBSPresenter> {
     }
 
     public void setData(List<FeedItem> data){
+        if(data.size()==0){
+            return;
+        }
         adapter.clear();
         adapter.addAll(data);
-        nextUrl=data.get(0).nextPageUrl;
+        if(data.get(0).nextPageUrl!=null){
+            nextUrl=data.get(0).nextPageUrl;
+        }
     }
 
     public void loadMore(List<FeedItem> data){
         adapter.addAll(data);
-        if(data.get(0).nextPageUrl!=null){
+        if(data!=null&&data.get(0)!=null){
             nextUrl=data.get(0).nextPageUrl;
         }
     }
@@ -77,7 +83,6 @@ public class BBSFragment extends NucleusFragment<BBSPresenter> {
     public void stopMore(){
         adapter.stopMore();
     }
-
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {

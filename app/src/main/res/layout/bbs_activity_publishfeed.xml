@@ -32,7 +32,7 @@
         android:id="@+id/getImg"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_margin="16dp"
+        android:layout_marginLeft="16dp"
         android:src="@drawable/ic_addimg" />
 
 

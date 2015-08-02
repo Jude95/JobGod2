@@ -72,4 +72,5 @@ public class BBSPresenter extends Presenter<BBSFragment> {
             }
         });
     }
+
 }

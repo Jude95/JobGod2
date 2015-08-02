@@ -5,7 +5,8 @@
 
     <include
         android:id="@+id/umeng_comm_friend_id"
-        layout="@layout/umeng_comm_title_layout" />
+        layout="@layout/umeng_comm_title_layout"
+        android:visibility="gone"/>
 
     <include
         android:id="@+id/umeng_comm_divide_id"

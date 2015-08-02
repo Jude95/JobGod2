@@ -10,9 +10,10 @@ import android.widget.ImageView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
-import com.ant.jobgod.jobgod.model.AccountModel;
-import com.ant.jobgod.jobgod.model.bean.AccountData;
+import com.ant.jobgod.jobgod.model.LocationModel;
+import com.ant.jobgod.jobgod.model.SocietyModel;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.umeng.comm.core.beans.CommConfig;
 import com.umeng.comm.core.beans.CommUser;
 import com.umeng.comm.core.beans.FeedItem;
 import com.umeng.comm.core.beans.ImageItem;
@@ -37,15 +38,11 @@ public class PublishFeedActivity extends BaseActivity<PublishFeedPresenter> {
     EditText content;
     @InjectView(R.id.getImg)
     ImageView getImg;
-    
-    private ImgListAdapter adapter;
 
+    private ImgListAdapter imgListAdapter;
     private GridView gridView;
-
     private FeedItem feedItem;
-
     private CommUser commUser;
-
     private List<ImageItem> listImg;
 
     @Override
@@ -55,40 +52,33 @@ public class PublishFeedActivity extends BaseActivity<PublishFeedPresenter> {
         ButterKnife.inject(this);
 
         listImg = new ArrayList<>();
-
-        adapter = new ImgListAdapter(this, R.layout.view_nomore);
-
-        commUser = new CommUser();
+        imgListAdapter = new ImgListAdapter(this, R.layout.view_nomore);
         feedItem = new FeedItem();
-        AccountData accountData = AccountModel.getInstance().getAccount();
-        commUser.name = accountData.getName();
-        commUser.iconUrl = accountData.getFace();
-        commUser.id = accountData.getId() + "";
-        feedItem.creator = commUser;
 
+        commUser = CommConfig.getConfig().loginedUser;
         gridView = (GridView) findViewById(R.id.gridview);
-        gridView.setAdapter(adapter);
+        gridView.setAdapter(imgListAdapter);
 
         getImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getPresenter().getImgs();
+                getPresenter().getImgFromAlbum();
             }
         });
+
     }
 
-    public void setImg(ImageItem item) {
-        if(adapter.getCount()>=9){
+    public void setOneImg(ImageItem item) {
+        if (imgListAdapter.getCount() >= 9) {
             Utils.Toast("最多只能添加9张");
             return;
         }
-        adapter.add(item);
-        adapter.notifyDataSetChanged();
+        imgListAdapter.add(item);
+        imgListAdapter.notifyDataSetChanged();
         listImg.add(item);
-        Utils.Log("count:" + adapter.getCount());
-
+        feedItem.imageUrls.add(item);
+        Utils.Log("count:" + imgListAdapter.getCount());
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -99,17 +89,28 @@ public class PublishFeedActivity extends BaseActivity<PublishFeedPresenter> {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.submit) {
-            feedItem.imageUrls = listImg;
-            feedItem.text = content.getText().toString();
-            Utils.Log("feeditem:"+feedItem );
+            feedItem.text = content.getText().toString().trim();
+            feedItem.locationAddr = LocationModel.getInstance().getCurLocation().getAddress().trim();
+            feedItem.type = feedItem.creator.permisson == CommUser.Permisson.ADMIN ? 1 : 0;
+            feedItem.creator = CommConfig.getConfig().loginedUser;
+            Utils.Log("loginuser:" + CommConfig.getConfig().loginedUser);
+            Utils.Log("feeditem:" + feedItem);
 
-            getPresenter().publishFeed(feedItem, new Listeners.SimpleFetchListener<FeedItemResponse>() {
-                @Override
-                public void onComplete(FeedItemResponse feedItemResponse) {
-                    Utils.Toast("发布成功");
-                }
-            });
+            if (SocietyModel.getInstance().checkLogin(this)) {
+                getPresenter().publishFeed(feedItem, new Listeners.SimpleFetchListener<FeedItemResponse>() {
+                    @Override
+                    public void onComplete(FeedItemResponse feedItemResponse) {
+                        Utils.Log("发布后返回的数据：" + feedItemResponse);
+                        if (feedItemResponse.errCode == 0) {
+                            finish();
+                        } else
+                            Utils.Log("发布失败");
+                    }
+                });
+            }
+
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

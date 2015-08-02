@@ -1,69 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.balysv.materialripple.MaterialRippleLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fresco="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/tools"
-    android:id="@+id/ripple"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:mrl_rippleColor="@color/Grey">
-
-
-
-    <RelativeLayout
-        android:orientation="vertical"
-        android:layout_marginTop="1dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:minHeight="24dp"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tool:text="呵呵哒"
+        android:text="Jude"
+        android:layout_marginTop="2dp"
+        android:textColor="@android:color/holo_blue_light"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=":"
+        android:layout_margin="2dp"/>
+    <TextView
+        android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="72dp">
-
-        <View android:layout_width="match_parent"
-            android:layout_height="@dimen/md_divider_height"
-            android:background="@color/md_divider_white"
-            android:layout_alignParentTop="true"/>
-
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/face"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_margin="16dp"
-            fresco:roundAsCircle="true"/>
-
-        <TextView android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/face"
-            android:layout_toLeftOf="@+id/tvDate"
-            android:layout_marginTop="16dp"
-            android:text="哈哈哈"
-            android:textSize="@dimen/abc_text_size_medium_material"
-            android:singleLine="true"/>
-
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:singleLine="true"
-            android:gravity="center_vertical"
-            android:textSize="12sp"
-            android:text="2015-7-30"
-            android:textColor="@android:color/darker_gray"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/tvName"
-            />
-
-
-        <TextView android:id="@+id/content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="16dp"
-            android:layout_below="@+id/name"
-            android:layout_toRightOf="@+id/face"
-            android:textSize="@dimen/abc_text_size_body_1_material"
-            android:singleLine="true"/>
-
-    </RelativeLayout>
-
-</com.balysv.materialripple.MaterialRippleLayout>
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:text="牛逼"
+        android:gravity="center_vertical"/>
+</LinearLayout>
