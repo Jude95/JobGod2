@@ -120,8 +120,6 @@ public class AccountModel extends AbsModel{
     }
 
 
-
-
     public void userRegister(String name,String tel,String password,String verify,StatusCallback callback){
         RequestMap params = new RequestMap();
         params.put("name",name);
