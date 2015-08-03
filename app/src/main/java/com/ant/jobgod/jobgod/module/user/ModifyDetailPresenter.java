@@ -47,6 +47,7 @@ public class ModifyDetailPresenter extends BasePresenter<ModifyDetailActivity> {
      * 更新个人信息
      */
     public void updateMyDetail() {
+        getView().showProgress("提交中");
         UserModel.getInstance().updateUserDetail(getView().getUserDetail(), new StatusCallback() {
             @Override
             public void success(String info) {
@@ -59,6 +60,7 @@ public class ModifyDetailPresenter extends BasePresenter<ModifyDetailActivity> {
                 switch (status) {
                     case 200:
                         Utils.Toast("保存成功");
+                        getView().dismissProgress();
                         break;
                 }
             }

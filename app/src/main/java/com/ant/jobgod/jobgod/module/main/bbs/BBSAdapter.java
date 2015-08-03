@@ -40,8 +40,6 @@ public class BBSAdapter extends RecyclerArrayAdapter<FeedItem> {
         super(context);
     }
 
-    private int ZAN = 1;
-
     @Override
     public BaseViewHolder OnCreateViewHolder(ViewGroup viewGroup, int i) {
         return new BBSViewHolder(viewGroup);
@@ -157,6 +155,7 @@ public class BBSAdapter extends RecyclerArrayAdapter<FeedItem> {
 
             //点赞或取消赞
             likeImg.setOnClickListener(new View.OnClickListener() {
+                int ZAN = 1;
                 @Override
                 public void onClick(View v) {
                     if (SocietyModel.getInstance().checkLogin(getContext()))

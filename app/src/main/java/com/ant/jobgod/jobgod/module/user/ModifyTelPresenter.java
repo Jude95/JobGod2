@@ -45,6 +45,13 @@ public class ModifyTelPresenter extends BasePresenter<ModifyTelActivity> impleme
                 Utils.Toast("绑定成功");
                 getView().finish();
             }
+
+            @Override
+            public void result(int status, String info) {
+                super.result(status, info);
+                if(status==520)
+                    Utils.Toast("验证码错误");
+            }
         });
     }
 

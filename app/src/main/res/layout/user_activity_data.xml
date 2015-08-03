@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -79,7 +80,7 @@
                     android:layout_marginRight="16dp"
                     android:textSize="@dimen/abc_text_size_body_1_material"
                     android:textColor="@color/Grey"
-                    android:text="王二小"/>
+                    tools:text="王二小"/>
             </RelativeLayout>
 
             </com.balysv.materialripple.MaterialRippleLayout>
@@ -147,7 +148,7 @@
                     android:layout_marginRight="16dp"
                     android:textSize="@dimen/abc_text_size_body_1_material"
                     android:textColor="@color/Grey"
-                    android:text="完善度 20%"/>
+                    tools:text="完善度 20%"/>
 
             </RelativeLayout>
 
@@ -186,7 +187,7 @@
                         android:layout_marginRight="16dp"
                         android:textSize="@dimen/abc_text_size_body_1_material"
                         android:textColor="@color/Grey"
-                        android:text="18983679028"/>
+                        tools:text="18983679028"/>
 
                 </RelativeLayout>
 
@@ -220,7 +221,7 @@
                     android:layout_marginRight="16dp"
                     android:textSize="@dimen/abc_text_size_body_1_material"
                     android:textColor="@color/Grey"
-                    android:text="未认证"/>
+                    tools:text="未认证"/>
 
             </RelativeLayout>
 
@@ -283,7 +284,7 @@
                     android:layout_marginRight="16dp"
                     android:textSize="@dimen/abc_text_size_body_1_material"
                     android:textColor="@color/Grey"
-                    android:text="50/100"/>
+                    tools:text="50/100"/>
 
             </RelativeLayout>
 
@@ -317,7 +318,7 @@
                     android:layout_marginRight="16dp"
                     android:textSize="@dimen/abc_text_size_body_1_material"
                     android:textColor="@color/Grey"
-                    android:text="50/100"/>
+                    tools:text="50/100"/>
 
             </RelativeLayout>
             </com.balysv.materialripple.MaterialRippleLayout>
@@ -350,7 +351,7 @@
                     android:layout_marginRight="16dp"
                     android:textSize="@dimen/abc_text_size_body_1_material"
                     android:textColor="@color/Grey"
-                    android:text="50/100"/>
+                    tools:text="50/100"/>
 
             </RelativeLayout>
             </com.balysv.materialripple.MaterialRippleLayout>

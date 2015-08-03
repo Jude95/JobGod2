@@ -31,10 +31,10 @@ public class RongYunModel extends AbsModel {
 
     @Override
     protected void onAppCreate(Context ctx) {
-        RongIM.init(ctx);
     }
 
     public void connectRongYun(String token){
+        Utils.Log("连接是融云token:"+token);
         RongIM.connect(token, new RongIMClient.ConnectCallback() {
             @Override
             public void onTokenIncorrect() {
