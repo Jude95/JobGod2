@@ -11,19 +11,17 @@ import android.view.ViewGroup;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.util.ActivityManager;
-import com.ant.jobgod.jobgod.util.Utils;
+import com.jude.swipbackhelper.SwipeBackHelper;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.message.PushAgent;
 
 import nucleus.manager.Presenter;
-import swipebacklayout.app.SwipeBackActivity;
+import nucleus.view.NucleusAppCompatActivity;
 
 /**
  * Created by zhuchenxi on 15/6/7.
  */
-public class BaseActivity<T extends Presenter> extends SwipeBackActivity<T> {
-
-
+public class BaseActivity<T extends Presenter> extends NucleusAppCompatActivity<T> {
     private Toolbar toolbar;
     private MaterialDialog dialog;
 
@@ -32,7 +30,11 @@ public class BaseActivity<T extends Presenter> extends SwipeBackActivity<T> {
         super.onCreate(savedInstanceState);
         ActivityManager.getInstance().pushActivity(this);
         PushAgent.getInstance(this).onAppStart();
-        getSwipeBackLayout().setEdgeSize(Utils.getScreenWidth()/2);
+        SwipeBackHelper.onCreate(this);
+    }
+
+    public void setSwipeBackEnable(boolean swipeBackEnable){
+        SwipeBackHelper.getCurrentPage(this).setSwipeBackEnable(swipeBackEnable);
     }
 
     protected void setToolBar(boolean returnAble){
@@ -108,8 +110,15 @@ public class BaseActivity<T extends Presenter> extends SwipeBackActivity<T> {
     }
 
     @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        SwipeBackHelper.onPostCreate(this);
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         ActivityManager.getInstance().destroyActivity(this);
+        SwipeBackHelper.onDestroy(this);
     }
 }
