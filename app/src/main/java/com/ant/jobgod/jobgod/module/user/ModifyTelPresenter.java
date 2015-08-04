@@ -39,18 +39,22 @@ public class ModifyTelPresenter extends BasePresenter<ModifyTelActivity> impleme
      * @param code
      */
     public void boundTel(String oldPhone,String newPhone,String oPassword,String nPassword,String code) {
+        getView().showProgress("提交中");
         AccountModel.getInstance().boundTel(oldPhone,newPhone, oPassword,nPassword, code, new StatusCallback() {
             @Override
             public void success(String info) {
                 Utils.Toast("绑定成功");
+                getView().dismissProgress();
                 getView().finish();
             }
 
             @Override
             public void result(int status, String info) {
                 super.result(status, info);
-                if(status==520)
+                if(status==520){
+                    getView().dismissProgress();
                     Utils.Toast("验证码错误");
+                }
             }
         });
     }
