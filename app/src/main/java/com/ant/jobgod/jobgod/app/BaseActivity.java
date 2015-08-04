@@ -31,7 +31,7 @@ public class BaseActivity<T extends Presenter> extends NucleusAppCompatActivity<
         ActivityManager.getInstance().pushActivity(this);
         PushAgent.getInstance(this).onAppStart();
         SwipeBackHelper.onCreate(this);
-        SwipeBackHelper.getCurrentPage(this).setSwipeSensitivity(0.5f);
+        SwipeBackHelper.getCurrentPage(this).setSwipeSensitivity(0.5f).setSwipeEdgePercent(0.5f);
     }
 
     public void setSwipeBackEnable(boolean swipeBackEnable){
