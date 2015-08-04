@@ -37,7 +37,6 @@ public class AccountModel extends AbsModel{
         userAccountData = (UserAccountData) Utils.readObjectFromFile(FileManager.getInstance().getChild(FileManager.Dir.Object,ACCOUNTFILE));
         if (userAccountData !=null) {
             applyToken(userAccountData.getTokenApp());
-            updateAccountData();
         } else {
             applyToken("");
         }
@@ -78,14 +77,14 @@ public class AccountModel extends AbsModel{
         saveAccount();
         applyToken(userAccountData.getTokenApp());
         publicEvent(userAccountData);
-        RongYunModel.getInstance().connectRongYun(userAccountData.getRongToken());
+        Utils.Log("fuck");
     }
 
     public void UserLoginOut(){
         this.userAccountData = null;
         FileManager.getInstance().getChild(FileManager.Dir.Object, ACCOUNTFILE).delete();
         applyToken("");
-        RongYunModel.getInstance().connectRongYun("");
+        RongYunModel.getInstance().loginOut();
         publicEvent(new UserAccountData());
     }
 

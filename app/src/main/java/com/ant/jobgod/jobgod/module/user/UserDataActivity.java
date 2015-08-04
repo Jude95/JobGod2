@@ -81,7 +81,10 @@ public class UserDataActivity extends BaseActivity<UserDataPresenter> {
     public void setAllListener() {
         viewFace.setOnClickListener(v -> getPresenter().startActivity(ModifyFaceActivity.class));
         viewData.setOnClickListener(v -> getPresenter().startActivity(ModifyDetailActivity.class));
-        loginOut.setOnClickListener(v -> AccountModel.getInstance().UserLoginOut());
+        loginOut.setOnClickListener(v -> {
+            AccountModel.getInstance().UserLoginOut();
+            finish();
+        });
         viewModifyPassword.setOnClickListener(v -> getPresenter().startActivity(ModifyPasswordActivity.class));
         viewPhone.setOnClickListener(v -> getPresenter().startActivity(ModifyTelActivity.class));
         viewAuthentication.setOnClickListener(v -> getPresenter().startActivity(AuthenticationActivity.class));

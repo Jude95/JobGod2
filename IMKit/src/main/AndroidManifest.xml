@@ -122,11 +122,6 @@
         <receiver
             android:name="io.rong.imlib.HeartbeatReceiver"
             android:process=":ipc" />
-
-
-        <meta-data
-            android:name="RONG_CLOUD_APP_KEY"
-            android:value="pgyu6atqykaru" />
         <!-- end -->
     </application>
 

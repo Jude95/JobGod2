@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
+import com.ant.jobgod.jobgod.model.bean.AccountData;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.bean.PersonBrief;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
@@ -31,10 +32,21 @@ public class RongYunModel extends AbsModel {
 
     @Override
     protected void onAppCreate(Context ctx) {
+        AccountModel.getInstance().registerEvent(this);
+        if (AccountModel.getInstance().getAccount()!=null)
+            connectRongYun1(AccountModel.getInstance().getAccount().getRongToken());
     }
 
-    public void connectRongYun(String token){
-        Utils.Log("连接是融云token:"+token);
+    public void onEvent(AccountData data){
+        connectRongYun1(data.getRongToken());
+    }
+
+    public void loginOut(){
+        connectRongYun1("");
+    }
+
+    public void connectRongYun1(String token){
+        Utils.Log("连接融云token:"+token);
         RongIM.connect(token, new RongIMClient.ConnectCallback() {
             @Override
             public void onTokenIncorrect() {
