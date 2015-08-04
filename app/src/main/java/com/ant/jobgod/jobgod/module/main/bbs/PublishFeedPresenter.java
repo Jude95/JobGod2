@@ -69,6 +69,7 @@ public class PublishFeedPresenter extends BasePresenter<PublishFeedActivity> {
                     @Override
                     public void onError() {
                         Utils.Toast("添加失败");
+                        getView().dismissProgress();
                     }
                 });
             }
