@@ -13,13 +13,13 @@ import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.AccountData;
+import com.ant.jobgod.jobgod.module.setting.SettingActivity;
 import com.ant.jobgod.jobgod.module.user.AroundFriendsActivity;
 import com.ant.jobgod.jobgod.module.user.AttentionActivity;
 import com.ant.jobgod.jobgod.module.user.CollectActivity;
 import com.ant.jobgod.jobgod.module.user.JoinActivity;
 import com.ant.jobgod.jobgod.module.user.ModifyFaceActivity;
 import com.ant.jobgod.jobgod.module.user.UserDataActivity;
-import com.ant.jobgod.jobgod.util.Utils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import butterknife.ButterKnife;
@@ -72,18 +72,8 @@ public class UserDrawerFragment extends NucleusFragment<UserDrawerPresenter> {
         ButterKnife.inject(this, view);
         imgFace.setOnClickListener(v -> getPresenter().startActivity(ModifyFaceActivity.class));
         viewAccount.setOnClickListener(v -> getPresenter().checkLogin());
-        //viewMessage.setOnClickListener((View) -> getPresenter().startChatList());
-        //viewSetting.setOnClickListener((View) -> getPresenter().startActivity(SettingActivity.class));
-
-        viewMessage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Utils.Log(getClass().getName());
-            }
-        });
-        viewSetting.setOnClickListener(v1 -> {
-            Utils.Log(getClass().getName());
-        });
+        viewMessage.setOnClickListener((View) -> getPresenter().startChatList());
+        viewSetting.setOnClickListener((View) -> getPresenter().startActivity(SettingActivity.class));
 
         viewInformation.setOnClickListener(v -> getPresenter().startActivity(UserDataActivity.class));
         viewNearby.setOnClickListener(v -> getPresenter().startActivity(AroundFriendsActivity.class));
