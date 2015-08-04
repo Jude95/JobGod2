@@ -46,6 +46,7 @@ public class RongYunModel extends AbsModel {
     }
 
     public void connectRongYun1(String token){
+        token = "cKKeWHYW4hR2tXggQRFvcUzwxQ7ZpBJboKFJphwNxZ4jEfi85urHMdksVOeDm04Rjjfcl4UWHTM=";
         Utils.Log("连接融云token:"+token);
         RongIM.connect(token, new RongIMClient.ConnectCallback() {
             @Override
