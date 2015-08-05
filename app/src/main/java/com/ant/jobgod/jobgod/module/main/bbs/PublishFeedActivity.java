@@ -96,7 +96,7 @@ public class PublishFeedActivity extends BaseActivity<PublishFeedPresenter> {
             Utils.Log("loginuser:" + CommConfig.getConfig().loginedUser);
             Utils.Log("feeditem:" + feedItem);
 
-            if (SocietyModel.getInstance().checkLogin(this)) {
+            if (SocietyModel.getInstance().checkLogin(this,true)) {
                 getPresenter().publishFeed(feedItem, new Listeners.SimpleFetchListener<FeedItemResponse>() {
                     @Override
                     public void onComplete(FeedItemResponse feedItemResponse) {

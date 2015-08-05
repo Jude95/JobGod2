@@ -201,9 +201,6 @@ public class UserLoginPresenter extends BasePresenter<UserLoginActivity>{
             }
         });
     }
-    public void gotoBiz(){
-        Utils.Toast("未开发");
-    }
 
     public void register(){
         getView().startActivityForResult(new Intent(getView(), UserRegisterActivity.class), REGISTER);

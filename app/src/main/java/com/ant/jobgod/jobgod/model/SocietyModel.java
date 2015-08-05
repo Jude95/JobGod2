@@ -36,12 +36,15 @@ public class SocietyModel extends AbsModel  implements Loginable {
 
     private CommUser commUser;
 
+    private boolean islogining = false;
+    private boolean forceLogin = false;
     @Override
     protected void onAppCreate(Context ctx) {
         super.onAppCreate(ctx);
         AccountModel.getInstance().registerEvent(this);
         communitySDK= CommunityFactory.getCommSDK(ctx);
         communitySDK.getConfig().getLoginSDKManager().addAndUse(this);
+        checkLogin(ctx,false);
     }
 
     /**
@@ -49,22 +52,26 @@ public class SocietyModel extends AbsModel  implements Loginable {
      * @param ctx
      * @return
      */
-    public boolean checkLogin(Context ctx){
-            communitySDK.login(ctx, new LoginListener() {
-                @Override
-                public void onStart() {
+    public boolean checkLogin(Context ctx,boolean forceLogin){
+            if (!islogining) {
+                this.forceLogin = forceLogin;
+                communitySDK.login(ctx, new LoginListener() {
+                    @Override
+                    public void onStart() {
 
-                }
+                    }
 
-                @Override
-                public void onComplete(int i, CommUser commUser) {
-                    Utils.Log("onComplete");
-                    SocietyModel.this.commUser = commUser;
-                    communitySDK.getConfig().setCurrentUser(commUser);
-                    Utils.Log("当前登录用户信息:" + commUser);
-                }
-            });
-        return true;
+                    @Override
+                    public void onComplete(int i, CommUser commUser) {
+                        Utils.Log("onComplete");
+                        SocietyModel.this.commUser = commUser;
+                        communitySDK.getConfig().setCurrentUser(commUser);
+                        Utils.Log("当前登录用户信息:" + commUser);
+                        islogining = false;
+                    }
+                });
+            }
+        return commUser==null;
     }
 
     public static SocietyModel getInstance(){
@@ -86,7 +93,7 @@ public class SocietyModel extends AbsModel  implements Loginable {
     public void login(Context context, LoginListener loginListener) {
         Utils.Log("userLogin");
         AccountData account = AccountModel.getInstance().getAccount();
-        if (account == null){
+        if (account == null&&forceLogin){
             this.loginListener = loginListener;
             Activity act = ActivityManager.getInstance().currentActivity();
             act.startActivity(new Intent(act, UserLoginActivity.class));

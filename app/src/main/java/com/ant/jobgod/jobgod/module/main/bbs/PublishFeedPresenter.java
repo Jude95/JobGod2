@@ -10,7 +10,6 @@ import com.ant.jobgod.imagetool.imageprovider.OnImageSelectListener;
 import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.RemoteFileModel;
 import com.ant.jobgod.jobgod.model.SocietyModel;
-import com.ant.jobgod.jobgod.module.launch.UserLoginActivity;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.umeng.comm.core.beans.FeedItem;
 import com.umeng.comm.core.beans.ImageItem;
@@ -38,10 +37,7 @@ public class PublishFeedPresenter extends BasePresenter<PublishFeedActivity> {
      * @param listener
      */
     public void publishFeed(FeedItem feedItem, Listeners.SimpleFetchListener<FeedItemResponse> listener) {
-        if (SocietyModel.getInstance().checkLogin(getView()))
-            SocietyModel.getInstance().publishFeed(feedItem, listener);
-        else
-            getView().startActivity(new Intent(getView(), UserLoginActivity.class));
+        SocietyModel.getInstance().publishFeed(feedItem, listener);
     }
 
     /**

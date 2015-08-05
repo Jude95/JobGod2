@@ -238,4 +238,17 @@ public class AccountModel extends AbsModel{
     }
 
 
+    /**
+     * 商家登录
+     * @param email
+     * @param password
+     * @param callback
+     */
+    public void bizLogin(String email,String password,DataCallback callback){
+        RequestMap param=new RequestMap();
+        param.put("email",email);
+        param.put("pass",password);
+        RequestManager.getInstance().post(API.URL.BizLogin,param,callback);
+    }
+
 }

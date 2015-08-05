@@ -182,6 +182,8 @@
         <activity android:name=".module.main.bbs.PublishFeedActivity"
             android:label="发布动态"/>
 
+        <activity android:name=".module.biz.BizLoginActivity"
+            android:label="登录"/>
 
 
 

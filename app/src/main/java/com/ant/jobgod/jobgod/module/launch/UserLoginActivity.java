@@ -1,5 +1,6 @@
 package com.ant.jobgod.jobgod.module.launch;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.AppCompatButton;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
+import com.ant.jobgod.jobgod.module.biz.BizLoginActivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -52,7 +54,7 @@ public class UserLoginActivity extends BaseActivity<UserLoginPresenter>{
         btnQQ.setOnClickListener((View v) -> getPresenter().loginByQQ());
         btnWeiChat.setOnClickListener((View v) -> getPresenter().loginByWeiChat());
         btnSina.setOnClickListener((View v) -> getPresenter().loginBySina());
-        btnBiz.setOnClickListener((View v) -> getPresenter().gotoBiz());
+        btnBiz.setOnClickListener((View v) -> startActivity(new Intent(this, BizLoginActivity.class)));
     }
 
     private void checkLogin() {

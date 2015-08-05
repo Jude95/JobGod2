@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.module.user.AroundFriendsActivity;
 import com.ant.jobgod.jobgod.module.user.AttentionActivity;
-import com.ant.jobgod.jobgod.module.user.JoinActivity;
 import com.ant.jobgod.jobgod.module.user.ModifyFaceActivity;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -79,7 +78,7 @@ public class BizDrawerFragment extends NucleusFragment<BizDrawerPresenter> {
 
         viewNearby.setOnClickListener(v -> getPresenter().startActivity(AroundFriendsActivity.class));
         viewAttention.setOnClickListener(v -> getPresenter().startActivity(AttentionActivity.class));
-        viewJoin.setOnClickListener(v -> getPresenter().startActivity(JoinActivity.class));
+        viewJoin.setOnClickListener(v -> getPresenter().startActivity(ApplyListActivity.class));
 
         return view;
     }

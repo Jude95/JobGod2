@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.balysv.materialripple.MaterialRippleLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    android:id="@+id/ripple"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:mrl_rippleColor="@color/Grey">
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_height="72dp">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/imgFace"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="8dp"
+            fresco:failureImage="@drawable/ic_error"
+            fresco:roundAsCircle="true"
+            fresco:progressBarImage="@drawable/ic_progressbar"/>
+
+        <TextView android:id="@+id/tvName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/imgFace"
+            android:layout_marginTop="16dp"
+            android:textSize="@dimen/abc_text_size_medium_material"
+            android:singleLine="true"/>
+
+
+
+        <TextView android:id="@+id/tvSignature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvName"
+            android:layout_toRightOf="@+id/imgFace"
+            android:layout_marginTop="8dp"
+            android:textSize="@dimen/abc_text_size_body_1_material"
+            android:singleLine="true"/>
+
+        <View android:layout_width="match_parent"
+            android:layout_height="0.4dp"
+            android:background="@color/md_divider_white"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+</com.balysv.materialripple.MaterialRippleLayout>

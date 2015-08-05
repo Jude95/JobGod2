@@ -48,6 +48,8 @@ public class API {
         public static final String CancelApply = BaseUrl + "home/user/cancelApply";
         public static final String JodgeBiz = BaseUrl + "home/index/judge";
 
+        //biz
+        public static final String BizLogin = BaseUrl + "Home/Seller/login";
 
         //LBS
         public static final String SyncLocation = BaseUrl + "home/index/syncAddress";

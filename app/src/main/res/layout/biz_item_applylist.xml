@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginTop="8dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/jobIcon"
+                android:layout_width="114dp"
+                android:layout_height="64dp"
+                fresco:roundedCornerRadius="2dp"
+                fresco:roundTopLeft="true"
+                fresco:roundTopRight="true"
+                fresco:roundBottomLeft="false"
+                fresco:roundBottomRight="false"/>
+
+            <TextView android:id="@+id/jobTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/jobIcon"
+                android:layout_margin="8dp"
+                tools:text="怡宝促销"/>
+
+            <TextView android:id="@+id/jobAsk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/jobTitle"
+                android:layout_toRightOf="@+id/jobIcon"
+                android:layout_marginLeft="8dp"
+                tools:text="南坪广场"/>
+
+        </RelativeLayout>
+
+        <TextView android:id="@+id/jobIntro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            tools:text="虎嗅注：本文是李开复在创新工场创业公开课上的一次授课内容。他认为创业中的三个关键点：资本、战略、人才，都符合幂定律。需要说明的是，彼得·蒂尔在他《从0到1》的书中，对创业中的幂次法则有比较完整的阐述。以下是授课全文，小标题为虎嗅所加。"/>
+
+        <LinearLayout android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <TextView android:id="@+id/applyCount"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                tools:text="报名人数(20)"/>
+
+            <TextView android:id="@+id/publishTime"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                tools:text="发布时间：2015-05-20"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/md_divider_height"
+            android:layout_marginTop="8dp"
+            android:background="@color/md_divider_black"/>
+
+        <com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView
+            android:id="@+id/linearWrap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:gravity="center"
+            android:text="......"/>
+
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>
