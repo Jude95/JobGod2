@@ -64,7 +64,7 @@ public class UserDataPresenter extends BasePresenter<UserDataActivity> {
                                 if (CommConfig.getConfig().loginedUser != null) {
                                     CommConfig.getConfig().loginedUser.name = input.toString();
                                 }
-                                if (SocietyModel.getInstance().checkLogin(getView())) {
+                                if (SocietyModel.getInstance().checkLogin(getView(),true)) {
                                     CommUser commUser = CommConfig.getConfig().loginedUser;
                                     String name = AccountModel.getInstance().getAccount().getId() + "_" + commUser.name;
                                     commUser.name = Utils.string2Base64(name);

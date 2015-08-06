@@ -126,7 +126,7 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
                         Utils.Toast("上传成功");
                         AccountModel.getInstance().updateAccountData();
                         String filepath=FileManager.getInstance().getChild(FileManager.Dir.Image, mFinalImg).getAbsolutePath();
-                        if (SocietyModel.getInstance().checkLogin(getView()))
+                        if (SocietyModel.getInstance().checkLogin(getView(),true))
                         SocietyModel.getInstance().updataBBSFace(BitmapFactory.decodeFile(filepath), new Listeners.SimpleFetchListener<PortraitUploadResponse>() {
                             @Override
                             public void onComplete(PortraitUploadResponse portraitUploadResponse) {

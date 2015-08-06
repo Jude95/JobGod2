@@ -158,7 +158,7 @@ public class BBSAdapter extends RecyclerArrayAdapter<FeedItem> {
                 int ZAN = 1;
                 @Override
                 public void onClick(View v) {
-                    if (SocietyModel.getInstance().checkLogin(getContext()))
+                    if (SocietyModel.getInstance().checkLogin(getContext(),true))
                         if (ZAN == 1) {
                             SocietyModel.getInstance().like(data.id, new Listeners.SimpleFetchListener<SimpleResponse>() {
                                 @Override
@@ -190,7 +190,7 @@ public class BBSAdapter extends RecyclerArrayAdapter<FeedItem> {
             commentImg.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (SocietyModel.getInstance().checkLogin(getContext()))
+                    if (SocietyModel.getInstance().checkLogin(getContext(),true))
                         new MaterialDialog.Builder(getContext())
                                 .title("评论")
                                 .inputType(InputType.TYPE_CLASS_TEXT)
