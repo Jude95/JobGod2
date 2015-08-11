@@ -27,7 +27,7 @@ public class UserDetailPresenter extends BasePresenter<UserDetailActivity> {
     /**
      * 设置用户个人信息数据
      */
-    public void setData(){
+    private void setData(){
         UserModel.getInstance().getUserDetail(id+"", new DataCallback<UserDetail>() {
             @Override
             public void success(String info, UserDetail data) {

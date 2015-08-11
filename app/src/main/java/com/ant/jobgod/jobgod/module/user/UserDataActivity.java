@@ -33,12 +33,6 @@ public class UserDataActivity extends BaseActivity<UserDataPresenter> {
     TextView phone;
     @InjectView(R.id.authentication)
     TextView authentication;
-    @InjectView(R.id.ability)
-    TextView ability;
-    @InjectView(R.id.credit)
-    TextView credit;
-    @InjectView(R.id.attitude)
-    TextView attitude;
     @InjectView(R.id.viewFace)
     RelativeLayout viewFace;
     @InjectView(R.id.viewPhone)
@@ -70,11 +64,8 @@ public class UserDataActivity extends BaseActivity<UserDataPresenter> {
         imgFace.setImageURI(Uri.parse(data.getFace()));
         signature.setText(data.getSign());
         phone.setText(data.getTel());
-        authentication.setText(data.getRealname());
+        authentication.setText(data.getRealName());
         percent.setText("完善度20%");
-        ability.setText(data.getDetail().getAvgAbility() + "/100");
-        attitude.setText(data.getDetail().getAvgAttitude() + "/100");
-        credit.setText(data.getDetail().getAvgCredit() + "/100");
     }
 
 
@@ -87,7 +78,7 @@ public class UserDataActivity extends BaseActivity<UserDataPresenter> {
         });
         viewModifyPassword.setOnClickListener(v -> getPresenter().startActivity(ModifyPasswordActivity.class));
         viewPhone.setOnClickListener(v -> getPresenter().startActivity(ModifyTelActivity.class));
-        viewAuthentication.setOnClickListener(v -> getPresenter().startActivity(AuthenticationActivity.class));
+        viewAuthentication.setOnClickListener(v -> getPresenter().checkAuthentication());
         rippleName.setOnClickListener(v -> getPresenter().editName());
         rippleSignature.setOnClickListener(v -> getPresenter().editSign());
     }

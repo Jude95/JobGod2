@@ -33,7 +33,8 @@
                     android:layout_height="48dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_centerVertical="true"/>
+                    android:layout_centerVertical="true"
+                    app:roundAsCircle="true"/>
                 <TextView
                     android:id="@+id/bizName"
                     android:layout_width="wrap_content"
@@ -123,25 +124,6 @@
                     android:textColor="@color/secondary_text_default_material_light"/>
                 <TextView
                     android:id="@+id/jobCount"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text=""
-                    android:gravity="center_vertical"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="24dp"
-                android:paddingLeft="16dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="发布时间: "
-                    android:gravity="center_vertical"
-                    android:textColor="@color/secondary_text_default_material_light"/>
-                <TextView
-                    android:id="@+id/applyBeginTime"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text=""
@@ -276,7 +258,8 @@
                     android:gravity="center_vertical"
                     android:paddingLeft="16dp"/>
 
-                <TextView android:id="@+id/tvApply"
+                <TextView
+                    android:id="@+id/jobContact"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="16dp"

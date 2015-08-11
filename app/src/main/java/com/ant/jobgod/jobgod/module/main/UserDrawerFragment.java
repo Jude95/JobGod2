@@ -74,7 +74,6 @@ public class UserDrawerFragment extends NucleusFragment<UserDrawerPresenter> {
         viewAccount.setOnClickListener(v -> getPresenter().checkLogin());
         viewMessage.setOnClickListener((View) -> getPresenter().startChatList());
         viewSetting.setOnClickListener((View) -> getPresenter().startActivity(SettingActivity.class));
-
         viewInformation.setOnClickListener(v -> getPresenter().startActivity(UserDataActivity.class));
         viewNearby.setOnClickListener(v -> getPresenter().startActivity(AroundFriendsActivity.class));
         viewAttention.setOnClickListener(v -> getPresenter().startActivity(AttentionActivity.class));

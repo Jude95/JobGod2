@@ -52,7 +52,6 @@ public class Location implements Serializable{
         regionCode = Integer.parseInt(location.getAdCode());
     }
 
-
     public String getAddress() {
         return address;
     }

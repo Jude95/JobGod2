@@ -1,6 +1,6 @@
 package com.ant.jobgod.jobgod.module.user;
 
-import android.net.Uri;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.AppCompatButton;
@@ -38,8 +38,8 @@ public class AuthenticationActivity extends BaseActivity<AuthenticationPresenter
         submit.setOnClickListener(v -> checkToUpload());
     }
 
-    public void setImg(Uri uri) {
-        imgID.setImageURI(uri);
+    public void setImg(Bitmap img) {
+        imgID.setImageBitmap(img);
     }
 
     public void checkToUpload() {

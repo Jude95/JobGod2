@@ -97,7 +97,7 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
 
         @Override
         public int getCount() {
-            return 3;
+            return 2;
         }
     }
 

@@ -42,40 +42,27 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/face"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="9dp"
+                android:layout_alignTop="@+id/face"
                 android:layout_gravity="center_vertical"
                 android:gravity="center_vertical"
                 android:text="海底捞"
                 android:textSize="14sp"/>
 
-        </RelativeLayout>
-
-        <LinearLayout android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="8dp">
-
-            <ImageView
-                android:id="@+id/locationImg"
-                android:layout_width="12dp"
-                android:layout_height="16dp"
-                android:layout_marginLeft="0dp"
-                android:background="@drawable/umeng_community_location"
-                android:contentDescription="@string/umeng_comm_new_post" />
 
             <TextView
                 android:id="@+id/location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="4dp"
-                android:contentDescription="@string/umeng_comm_new_post"
+                android:layout_marginLeft="8dp"
                 android:gravity="left"
                 android:text="牡丹园 花园东路11号楼"
-                android:textColor="@color/umeng_comm_loction_text_color"
-                android:textSize="13sp" />
+                android:layout_toRightOf="@+id/face"
+                android:layout_alignBottom="@+id/face"
+                android:textColor="@color/hint_foreground_material_light"
+                android:textSize="12sp" />
 
-        </LinearLayout>
+        </RelativeLayout>
+
 
         <TextView android:id="@+id/mainContent"
             android:layout_width="match_parent"
@@ -83,25 +70,17 @@
             android:layout_margin="8dp"
             />
 
-        <RelativeLayout android:id="@+id/relativeLayout"
+        <GridView
+            android:id="@+id/imageList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignWithParentIfMissing="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@drawable/umeng_comm_forward_bg">
-
-            <ViewStub
-                android:id="@+id/imgs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:layout_marginTop="4dp"
-                android:layout="@layout/umeng_comm_images_gv"
-                android:padding="4dp"
-                android:scrollbars="none" />
-
-        </RelativeLayout>
+            android:clickable="false"
+            android:columnWidth="80dp"
+            android:focusable="false"
+            android:horizontalSpacing="6dp"
+            android:numColumns="3"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="6dp" />
 
         <View
             android:layout_width="match_parent"
@@ -142,25 +121,24 @@
             <TextView
                 android:id="@+id/likeImg"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:drawableLeft="@drawable/umeng_comm_like_bt"
+                android:drawableLeft="@drawable/ic_praise"
                 android:drawablePadding="4dp"
+                android:layout_gravity="center_vertical"
                 android:clickable="true"
-                android:text="@string/umeng_comm_zero"
                 android:textColor="#bbbbbb"
                 android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/commentImg"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:clickable="true"
-                android:layout_gravity="right"
+                android:layout_gravity="right|center_vertical"
                 android:layout_marginRight="15dp"
-                android:drawableLeft="@drawable/umeng_comm_comment"
+                android:drawableLeft="@drawable/ic_comment"
                 android:drawablePadding="4dp"
-                android:text="@string/umeng_comm_zero"
                 android:textColor="#bbbbbb"
                 android:textSize="14sp" />
 

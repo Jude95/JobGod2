@@ -4,13 +4,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import com.ant.jobgod.imagetool.imageprovider.ImageElement;
-import com.ant.jobgod.imagetool.imageprovider.ImageProvider;
-import com.ant.jobgod.imagetool.imageprovider.OnImageSelectListener;
 import com.ant.jobgod.jobgod.app.BasePresenter;
-import com.ant.jobgod.jobgod.model.RemoteFileModel;
 import com.ant.jobgod.jobgod.model.SocietyModel;
-import com.ant.jobgod.jobgod.util.Utils;
+import com.jude.library.imageprovider.ImageProvider;
+import com.jude.library.imageprovider.OnImageSelectListener;
 import com.umeng.comm.core.beans.FeedItem;
 import com.umeng.comm.core.beans.ImageItem;
 import com.umeng.comm.core.listeners.Listeners;
@@ -46,28 +43,22 @@ public class PublishFeedPresenter extends BasePresenter<PublishFeedActivity> {
      * @return
      */
     public void getImgFromAlbum() {
-        provider.getImageFromAlbum(new OnImageSelectListener<ImageElement>() {
+        provider.getImageFromAlbum(new OnImageSelectListener() {
             @Override
-            public void onImageSelect(ImageElement imageElement) {
-                getView().showProgress("加载图片中");
-                Uri uri=imageElement.getLargeImage();
-                RemoteFileModel.getInstance().putImage(Utils.uri2File(uri), new RemoteFileModel.UploadImageListener() {
-                    @Override
-                    public void onComplete(RemoteFileModel.SizeImage path) {
-                        ImageItem imageItem = new ImageItem();
-                        imageItem.originImageUrl = path.getOriginalImage();
-                        imageItem.thumbnail = path.getLargeImage();
-                        imageItem.middleImageUrl = path.getSmallImage();
-                        getView().setOneImg(imageItem);
-                        getView().dismissProgress();
-                    }
+            public void onImageSelect() {
 
-                    @Override
-                    public void onError() {
-                        Utils.Toast("添加失败");
-                        getView().dismissProgress();
-                    }
-                });
+            }
+
+            @Override
+            public void onImageLoaded(Uri uri) {
+                ImageItem imageItem = new ImageItem();
+                imageItem.originImageUrl = uri.toString();
+                getView().setOneImg(imageItem);
+            }
+
+            @Override
+            public void onError() {
+
             }
         });
     }

@@ -37,7 +37,6 @@ public class BBSFragment extends NucleusFragment<BBSPresenter> {
         super.onCreate(bundle);
         adapter=new BBSAdapter(getActivity());
         setHasOptionsMenu(true);
-        getPresenter().setData();
     }
 
     @Nullable

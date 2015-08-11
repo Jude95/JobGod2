@@ -22,7 +22,7 @@ public class JobDetail {
     private int personCount;
     private String address;
     private int applyCount;
-    private String phone;
+    private String contact;
     private String personCountIntro;
     private boolean posted;
     private boolean collected;
@@ -46,8 +46,8 @@ public class JobDetail {
         this.commentCount = commentCount;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public void setPersonCountIntro(String personCountIntro) {
@@ -74,8 +74,8 @@ public class JobDetail {
         return personCountIntro;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getContact() {
+        return contact;
     }
 
     public int getId() {

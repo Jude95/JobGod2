@@ -10,7 +10,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#10000000">
 
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -25,9 +26,11 @@
             <com.balysv.materialripple.MaterialRippleLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:mrl_rippleColor="@color/Grey">
+                app:mrl_rippleColor="@color/Grey"
+                app:mrl_rippleBackground="@android:color/white">
 
-            <RelativeLayout android:id="@+id/viewFace"
+            <RelativeLayout
+                android:id="@+id/viewFace"
                 android:layout_width="match_parent"
                 android:layout_height="88dp">
 
@@ -59,7 +62,8 @@
                 android:id="@+id/rippleName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:mrl_rippleColor="@color/Grey">
+                app:mrl_rippleColor="@color/Grey"
+                app:mrl_rippleBackground="@android:color/white">
 
             <RelativeLayout
                 android:orientation="horizontal"
@@ -93,7 +97,8 @@
                 android:id="@+id/rippleSignature"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:mrl_rippleColor="@color/Grey">
+                app:mrl_rippleColor="@color/Grey"
+                app:mrl_rippleBackground="@android:color/white">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -114,7 +119,7 @@
                     android:layout_marginTop="8dp"
                     android:textSize="@dimen/abc_text_size_body_1_material"
                     android:textColor="@color/Grey"
-                    android:text="我是一个兵"/>
+                    tools:text="我是一个兵"/>
 
             </LinearLayout>
             </com.balysv.materialripple.MaterialRippleLayout>
@@ -126,7 +131,8 @@
             <com.balysv.materialripple.MaterialRippleLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:mrl_rippleColor="@color/Grey">
+                app:mrl_rippleColor="@color/Grey"
+                app:mrl_rippleBackground="@android:color/white">
 
             <RelativeLayout android:id="@+id/viewData"
                 android:orientation="horizontal"
@@ -165,7 +171,8 @@
             <com.balysv.materialripple.MaterialRippleLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:mrl_rippleColor="@color/Grey">
+                app:mrl_rippleColor="@color/Grey"
+                app:mrl_rippleBackground="@android:color/white">
 
                 <RelativeLayout android:id="@+id/viewPhone"
                     android:orientation="horizontal"
@@ -200,7 +207,8 @@
             <com.balysv.materialripple.MaterialRippleLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:mrl_rippleColor="@color/Grey">
+                app:mrl_rippleColor="@color/Grey"
+                app:mrl_rippleBackground="@android:color/white">
             <RelativeLayout android:id="@+id/viewAuthentication"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -228,13 +236,21 @@
             </com.balysv.materialripple.MaterialRippleLayout>
 
             <View android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:background="@drawable/bottom_shadow"/>
+            <View android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:background="@drawable/top_shadow"/>
+
+            <View android:layout_width="match_parent"
                 android:layout_height="0.4dp"
                 android:background="@color/md_divider_black"/>
 
             <com.balysv.materialripple.MaterialRippleLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:mrl_rippleColor="@color/Grey">
+                app:mrl_rippleColor="@color/Grey"
+                app:mrl_rippleBackground="@android:color/white">
             <RelativeLayout android:id="@+id/viewModifyPassword"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -252,43 +268,7 @@
 
             </com.balysv.materialripple.MaterialRippleLayout>
 
-            <View android:layout_width="match_parent"
-                android:layout_height="6dp"
-                android:background="@drawable/bottom_shadow"/>
-            <View android:layout_width="match_parent"
-                android:layout_height="6dp"
-                android:background="@drawable/top_shadow"/>
 
-            <com.balysv.materialripple.MaterialRippleLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:mrl_rippleColor="@color/Grey">
-
-            <RelativeLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:clickable="true"
-                android:gravity="center_vertical">
-
-                <TextView android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:textSize="16sp"
-                    android:text="能力等级"/>
-
-                <TextView android:id="@+id/ability"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="16dp"
-                    android:textSize="@dimen/abc_text_size_body_1_material"
-                    android:textColor="@color/Grey"
-                    tools:text="50/100"/>
-
-            </RelativeLayout>
-
-            </com.balysv.materialripple.MaterialRippleLayout>
 
             <View android:layout_width="match_parent"
                 android:layout_height="0.8dp"
@@ -297,76 +277,8 @@
             <com.balysv.materialripple.MaterialRippleLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:mrl_rippleColor="@color/Grey">
-            <RelativeLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:clickable="true"
-                android:gravity="center_vertical">
-
-                <TextView android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:textSize="16sp"
-                    android:text="信用等级"/>
-
-                <TextView android:id="@+id/credit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="16dp"
-                    android:textSize="@dimen/abc_text_size_body_1_material"
-                    android:textColor="@color/Grey"
-                    tools:text="50/100"/>
-
-            </RelativeLayout>
-            </com.balysv.materialripple.MaterialRippleLayout>
-
-            <View android:layout_width="match_parent"
-                android:layout_height="0.8dp"
-                android:background="@color/md_divider_black"/>
-
-            <com.balysv.materialripple.MaterialRippleLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:mrl_rippleColor="@color/Grey">
-
-            <RelativeLayout android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:clickable="true"
-                android:gravity="center_vertical">
-
-                <TextView android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:textSize="16sp"
-                    android:text="态度等级"/>
-
-                <TextView android:id="@+id/attitude"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="16dp"
-                    android:textSize="@dimen/abc_text_size_body_1_material"
-                    android:textColor="@color/Grey"
-                    tools:text="50/100"/>
-
-            </RelativeLayout>
-            </com.balysv.materialripple.MaterialRippleLayout>
-
-            <View android:layout_width="match_parent"
-                android:layout_height="6dp"
-                android:background="@drawable/bottom_shadow"/>
-            <View android:layout_width="match_parent"
-                android:layout_height="6dp"
-                android:background="@drawable/top_shadow"/>
-
-            <com.balysv.materialripple.MaterialRippleLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:mrl_rippleColor="@color/Grey">
+                app:mrl_rippleColor="@color/Grey"
+                app:mrl_rippleBackground="@android:color/white">
 
                 <RelativeLayout
                     android:id="@+id/viewLoginOut"

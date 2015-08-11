@@ -64,7 +64,6 @@ public class UserDataPresenter extends BasePresenter<UserDataActivity> {
                                 if (CommConfig.getConfig().loginedUser != null) {
                                     CommConfig.getConfig().loginedUser.name = input.toString();
                                 }
-                                if (SocietyModel.getInstance().checkLogin(getView())) {
                                     CommUser commUser = CommConfig.getConfig().loginedUser;
                                     String name = AccountModel.getInstance().getAccount().getId() + "_" + commUser.name;
                                     commUser.name = Utils.string2Base64(name);
@@ -80,7 +79,7 @@ public class UserDataPresenter extends BasePresenter<UserDataActivity> {
                                         }
                                     });
                                 }
-                            }
+
 
                             @Override
                             public void result(int status, String info) {
@@ -115,4 +114,13 @@ public class UserDataPresenter extends BasePresenter<UserDataActivity> {
                 }).show();
     }
 
+
+    public void checkAuthentication(){
+        if (AccountModel.getInstance().getUserAccount().getName()==null||
+                AccountModel.getInstance().getUserAccount().getName().trim().isEmpty()){
+            startActivity(AuthenticationActivity.class);
+        }else{
+            Utils.Toast("您已完成验证");
+        }
+    }
 }

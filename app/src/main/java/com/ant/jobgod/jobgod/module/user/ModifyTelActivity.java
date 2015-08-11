@@ -46,11 +46,12 @@ public class ModifyTelActivity extends BaseActivity<ModifyTelPresenter> {
         if (AccountModel.getInstance().getUserAccount().getTel() == null) {
             oldTel.setVisibility(View.GONE);
             oldPassword.setVisibility(View.GONE);
-            newTel.getEditText().setHint("手机号");
-            newPassword.getEditText().setHint("密码");
             btnSend.setOnClickListener(v -> sendModifyWithoutTel());
-        } else
+        } else{
             btnSend.setOnClickListener(v -> sendModify());
+            getSupportActionBar().setTitle("切换绑定");
+        }
+
 
         sendCode.setOnClickListener(v -> checkIsLogin());
 
@@ -65,9 +66,11 @@ public class ModifyTelActivity extends BaseActivity<ModifyTelPresenter> {
         String nPassword = newPassword.getEditText().getText().toString();
         if (oldNumber.length() != 11) {
             oldTel.setError("手机号格式错误");
+            return;
         } else {
             oldTel.setError("");
         }
+
         if (newNumber.length() != 11) {
             newTel.setError("手机号格式错误");
             return;
@@ -80,6 +83,7 @@ public class ModifyTelActivity extends BaseActivity<ModifyTelPresenter> {
         } else {
             oldTel.setError("");
         }
+
         showCodeCard();
         getPresenter().sendCode(newNumber);
     }

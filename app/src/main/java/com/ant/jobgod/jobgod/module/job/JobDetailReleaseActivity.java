@@ -47,8 +47,6 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
     TextView jobAddress;
     @InjectView(R.id.jobCount)
     TextView jobCount;
-    @InjectView(R.id.applyBeginTime)
-    TextView applyBeginTime;
     @InjectView(R.id.applyEndTime)
     TextView applyEndTime;
     @InjectView(R.id.timeIntro)
@@ -65,8 +63,6 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
     FloatingActionButton floatingActionButton;
     @InjectView(R.id.collapsingToolbar)
     CollapsingToolbarLayout collapsingToolbar;
-    @InjectView(R.id.tvApply)
-    TextView tvApply;
     @InjectView(R.id.shareQQ)
     ImageView shareQQ;
     @InjectView(R.id.shareQQSpace)
@@ -83,12 +79,14 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
     Toolbar toolbar;
     @InjectView(R.id.appBar)
     AppBarLayout appBar;
+    @InjectView(R.id.jobContact)
+    TextView jobContact;
 
     private MenuItem mCommentMenuItem;
     private int commentCount;
 
 
-    private JobBriefAdapter relateAdapter=new JobBriefAdapter(this);
+    private JobBriefAdapter relateAdapter = new JobBriefAdapter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +98,7 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
         viewAd.addView(new AdView(this, AdSize.SIZE_468x60));
     }
 
-    public void setIsCollected(boolean isCollected){
+    public void setIsCollected(boolean isCollected) {
         floatingActionButton.setImageResource(isCollected ?
                 R.drawable.ic_star_focus :
                 R.drawable.ic_star_unfocus);
@@ -111,18 +109,17 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
         collapsingToolbar.setTitle(data.getTitle());
         timeIntro.setText(data.getTimeIntro());
         jobImg.setImageURI(Uri.parse(data.getImg()));
-        if(data.getBizFace()!=null){
+        if (data.getBizFace() != null) {
             bizFace.setImageURI(Uri.parse(data.getBizFace()));
         }
         bizName.setText(data.getBizName());
         jobAddress.setText(data.getAddress());
         jobCount.setText(data.getPersonCount() + "人");
-        applyBeginTime.setText(new TimeTransform(data.getApplyBeginTime()).toString(new RecentDateFormater()));
         applyEndTime.setText(new TimeTransform(data.getApplyEndTime()).toString(new RecentDateFormater()));
         jobIntro.setText(data.getIntro());
         jobAsk.setText(data.getAsk());
         jobWage.setText(data.getMoneyIntro());
-
+        jobContact.setText(data.getContact());
         relateJob.setAdapter(relateAdapter);
 
         setCommentCount(data.getCommentCount());
@@ -130,9 +127,10 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
 
     /**
      * 相关兼职推荐
+     *
      * @param jobData
      */
-    public void setRelateJobData(JobBrief[] jobData){
+    public void setRelateJobData(JobBrief[] jobData) {
         relateAdapter.clear();
         relateAdapter.addAll(jobData);
     }
@@ -141,21 +139,21 @@ public class JobDetailReleaseActivity extends BaseActivity<JobDetailReleasePrese
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_job_detail, menu);
         mCommentMenuItem = menu.findItem(R.id.comment);
-        mCommentMenuItem.setTitle(commentCount+"条评论");
+        mCommentMenuItem.setTitle(commentCount + "条评论");
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==R.id.comment){
+        if (item.getItemId() == R.id.comment) {
             getPresenter().toCommentActivity();
         }
         return super.onOptionsItemSelected(item);
     }
 
 
-    public void setCommentCount(int count){
+    public void setCommentCount(int count) {
         commentCount = count;
-        if (mCommentMenuItem!=null)mCommentMenuItem.setTitle(count+"条评论");
+        if (mCommentMenuItem != null) mCommentMenuItem.setTitle(count + "条评论");
     }
 }

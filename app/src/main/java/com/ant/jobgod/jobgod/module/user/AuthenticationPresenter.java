@@ -3,15 +3,13 @@ package com.ant.jobgod.jobgod.module.user;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
-import com.ant.jobgod.imagetool.imageprovider.ImageElement;
-import com.ant.jobgod.imagetool.imageprovider.ImageProvider;
-import com.ant.jobgod.imagetool.imageprovider.OnImageSelectListener;
 import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.RemoteFileModel;
 import com.ant.jobgod.jobgod.model.UserModel;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.jude.library.imageprovider.ImageProvider;
+import com.jude.library.imageprovider.OnImageSelectListener;
 
 import java.io.File;
 
@@ -20,9 +18,8 @@ import java.io.File;
  */
 public class AuthenticationPresenter extends BasePresenter<AuthenticationActivity> {
 
-    private static final int REQUEST_CROP_PICTURE = 1365;
-    private Uri mFinalImg = null;
     private ImageProvider mProvider;
+    private Uri mImage;
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
@@ -32,7 +29,8 @@ public class AuthenticationPresenter extends BasePresenter<AuthenticationActivit
     @Override
     protected void onCreateView(AuthenticationActivity view) {
         super.onCreateView(view);
-        if (mFinalImg!=null)getView().setImg(mFinalImg);
+        if (mImage!=null)
+        getView().setImg(mProvider.readImageWithSize(mImage, 500, 500));
     }
 
     /**
@@ -40,12 +38,12 @@ public class AuthenticationPresenter extends BasePresenter<AuthenticationActivit
      */
     public void upload(String name,String number){
         getView().showProgress("上传中");
-        if (mFinalImg==null){
+        if (mImage==null){
             Utils.Toast("请先拍照");
             return;
         }
-        Utils.Log(mFinalImg.toString());
-        RemoteFileModel.getInstance().putImage(new File(mFinalImg.toString()), new RemoteFileModel.UploadImageListener() {
+        Utils.Log(mImage.getPath());
+        RemoteFileModel.getInstance().putImage(new File(mImage.getPath()), new RemoteFileModel.UploadImageListener() {
             @Override
             public void onComplete(RemoteFileModel.SizeImage path) {
                 UserModel.getInstance().authentication(name, number, path.getOriginalImage(), new StatusCallback() {
@@ -67,10 +65,23 @@ public class AuthenticationPresenter extends BasePresenter<AuthenticationActivit
     }
 
     public void getImageFromCamera(){
-        mProvider.getImageFromCamera(new OnImageSelectListener<ImageElement>() {
+        mProvider.getImageFromCamera(new OnImageSelectListener() {
             @Override
-            public void onImageSelect(ImageElement imageElement) {
-                getView().setImg(mFinalImg = imageElement.getLargeImage());
+            public void onImageSelect() {
+                getView().showProgress("图片加载中");
+            }
+
+            @Override
+            public void onImageLoaded(Uri uri) {
+                getView().dismissProgress();
+                mImage = uri;
+                getView().setImg(mProvider.readImageWithSize(uri,500,500));
+            }
+
+            @Override
+            public void onError() {
+                getView().dismissProgress();
+                Utils.Log("图片加载错误");
             }
         });
     }

@@ -3,11 +3,9 @@ package com.ant.jobgod.jobgod.module.main.bbs;
 import android.content.Context;
 import android.net.Uri;
 import android.text.InputType;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewStub;
-import android.widget.RelativeLayout;
+import android.widget.GridView;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -26,7 +24,6 @@ import com.umeng.comm.core.beans.FeedItem;
 import com.umeng.comm.core.listeners.Listeners;
 import com.umeng.comm.core.nets.responses.CommentResponse;
 import com.umeng.comm.core.nets.responses.SimpleResponse;
-import com.umeng.comm.ui.widgets.WrapperGridView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -55,10 +52,6 @@ public class BBSAdapter extends RecyclerArrayAdapter<FeedItem> {
         TextView location;
         @InjectView(R.id.mainContent)
         TextView mainContent;
-        @InjectView(R.id.imgs)
-        ViewStub imgs;
-        @InjectView(R.id.relativeLayout)
-        RelativeLayout relativeLayout;
         @InjectView(R.id.commentList)
         LinearWrapContentRecyclerView commentList;
         @InjectView(R.id.time)
@@ -69,11 +62,13 @@ public class BBSAdapter extends RecyclerArrayAdapter<FeedItem> {
         TextView commentImg;
         @InjectView(R.id.commentCount)
         TextView commentCount;
+        @InjectView(R.id.imageList)
+        GridView imageList;
 
         private CommentAdapter commentAdapter;
 
         public BBSViewHolder(ViewGroup parent) {
-            super(parent, R.layout.bbs_item_fragment);
+            super(parent, R.layout.bbs_item_blog);
             ButterKnife.inject(this, itemView);
             commentAdapter = new CommentAdapter(getContext());
         }
@@ -119,36 +114,31 @@ public class BBSAdapter extends RecyclerArrayAdapter<FeedItem> {
         /**
          * 设置图片显示
          */
-        public void setImgs(FeedItem data) {
-            imgs.inflate();
-            View view = LayoutInflater.from(getContext()).inflate(R.layout.umeng_comm_images_gv, null);
-            WrapperGridView gridView = (WrapperGridView) view.findViewById(R.id.umeng_comm_msg_gridview);
-            ImgListAdapter adapter = new ImgListAdapter(getContext(), R.layout.view_empty);
-            adapter.addAll(data.getImages());
-            gridView.setAdapter(adapter);
-        }
-
         @Override
         public void setData(FeedItem data) {
             super.setData(data);
+
+
             long timeNum = Long.parseLong(data.publishTime) / 1000;
+            Utils.Log("base64Name:"+data.creator.name);
             String realName = Utils.base64ToString(data.creator.name);
+            Utils.Log("realname:"+realName);
             String[] sourceStrArray = realName.split("_", 2);
             if (sourceStrArray.length == 1) {
                 name.setText(sourceStrArray[0]);
             } else
                 name.setText(sourceStrArray[1]);
+
             time.setText(new TimeTransform(timeNum).toString(new RecentDateFormater()));
             commentImg.setText(data.commentCount + "");
             location.setText(data.locationAddr);
             mainContent.setText(data.text);
             face.setImageURI(Uri.parse(data.creator.iconUrl));
-            commentCount.setText("评论" + "(" + data.commentCount + ")");
-            Utils.Log("imgs:" + data.imageUrls.size());
             if (data.getImages() != null && data.getImages().size() > 0) {
-                setImgs(data.sourceFeed);
+                imageList.setVisibility(View.VISIBLE);
+                imageList.setAdapter(new NetImageListAdapter(getContext(), data.getImages()));
             } else
-                relativeLayout.setVisibility(View.GONE);
+                imageList.setVisibility(View.GONE);
 
             commentList.setAdapter(commentAdapter);
             setCommentData(data.id);
@@ -156,33 +146,33 @@ public class BBSAdapter extends RecyclerArrayAdapter<FeedItem> {
             //点赞或取消赞
             likeImg.setOnClickListener(new View.OnClickListener() {
                 int ZAN = 1;
+
                 @Override
                 public void onClick(View v) {
-                    if (SocietyModel.getInstance().checkLogin(getContext()))
-                        if (ZAN == 1) {
-                            SocietyModel.getInstance().like(data.id, new Listeners.SimpleFetchListener<SimpleResponse>() {
-                                @Override
-                                public void onComplete(SimpleResponse simpleResponse) {
-                                    if (simpleResponse.errCode == 0) {
-                                        int count = Integer.parseInt(likeImg.getText().toString());
-                                        likeImg.setText(count + 1 + "");
-                                        likeImg.setPressed(true);
-                                        ZAN = 0;
-                                    }
+                    if (ZAN == 1) {
+                        SocietyModel.getInstance().like(data.id, new Listeners.SimpleFetchListener<SimpleResponse>() {
+                            @Override
+                            public void onComplete(SimpleResponse simpleResponse) {
+                                if (simpleResponse.errCode == 0) {
+                                    int count = Integer.parseInt(likeImg.getText().toString());
+                                    likeImg.setText(count + 1 + "");
+                                    likeImg.setPressed(true);
+                                    ZAN = 0;
                                 }
-                            });
-                        } else
-                            SocietyModel.getInstance().unLike(data.id, new Listeners.SimpleFetchListener<SimpleResponse>() {
-                                @Override
-                                public void onComplete(SimpleResponse simpleResponse) {
-                                    if (simpleResponse.errCode == 0) {
-                                        int count = Integer.parseInt(likeImg.getText().toString());
-                                        likeImg.setText(count - 1 + "");
-                                        likeImg.setPressed(false);
-                                        ZAN = 1;
-                                    }
+                            }
+                        });
+                    } else
+                        SocietyModel.getInstance().unLike(data.id, new Listeners.SimpleFetchListener<SimpleResponse>() {
+                            @Override
+                            public void onComplete(SimpleResponse simpleResponse) {
+                                if (simpleResponse.errCode == 0) {
+                                    int count = Integer.parseInt(likeImg.getText().toString());
+                                    likeImg.setText(count - 1 + "");
+                                    likeImg.setPressed(false);
+                                    ZAN = 1;
                                 }
-                            });
+                            }
+                        });
                 }
             });
 
@@ -190,7 +180,6 @@ public class BBSAdapter extends RecyclerArrayAdapter<FeedItem> {
             commentImg.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (SocietyModel.getInstance().checkLogin(getContext()))
                         new MaterialDialog.Builder(getContext())
                                 .title("评论")
                                 .inputType(InputType.TYPE_CLASS_TEXT)

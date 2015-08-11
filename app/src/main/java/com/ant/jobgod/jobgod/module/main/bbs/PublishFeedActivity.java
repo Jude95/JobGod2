@@ -1,5 +1,6 @@
 package com.ant.jobgod.jobgod.module.main.bbs;
 
+import android.location.Location;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,7 +12,6 @@ import android.widget.ImageView;
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
 import com.ant.jobgod.jobgod.model.LocationModel;
-import com.ant.jobgod.jobgod.model.SocietyModel;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.umeng.comm.core.beans.CommConfig;
 import com.umeng.comm.core.beans.CommUser;
@@ -39,7 +39,7 @@ public class PublishFeedActivity extends BaseActivity<PublishFeedPresenter> {
     @InjectView(R.id.getImg)
     ImageView getImg;
 
-    private ImgListAdapter imgListAdapter;
+    private LocalImageListAdapter imgListAdapter;
     private GridView gridView;
     private FeedItem feedItem;
     private CommUser commUser;
@@ -52,7 +52,7 @@ public class PublishFeedActivity extends BaseActivity<PublishFeedPresenter> {
         ButterKnife.inject(this);
 
         listImg = new ArrayList<>();
-        imgListAdapter = new ImgListAdapter(this, R.layout.view_nomore);
+        imgListAdapter = new LocalImageListAdapter(this, R.layout.view_nomore);
         feedItem = new FeedItem();
 
         commUser = CommConfig.getConfig().loginedUser;
@@ -89,25 +89,26 @@ public class PublishFeedActivity extends BaseActivity<PublishFeedPresenter> {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.submit) {
+
             feedItem.text = content.getText().toString().trim();
-            feedItem.locationAddr = LocationModel.getInstance().getCurLocation().getAddress().trim();
+            feedItem.location = new Location("");
+            feedItem.locationAddr = LocationModel.getInstance().getCurLocation().getAddress();
             feedItem.type = feedItem.creator.permisson == CommUser.Permisson.ADMIN ? 1 : 0;
             feedItem.creator = CommConfig.getConfig().loginedUser;
-            Utils.Log("loginuser:" + CommConfig.getConfig().loginedUser);
-            Utils.Log("feeditem:" + feedItem);
+            showProgress("发布中");
+            getPresenter().publishFeed(feedItem, new Listeners.SimpleFetchListener<FeedItemResponse>() {
+                @Override
+                public void onComplete(FeedItemResponse feedItemResponse) {
+                    Utils.Log("发布后返回的数据：" + feedItemResponse);
+                    dismissProgress();
+                    if (feedItemResponse.errCode == 0) {
+                        finish();
+                    } else
+                        Utils.Log("发布失败");
+                }
 
-            if (SocietyModel.getInstance().checkLogin(this,true)) {
-                getPresenter().publishFeed(feedItem, new Listeners.SimpleFetchListener<FeedItemResponse>() {
-                    @Override
-                    public void onComplete(FeedItemResponse feedItemResponse) {
-                        Utils.Log("发布后返回的数据：" + feedItemResponse);
-                        if (feedItemResponse.errCode == 0) {
-                            finish();
-                        } else
-                            Utils.Log("发布失败");
-                    }
-                });
-            }
+            });
+
 
         }
         return super.onOptionsItemSelected(item);

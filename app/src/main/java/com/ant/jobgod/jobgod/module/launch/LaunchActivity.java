@@ -14,6 +14,7 @@ public class LaunchActivity extends BaseActivity<LaunchPresenter> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //SocietyModel.getInstance().checkLogin(this,false);
 //        SpotManager.getInstance(this).loadSplashSpotAds();
 //        SplashView splashView = new SplashView(this,UserMainActivity.class);
 //        setContentView(splashView.getSplashView());

@@ -2,8 +2,6 @@ package com.ant.jobgod.jobgod.model;
 
 import android.content.Context;
 
-import com.ant.jobgod.jobgod.util.Utils;
-
 import java.util.HashMap;
 
 import de.greenrobot.event.EventBus;
@@ -23,7 +21,7 @@ public abstract class AbsModel {
             CommonModel.class,
             RegionModel.class,
             JobModel.class,
-            SocietyModel.class,
+            //SocietyModel.class,
             RongYunModel.class,
             ManagerModel.class
     };
@@ -57,7 +55,6 @@ public abstract class AbsModel {
         for (Class m:MODELS) {
             getInstance(m).onAppCreate(ctx);
         }
-        Utils.Log("Model init");
     }
 
     public static <T extends AbsModel> T getInstance(Class<T> clazz){

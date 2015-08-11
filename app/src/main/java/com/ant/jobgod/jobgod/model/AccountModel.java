@@ -40,6 +40,7 @@ public class AccountModel extends AbsModel{
         } else {
             applyToken("");
         }
+        updateAccountData();
     }
 
     public boolean isUser(){

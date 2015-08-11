@@ -57,6 +57,10 @@ public class APP extends Application {
                 AbsModel.init(this);
                 MobclickAgent.updateOnlineConfig(this);
 
+                String text = "Jude";
+                String textencode;
+                Utils.Log(textencode = Utils.string2Base64(text));
+                Utils.Log(Utils.base64ToString(textencode));
             }
         }
     }

@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class UserAccountData extends AccountData implements Serializable{
 
     private String tel;
-    private String realname;
+    private String realName;
     private UserDetail detail;
 
     public String getTel() {
@@ -19,12 +19,12 @@ public class UserAccountData extends AccountData implements Serializable{
         this.tel = tel;
     }
 
-    public String getRealname() {
-        return realname;
+    public String getRealName() {
+        return realName;
     }
 
-    public void setRealname(String realname) {
-        this.realname = realname;
+    public void setRealName(String realName) {
+        this.realName = realName;
     }
 
     public UserDetail getDetail() {

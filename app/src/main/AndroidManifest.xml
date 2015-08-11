@@ -151,7 +151,9 @@
         <activity android:name=".module.user.JoinActivity"
             android:label="我的工作"/>
         <activity android:name=".module.job.CommentActivity"
-            android:label="评论"/>
+            android:label="评论"
+            android:windowSoftInputMode="adjustResize"
+            />
         <activity android:name=".module.user.ChatListActivity"
             android:label="消息列表">
             <intent-filter>
@@ -188,22 +190,6 @@
 
 
 
-
-
-        <!--ImageTool-->
-        <activity
-            android:name="com.ant.jobgod.imagetool.imageprovider.net.NetImageSearchActivity"
-            android:label="搜索图片">
-        </activity>
-        <activity
-            android:name="com.ant.jobgod.imagetool.photoview.ImageViewActivity"
-            android:label="查看图片"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            >
-        </activity>
-        <activity
-            android:name="com.ant.jobgod.imagetool.corpimage.CropImage"
-            android:theme="@android:style/Theme.Holo.Light.DarkActionBar"/>
 
         <!-- 分享及第三方登陆 -->
         <!-- 分享编辑页 -->

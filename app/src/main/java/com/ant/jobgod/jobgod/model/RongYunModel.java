@@ -1,15 +1,12 @@
 package com.ant.jobgod.jobgod.model;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 
 import com.ant.jobgod.jobgod.model.bean.AccountData;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.bean.PersonBrief;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
-import com.ant.jobgod.jobgod.module.user.ChatActivity;
-import com.ant.jobgod.jobgod.module.user.ChatListActivity;
 import com.ant.jobgod.jobgod.util.Utils;
 
 import java.util.ArrayList;
@@ -122,22 +119,25 @@ public class RongYunModel extends AbsModel {
     }
 
     public void chatPerson(Context ctx,String id,String title){
-        Intent i = new Intent(ctx, ChatActivity.class);
-        i.putExtra("id",id);
-        i.putExtra("title",title);
-        i.putExtra("type", Conversation.ConversationType.PRIVATE.getName().toLowerCase());
-        ctx.startActivity(i);
+//        Intent i = new Intent(ctx, ChatActivity.class);
+//        i.putExtra("id",id);
+//        i.putExtra("title",title);
+//        i.putExtra("type", Conversation.ConversationType.PRIVATE.getName().toLowerCase());
+//        ctx.startActivity(i);
+        RongIM.getInstance().startPrivateChat(ctx, id, title);
     }
 
     public void chatGroup(Context ctx,String id,String title){
-        Intent i = new Intent(ctx, ChatActivity.class);
-        i.putExtra("id",id);
-        i.putExtra("title",title);
-        i.putExtra("type", Conversation.ConversationType.GROUP.getName().toLowerCase());
-        ctx.startActivity(i);
+//        Intent i = new Intent(ctx, ChatActivity.class);
+//        i.putExtra("id",id);
+//        i.putExtra("title",title);
+//        i.putExtra("type", Conversation.ConversationType.GROUP.getName().toLowerCase());
+//        ctx.startActivity(i);
+        RongIM.getInstance().startGroupChat(ctx,id,title);
     }
 
     public void chatList(Context ctx){
-        ctx.startActivity(new Intent(ctx, ChatListActivity.class));
+        RongIM.getInstance().startConversationList(ctx);
+        //ctx.startActivity(new Intent(ctx, ChatListActivity.class));
     }
 }

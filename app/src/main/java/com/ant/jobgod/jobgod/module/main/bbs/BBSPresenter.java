@@ -3,7 +3,6 @@ package com.ant.jobgod.jobgod.module.main.bbs;
 import android.os.Bundle;
 
 import com.ant.jobgod.jobgod.model.SocietyModel;
-import com.ant.jobgod.jobgod.util.Utils;
 import com.umeng.comm.core.beans.FeedItem;
 import com.umeng.comm.core.listeners.Listeners;
 import com.umeng.comm.core.nets.responses.FeedsResponse;
@@ -49,7 +48,6 @@ public class BBSPresenter extends Presenter<BBSFragment> {
                     getView().stopMore();
                 }
                 getView().setData(list = feedsResponse.result);
-                Utils.Log("feed:"+feedsResponse.result);
             }
         });
     }

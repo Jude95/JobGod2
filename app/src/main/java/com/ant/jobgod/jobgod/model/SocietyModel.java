@@ -1,13 +1,10 @@
 package com.ant.jobgod.jobgod.model;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.location.Location;
 
 import com.ant.jobgod.jobgod.model.bean.AccountData;
-import com.ant.jobgod.jobgod.module.launch.UserLoginActivity;
 import com.ant.jobgod.jobgod.util.ActivityManager;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.umeng.comm.core.CommunitySDK;
@@ -36,7 +33,6 @@ public class SocietyModel extends AbsModel  implements Loginable {
 
     private CommUser commUser;
 
-    private boolean islogining = false;
     private boolean forceLogin = false;
     @Override
     protected void onAppCreate(Context ctx) {
@@ -44,34 +40,6 @@ public class SocietyModel extends AbsModel  implements Loginable {
         AccountModel.getInstance().registerEvent(this);
         communitySDK= CommunityFactory.getCommSDK(ctx);
         communitySDK.getConfig().getLoginSDKManager().addAndUse(this);
-        checkLogin(ctx,false);
-    }
-
-    /**
-     * 检查用户是否登录
-     * @param ctx
-     * @return
-     */
-    public boolean checkLogin(Context ctx,boolean forceLogin){
-            if (!islogining) {
-                this.forceLogin = forceLogin;
-                communitySDK.login(ctx, new LoginListener() {
-                    @Override
-                    public void onStart() {
-
-                    }
-
-                    @Override
-                    public void onComplete(int i, CommUser commUser) {
-                        Utils.Log("onComplete");
-                        SocietyModel.this.commUser = commUser;
-                        communitySDK.getConfig().setCurrentUser(commUser);
-                        Utils.Log("当前登录用户信息:" + commUser);
-                        islogining = false;
-                    }
-                });
-            }
-        return commUser==null;
     }
 
     public static SocietyModel getInstance(){
@@ -79,28 +47,31 @@ public class SocietyModel extends AbsModel  implements Loginable {
     }
 
     public void onEvent(AccountData account){
-        if (loginListener == null)return;
-        CommUser user = new CommUser(account.getId()+"");
-        user.source = Source.SELF_ACCOUNT;
-        String base64Name=Utils.string2Base64(account.getId()+"_"+account.getName());
-        user.name = base64Name;
-        user.iconUrl = account.getFace();
-        user.gender = CommUser.Gender.FEMALE;
-        loginListener.onComplete(200, user);
+        login(ActivityManager.getInstance().currentActivity());
+//        if (loginListener == null)return;
+//        CommUser user = new CommUser(account.getId()+"");
+//        user.source = Source.SELF_ACCOUNT;
+//        String base64Name = Utils.string2Base64(account.getId()+"_"+account.getName());
+//        user.name = base64Name;
+//        user.iconUrl = account.getFace();
+//        user.gender = CommUser.Gender.FEMALE;
+//        loginListener.onComplete(200, user);
     }
 
     @Override
     public void login(Context context, LoginListener loginListener) {
         Utils.Log("userLogin");
         AccountData account = AccountModel.getInstance().getAccount();
-        if (account == null&&forceLogin){
-            this.loginListener = loginListener;
-            Activity act = ActivityManager.getInstance().currentActivity();
-            act.startActivity(new Intent(act, UserLoginActivity.class));
-            return;
-        }
+//        if (account == null&&forceLogin){
+//            this.loginListener = loginListener;
+//            Activity act = ActivityManager.getInstance().currentActivity();
+//            act.startActivity(new Intent(act, UserLoginActivity.class));
+//            return;
+//        }
         CommUser user = new CommUser(account.getId()+"");
+        Utils.Log("realName:"+account.getId()+"_"+account.getName());
         String base64Name=Utils.string2Base64(account.getId()+"_"+account.getName());
+        Utils.Log("base64Name:"+base64Name);
         user.name = base64Name;
         user.source = Source.SELF_ACCOUNT;
         user.iconUrl = account.getFace();
@@ -117,6 +88,20 @@ public class SocietyModel extends AbsModel  implements Loginable {
     @Override
     public boolean isLogined(Context context) {
         return commUser ==null;
+    }
+
+    public void login(Context ctx){
+        communitySDK.login(ctx, new LoginListener() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onComplete(int i, CommUser commUser) {
+                Utils.Log("Logined");
+            }
+        });
     }
 
     /**
@@ -194,7 +179,7 @@ public class SocietyModel extends AbsModel  implements Loginable {
      * @param bitmap
      * @param listener
      */
-    public void updataBBSFace(Bitmap bitmap, Listeners.SimpleFetchListener<PortraitUploadResponse> listener){
+    public void updateBBSFace(Bitmap bitmap, Listeners.SimpleFetchListener<PortraitUploadResponse> listener){
         communitySDK.updateUserProtrait(bitmap, listener);
     }
 
