@@ -51,9 +51,13 @@ public class ModifyTelPresenter extends BasePresenter<ModifyTelActivity> impleme
             @Override
             public void result(int status, String info) {
                 super.result(status, info);
-                if(status==520){
-                    getView().dismissProgress();
-                    Utils.Toast("验证码错误");
+                getView().dismissProgress();
+                if(status==201) {
+                    getView().setTelRepeat();
+                }else if(status == 202){
+                    getView().setOldPasswordError();
+                }else if(status>=203){
+                    getView().setCodeError();
                 }
             }
         });

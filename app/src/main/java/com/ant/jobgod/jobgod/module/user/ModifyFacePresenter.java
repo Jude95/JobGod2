@@ -1,21 +1,17 @@
 package com.ant.jobgod.jobgod.module.user;
 
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 
 import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.RemoteFileModel;
-import com.ant.jobgod.jobgod.model.SocietyModel;
 import com.ant.jobgod.jobgod.model.UserModel;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.jude.library.imageprovider.ImageProvider;
 import com.jude.library.imageprovider.OnImageSelectListener;
-import com.umeng.comm.core.listeners.Listeners;
-import com.umeng.comm.core.nets.responses.PortraitUploadResponse;
 
 import java.io.File;
 
@@ -96,13 +92,6 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
                     @Override
                     public void success(String info) {
                         Utils.Toast("上传成功");
-                        AccountModel.getInstance().updateAccountData();
-                            SocietyModel.getInstance().updateBBSFace(BitmapFactory.decodeFile(mFace.getPath()), new Listeners.SimpleFetchListener<PortraitUploadResponse>() {
-                                @Override
-                                public void onComplete(PortraitUploadResponse portraitUploadResponse) {
-                                    getView().finish();
-                                }
-                            });
                     }
 
                     @Override

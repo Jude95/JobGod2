@@ -1,6 +1,5 @@
 package com.ant.jobgod.jobgod.module.main;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -11,13 +10,9 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
-import com.ant.jobgod.jobgod.module.main.bbs.BBSFragment;
 import com.ant.jobgod.jobgod.module.main.joblist.JobListFragment;
 import com.ant.jobgod.jobgod.module.main.recommend.RecommendFragment;
 
@@ -79,7 +74,7 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
                 case 1:
                     return new JobListFragment();
                 default:
-                    return new BBSFragment();
+                    throw new RuntimeException("NO fragment should provide");
             }
         }
 
@@ -91,7 +86,7 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
                 case 1:
                     return "兼职";
                 default:
-                    return "社区";
+                    return null;
             }
         }
 
@@ -101,13 +96,4 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
         }
     }
 
-    public void setTransparentStatusBar(){
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
-            Window window = getWindow();
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-            window.setStatusBarColor(getResources().getColor(android.R.color.transparent));
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        }
-    }
 }

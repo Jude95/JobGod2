@@ -3,6 +3,7 @@ package com.ant.jobgod.jobgod.module.biz;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -35,7 +36,7 @@ public class ApplyListActivity extends BaseActivity<ApplyListPresenter> {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.biz_activity_applylist);
-
+        Message m;
         applyRecycler = (EasyRecyclerView)findViewById(R.id.applyList);
         applyRecycler.setLayoutManager(new LinearLayoutManager(this));
         applyRecycler.setAdapter(applyAdapter);

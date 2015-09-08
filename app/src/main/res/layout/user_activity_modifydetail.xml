@@ -148,38 +148,7 @@
                         android:layout_height="@dimen/md_divider_height"
                         android:background="@color/md_divider_black" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:background="@color/White"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:text="地址"
-                            android:textSize="@dimen/abc_text_size_subhead_material" />
-
-                        <TextView
-                            android:id="@+id/address"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:text="重庆邮电大学15栋"
-                            android:textColor="@color/Grey"
-                            android:textSize="@dimen/abc_text_size_body_1_material" />
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/md_divider_height"
-                        android:background="@color/md_divider_black" />
 
                 </LinearLayout>
 

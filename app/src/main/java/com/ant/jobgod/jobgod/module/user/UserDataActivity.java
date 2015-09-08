@@ -64,8 +64,37 @@ public class UserDataActivity extends BaseActivity<UserDataPresenter> {
         imgFace.setImageURI(Uri.parse(data.getFace()));
         signature.setText(data.getSign());
         phone.setText(data.getTel());
-        authentication.setText(data.getRealName());
-        percent.setText("完善度20%");
+        switch (data.getAuthenticationStatus()){
+            case 0:
+                authentication.setText("未认证");
+                break;
+            case 1:
+                authentication.setText("审核中");
+                break;
+            case 2:
+                authentication.setText("认证失败,请重新认证");
+                break;
+            case 3:
+                authentication.setText(data.getRealName());
+                break;
+        }
+
+        percent.setText("完善度"+ calculateDetailPercent(data)+"%");
+    }
+
+    public int calculateDetailPercent(UserAccountData data){
+        int value = 0;
+        if(data.getDetail().getGender()==0)value+=1;
+        if(data.getDetail().getHeight()==0)value+=1;
+        if(data.getDetail().getBirthday()==0)value+=1;
+        if(data.getDetail().getEduLevel()==0)value+=1;
+        if(data.getDetail().getSchool()==null||data.getDetail().getSchool().trim().isEmpty())value+=1;
+        if(data.getDetail().getMajor()==null||data.getDetail().getMajor().trim().isEmpty())value+=1;
+        if(data.getDetail().getCharacter()==null||data.getDetail().getCharacter().trim().isEmpty())value+=1;
+        if(data.getDetail().getLike()==null||data.getDetail().getLike().trim().isEmpty())value+=1;
+        if(data.getDetail().getSpecialty()==null||data.getDetail().getSpecialty().trim().isEmpty())value+=1;
+        if(data.getDetail().getIntro()==null||data.getDetail().getIntro().trim().isEmpty())value+=1;
+        return 100-value*10;
     }
 
 

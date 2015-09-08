@@ -42,8 +42,6 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
     TextView height;
     @InjectView(R.id.birthday)
     TextView birthday;
-    @InjectView(R.id.address)
-    TextView address;
     @InjectView(R.id.eduLevel)
     TextView eduLevel;
     @InjectView(R.id.school)
@@ -91,10 +89,17 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
     }
 
     public void setData(UserDetail data) {
-        if (data.getGender() == 0) {
-            gender.setText("女");
-        } else
-            gender.setText("男");
+        switch (data.getGender()){
+            case 0:
+                gender.setText("不详");
+                break;
+            case 1:
+                gender.setText("男");
+                break;
+            case 2:
+                gender.setText("女");
+                break;
+        }
 
         switch (data.getEduLevel()) {
             case 0:
@@ -115,7 +120,6 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
         }
         height.setText(data.getHeight() + "cm");
         birthday.setText(new TimeTransform(data.getBirthday()).toString(new RecentDateFormater()));
-        address.setText(data.getAddress());
         school.setText(data.getSchool());
         major.setText(data.getMajor());
         certificate.setText(data.getCertificate());
@@ -143,7 +147,7 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
                         userData.setGender(1);
                     }
                     if (text.toString().equals("女")) {
-                        userData.setGender(0);
+                        userData.setGender(2);
                     }
                     gender.setText(text.toString());
                     return true;
@@ -204,27 +208,6 @@ public class ModifyDetailActivity extends BaseActivity<ModifyDetailPresenter> {
                         })
                         .positiveText("确定")
                         .show();
-            }
-        });
-
-        address.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new MaterialDialog.Builder(ModifyDetailActivity.this)
-                        .title("输入地址")
-                        .inputType(InputType.TYPE_CLASS_TEXT)
-                        .inputMaxLength(32)
-                        .input("", "", new MaterialDialog.InputCallback() {
-                            @Override
-                            public void onInput(MaterialDialog dialog, CharSequence input) {
-                                if (input.toString().trim().isEmpty()) {
-                                    Utils.Toast("不能为空");
-                                    return;
-                                }
-                                userData.setAddress(input.toString());
-                                address.setText(input.toString());
-                            }
-                        }).show();
             }
         });
 

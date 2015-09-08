@@ -1,3 +1,2 @@
-include ':app', ':sqllitetool', ':IMKit'
-include ':social_sdk_library'
+include ':app', ':sqllitetool', ':IMKit', ':umengfamily'
 include ':SMSSDK'

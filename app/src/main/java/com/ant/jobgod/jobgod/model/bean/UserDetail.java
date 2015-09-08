@@ -28,7 +28,6 @@ public class UserDetail implements Serializable{
     private String major;
     private String school;
     private String intro;
-    private String address;
 
 
     public String getName() {
@@ -41,10 +40,6 @@ public class UserDetail implements Serializable{
 
     public String getFace() {
         return face;
-    }
-
-    public String getAddress() {
-        return address;
     }
 
     public long getBirthday() {
@@ -114,10 +109,6 @@ public class UserDetail implements Serializable{
 
     public boolean isFocus() {
         return focus;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public void setBirthday(long birthday) {

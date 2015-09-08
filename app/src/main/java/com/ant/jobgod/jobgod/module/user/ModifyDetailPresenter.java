@@ -52,15 +52,16 @@ public class ModifyDetailPresenter extends BasePresenter<ModifyDetailActivity> {
             @Override
             public void success(String info) {
                 AccountModel.getInstance().updateAccountData();
+                getView().finish();
             }
 
             @Override
             public void result(int status, String info) {
                 super.result(status, info);
+                getView().dismissProgress();
                 switch (status) {
                     case 200:
                         Utils.Toast("保存成功");
-                        getView().dismissProgress();
                         break;
                 }
             }

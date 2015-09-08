@@ -1,6 +1,10 @@
 package com.ant.jobgod.jobgod.model;
 
+import android.app.Activity;
+import android.content.ComponentCallbacks2;
 import android.content.Context;
+import android.view.View;
+import android.view.Window;
 
 import com.ant.jobgod.jobgod.config.API;
 import com.ant.jobgod.jobgod.model.bean.AccountData;
@@ -34,6 +38,12 @@ public class AccountModel extends AbsModel{
     @Override
     protected void onAppCreate(Context ctx) {
         super.onAppCreate(ctx);
+        Activity a = new Activity();
+        Window.Callback callback = a;
+        View.OnCreateContextMenuListener  menuListener = a;
+        ComponentCallbacks2 componentCallbacks = a;
+
+
         userAccountData = (UserAccountData) Utils.readObjectFromFile(FileManager.getInstance().getChild(FileManager.Dir.Object,ACCOUNTFILE));
         if (userAccountData !=null) {
             applyToken(userAccountData.getTokenApp());

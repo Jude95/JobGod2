@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.PersonBrief;
 import com.ant.jobgod.jobgod.widget.TextItemView;
@@ -30,6 +31,13 @@ public class AttentionFromMeFragment extends NucleusFragment<AttentionFromMePres
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         adapter=new PersonAdapter(getActivity());
+        MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
+                .cancelable(false)
+                .items(new String[]{"1","2","3"})
+                .title("Fuck")
+                .autoDismiss(true)
+                .build();
+
     }
 
     @Nullable

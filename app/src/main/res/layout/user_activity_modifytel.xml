@@ -58,7 +58,7 @@
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="旧密码"
+                            android:hint="原密码"
                             android:maxLength="8"
                             android:password="true" />
                     </android.support.design.widget.TextInputLayout>

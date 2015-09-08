@@ -13,7 +13,6 @@ import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.util.ActivityManager;
 import com.jude.swipbackhelper.SwipeBackHelper;
 import com.umeng.analytics.MobclickAgent;
-import com.umeng.message.PushAgent;
 
 import nucleus.manager.Presenter;
 import nucleus.view.NucleusAppCompatActivity;
@@ -29,7 +28,6 @@ public class BaseActivity<T extends Presenter> extends NucleusAppCompatActivity<
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityManager.getInstance().pushActivity(this);
-        PushAgent.getInstance(this).onAppStart();
         SwipeBackHelper.onCreate(this);
         SwipeBackHelper.getCurrentPage(this).setSwipeSensitivity(0.3f).setSwipeEdgePercent(0.5f);
     }

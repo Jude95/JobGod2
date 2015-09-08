@@ -10,6 +10,15 @@ public class UserAccountData extends AccountData implements Serializable{
     private String tel;
     private String realName;
     private UserDetail detail;
+    private int authenticationStatus;
+
+    public int getAuthenticationStatus() {
+        return authenticationStatus;
+    }
+
+    public void setAuthenticationStatus(int authenticationStatus) {
+        this.authenticationStatus = authenticationStatus;
+    }
 
     public String getTel() {
         return tel;

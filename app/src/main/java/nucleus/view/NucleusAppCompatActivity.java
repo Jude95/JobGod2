@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+
 import nucleus.factory.PresenterFactory;
 import nucleus.factory.ReflectionPresenterFactory;
 import nucleus.manager.Presenter;
@@ -21,6 +23,13 @@ public abstract class NucleusAppCompatActivity<PresenterType extends Presenter> 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MaterialDialog materialDialog = new MaterialDialog.Builder(this)
+                .title("标题")
+                .items(new String[]{"1","2","3"})
+                .positiveText("确定")
+                .cancelable(false)
+                .build();
+
         if (savedInstanceState != null)
             helper.setPresenterState(savedInstanceState.getBundle(PRESENTER_STATE_KEY));
         helper.createView(this);

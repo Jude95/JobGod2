@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.app.BaseActivity;
 import com.ant.jobgod.jobgod.model.bizbean.Job;
-import com.ant.jobgod.jobgod.module.main.bbs.PublishFeedPresenter;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
@@ -24,8 +23,8 @@ import nucleus.factory.RequiresPresenter;
 /**
  * Created by alien on 2015/8/4.
  */
-@RequiresPresenter(PublishFeedPresenter.class)
-public class JobListActivity extends BaseActivity<PublishFeedPresenter> {
+@RequiresPresenter(JobListPresenter.class)
+public class JobListActivity extends BaseActivity<JobListPresenter> {
 
     private EasyRecyclerView recyclerView;
     private PublishAdapter adapter;

@@ -92,6 +92,9 @@ public class ModifyTelActivity extends BaseActivity<ModifyTelPresenter> {
     public void enableInfoEdit(boolean enable) {
         tilCode.getEditText().requestFocus();
         newTel.getEditText().setEnabled(enable);
+        newPassword.getEditText().setEnabled(enable);
+        oldTel.getEditText().setEnabled(enable);
+        oldPassword.getEditText().setEnabled(enable);
     }
 
 
@@ -100,8 +103,12 @@ public class ModifyTelActivity extends BaseActivity<ModifyTelPresenter> {
         enableInfoEdit(false);
     }
 
-    private void sendModify() {
+    public void hideCodeCard(){
+        cardMessage.setVisibility(View.INVISIBLE);
+        enableInfoEdit(true);
+    }
 
+    private void sendModify() {
         String oldNumber = oldTel.getEditText().getText().toString();
         String newNumber = newTel.getEditText().getText().toString();
         String oPassword = oldPassword.getEditText().getText().toString();
@@ -114,7 +121,7 @@ public class ModifyTelActivity extends BaseActivity<ModifyTelPresenter> {
             tilCode.setError("");
         }
 
-        getPresenter().boundTel(oldNumber, newNumber,oPassword, nPassword, mCode);
+        getPresenter().boundTel(oldNumber, newNumber, oPassword, nPassword, mCode);
 
     }
 
@@ -129,7 +136,7 @@ public class ModifyTelActivity extends BaseActivity<ModifyTelPresenter> {
             tilCode.setError("");
         }
 
-        getPresenter().boundTel("", newNumber,"",mPassword, mCode);
+        getPresenter().boundTel("", newNumber, "", mPassword, mCode);
     }
 
     public void setRetryTime(int time) {
@@ -139,5 +146,20 @@ public class ModifyTelActivity extends BaseActivity<ModifyTelPresenter> {
     public void setRetryEnable(boolean enable) {
         btnRetry.setEnabled(enable);
         if (enable) btnRetry.setText("重新获取");
+    }
+
+    public void setOldPasswordError(){
+        hideCodeCard();
+        oldTel.setError("密码错误");
+    }
+
+    public void setTelRepeat(){
+        hideCodeCard();
+        newTel.setError("手机号已注册");
+    }
+
+    public void setCodeError(){
+        hideCodeCard();
+        tilCode.setError("验证码错误");
     }
 }

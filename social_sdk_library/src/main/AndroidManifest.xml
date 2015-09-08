@@ -8,52 +8,6 @@
         android:targetSdkVersion="10" />
 
     <application android:allowBackup="true" >
-        <!-- feed主页面 -->
-        <activity android:name="com.umeng.comm.ui.activities.FeedsActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:launchMode="singleTask"
-            android:taskAffinity="com.umeng.community"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <!-- 发送feedActivity -->
-        <activity
-            android:name="com.umeng.comm.ui.activities.PostFeedActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <!-- 转发页面 -->
-        <activity
-            android:name="com.umeng.comm.ui.activities.ForwardActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <!-- 用户信息页面 -->
-        <activity
-            android:name="com.umeng.comm.ui.activities.UserInfoActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <!-- 话题详情页面 -->
-        <activity
-            android:name="com.umeng.comm.ui.activities.TopicDetailActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <!-- feed详情页面 -->
-        <activity
-            android:name="com.umeng.comm.ui.activities.FeedDetailActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:launchMode="singleTask"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name="com.umeng.comm.ui.activities.FindActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <!-- 设置页面activity -->
-        <activity android:name="com.umeng.comm.ui.activities.SettingActivity" />
-        <!--点赞用户Activity-->
-        <activity android:name="com.umeng.comm.ui.activities.LikeUsersActivity" />
-        <!--搜索Activity-->
-        <activity android:name="com.umeng.comm.ui.activities.SearchActivity" />
-        <!--引导页Activity-->
-        <activity android:name="com.umeng.comm.ui.activities.GuideActivity" />
-        <!--相关用户Activity-->
-        <activity android:name="com.umeng.comm.ui.activities.RelativeUserActivity" />
 
         <!-- ##################### 推送相关 ##################### -->
         <receiver

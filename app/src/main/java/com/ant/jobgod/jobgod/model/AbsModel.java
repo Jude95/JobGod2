@@ -21,7 +21,7 @@ public abstract class AbsModel {
             CommonModel.class,
             RegionModel.class,
             JobModel.class,
-            //SocietyModel.class,
+            SocietyModel.class,
             RongYunModel.class,
             ManagerModel.class
     };
