@@ -19,13 +19,17 @@ public class UserDataPresenter extends Presenter<UserDataActivity> {
 
     private Intent intent;
 
-
     private Subscription mUserDataSubscription;
+
+
     @Override
     protected void onCreateView(UserDataActivity view) {
         super.onCreateView(view);
         getView().setUserDetailData(AccountModel.getInstance().getUserAccount());
-        mUserDataSubscription = AccountModel.getInstance().registerUserAccountUpdate(userAccountData -> getView().setUserDetailData(userAccountData));
+        mUserDataSubscription = AccountModel.getInstance().registerUserAccountUpdate(userAccountData -> {
+            getView().setUserDetailData(userAccountData);
+            getView().getExpansion().dismissProgressDialog();
+        });
     }
 
     @Override
@@ -45,7 +49,7 @@ public class UserDataPresenter extends Presenter<UserDataActivity> {
                 .title("修改昵称")
                 .inputType(InputType.TYPE_CLASS_TEXT)
                 .inputMaxLength(8)
-                .input("昵称", "", (dialog, input) -> {
+                .input("昵称", AccountModel.getInstance().getUserAccount().getName(), (dialog, input) -> {
                     if (input.toString().trim().isEmpty()) {
                         Utils.Toast("昵称不能为空");
                         return;
@@ -55,13 +59,6 @@ public class UserDataPresenter extends Presenter<UserDataActivity> {
                             @Override
                             public void success(String info) {
                                 AccountModel.getInstance().updateAccountData();
-
-                            }
-
-                            @Override
-                            public void result(int status, String info) {
-                                super.result(status, info);
-                                getView().getExpansion().dismissProgressDialog();
                             }
                         });
                     }
@@ -73,18 +70,12 @@ public class UserDataPresenter extends Presenter<UserDataActivity> {
                 .title("修改签名")
                 .inputType(InputType.TYPE_CLASS_TEXT)
                 .inputMaxLength(32)
-                .input("签名", "", (dialog, input) -> {
+                .input("签名", AccountModel.getInstance().getUserAccount().getSign(), (dialog, input) -> {
                     getView().getExpansion().showProgressDialog("修改中");
                     UserModel.getInstance().modifySign(input.toString(), new StatusCallback() {
                         @Override
                         public void success(String info) {
                             AccountModel.getInstance().updateAccountData();
-                        }
-
-                        @Override
-                        public void result(int status, String info) {
-                            super.result(status, info);
-                            getView().getExpansion().dismissProgressDialog();
                         }
                     });
 

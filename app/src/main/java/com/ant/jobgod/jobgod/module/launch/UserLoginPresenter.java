@@ -21,6 +21,9 @@ import com.jude.beam.bijection.Presenter;
                 public void result(int status, String info) {
                     getView().getExpansion().dismissProgressDialog();
                     switch (status) {
+                        case 201:
+                            getView().setAccountError();
+                            break;
                         case 202:
                             getView().setNumberError();
                             break;

@@ -75,6 +75,9 @@ import butterknife.InjectView;
             getPresenter().login(mNumber, mPassword);
         }
 
+        public void setAccountError() {
+            tilNumber.setError("账号不存在");
+        }
         public void setPasswordError() {
             tilPassword.setError("密码错误");
         }

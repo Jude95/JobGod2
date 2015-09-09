@@ -72,7 +72,7 @@ dependencies {
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.qiniu:qiniu-android-sdk:7.0.7'
     compile 'com.wdullaer:materialdatetimepicker:1.3.1'
-    compile 'com.jude:beam:2.0.30'
+    compile 'com.jude:beam:2.0.31'
     compile 'com.jude:swipebackhelper:1.1.8'
     compile 'com.jude:rollviewpager:1.0.1'
     compile 'com.jude:imageprovider:1.0.7'
