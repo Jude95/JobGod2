@@ -3,19 +3,19 @@ package com.ant.jobgod.jobgod.module.main.joblist;
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.JobModel;
 import com.ant.jobgod.jobgod.model.LocationModel;
 import com.ant.jobgod.jobgod.model.bean.Region;
 import com.ant.jobgod.jobgod.model.bean.Trade;
 import com.facebook.common.internal.Lists;
+import com.jude.beam.bijection.Presenter;
 
 import java.util.ArrayList;
 
 /**
  * Created by Mr.Jude on 2015/7/11.
  */
-public class FiltratePresenter extends BasePresenter<FiltrateActivity> {
+public class FiltratePresenter extends Presenter<FiltrateActivity> {
     private ArrayList<Trade> mTrades;
     private ArrayList<Region> mRegion;
     private int mSort;
@@ -27,8 +27,8 @@ public class FiltratePresenter extends BasePresenter<FiltrateActivity> {
     };
 
     @Override
-    protected void onCreate(Bundle savedState) {
-        super.onCreate(savedState);
+    protected void onCreate(FiltrateActivity view,Bundle savedState) {
+        super.onCreate(view,savedState);
         mTrades = Lists.newArrayList(JobModel.getInstance().getFiltrateTrade());
         mRegion = Lists.newArrayList(JobModel.getInstance().getFiltrateRegion());
         mSort = JobModel.getInstance().getFiltrateSort();

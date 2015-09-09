@@ -1,39 +1,41 @@
 package com.ant.jobgod.jobgod.module.main;
 
 import android.content.Intent;
-import android.os.Bundle;
 
 import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.RongYunModel;
 import com.ant.jobgod.jobgod.model.bean.AccountData;
 import com.ant.jobgod.jobgod.module.launch.UserLoginActivity;
+import com.jude.beam.bijection.Presenter;
 
-import nucleus.manager.Presenter;
+import rx.Subscription;
+
 
 /**
  * Created by Mr.Jude on 2015/7/1.
  */
 public class UserDrawerPresenter extends Presenter<UserDrawerFragment> {
 
+
+    private Subscription mAccountSubscription;
+    private Subscription mMessageCountSubscription;
     @Override
-    protected void onCreate(Bundle savedState) {
-        super.onCreate(savedState);
-        AccountModel.getInstance().registerEvent(this);
-        RongYunModel.getInstance().registerEvent(this);
+    protected void onCreateView(UserDrawerFragment view) {
+        super.onCreateView(view);
         AccountData info = AccountModel.getInstance().getAccount();
         if (info != null){
             getView().setAccount(info);
         }
-
-    }
-    public void onEvent(Integer i){
-        getView().setMessageCount(i);
+        mAccountSubscription = AccountModel.getInstance().registerUserAccountUpdate(userAccountData -> getView().setAccount(userAccountData));
+        mMessageCountSubscription = RongYunModel.getInstance().registerNotifyCount(count -> getView().setMessageCount(count));
     }
 
-    public void onEvent(AccountData info){
-        getView().setAccount(info);
+    @Override
+    protected void onDestroyView() {
+        super.onDestroyView();
+        mAccountSubscription.unsubscribe();
+        mMessageCountSubscription.unsubscribe();
     }
-
 
     public boolean checkLogin(){
         if(AccountModel.getInstance().getAccount() == null){

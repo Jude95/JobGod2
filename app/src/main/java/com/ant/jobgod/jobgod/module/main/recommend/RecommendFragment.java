@@ -22,6 +22,8 @@ import com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView;
 import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
 import com.facebook.drawee.generic.RoundingParams;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.jude.beam.bijection.BeamFragment;
+import com.jude.beam.bijection.RequiresPresenter;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.DynamicPagerAdapter;
 
@@ -30,14 +32,12 @@ import net.youmi.android.banner.AdView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import nucleus.factory.RequiresPresenter;
-import nucleus.view.NucleusFragment;
 
 /**
  * Created by Mr.Jude on 2015/7/10.
  */
 @RequiresPresenter(RecommendPresenter.class)
-public class RecommendFragment extends NucleusFragment<RecommendPresenter> {
+public class RecommendFragment extends BeamFragment<RecommendPresenter> {
 
 
     @InjectView(R.id.vpgBanner)

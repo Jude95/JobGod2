@@ -21,17 +21,17 @@ import com.ant.jobgod.jobgod.module.user.JoinActivity;
 import com.ant.jobgod.jobgod.module.user.ModifyFaceActivity;
 import com.ant.jobgod.jobgod.module.user.UserDataActivity;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.jude.beam.bijection.BeamFragment;
+import com.jude.beam.bijection.RequiresPresenter;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import nucleus.factory.RequiresPresenter;
-import nucleus.view.NucleusFragment;
 
 /**
  * Created by Mr.Jude on 2015/7/1.
  */
 @RequiresPresenter(UserDrawerPresenter.class)
-public class UserDrawerFragment extends NucleusFragment<UserDrawerPresenter> {
+public class UserDrawerFragment extends BeamFragment<UserDrawerPresenter> {
 
 
     @InjectView(R.id.imgFace)

@@ -3,11 +3,12 @@ package com.ant.jobgod.jobgod.module.user;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import com.ant.jobgod.jobgod.app.BasePresenter;
+
 import com.ant.jobgod.jobgod.model.RemoteFileModel;
 import com.ant.jobgod.jobgod.model.UserModel;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.jude.beam.bijection.Presenter;
 import com.jude.library.imageprovider.ImageProvider;
 import com.jude.library.imageprovider.OnImageSelectListener;
 
@@ -16,13 +17,13 @@ import java.io.File;
 /**
  * Created by alien on 2015/7/11.
  */
-public class AuthenticationPresenter extends BasePresenter<AuthenticationActivity> {
+public class AuthenticationPresenter extends Presenter<AuthenticationActivity> {
 
     private ImageProvider mProvider;
     private Uri mImage;
     @Override
-    protected void onCreate(Bundle savedState) {
-        super.onCreate(savedState);
+    protected void onCreate(AuthenticationActivity view,Bundle savedState) {
+        super.onCreate(view,savedState);
         mProvider = new ImageProvider(getView());
     }
 
@@ -37,7 +38,7 @@ public class AuthenticationPresenter extends BasePresenter<AuthenticationActivit
      * 网络请求，响应getview的点击事件
      */
     public void upload(String name,String number){
-        getView().showProgress("上传中");
+        getView().getExpansion().showProgressDialog("上传中");
         if (mImage==null){
             Utils.Toast("请先拍照");
             return;
@@ -49,7 +50,7 @@ public class AuthenticationPresenter extends BasePresenter<AuthenticationActivit
                 UserModel.getInstance().authentication(name, number, path.getOriginalImage(), new StatusCallback() {
                     @Override
                     public void success(String info) {
-                        getView().dismissProgress();
+                        getView().getExpansion().dismissProgressDialog();
                         Utils.Toast("上传成功,我们会尽快审核。");
                         getView().finish();
                     }
@@ -59,7 +60,8 @@ public class AuthenticationPresenter extends BasePresenter<AuthenticationActivit
             @Override
             public void onError() {
                 Utils.Toast("上传失败");
-                getView().dismissProgress();
+                getView().getExpansion().dismissProgressDialog();
+
             }
         });
     }
@@ -68,19 +70,19 @@ public class AuthenticationPresenter extends BasePresenter<AuthenticationActivit
         mProvider.getImageFromCamera(new OnImageSelectListener() {
             @Override
             public void onImageSelect() {
-                getView().showProgress("图片加载中");
+                getView().getExpansion().showProgressDialog("图片加载中");
             }
 
             @Override
             public void onImageLoaded(Uri uri) {
-                getView().dismissProgress();
+                getView().getExpansion().dismissProgressDialog();
                 mImage = uri;
                 getView().setImg(mProvider.readImageWithSize(uri,500,500));
             }
 
             @Override
             public void onError() {
-                getView().dismissProgress();
+                getView().getExpansion().dismissProgressDialog();
                 Utils.Log("图片加载错误");
             }
         });

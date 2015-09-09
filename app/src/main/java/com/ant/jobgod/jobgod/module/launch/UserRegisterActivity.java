@@ -10,16 +10,16 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
-import com.ant.jobgod.jobgod.app.BaseActivity;
-import com.ant.jobgod.jobgod.util.Utils;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
 
-import nucleus.factory.RequiresPresenter;
+import cn.smssdk.gui.TimeListener;
 
 /**
  * Created by Mr.Jude on 2015/1/27.
  */
 @RequiresPresenter(UserRegisterPresenter.class)
-public class UserRegisterActivity extends BaseActivity<UserRegisterPresenter> {
+public class UserRegisterActivity extends BeamBaseActivity<UserRegisterPresenter>  implements TimeListener {
     private TextInputLayout tilName;
     private TextInputLayout tilNumber;
     private TextInputLayout tilPassword;
@@ -108,13 +108,15 @@ public class UserRegisterActivity extends BaseActivity<UserRegisterPresenter> {
         enableInfoEdit(false);
     }
 
-    public void setRetryTime(int time) {
-        btnRetry.setText(time + "秒后重新获取");
+    @Override
+    public void onLastTimeNotify(int lastSecond) {
+        btnRetry.setText(lastSecond + "秒后重新获取");
     }
 
-    public void setRetryEnable(boolean enable){
-        btnRetry.setEnabled(enable);
-        if (enable)btnRetry.setText("重新获取");
+    @Override
+    public void onAbleNotify(boolean valuable) {
+        btnRetry.setEnabled(valuable);
+        if (valuable)btnRetry.setText("重新获取");
     }
 
 

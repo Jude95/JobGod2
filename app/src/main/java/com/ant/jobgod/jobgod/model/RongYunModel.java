@@ -3,11 +3,11 @@ package com.ant.jobgod.jobgod.model;
 import android.content.Context;
 import android.net.Uri;
 
-import com.ant.jobgod.jobgod.model.bean.AccountData;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.bean.PersonBrief;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.jude.beam.model.AbsModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +17,9 @@ import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.Conversation;
 import io.rong.imlib.model.Group;
 import io.rong.imlib.model.UserInfo;
+import rx.Subscription;
+import rx.functions.Action1;
+import rx.subjects.BehaviorSubject;
 
 /**
  * Created by Mr.Jude on 2015/7/8.
@@ -26,20 +29,20 @@ public class RongYunModel extends AbsModel {
     public static RongYunModel getInstance() {
         return getInstance(RongYunModel.class);
     }
-
+    public BehaviorSubject<Integer> mNotifyBehaviorSubject = BehaviorSubject.create();
     @Override
     protected void onAppCreate(Context ctx) {
-        AccountModel.getInstance().registerEvent(this);
+        AccountModel.getInstance().registerUserAccountUpdate(user -> connectRongYun1(user.getRongToken()));
         if (AccountModel.getInstance().getAccount()!=null)
             connectRongYun1(AccountModel.getInstance().getAccount().getRongToken());
     }
 
-    public void onEvent(AccountData data){
-        connectRongYun1(data.getRongToken());
-    }
-
     public void loginOut(){
         connectRongYun1("");
+    }
+
+    public Subscription registerNotifyCount(Action1<Integer> notify){
+        return mNotifyBehaviorSubject.subscribe(notify);
     }
 
     public void connectRongYun1(String token){
@@ -102,7 +105,7 @@ public class RongYunModel extends AbsModel {
                     RongIM.getInstance().setOnReceiveUnreadCountChangedListener(new RongIM.OnReceiveUnreadCountChangedListener() {
                         @Override
                         public void onMessageIncreased(int i) {
-                            publicEvent(i);
+                            mNotifyBehaviorSubject.onNext(i);
                         }
                     }, Conversation.ConversationType.PRIVATE);
                 }

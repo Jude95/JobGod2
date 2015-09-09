@@ -20,13 +20,18 @@
             fresco:roundTopRight="true"
             fresco:roundBottomLeft="false"
             fresco:roundBottomRight="false"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="@drawable/main_drawer_gradient"/>
+
         <TextView
             android:id="@+id/topic_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:textSize="24sp"
-            android:text="绋嬪簭鐚夸笓棰�"
             android:textColor="@android:color/white"
             android:layout_alignBottom="@+id/topic_img"/>
 

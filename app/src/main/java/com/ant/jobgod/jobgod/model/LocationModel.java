@@ -11,6 +11,7 @@ import com.ant.jobgod.jobgod.config.API;
 import com.ant.jobgod.jobgod.model.bean.Location;
 import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.jude.beam.model.AbsModel;
 import com.jude.http.RequestManager;
 import com.jude.http.RequestMap;
 

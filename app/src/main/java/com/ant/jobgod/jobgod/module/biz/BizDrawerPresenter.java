@@ -4,8 +4,8 @@ import android.content.Intent;
 
 import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.module.launch.UserLoginActivity;
+import com.jude.beam.bijection.Presenter;
 
-import nucleus.manager.Presenter;
 
 /**
  * Created by alien on 2015/8/4.

@@ -60,6 +60,23 @@
             android:name="UMENG_MESSAGE_SECRET"
             android:value="ae762f0449f100e542ba611f1e318a77" />
 
+        <meta-data
+            android:name="MODEL"
+            android:value="
+            com.ant.jobgod.jobgod.model.AccountModel,
+            com.ant.jobgod.jobgod.model.CommonModel,
+            com.ant.jobgod.jobgod.model.JobModel,
+            com.ant.jobgod.jobgod.model.LocationModel,
+            com.ant.jobgod.jobgod.model.ManagerModel,
+            com.ant.jobgod.jobgod.model.PersonBriefModel,
+            com.ant.jobgod.jobgod.model.RegionModel,
+            com.ant.jobgod.jobgod.model.RemoteModel,
+            com.ant.jobgod.jobgod.model.RongYunModel,
+            com.ant.jobgod.jobgod.model.SocietyModel,
+            com.ant.jobgod.jobgod.model.UserModel,
+            "
+            />
+
         <activity
             android:name=".module.launch.LaunchActivity"
             android:theme="@style/LaunchTheme">

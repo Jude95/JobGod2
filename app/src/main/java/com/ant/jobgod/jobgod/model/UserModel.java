@@ -9,6 +9,7 @@ import com.ant.jobgod.jobgod.model.bean.PersonBrief;
 import com.ant.jobgod.jobgod.model.bean.UserDetail;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
+import com.jude.beam.model.AbsModel;
 import com.jude.http.RequestManager;
 import com.jude.http.RequestMap;
 

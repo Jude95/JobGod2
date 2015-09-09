@@ -5,6 +5,7 @@ import android.content.Context;
 import com.ant.jobgod.jobgod.config.API;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.jude.beam.model.AbsModel;
 import com.jude.http.RequestManager;
 import com.qiniu.android.http.ResponseInfo;
 import com.qiniu.android.storage.UpCompletionHandler;

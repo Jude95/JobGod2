@@ -3,6 +3,7 @@ package com.ant.jobgod.jobgod.model;
 import com.ant.jobgod.jobgod.config.API;
 import com.ant.jobgod.jobgod.model.bean.Banner;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
+import com.jude.beam.model.AbsModel;
 import com.jude.http.RequestManager;
 
 /**

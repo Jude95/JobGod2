@@ -5,17 +5,17 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.AppCompatButton;
 
 import com.ant.jobgod.jobgod.R;
-import com.ant.jobgod.jobgod.app.BaseActivity;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import nucleus.factory.RequiresPresenter;
 
 /**
  * Created by alien on 2015/8/4.
  */
 @RequiresPresenter(BizLoginPresenter.class)
-public class BizLoginActivity extends BaseActivity<BizLoginPresenter> {
+public class BizLoginActivity extends BeamBaseActivity<BizLoginPresenter> {
 
 
     @InjectView(R.id.tilPassword)

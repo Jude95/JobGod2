@@ -9,20 +9,20 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.ant.jobgod.jobgod.R;
-import com.ant.jobgod.jobgod.app.BaseActivity;
 import com.ant.jobgod.jobgod.model.bean.Region;
 import com.ant.jobgod.jobgod.model.bean.Trade;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import cn.bingoogolapple.flowlayout.BGAFlowLayout;
-import nucleus.factory.RequiresPresenter;
 
 /**
  * Created by Mr.Jude on 2015/7/11.
  */
 @RequiresPresenter(FiltratePresenter.class)
-public class FiltrateActivity extends BaseActivity<FiltratePresenter> {
+public class FiltrateActivity extends BeamBaseActivity<FiltratePresenter> {
     @InjectView(R.id.img_trade_add)
     ImageView imgTradeAdd;
     @InjectView(R.id.img_city_add)

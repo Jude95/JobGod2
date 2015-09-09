@@ -7,18 +7,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
-import com.ant.jobgod.jobgod.app.BaseRecyclerActivity;
 import com.ant.jobgod.jobgod.model.bean.Topic;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.list.BeamListActivity;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 
-import nucleus.factory.RequiresPresenter;
 
 /**
  * Created by Mr.Jude on 2015/7/12.
  */
 @RequiresPresenter(TopicListPresenter.class)
-public class TopicListActivity extends BaseRecyclerActivity<TopicListPresenter,Topic> {
+public class TopicListActivity extends BeamListActivity<TopicListPresenter,Topic> {
 
     @Override
     protected BaseViewHolder getViewHolder(ViewGroup parent, int viewType) {

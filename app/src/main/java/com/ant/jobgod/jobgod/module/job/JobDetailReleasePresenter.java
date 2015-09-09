@@ -3,7 +3,6 @@ package com.ant.jobgod.jobgod.module.job;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.JobModel;
 import com.ant.jobgod.jobgod.model.bean.JobDetail;
@@ -11,24 +10,25 @@ import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.module.launch.UserLoginActivity;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.jude.beam.expansion.data.BeamDataActivityPresenter;
 
 /**
  * Created by alien on 2015/7/10.
  */
-public class JobDetailReleasePresenter extends BasePresenter<JobDetailReleaseActivity> {
+public class JobDetailReleasePresenter extends BeamDataActivityPresenter<JobDetailReleaseActivity,JobDetail> {
 
     private int id;
     private JobDetail mJob;
 
     @Override
-    protected void onCreate(Bundle savedState) {
-        super.onCreate(savedState);
+    protected void onCreate(JobDetailReleaseActivity view,Bundle savedState) {
+        super.onCreate(view,savedState);
         id = getView().getIntent().getIntExtra("id",0);
         JobModel.getInstance().getJobDetail(id, new DataCallback<JobDetail>() {
             @Override
             public void success(String info, JobDetail data) {
-                getView().setData(mJob = data);
-                getView().setRelateJobData(data.getRelative());
+                mJob = data;
+                publishObject(data);
             }
         });
     }

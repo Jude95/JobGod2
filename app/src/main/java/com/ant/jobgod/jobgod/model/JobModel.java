@@ -14,6 +14,7 @@ import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.jude.beam.model.AbsModel;
 import com.jude.http.RequestManager;
 import com.jude.http.RequestMap;
 

@@ -2,18 +2,18 @@ package com.ant.jobgod.jobgod.module.job;
 
 import android.os.Bundle;
 
-import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.ManagerModel;
 import com.ant.jobgod.jobgod.model.RongYunModel;
 import com.ant.jobgod.jobgod.model.bean.Manager;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.jude.beam.bijection.Presenter;
 
 /**
  * Created by alien on 2015/7/22.
  */
-public class ManagerBackedgePresenter extends BasePresenter<ManagerBackedgeActivity> {
+public class ManagerBackedgePresenter extends Presenter<ManagerBackedgeActivity> {
 
     private int jobId;
     private String title;
@@ -23,8 +23,8 @@ public class ManagerBackedgePresenter extends BasePresenter<ManagerBackedgeActiv
     public final int MANAGER_RESULT_CODE=101;
 
     @Override
-    protected void onCreate(Bundle savedState) {
-        super.onCreate(savedState);
+    protected void onCreate(ManagerBackedgeActivity view,Bundle savedState) {
+        super.onCreate(view,savedState);
         getContractData();
     }
 

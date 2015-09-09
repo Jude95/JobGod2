@@ -4,12 +4,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.RemoteFileModel;
 import com.ant.jobgod.jobgod.model.UserModel;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.jude.beam.bijection.Presenter;
 import com.jude.library.imageprovider.ImageProvider;
 import com.jude.library.imageprovider.OnImageSelectListener;
 
@@ -18,18 +18,18 @@ import java.io.File;
 /**
  * Created by alien on 2015/7/11.
  */
-public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
+public class ModifyFacePresenter extends Presenter<ModifyFaceActivity> {
     private ImageProvider mProvider;
     private Uri mFace;
     private OnImageSelectListener listener = new OnImageSelectListener() {
         @Override
         public void onImageSelect() {
-            getView().showProgress("图片加载中");
+            getView().getExpansion().showProgressDialog("图片加载中");
         }
 
         @Override
         public void onImageLoaded(Uri uri) {
-            getView().dismissProgress();
+            getView().getExpansion().dismissProgressDialog();
             mProvider.corpImage(uri, 300, 300, new OnImageSelectListener() {
                 @Override
                 public void onImageSelect() {
@@ -51,14 +51,14 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
 
         @Override
         public void onError() {
-            getView().dismissProgress();
+            getView().getExpansion().dismissProgressDialog();
             Utils.Log("图片加载错误");
         }
     };
 
     @Override
-    protected void onCreate(Bundle savedState) {
-        super.onCreate(savedState);
+    protected void onCreate(ModifyFaceActivity view,Bundle savedState) {
+        super.onCreate(view,savedState);
         mProvider = new ImageProvider(getView());
     }
 
@@ -83,7 +83,7 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
 
 
     public void upload(){
-        getView().showProgress("上传中");
+        getView().getExpansion().showProgressDialog("上传中");
 
         RemoteFileModel.getInstance().putImage(new File(mFace.getPath()), new RemoteFileModel.UploadImageListener() {
             @Override
@@ -96,7 +96,7 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
 
                     @Override
                     public void result(int status, String info) {
-                        getView().dismissProgress();
+                        getView().getExpansion().dismissProgressDialog();
                     }
                 });
             }
@@ -104,7 +104,8 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
             @Override
             public void onError() {
                 Utils.Toast("上传失败");
-                getView().dismissProgress();
+                getView().getExpansion().dismissProgressDialog();
+
             }
         });
     }

@@ -7,10 +7,12 @@ import android.support.multidex.MultiDex;
 
 import com.activeandroid.ActiveAndroid;
 import com.ant.jobgod.jobgod.BuildConfig;
-import com.ant.jobgod.jobgod.model.AbsModel;
+import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.jude.beam.Beam;
+import com.jude.beam.expansion.list.ListConfig;
 import com.jude.http.RequestManager;
 import com.umeng.analytics.MobclickAgent;
 
@@ -42,7 +44,6 @@ public class APP extends Application {
 
             /* 必须在使用 RongIM 的进程注册回调、注册自定义消息等 */
             if ("com.ant.jobgod.jobgod".equals(getCurProcessName(getApplicationContext()))) {
-
                 instance = this;
                 Fresco.initialize(this);
                 RequestManager.getInstance().init(this);
@@ -51,16 +52,15 @@ public class APP extends Application {
                 Utils.initialize(this, "GodLog", "5,28,0");
                 AdManager.getInstance(this).init("5aa51ecd2360f2e1", "d4c8d06a735d82d0", true);
 
-
                 ActiveAndroid.initialize(this);
                 FileManager.getInstance().init(this);
-                AbsModel.init(this);
                 MobclickAgent.updateOnlineConfig(this);
 
-                String text = "Jude";
-                String textencode;
-                Utils.Log(textencode = Utils.string2Base64(text));
-                Utils.Log(Utils.base64ToString(textencode));
+                Beam.init(this);
+                Beam.registerActivityLifetCyclerDelegate(ActivityDelegate.class);
+                ListConfig.setDefaultListConfig(new ListConfig().
+                        setRefreshAble(true).
+                        setContainerLayoutRes(R.layout.activity_recyclerview));
             }
         }
     }

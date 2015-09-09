@@ -3,23 +3,23 @@ package com.ant.jobgod.jobgod.module.launch;
 import android.app.Activity;
 import android.content.Intent;
 
-import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
+import com.jude.beam.bijection.Presenter;
 
-    /**
+/**
      * Created by Mr.Jude on 2015/6/6.
      */
-    public class UserLoginPresenter extends BasePresenter<UserLoginActivity>{
+    public class UserLoginPresenter extends Presenter<UserLoginActivity> {
         private static final int REGISTER = 1243;
 
         public void login(String tel,String password){
-            getView().showProgress("登录中");
+            getView().getExpansion().showProgressDialog("登录中");
             AccountModel.getInstance().userLogin(tel, password, new StatusCallback() {
 
                 @Override
                 public void result(int status, String info) {
-                    getView().dismissProgress();
+                    getView().getExpansion().dismissProgressDialog();
                     switch (status) {
                         case 202:
                             getView().setNumberError();

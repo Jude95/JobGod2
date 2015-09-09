@@ -8,18 +8,18 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.ant.jobgod.jobgod.R;
-import com.ant.jobgod.jobgod.app.BaseActivity;
 import com.ant.jobgod.jobgod.module.biz.BizLoginActivity;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import nucleus.factory.RequiresPresenter;
 
 /**
  * Created by Mr.Jude on 2015/6/6.
  */
     @RequiresPresenter(UserLoginPresenter.class)
-    public class UserLoginActivity extends BaseActivity<UserLoginPresenter>{
+    public class UserLoginActivity extends BeamBaseActivity<UserLoginPresenter> {
 
         @InjectView(R.id.tilNumber)
         TextInputLayout tilNumber;

@@ -2,18 +2,18 @@ package com.ant.jobgod.jobgod.module.user;
 
 import android.os.Bundle;
 
-import com.ant.jobgod.jobgod.app.BasePresenter;
+import com.jude.beam.bijection.Presenter;
 
 /**
  * Created by alien on 2015/7/12.
  */
-public class TextWritePresenter extends BasePresenter<TextWriteActivity> {
+public class TextWritePresenter extends Presenter<TextWriteActivity> {
 
     private final int REQUEST_CODE=1;
 
     @Override
-    protected void onCreate(Bundle savedState) {
-        super.onCreate(savedState);
+    protected void onCreate(TextWriteActivity view,Bundle savedState) {
+        super.onCreate(view,savedState);
     }
 
     @Override

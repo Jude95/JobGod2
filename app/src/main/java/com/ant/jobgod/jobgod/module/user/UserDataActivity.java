@@ -6,19 +6,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
-import com.ant.jobgod.jobgod.app.BaseActivity;
 import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.bean.UserAccountData;
 import com.ant.jobgod.jobgod.module.launch.ModifyPasswordActivity;
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import nucleus.factory.RequiresPresenter;
 
 @RequiresPresenter(UserDataPresenter.class)
-public class UserDataActivity extends BaseActivity<UserDataPresenter> {
+public class UserDataActivity extends BeamBaseActivity<UserDataPresenter> {
 
 
     @InjectView(R.id.name)

@@ -10,21 +10,23 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 
 import com.ant.jobgod.jobgod.R;
-import com.ant.jobgod.jobgod.app.BaseActivity;
 import com.ant.jobgod.jobgod.module.main.joblist.JobListFragment;
 import com.ant.jobgod.jobgod.module.main.recommend.RecommendFragment;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
+import com.jude.swipbackhelper.SwipeBackHelper;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import nucleus.factory.RequiresPresenter;
 
 /**
  * Created by zhuchenxi on 15/6/27.
  */
 @RequiresPresenter(UserMainPresenter.class)
-public class UserMainActivity extends BaseActivity<UserMainPresenter> {
+public class UserMainActivity extends BeamBaseActivity<UserMainPresenter> {
 
     @InjectView(R.id.viewPager)
     ViewPager viewpager;
@@ -44,15 +46,14 @@ public class UserMainActivity extends BaseActivity<UserMainPresenter> {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity_usermain);
-        //setTransparentStatusBar();
+        SwipeBackHelper.getCurrentPage(this).setSwipeBackEnable(false);
         ButterKnife.inject(this);
-        setSwipeBackEnable(false);
         tabLayout.setTabTextColors(getResources().getColor(R.color.WhiteTrans80), getResources().getColor(R.color.White));
         viewpager.setAdapter(mMainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager()));
         tabLayout.setupWithViewPager(viewpager);
         mDrawerToggle = new ActionBarDrawerToggle(this
                 , drawerLayout
-                , getToolbar()
+                , (Toolbar) findViewById(R.id.toolbar)
                 , R.string.drawer_open
                 , R.string.drawer_close);
         drawerLayout.post(() -> mDrawerToggle.syncState());

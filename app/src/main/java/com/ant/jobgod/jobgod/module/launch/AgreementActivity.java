@@ -3,15 +3,15 @@ package com.ant.jobgod.jobgod.module.launch;
 import android.os.Bundle;
 
 import com.ant.jobgod.jobgod.R;
-import com.ant.jobgod.jobgod.app.BaseActivity;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
 
-import nucleus.factory.RequiresPresenter;
 
 /**
  * Created by Mr.Jude on 2015/1/30.
  */
 @RequiresPresenter(AgreementPresenter.class)
-public class AgreementActivity extends BaseActivity<AgreementPresenter> {
+public class AgreementActivity extends BeamBaseActivity<AgreementPresenter> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

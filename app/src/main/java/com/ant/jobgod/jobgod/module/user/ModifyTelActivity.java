@@ -7,15 +7,16 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 
 import com.ant.jobgod.jobgod.R;
-import com.ant.jobgod.jobgod.app.BaseActivity;
 import com.ant.jobgod.jobgod.model.AccountModel;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import nucleus.factory.RequiresPresenter;
+import cn.smssdk.gui.TimeListener;
 
 @RequiresPresenter(ModifyTelPresenter.class)
-public class ModifyTelActivity extends BaseActivity<ModifyTelPresenter> {
+public class ModifyTelActivity extends BeamBaseActivity<ModifyTelPresenter> implements TimeListener {
 
 
     @InjectView(R.id.oldTel)
@@ -139,14 +140,6 @@ public class ModifyTelActivity extends BaseActivity<ModifyTelPresenter> {
         getPresenter().boundTel("", newNumber, "", mPassword, mCode);
     }
 
-    public void setRetryTime(int time) {
-        btnRetry.setText(time + "秒后重新获取");
-    }
-
-    public void setRetryEnable(boolean enable) {
-        btnRetry.setEnabled(enable);
-        if (enable) btnRetry.setText("重新获取");
-    }
 
     public void setOldPasswordError(){
         hideCodeCard();
@@ -161,5 +154,16 @@ public class ModifyTelActivity extends BaseActivity<ModifyTelPresenter> {
     public void setCodeError(){
         hideCodeCard();
         tilCode.setError("验证码错误");
+    }
+
+    @Override
+    public void onLastTimeNotify(int lastSecond) {
+        btnRetry.setText(lastSecond + "秒后重新获取");
+    }
+
+    @Override
+    public void onAbleNotify(boolean valuable) {
+        btnRetry.setEnabled(valuable);
+        if (valuable) btnRetry.setText("重新获取");
     }
 }

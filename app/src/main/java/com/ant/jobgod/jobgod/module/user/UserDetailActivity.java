@@ -12,20 +12,20 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
-import com.ant.jobgod.jobgod.app.BaseActivity;
 import com.ant.jobgod.jobgod.model.bean.UserDetail;
 import com.ant.jobgod.jobgod.util.TimeTransform;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.data.BeamDataActivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import nucleus.factory.RequiresPresenter;
 
 /**
  * Created by alien on 2015/7/13.
  */
 @RequiresPresenter(UserDetailPresenter.class)
-public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
+public class UserDetailActivity extends BeamDataActivity<UserDetailPresenter,UserDetail> {
 
 
     @InjectView(R.id.signature)
@@ -81,7 +81,8 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
                 R.drawable.ic_star_unfocus);
     }
 
-    public void setUserDetail(UserDetail detail) {
+    @Override
+    public void setData(UserDetail detail) {
         setIsAttention(detail.isFocus());
         imgFace.setImageURI(Uri.parse(detail.getFace()));
         collapsingToolbar.setTitle(detail.getName());
@@ -132,6 +133,7 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
         specialty.setText(detail.getSpecialty());
         intro.setText(detail.getIntro());
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

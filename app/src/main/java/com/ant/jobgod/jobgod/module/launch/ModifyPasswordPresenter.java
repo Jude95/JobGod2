@@ -3,30 +3,29 @@ package com.ant.jobgod.jobgod.module.launch;
 import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.jude.beam.bijection.Presenter;
 
 import cn.smssdk.gui.SMSManager;
-import cn.smssdk.gui.TimeListener;
-import nucleus.manager.Presenter;
 
 /**
  * Created by zhuchenxi on 15/6/27.
  */
-public class ModifyPasswordPresenter extends Presenter<ModifyPasswordActivity> implements TimeListener{
+public class ModifyPasswordPresenter extends Presenter<ModifyPasswordActivity> {
     private String number;
 
     @Override
     protected void onCreateView(ModifyPasswordActivity view) {
         super.onCreateView(view);
-        SMSManager.getInstance().registerTimeListenre(this);
+        SMSManager.getInstance().registerTimeListenre(getView());
     }
 
     public void checkIsRegister(String number){
         this.number = number;
-        getView().showProgress("提交中");
+        getView().getExpansion().showProgressDialog("提交中");
         AccountModel.getInstance().isRegistered(number, new StatusCallback() {
             @Override
             public void result(int status, String info) {
-                getView().dismissProgress();
+                getView().getExpansion().dismissProgressDialog();
                 if (status == 201) {
                     getView().showCodeCard();
                     Utils.Toast("已发送短信，请查收");
@@ -58,18 +57,10 @@ public class ModifyPasswordPresenter extends Presenter<ModifyPasswordActivity> i
     }
 
     @Override
-    protected void onDropView() {
-        super.onDropView();
-        SMSManager.getInstance().unRegisterTimeListenre(this);
+    protected void onDestroyView() {
+        super.onDestroyView();
+        SMSManager.getInstance().unRegisterTimeListenre(getView());
     }
 
-    @Override
-    public void onLastTimeNotify(int lastSecond) {
-        getView().setRetryTime(lastSecond);
-    }
 
-    @Override
-    public void onAbleNotify(boolean valuable) {
-        getView().setRetryEnable(valuable);
-    }
 }

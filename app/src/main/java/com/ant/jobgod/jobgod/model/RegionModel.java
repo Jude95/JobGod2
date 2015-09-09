@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.ant.jobgod.jobgod.model.bean.Region;
+import com.jude.beam.model.AbsModel;
 
 import java.io.BufferedReader;
 import java.io.IOException;

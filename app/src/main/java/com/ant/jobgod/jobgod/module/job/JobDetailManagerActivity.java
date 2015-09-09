@@ -14,26 +14,23 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.ant.jobgod.jobgod.R;
-import com.ant.jobgod.jobgod.app.BaseActivity;
 import com.ant.jobgod.jobgod.model.bean.JobBrief;
 import com.ant.jobgod.jobgod.model.bean.JobDetail;
 import com.ant.jobgod.jobgod.util.RecentDateFormater;
 import com.ant.jobgod.jobgod.util.TimeTransform;
 import com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.data.BeamDataActivity;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
-
 import net.youmi.android.banner.AdSize;
 import net.youmi.android.banner.AdView;
-
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import nucleus.factory.RequiresPresenter;
 
 @RequiresPresenter(JobDetailManagerPresenter.class)
-public class JobDetailManagerActivity extends BaseActivity<JobDetailManagerPresenter> {
+public class JobDetailManagerActivity extends BeamDataActivity<JobDetailManagerPresenter,JobDetail> {
 
 
     @InjectView(R.id.bizFace)

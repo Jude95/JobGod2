@@ -2,56 +2,33 @@ package com.ant.jobgod.jobgod.module.biz;
 
 import android.content.Context;
 import android.net.Uri;
-import android.os.Bundle;
-import android.os.Message;
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
-import com.ant.jobgod.jobgod.app.BaseActivity;
 import com.ant.jobgod.jobgod.model.bizbean.Job;
 import com.ant.jobgod.jobgod.model.bizbean.User;
 import com.ant.jobgod.jobgod.widget.LinearWrapContentRecyclerView;
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.jude.easyrecyclerview.EasyRecyclerView;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.list.BeamListActivity;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import nucleus.factory.RequiresPresenter;
 
 /**
  * Created by alien on 2015/8/4.
  */
 @RequiresPresenter(ApplyListPresenter.class)
-public class ApplyListActivity extends BaseActivity<ApplyListPresenter> {
+public class ApplyListActivity extends BeamListActivity<ApplyListPresenter,Job> {
 
-    private EasyRecyclerView applyRecycler;
-    private ApplyAdapter applyAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.biz_activity_applylist);
-        Message m;
-        applyRecycler = (EasyRecyclerView)findViewById(R.id.applyList);
-        applyRecycler.setLayoutManager(new LinearLayoutManager(this));
-        applyRecycler.setAdapter(applyAdapter);
-    }
-
-    class ApplyAdapter extends RecyclerArrayAdapter<Job> {
-
-        public ApplyAdapter(Context context) {
-            super(context);
-        }
-
-        @Override
-        public BaseViewHolder OnCreateViewHolder(ViewGroup viewGroup, int i) {
-            return new ApplyViewHolder(viewGroup);
-        }
+    protected BaseViewHolder getViewHolder(ViewGroup viewGroup, int i) {
+        return new ApplyViewHolder(viewGroup);
     }
 
     class ApplyViewHolder extends BaseViewHolder<Job> {

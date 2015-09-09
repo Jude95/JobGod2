@@ -3,11 +3,11 @@ package com.ant.jobgod.jobgod.module.setting;
 import android.os.Bundle;
 import android.view.View;
 
-import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.JobModel;
 import com.ant.jobgod.jobgod.model.bean.JobDetail;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.jude.beam.expansion.list.BeamListActivityPresenter;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.update.UmengUpdateAgent;
 import com.umeng.update.UpdateStatus;
@@ -15,11 +15,10 @@ import com.umeng.update.UpdateStatus;
 /**
  * Created by Mr.Jude on 2015/7/6.
  */
-public class SettingPresenter extends BasePresenter<SettingActivity> {
-    private SettingItem[] items;
+public class SettingPresenter extends BeamListActivityPresenter<SettingActivity,SettingItem> {
 
-    private void initItems(){
-        items = new SettingItem[]{
+    private SettingItem[] initItems(){
+        SettingItem[] items = new SettingItem[]{
                 new SettingItem("应用设置"),
                 new SettingItem("意见反馈","",null),
 
@@ -62,43 +61,12 @@ public class SettingPresenter extends BasePresenter<SettingActivity> {
 
                 new SettingItem("打开调试界面","",null),
         };
+        return items;
     }
 
     @Override
-    protected void onCreate(Bundle savedState) {
-        super.onCreate(savedState);
-        initItems();
-        Utils.Log("onCreate");
-    }
-
-    @Override
-    protected void onSave(Bundle state) {
-        super.onSave(state);
-        Utils.Log("onSave");
-    }
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Utils.Log("onDestroy");
-    }
-
-    @Override
-    protected void onCreateView(SettingActivity view) {
-        getView().addData(items);
-        Utils.Log("onCreateView");
-    }
-
-    @Override
-    protected void onTakeView(SettingActivity view) {
-        super.onTakeView(view);
-        Utils.Log("onTakeView");
-    }
-
-    @Override
-    protected void onDropView() {
-        super.onDropView();
-        Utils.Log("onDropView");
+    protected void onCreate(SettingActivity view,Bundle savedState) {
+        super.onCreate(view,savedState);
+        getAdapter().addAll(initItems());
     }
 }

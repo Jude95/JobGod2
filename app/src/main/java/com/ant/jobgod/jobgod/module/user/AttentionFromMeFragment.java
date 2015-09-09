@@ -1,68 +1,22 @@
 package com.ant.jobgod.jobgod.module.user;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.ant.jobgod.jobgod.R;
 import com.ant.jobgod.jobgod.model.bean.PersonBrief;
-import com.ant.jobgod.jobgod.widget.TextItemView;
-
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import nucleus.factory.RequiresPresenter;
-import nucleus.view.NucleusFragment;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.list.BeamListFragment;
+import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 
 @RequiresPresenter(AttentionFromMePresenter.class)
-public class AttentionFromMeFragment extends NucleusFragment<AttentionFromMePresenter> {
-
-
-    @InjectView(R.id.recycler)
-    RecyclerView recycler;
-
-    private PersonAdapter adapter;
+public class AttentionFromMeFragment extends BeamListFragment<AttentionFromMePresenter,PersonBrief> {
 
     @Override
-    public void onCreate(Bundle bundle) {
-        super.onCreate(bundle);
-        adapter=new PersonAdapter(getActivity());
-        MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
-                .cancelable(false)
-                .items(new String[]{"1","2","3"})
-                .title("Fuck")
-                .autoDismiss(true)
-                .build();
-
+    protected BaseViewHolder getViewHolder(ViewGroup viewGroup, int i) {
+        return new PersonBriefViewHolder(viewGroup);
     }
-
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.user_fragment_attention, container, false);
-        ButterKnife.inject(this, view);
-        recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recycler.setAdapter(adapter);
-        return view;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.reset(this);
-    }
-
-    public void setUsersData(PersonBrief[] data){
-        adapter.clear();
-        adapter.addAll(data);
-    }
-
-    public void setNull(){
-        adapter.addFooter(new TextItemView("你还没有关注任何人哟！"));
-        adapter.notifyDataSetChanged();
+    public int getLayout() {
+        return R.layout.include_recyclerview;
     }
 }

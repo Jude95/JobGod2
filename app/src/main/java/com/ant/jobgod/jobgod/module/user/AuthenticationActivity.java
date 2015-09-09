@@ -7,17 +7,17 @@ import android.support.v7.widget.AppCompatButton;
 import android.widget.ImageView;
 
 import com.ant.jobgod.jobgod.R;
-import com.ant.jobgod.jobgod.app.BaseActivity;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import nucleus.factory.RequiresPresenter;
 
 /**
  * Created by alien on 2015/7/11.
  */
 @RequiresPresenter(AuthenticationPresenter.class)
-public class AuthenticationActivity extends BaseActivity<AuthenticationPresenter> {
+public class AuthenticationActivity extends BeamBaseActivity<AuthenticationPresenter> {
 
 
     @InjectView(R.id.imgID)

@@ -4,17 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.UserModel;
 import com.ant.jobgod.jobgod.model.bean.UserDetail;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.jude.beam.bijection.Presenter;
 
 /**
  * Created by alien on 2015/7/10.
  */
-public class ModifyDetailPresenter extends BasePresenter<ModifyDetailActivity> {
+public class ModifyDetailPresenter extends Presenter<ModifyDetailActivity> {
 
     private final int REQUEST_CODE = 1;
 
@@ -22,8 +22,8 @@ public class ModifyDetailPresenter extends BasePresenter<ModifyDetailActivity> {
     private UserDetail userDetail;
 
     @Override
-    protected void onCreate(Bundle savedState) {
-        super.onCreate(savedState);
+    protected void onCreate(ModifyDetailActivity view,Bundle savedState) {
+        super.onCreate(view,savedState);
 
         intent = new Intent(getView(), TextWriteActivity.class);
 
@@ -47,7 +47,7 @@ public class ModifyDetailPresenter extends BasePresenter<ModifyDetailActivity> {
      * 更新个人信息
      */
     public void updateMyDetail() {
-        getView().showProgress("提交中");
+        getView().getExpansion().showProgressDialog("提交中");
         UserModel.getInstance().updateUserDetail(getView().getUserDetail(), new StatusCallback() {
             @Override
             public void success(String info) {
@@ -58,7 +58,7 @@ public class ModifyDetailPresenter extends BasePresenter<ModifyDetailActivity> {
             @Override
             public void result(int status, String info) {
                 super.result(status, info);
-                getView().dismissProgress();
+                getView().getExpansion().dismissProgressDialog();
                 switch (status) {
                     case 200:
                         Utils.Toast("保存成功");

@@ -1,9 +1,11 @@
 package com.ant.jobgod.jobgod.module.biz;
 
-import nucleus.manager.Presenter;
+
+import com.ant.jobgod.jobgod.model.bizbean.Job;
+import com.jude.beam.expansion.list.BeamListActivityPresenter;
 
 /**
  * Created by alien on 2015/8/4.
  */
-public class JobListPresenter extends Presenter<JobListActivity> {
+public class JobListPresenter extends BeamListActivityPresenter<JobListActivity,Job> {
 }

@@ -13,6 +13,7 @@ import com.ant.jobgod.jobgod.model.callback.DataCallback;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.FileManager;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.jude.beam.model.AbsModel;
 import com.jude.http.RequestManager;
 import com.jude.http.RequestMap;
 
@@ -21,12 +22,16 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
+import rx.Subscription;
+import rx.functions.Action1;
+import rx.subjects.BehaviorSubject;
+
 /**
  * Created by Mr.Jude on 2015/6/12.
  * 关于账户的信息。主要用于账户类型：商家／用户，和权限管理。
  * 会发送AccountInfo事件
  */
-public class AccountModel extends AbsModel{
+public class AccountModel extends AbsModel {
     private static final String ACCOUNTFILE = "account";
     public static AccountModel getInstance() {
         return getInstance(AccountModel.class);
@@ -34,6 +39,7 @@ public class AccountModel extends AbsModel{
 
     public boolean isUser = true;
     public UserAccountData userAccountData;
+    public BehaviorSubject<UserAccountData> userAccountDataBehaviorSubject = BehaviorSubject.create();
 
     @Override
     protected void onAppCreate(Context ctx) {
@@ -82,12 +88,16 @@ public class AccountModel extends AbsModel{
         });
     }
 
+    public Subscription registerUserAccountUpdate(Action1<UserAccountData> user){
+        return userAccountDataBehaviorSubject.subscribe(user);
+    }
+
     public void setUserAccountData(UserAccountData userAccountData){
         isUser = true;
         this.userAccountData = userAccountData;
         saveAccount();
         applyToken(userAccountData.getTokenApp());
-        publicEvent(userAccountData);
+        userAccountDataBehaviorSubject.onNext(userAccountData);
         Utils.Log("fuck");
     }
 
@@ -96,7 +106,7 @@ public class AccountModel extends AbsModel{
         FileManager.getInstance().getChild(FileManager.Dir.Object, ACCOUNTFILE).delete();
         applyToken("");
         RongYunModel.getInstance().loginOut();
-        publicEvent(new UserAccountData());
+        userAccountDataBehaviorSubject.onNext(null);
     }
 
 

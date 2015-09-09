@@ -1,37 +1,36 @@
 package com.ant.jobgod.jobgod.module.user;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.text.InputType;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.ant.jobgod.jobgod.app.BasePresenter;
 import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.UserModel;
-import com.ant.jobgod.jobgod.model.bean.UserAccountData;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.jude.beam.bijection.Presenter;
+
+import rx.Subscription;
 
 /**
  * Created by alien on 2015/7/10.
  */
-public class UserDataPresenter extends BasePresenter<UserDataActivity> {
+public class UserDataPresenter extends Presenter<UserDataActivity> {
 
     private Intent intent;
-    @Override
-    protected void onCreate(Bundle savedState) {
-        super.onCreate(savedState);
-        AccountModel.getInstance().registerEvent(this);
-    }
 
+
+    private Subscription mUserDataSubscription;
     @Override
     protected void onCreateView(UserDataActivity view) {
         super.onCreateView(view);
         getView().setUserDetailData(AccountModel.getInstance().getUserAccount());
+        mUserDataSubscription = AccountModel.getInstance().registerUserAccountUpdate(userAccountData -> getView().setUserDetailData(userAccountData));
     }
 
-    public void onEvent(UserAccountData info){
-        getView().setUserDetailData(info);
+    @Override
+    protected void onDestroyView() {
+        mUserDataSubscription.unsubscribe();
     }
 
     public void startActivity(Class<?> ctx){
@@ -51,7 +50,7 @@ public class UserDataPresenter extends BasePresenter<UserDataActivity> {
                         Utils.Toast("昵称不能为空");
                         return;
                     } else {
-                        getView().showProgress("修改中");
+                        getView().getExpansion().showProgressDialog("修改中");
                         UserModel.getInstance().modifyName(input.toString(), new StatusCallback() {
                             @Override
                             public void success(String info) {
@@ -62,7 +61,7 @@ public class UserDataPresenter extends BasePresenter<UserDataActivity> {
                             @Override
                             public void result(int status, String info) {
                                 super.result(status, info);
-                                getView().dismissProgress();
+                                getView().getExpansion().dismissProgressDialog();
                             }
                         });
                     }
@@ -75,7 +74,7 @@ public class UserDataPresenter extends BasePresenter<UserDataActivity> {
                 .inputType(InputType.TYPE_CLASS_TEXT)
                 .inputMaxLength(32)
                 .input("签名", "", (dialog, input) -> {
-                    getView().showProgress("修改中");
+                    getView().getExpansion().showProgressDialog("修改中");
                     UserModel.getInstance().modifySign(input.toString(), new StatusCallback() {
                         @Override
                         public void success(String info) {
@@ -85,7 +84,7 @@ public class UserDataPresenter extends BasePresenter<UserDataActivity> {
                         @Override
                         public void result(int status, String info) {
                             super.result(status, info);
-                            getView().dismissProgress();
+                            getView().getExpansion().dismissProgressDialog();
                         }
                     });
 
@@ -96,8 +95,6 @@ public class UserDataPresenter extends BasePresenter<UserDataActivity> {
     public void checkAuthentication(){
         if (AccountModel.getInstance().getUserAccount().getAuthenticationStatus()==0){
             startActivity(AuthenticationActivity.class);
-        }else{
-            Utils.Toast("您已完成验证");
         }
     }
 }

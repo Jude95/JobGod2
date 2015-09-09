@@ -10,19 +10,19 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.ant.jobgod.jobgod.R;
-import com.ant.jobgod.jobgod.app.BaseActivity;
 import com.ant.jobgod.jobgod.model.bean.Manager;
 import com.ant.jobgod.jobgod.util.Utils;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import nucleus.factory.RequiresPresenter;
 
 /**
  * Created by alien on 2015/7/22.
  */
 @RequiresPresenter(ManagerBackedgePresenter.class)
-public class ManagerBackedgeActivity extends BaseActivity<ManagerBackedgePresenter> {
+public class ManagerBackedgeActivity extends BeamBaseActivity<ManagerBackedgePresenter> {
 
 
     @InjectView(R.id.jobName)

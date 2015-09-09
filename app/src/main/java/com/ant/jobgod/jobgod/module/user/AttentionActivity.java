@@ -8,14 +8,15 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.ant.jobgod.jobgod.R;
-import com.ant.jobgod.jobgod.app.BaseActivity;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
+import com.jude.swipbackhelper.SwipeBackHelper;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import nucleus.factory.RequiresPresenter;
 
 @RequiresPresenter(AttentionPresenter.class)
-public class AttentionActivity extends BaseActivity<AttentionPresenter> {
+public class AttentionActivity extends BeamBaseActivity<AttentionPresenter> {
 
 
     @InjectView(R.id.tabLayout)
@@ -32,7 +33,6 @@ public class AttentionActivity extends BaseActivity<AttentionPresenter> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_activity_attention);
         ButterKnife.inject(this);
-
         attentionOthersFragment=new AttentionFromMeFragment();
         othersAttentionMeFragment=new AttentionToMeFragment();
         adapter=new ViewPagerAdapter(getSupportFragmentManager());
@@ -89,10 +89,10 @@ public class AttentionActivity extends BaseActivity<AttentionPresenter> {
         @Override
         public void onPageSelected(int position) {
             if (position==0){
-                setSwipeBackEnable(true);
+                SwipeBackHelper.getCurrentPage(AttentionActivity.this).setSwipeBackEnable(true);
             }
             else
-                setSwipeBackEnable(false);
+                SwipeBackHelper.getCurrentPage(AttentionActivity.this).setSwipeBackEnable(false);
         }
 
         @Override

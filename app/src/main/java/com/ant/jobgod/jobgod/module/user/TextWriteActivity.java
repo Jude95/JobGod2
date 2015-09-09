@@ -7,17 +7,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.ant.jobgod.jobgod.R;
-import com.ant.jobgod.jobgod.app.BaseActivity;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import nucleus.factory.RequiresPresenter;
 
 /**
  * Created by alien on 2015/7/12.
  */
 @RequiresPresenter(TextWritePresenter.class)
-public class TextWriteActivity extends BaseActivity<TextWritePresenter> {
+public class TextWriteActivity extends BeamBaseActivity<TextWritePresenter> {
 
     @InjectView(R.id.data)
     TextInputLayout data;
@@ -33,7 +33,6 @@ public class TextWriteActivity extends BaseActivity<TextWritePresenter> {
         ButterKnife.inject(this);
         intent = getIntent();
         setTitleAndResult();
-
     }
 
     public void setTitleAndResult() {

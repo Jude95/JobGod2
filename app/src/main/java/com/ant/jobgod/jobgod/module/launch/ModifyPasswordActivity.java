@@ -7,15 +7,17 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 
 import com.ant.jobgod.jobgod.R;
-import com.ant.jobgod.jobgod.app.BaseActivity;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
 
-import nucleus.factory.RequiresPresenter;
+import cn.smssdk.gui.TimeListener;
+
 
 /**
  * Created by zhuchenxi on 15/6/27.
  */
 @RequiresPresenter(ModifyPasswordPresenter.class)
-public class ModifyPasswordActivity extends BaseActivity<ModifyPasswordPresenter> {
+public class ModifyPasswordActivity extends BeamBaseActivity<ModifyPasswordPresenter> implements TimeListener {
     private android.support.design.widget.TextInputLayout tilNumber;
     private android.support.design.widget.TextInputLayout tilPassword;
     private android.support.v7.widget.AppCompatButton btnMessage;
@@ -81,13 +83,15 @@ public class ModifyPasswordActivity extends BaseActivity<ModifyPasswordPresenter
         tilPassword.setEnabled(enable);
     }
 
-    public void setRetryTime(int time) {
-        btnRetry.setText(time + "秒后重新获取");
+    @Override
+    public void onLastTimeNotify(int lastSecond) {
+        btnRetry.setText(lastSecond + "秒后重新获取");
     }
 
-    public void setRetryEnable(boolean enable){
-        btnRetry.setEnabled(enable);
-        if (enable)btnRetry.setText("重新获取");
+    @Override
+    public void onAbleNotify(boolean valuable) {
+        btnRetry.setEnabled(valuable);
+        if (valuable)btnRetry.setText("重新获取");
     }
 
     public void showCodeCard() {

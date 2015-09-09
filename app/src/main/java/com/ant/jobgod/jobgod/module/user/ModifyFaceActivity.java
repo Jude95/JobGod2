@@ -7,15 +7,15 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
-import com.ant.jobgod.jobgod.app.BaseActivity;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import nucleus.factory.RequiresPresenter;
 
 @RequiresPresenter(ModifyFacePresenter.class)
-public class ModifyFaceActivity extends BaseActivity<ModifyFacePresenter> {
+public class ModifyFaceActivity extends BeamBaseActivity<ModifyFacePresenter> {
 
 
     @InjectView(R.id.tv_camera)

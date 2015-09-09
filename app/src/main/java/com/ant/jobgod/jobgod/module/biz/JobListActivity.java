@@ -1,71 +1,30 @@
 package com.ant.jobgod.jobgod.module.biz;
 
-import android.content.Context;
 import android.net.Uri;
-import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ant.jobgod.jobgod.R;
-import com.ant.jobgod.jobgod.app.BaseActivity;
 import com.ant.jobgod.jobgod.model.bizbean.Job;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.jude.easyrecyclerview.EasyRecyclerView;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.list.BeamListActivity;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
-import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import nucleus.factory.RequiresPresenter;
 
 /**
  * Created by alien on 2015/8/4.
  */
 @RequiresPresenter(JobListPresenter.class)
-public class JobListActivity extends BaseActivity<JobListPresenter> {
-
-    private EasyRecyclerView recyclerView;
-    private PublishAdapter adapter;
+public class JobListActivity extends BeamListActivity<JobListPresenter,Job> {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.biz_activity_publishlist);
-
-        recyclerView = (EasyRecyclerView) findViewById(R.id.publishList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
-
-        recyclerView.setRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-
-            }
-        });
-
-        adapter.setMore(R.layout.view_more, new RecyclerArrayAdapter.OnLoadMoreListener() {
-            @Override
-            public void onLoadMore() {
-
-            }
-        });
+    protected BaseViewHolder getViewHolder(ViewGroup viewGroup, int i) {
+        return new PublishViewHolder(viewGroup);
     }
 
-
-    class PublishAdapter extends RecyclerArrayAdapter<Job> {
-
-        public PublishAdapter(Context context) {
-            super(context);
-        }
-
-        @Override
-        public BaseViewHolder OnCreateViewHolder(ViewGroup viewGroup, int i) {
-            return new PublishViewHolder(viewGroup);
-        }
-
-    }
 
     class PublishViewHolder extends BaseViewHolder<Job> {
 

@@ -5,32 +5,34 @@ import android.os.Bundle;
 import com.ant.jobgod.jobgod.model.UserModel;
 import com.ant.jobgod.jobgod.model.bean.PersonBrief;
 import com.ant.jobgod.jobgod.model.callback.DataCallback;
-
-import nucleus.manager.Presenter;
+import com.jude.beam.expansion.list.BeamListFragmentPresenter;
 
 /**
  * Created by alien on 2015/7/10.
  */
-public class AttentionFromMePresenter extends Presenter<AttentionFromMeFragment> {
-
-    private PersonBrief[] personBriefs;
+public class AttentionFromMePresenter extends BeamListFragmentPresenter<AttentionFromMeFragment,PersonBrief> {
 
     @Override
-    protected void onCreate(Bundle savedState) {
-        super.onCreate(savedState);
-        UserModel.getInstance().getAttentionFromMe(new DataCallback<PersonBrief[]>() {
-            @Override
-            public void success(String info, PersonBrief[] data) {
-                if (data.length == 0 )getView().setNull();
-                else getView().setUsersData(personBriefs = data);
-            }
-        });
+    protected void onCreate(AttentionFromMeFragment view, Bundle savedState) {
+        super.onCreate(view, savedState);
+        onRefresh();
     }
 
     @Override
-    protected void onCreateView(AttentionFromMeFragment view) {
-        super.onCreateView(view);
-        getView().setUsersData(personBriefs);
+    public void onRefresh() {
+        UserModel.getInstance().getAttentionFromMe(new DataCallback<PersonBrief[]>() {
+            @Override
+            public void success(String info, PersonBrief[] data) {
+                getAdapter().clear();
+                getAdapter().addAll(data);
+                getAdapter().stopMore();
+            }
+
+            @Override
+            public void error(String errorInfo) {
+                getView().showError();
+            }
+        });
     }
 
 }

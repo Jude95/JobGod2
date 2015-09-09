@@ -3,17 +3,16 @@ package com.ant.jobgod.jobgod.module.user;
 import android.os.Bundle;
 
 import com.ant.jobgod.jobgod.R;
-import com.ant.jobgod.jobgod.app.BaseActivity;
 import com.ant.jobgod.jobgod.util.Utils;
-
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
 import io.rong.imkit.fragment.ConversationListFragment;
-import nucleus.factory.RequiresPresenter;
 
 /**
  * Created by zhuchenxi on 15/7/21.
  */
 @RequiresPresenter(ChatListPresenter.class)
-public class ChatListActivity extends BaseActivity<ChatListPresenter> {
+public class ChatListActivity extends BeamBaseActivity<ChatListPresenter> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

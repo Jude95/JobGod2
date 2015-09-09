@@ -12,6 +12,7 @@ import com.ant.jobgod.jobgod.util.SpecificClassExclusionStrategy;
 import com.ant.jobgod.jobgod.util.Utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.jude.beam.model.AbsModel;
 import com.jude.http.RequestManager;
 import com.jude.http.RequestMap;
 
