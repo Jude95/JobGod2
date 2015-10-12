@@ -95,7 +95,7 @@ public class UserDrawerFragment extends BeamFragment<UserDrawerPresenter> {
     }
 
     public void setAccount(AccountData info) {
-        if (info.getId() == 0){
+        if (info == null){
             imgFace.setImageURI(null);
             tvName.setText("未登录,点击登陆");
             tvSign.setText("");

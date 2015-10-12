@@ -92,6 +92,8 @@ public class ModifyFacePresenter extends Presenter<ModifyFaceActivity> {
                     @Override
                     public void success(String info) {
                         Utils.Toast("上传成功");
+                        getView().finish();
+                        AccountModel.getInstance().updateAccountData();
                     }
 
                     @Override

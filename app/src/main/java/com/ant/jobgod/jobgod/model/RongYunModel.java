@@ -32,7 +32,9 @@ public class RongYunModel extends AbsModel {
     public BehaviorSubject<Integer> mNotifyBehaviorSubject = BehaviorSubject.create();
     @Override
     protected void onAppCreate(Context ctx) {
-        AccountModel.getInstance().registerUserAccountUpdate(user -> connectRongYun1(user.getRongToken()));
+        AccountModel.getInstance().registerUserAccountUpdate(user ->  {
+            if(user!=null)connectRongYun1(user.getRongToken());
+        });
         if (AccountModel.getInstance().getAccount()!=null)
             connectRongYun1(AccountModel.getInstance().getAccount().getRongToken());
     }

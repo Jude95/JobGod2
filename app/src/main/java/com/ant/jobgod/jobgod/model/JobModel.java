@@ -53,7 +53,10 @@ public class JobModel extends AbsModel {
     //取地区偏好项
     public Region[] getFiltrateRegion() {
         Region[] trades = (Region[]) Utils.readObjectFromFile(FileManager.getInstance().getChild(FileManager.Dir.Object, FILTRATE_REGION_FILE));
-        return trades == null ? new Region[]{RegionModel.getInstance().findCity(LocationModel.getInstance().getCurLocation().getRegionCode())} : trades;
+        return trades == null ? new Region[]{
+                RegionModel.getInstance().findCity(LocationModel.getInstance().getCurLocation().getRegionCode()),
+                RegionModel.getInstance().findCity(500100)}//重庆
+                : trades;
     }
 
     public int getFiltrateSort() {

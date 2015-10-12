@@ -60,26 +60,35 @@ public class UserDataActivity extends BeamBaseActivity<UserDataPresenter> {
     }
 
     public void setUserDetailData(UserAccountData data) {
-        name.setText(data.getName());
-        imgFace.setImageURI(Uri.parse(data.getFace()));
-        signature.setText(data.getSign());
-        phone.setText(data.getTel());
-        switch (data.getAuthenticationStatus()){
-            case 0:
-                authentication.setText("未认证");
-                break;
-            case 1:
-                authentication.setText("审核中");
-                break;
-            case 2:
-                authentication.setText("认证失败,请重新认证");
-                break;
-            case 3:
-                authentication.setText(data.getRealName());
-                break;
+        if (data==null){
+            name.setText("");
+            signature.setText("");
+            phone.setText("");
+            authentication.setText("");
+            percent.setText("");
+        }else{
+            name.setText(data.getName());
+            imgFace.setImageURI(Uri.parse(data.getFace()));
+            signature.setText(data.getSign());
+            phone.setText(data.getTel());
+            switch (data.getAuthenticationStatus()){
+                case 0:
+                    authentication.setText("未认证");
+                    break;
+                case 1:
+                    authentication.setText("审核中");
+                    break;
+                case 2:
+                    authentication.setText("认证失败,请重新认证");
+                    break;
+                case 3:
+                    authentication.setText(data.getRealName());
+                    break;
+            }
+
+            percent.setText("完善度"+ calculateDetailPercent(data)+"%");
         }
 
-        percent.setText("完善度"+ calculateDetailPercent(data)+"%");
     }
 
     public int calculateDetailPercent(UserAccountData data){

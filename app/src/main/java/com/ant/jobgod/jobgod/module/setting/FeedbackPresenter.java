@@ -5,5 +5,5 @@ import com.jude.beam.bijection.Presenter;
 /**
  * Created by Mr.Jude on 2015/10/12.
  */
-public class SettingPresenter extends Presenter<SettingActivity>{
+public class FeedbackPresenter extends Presenter<FeedbackActivity> {
 }

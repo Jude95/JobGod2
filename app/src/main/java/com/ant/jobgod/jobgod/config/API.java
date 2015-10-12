@@ -5,7 +5,7 @@ package com.ant.jobgod.jobgod.config;
  */
 public class API {
     public static class URL {
-        private static final String BaseUrl = "http://103.238.226.48:81/index.php/";
+        private static final String BaseUrl = "http://115.28.215.112/index.php/";
 
         //Account
         public static final String IsRegistered = BaseUrl + "home/user/checkTel";
