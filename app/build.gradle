@@ -13,7 +13,7 @@ android {
         applicationId "com.ant.jobgod.jobgod"
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 20
+        versionCode 40
         versionName "2.0.0"
         multiDexEnabled true
     }
