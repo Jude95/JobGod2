@@ -1,5 +1,6 @@
 package com.ant.jobgod.jobgod.app;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import com.ant.jobgod.jobgod.util.ActivityManager;
@@ -11,6 +12,10 @@ import com.umeng.analytics.MobclickAgent;
  * Created by Mr.Jude on 2015/9/9.
  */
 public class ActivityDelegate extends ActivityLifeCycleDelegate {
+
+    public ActivityDelegate(Activity act) {
+        super(act);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

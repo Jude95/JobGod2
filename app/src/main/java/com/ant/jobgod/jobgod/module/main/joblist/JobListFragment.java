@@ -29,6 +29,11 @@ public class JobListFragment extends BeamListFragment<JobListPresenter,JobBrief>
     }
 
     @Override
+    public int getViewType(int type) {
+        return super.getViewType(type);
+    }
+
+    @Override
     protected BaseViewHolder getViewHolder(ViewGroup viewGroup, int i) {
         return new JobViewHolder(viewGroup);
     }

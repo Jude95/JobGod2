@@ -23,5 +23,5 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
-        android:text="Copyright@2015 HelloWorld All rights reserved"/>
+        android:text="Copyright©2015 HelloWorld All rights reserved"/>
 </RelativeLayout>

@@ -5,14 +5,14 @@ Properties props = new Properties()
 props.load(new FileInputStream(file("signing.properties")))
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
 
     defaultConfig {
         //暂时改了包名
         applicationId "com.ant.jobgod.jobgod"
         minSdkVersion 15
-        targetSdkVersion 22
+        targetSdkVersion 23
         versionCode 40
         versionName "2.0.0"
         multiDexEnabled true
@@ -50,9 +50,9 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:22.2.1'
-    compile 'com.android.support:design:22.2.1'
-    compile 'com.android.support:cardview-v7:22.2.1'
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile 'com.android.support:design:23.0.1'
+    compile 'com.android.support:cardview-v7:23.0.1'
     compile 'com.balysv:material-ripple:1.0.2'
     compile 'com.facebook.fresco:fresco:0.5.1'
     compile 'com.pnikosis:materialish-progress:1.5'
@@ -72,7 +72,7 @@ dependencies {
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.qiniu:qiniu-android-sdk:7.0.7'
     compile 'com.wdullaer:materialdatetimepicker:1.3.1'
-    compile 'com.jude:beam:2.0.31'
+    compile 'com.jude:beam:2.4.1'
     compile 'com.jude:swipebackhelper:2.0.0'
     compile 'com.jude:rollviewpager:1.0.1'
     compile 'com.jude:imageprovider:1.0.7'

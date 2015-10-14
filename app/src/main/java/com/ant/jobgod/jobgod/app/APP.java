@@ -57,7 +57,7 @@ public class APP extends Application {
                 MobclickAgent.updateOnlineConfig(this);
 
                 Beam.init(this);
-                Beam.registerActivityLifetCyclerDelegate(ActivityDelegate.class);
+                Beam.setActivityLifeCycleDelegateProvider(ActivityDelegate::new);
                 ListConfig.setDefaultListConfig(new ListConfig().
                         setRefreshAble(true).
                         setContainerLayoutRes(R.layout.activity_recyclerview));
