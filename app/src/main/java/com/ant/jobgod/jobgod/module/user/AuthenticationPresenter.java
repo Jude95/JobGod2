@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import com.ant.jobgod.jobgod.model.AccountModel;
 import com.ant.jobgod.jobgod.model.RemoteFileModel;
 import com.ant.jobgod.jobgod.model.UserModel;
 import com.ant.jobgod.jobgod.model.callback.StatusCallback;
@@ -51,6 +52,7 @@ public class AuthenticationPresenter extends Presenter<AuthenticationActivity> {
                     @Override
                     public void success(String info) {
                         getView().getExpansion().dismissProgressDialog();
+                        AccountModel.getInstance().updateAccountData();
                         Utils.Toast("上传成功,我们会尽快审核。");
                         getView().finish();
                     }
