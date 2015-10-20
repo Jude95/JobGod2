@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.ant.jobgod.jobgod.R;
+import com.ant.jobgod.jobgod.util.Utils;
 import com.jude.beam.bijection.RequiresPresenter;
 import com.jude.beam.expansion.BeamBaseActivity;
 import com.jude.swipbackhelper.SwipeBackHelper;
@@ -88,6 +89,7 @@ public class AttentionActivity extends BeamBaseActivity<AttentionPresenter> {
 
         @Override
         public void onPageSelected(int position) {
+            Utils.Log("position:"+position);
             if (position==0){
                 SwipeBackHelper.getCurrentPage(AttentionActivity.this).setSwipeBackEnable(true);
             }

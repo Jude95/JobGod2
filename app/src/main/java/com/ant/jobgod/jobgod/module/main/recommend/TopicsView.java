@@ -3,6 +3,7 @@ package com.ant.jobgod.jobgod.module.main.recommend;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -86,6 +87,7 @@ public class TopicsView extends RelativeLayout {
             });
             title1.setText(topics[0].getTitle());
             intro1.setText(topics[0].getSubTitle());
+            if (!TextUtils.isEmpty(topics[0].getImg()))
             image1.setImageURI(Uri.parse(topics[0].getImg()));
         }
 
@@ -94,13 +96,14 @@ public class TopicsView extends RelativeLayout {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(v.getContext(), TopicDetailActivity.class);
-                    i.putExtra("topic",topics[1]);
+                    i.putExtra("topic", topics[1]);
                     v.getContext().startActivity(i);
                 }
             });
             title2.setText(topics[1].getTitle());
             intro2.setText(topics[1].getSubTitle());
-            image2.setImageURI(Uri.parse(topics[1].getImg()));
+            if (!TextUtils.isEmpty(topics[1].getImg()))
+                image2.setImageURI(Uri.parse(topics[1].getImg()));
         }
 
 
@@ -115,7 +118,8 @@ public class TopicsView extends RelativeLayout {
             });
             title3.setText(topics[2].getTitle());
             intro3.setText(topics[2].getSubTitle());
-            image3.setImageURI(Uri.parse(topics[2].getImg()));
+            if (!TextUtils.isEmpty(topics[2].getImg()))
+                image3.setImageURI(Uri.parse(topics[2].getImg()));
         }
 
     }

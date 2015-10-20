@@ -4,11 +4,13 @@ package cn.smssdk.gui;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
 /**
@@ -43,6 +45,23 @@ public class SMSManager {
     public boolean sendMessage(Context ctx,String number){
         if (!inited){
             SMSSDK.initSDK(ctx, "587c0a5919c6", "f8652efb1c8a638223bb22d5b02a4279");
+            SMSSDK.registerEventHandler(new EventHandler(){
+                @Override
+                public void afterEvent(int event, int result, Object data) {
+                    if (result == SMSSDK.RESULT_COMPLETE) {
+                        Log.i("Message", "回调完成");
+                        if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {
+                            Log.i("Message", "提交验证码成功");
+                        } else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
+                            Log.i("Message", "获取验证码成功");
+                        } else if (event == SMSSDK.EVENT_GET_SUPPORTED_COUNTRIES) {
+                            Log.i("Message", "返回支持发送验证码的国家列表");
+                        }
+                    } else {
+                        Log.i("Message", "Error");
+                        ((Throwable) data).printStackTrace();
+                    }
+                }});
             inited = true;
         }
         if (last==0) {
@@ -66,7 +85,7 @@ public class SMSManager {
                     }
                 });
             }catch (Exception e){
-                unRegisterTimeListenre(listener);
+                unRegisterTimeListener(listener);
             }
         }
     }
@@ -82,19 +101,19 @@ public class SMSManager {
                     }
                 });
             }catch (Exception e){
-                unRegisterTimeListenre(listener);
+                unRegisterTimeListener(listener);
             }
         }
     }
 
 
-    public void registerTimeListenre(TimeListener listener){
+    public void registerTimeListener(TimeListener listener){
         timeList.add(listener);
         listener.onLastTimeNotify(last);
         listener.onAbleNotify(last==0);
     }
 
-    public void unRegisterTimeListenre(TimeListener listener){
+    public void unRegisterTimeListener(TimeListener listener){
         timeList.remove(listener);
     }
 

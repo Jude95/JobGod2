@@ -9,6 +9,15 @@ public class Comment {
     private String name;
     private String content;
     private long time;
+    private int authorId;
+
+    public int getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(int authorId) {
+        this.authorId = authorId;
+    }
 
     public int getId() {
         return id;
