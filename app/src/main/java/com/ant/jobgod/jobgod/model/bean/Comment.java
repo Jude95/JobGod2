@@ -5,6 +5,10 @@ package com.ant.jobgod.jobgod.model.bean;
  */
 public class Comment {
     private int id;
+    private String authorId;
+
+
+
     private String face;
     private String name;
     private String content;
@@ -37,5 +41,9 @@ public class Comment {
 
     public long getTime() {
         return time;
+    }
+
+    public String getAuthorId() {
+        return authorId;
     }
 }
