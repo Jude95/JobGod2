@@ -24,11 +24,19 @@ public class JobDetailReleasePresenter extends BeamDataActivityPresenter<JobDeta
     protected void onCreate(JobDetailReleaseActivity view,Bundle savedState) {
         super.onCreate(view,savedState);
         id = getView().getIntent().getIntExtra("id",0);
+        getView().getExpansion().showProgressPage();
         JobModel.getInstance().getJobDetail(id, new DataCallback<JobDetail>() {
             @Override
             public void success(String info, JobDetail data) {
+                getView().getExpansion().dismissProgressPage();
                 mJob = data;
                 publishObject(data);
+            }
+
+            @Override
+            public void error(String errorInfo) {
+                getView().getExpansion().dismissProgressPage();
+                getView().getExpansion().showErrorPage();
             }
         });
     }

@@ -16,7 +16,7 @@ public class ModifyPasswordPresenter extends Presenter<ModifyPasswordActivity> {
     @Override
     protected void onCreateView(ModifyPasswordActivity view) {
         super.onCreateView(view);
-        SMSManager.getInstance().registerTimeListenre(getView());
+        SMSManager.getInstance().registerTimeListener(getView());
     }
 
     public void checkIsRegister(String number){
@@ -59,7 +59,7 @@ public class ModifyPasswordPresenter extends Presenter<ModifyPasswordActivity> {
     @Override
     protected void onDestroyView() {
         super.onDestroyView();
-        SMSManager.getInstance().unRegisterTimeListenre(getView());
+        SMSManager.getInstance().unRegisterTimeListener(getView());
     }
 
 

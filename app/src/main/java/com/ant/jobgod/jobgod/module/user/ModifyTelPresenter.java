@@ -17,7 +17,7 @@ public class ModifyTelPresenter extends Presenter<ModifyTelActivity> {
     @Override
     protected void onCreateView(ModifyTelActivity view) {
         super.onCreateView(view);
-        SMSManager.getInstance().registerTimeListenre(getView());
+        SMSManager.getInstance().registerTimeListener(getView());
     }
 
     public void sendCode(String number){
@@ -69,6 +69,6 @@ public class ModifyTelPresenter extends Presenter<ModifyTelActivity> {
     @Override
     protected void onDestroyView() {
         super.onDestroyView();
-        SMSManager.getInstance().unRegisterTimeListenre(getView());
+        SMSManager.getInstance().unRegisterTimeListener(getView());
     }
 }

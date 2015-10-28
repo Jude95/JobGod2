@@ -9,7 +9,6 @@ import com.ant.jobgod.jobgod.util.Utils;
 import com.jude.beam.bijection.Presenter;
 
 import cn.smssdk.gui.SMSManager;
-import cn.smssdk.gui.TimeListener;
 
 /**
  * Created by Mr.Jude on 2015/6/13.
@@ -20,7 +19,7 @@ public class UserRegisterPresenter extends Presenter<UserRegisterActivity>{
     @Override
     protected void onCreateView(UserRegisterActivity view) {
         super.onCreateView(view);
-        SMSManager.getInstance().registerTimeListenre(getView());
+        SMSManager.getInstance().registerTimeListener(getView());
     }
 
     public void checkIsRegister(String number){
@@ -75,7 +74,7 @@ public class UserRegisterPresenter extends Presenter<UserRegisterActivity>{
     @Override
     protected void onDestroyView() {
         super.onDestroyView();
-        SMSManager.getInstance().unRegisterTimeListenre(getView());
+        SMSManager.getInstance().unRegisterTimeListener(getView());
     }
 
 }

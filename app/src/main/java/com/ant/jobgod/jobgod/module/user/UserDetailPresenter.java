@@ -20,15 +20,18 @@ public class UserDetailPresenter extends BeamDataActivityPresenter<UserDetailAct
     protected void onCreate(UserDetailActivity view,Bundle savedState) {
         super.onCreate(view,savedState);
         id = view.getIntent().getIntExtra("id",0);
+        getView().getExpansion().showProgressPage();
         UserModel.getInstance().getUserDetail(id + "", new DataCallback<UserDetail>() {
             @Override
             public void success(String info, UserDetail data) {
+                getView().getExpansion().dismissProgressPage();
                 publishObject(userDetail = data);
             }
 
             @Override
             public void error(String errorInfo) {
-                publishError(new Exception(errorInfo));
+                getView().getExpansion().dismissProgressPage();
+                getView().getExpansion().showErrorPage();
             }
         });
     }
