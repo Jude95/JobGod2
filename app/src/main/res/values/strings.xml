@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">诚客兼职</string>
+    <string name="app_name">诚客</string>
     <string name="drawer_open">open</string>
     <string name="drawer_close">close</string>
     <string name="title_activity_main">MainActivity</string>
