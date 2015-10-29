@@ -90,7 +90,7 @@
                     android:id="@+id/tvAgreement"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:text="《诚客兼职个人用户服务协议》"
+                    android:text="《诚客个人用户服务协议》"
                     android:textColor="@color/secondary_text_default_material_light"
                     android:clickable="true"
                     android:gravity="center"/>
