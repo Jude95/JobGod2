@@ -13,6 +13,6 @@ public class UserMainPresenter extends Presenter<UserMainActivity> {
     @Override
     protected void onCreate(UserMainActivity view,Bundle savedState) {
         super.onCreate(view,savedState);
-        UmengUpdateAgent.update(getView());
+        UmengUpdateAgent.forceUpdate(getView());
     }
 }
