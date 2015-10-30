@@ -16,7 +16,7 @@ import com.jude.beam.expansion.list.BeamListFragmentPresenter;
  */
 public class JobListPresenter extends BeamListFragmentPresenter<JobListFragment,JobBrief> {
     private static final int FILTRATE_FLAG = 1568;
-    private static final int PAGE_COUNT = 10;
+    private static final int PAGE_COUNT = 30;
     private int page = 0;
 
     @Override

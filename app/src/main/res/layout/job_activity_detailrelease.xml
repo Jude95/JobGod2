@@ -80,7 +80,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="工资待遇 : "
+                    android:text="报酬 : "
                     android:gravity="center_vertical"
                     android:textColor="@color/secondary_text_default_material_light"/>
                 <TextView
@@ -100,7 +100,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:minHeight="24dp"
-                    android:text="工作地点 : "
+                    android:text="地点 : "
                     android:gravity="center_vertical"
                     android:textColor="@color/secondary_text_default_material_light"/>
                 <TextView
@@ -119,11 +119,32 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="招聘人数 : "
+                    android:text="人数 : "
                     android:gravity="center_vertical"
                     android:textColor="@color/secondary_text_default_material_light"/>
                 <TextView
                     android:id="@+id/jobCount"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text=""
+                    android:gravity="center_vertical"/>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="24dp"
+                android:paddingLeft="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="时间: "
+                    android:gravity="center_vertical"
+                    android:textColor="@color/secondary_text_default_material_light"/>
+                <TextView
+                    android:id="@+id/timeIntro"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text=""
@@ -148,26 +169,6 @@
                     android:text=""
                     android:gravity="center_vertical"/>
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="24dp"
-                android:paddingLeft="16dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="工作时间安排: "
-                    android:gravity="center_vertical"
-                    android:textColor="@color/secondary_text_default_material_light"/>
-                <TextView
-                    android:id="@+id/timeIntro"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text=""
-                    android:gravity="center_vertical"/>
-            </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -196,7 +197,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:text="工作简介"
+                android:text="需求内容"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:gravity="center_vertical"
@@ -223,7 +224,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:text="岗位要求"
+                android:text="附加要求"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:gravity="center_vertical"

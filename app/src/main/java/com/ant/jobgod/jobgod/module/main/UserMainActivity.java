@@ -85,7 +85,7 @@ public class UserMainActivity extends BeamBaseActivity<UserMainPresenter> {
                 case 0:
                     return "推荐";
                 case 1:
-                    return "兼职";
+                    return "需求";
                 default:
                     return null;
             }
